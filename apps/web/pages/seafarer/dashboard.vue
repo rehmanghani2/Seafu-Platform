@@ -95,6 +95,57 @@
         </div>
       </div>
     </div>
+
+    <!-- Job Board CTA Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <NuxtLink to="/jobs"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#0369A1'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#0369A120; border:1px solid #0369A140;">
+          ⚓
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">Maritime Job Board</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">Browse shipboard &amp; shore-based positions</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#0369A1;">→</span>
+      </NuxtLink>
+
+      <NuxtLink to="/jobs/my-applications"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#0369A1'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#0369A120; border:1px solid #0369A140;">
+          📋
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">My Applications</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">Track Applied → Shortlisted → Selected</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#0369A1;">→</span>
+      </NuxtLink>
+
+      <NuxtLink to="/vault/dossier/IND-AFF-7714-ECDSA"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#00E5FF'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#00E5FF15; border:1px solid #00E5FF30;">
+          🔐
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">Cryptographic Dossier</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">ECDSA signed · QR shareable profile</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#00E5FF;">→</span>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 

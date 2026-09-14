@@ -302,29 +302,40 @@ model Certificate {
   @@index([seafarerId])
 }
 
+enum JobStatus {
+  ACTIVE
+  CLOSED
+  DRAFT
+}
+
 model JobPost {
-  id           String           @id @default(uuid())
-  instituteId  String?
-  institute    Institute?       @relation(fields: [instituteId], references: [id])
-  companyName  String
-  title        String
-  type         JobType          @default(SHIPBOARD)
-  shipType     String?
-  rankRequired String?
-  location     String
-  salaryRange  String?
-  description  String
-  requirements String[]         @default([])
-  isPremium    Boolean          @default(false)
-  expiresAt    DateTime
-  
-  applications JobApplication[]
+  id               String           @id @default(uuid())
+  instituteId      String?
+  institute        Institute?       @relation(fields: [instituteId], references: [id])
+  companyName      String
+  title            String
+  jobType          JobType          @default(SHIPBOARD)
+  shipType         String?
+  rank             String
+  portOfJoining    String?
+  salary           Decimal?         @db.Decimal(12, 2)
+  currency         String           @default("USD")
+  contractDuration String?
+  description      String
+  requirements     String[]         @default([])
+  isPremium        Boolean          @default(false)
+  postedBy         String
+  status           JobStatus        @default(ACTIVE)
+  expiresAt        DateTime
 
-  createdAt    DateTime         @default(now())
-  updatedAt    DateTime         @updatedAt
+  applications     JobApplication[]
 
-  @@index([type])
-  @@index([isPremium])
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([jobType])
+  @@index([status])
+  @@index([postedBy])
 }
 
 model JobApplication {
