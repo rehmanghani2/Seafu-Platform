@@ -1,0 +1,19 @@
+{
+  "name": "seafu-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Seafu Platform - Digital Maritime Ecosystem",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "npm --workspace=apps/backend run start:dev",
+    "dev:web": "npm --workspace=apps/web run dev",
+    "build:backend": "npm --workspace=apps/backend run build",
+    "build:web": "npm --workspace=apps/web run build"
+  },
+  "keywords": ["maritime", "merchant-navy", "seafu", "stcw", "dg-approved"],
+  "author": "The Seafu Team",
+  "license": "UNLICENSED"
+}
