@@ -7,6 +7,8 @@ import { InstitutesModule } from './institutes/institutes.module';
 import { CoursesModule } from './courses/courses.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { CertificatesModule } from './certificates/certificates.module';
+import { DocumentsModule } from './documents/documents.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -23,6 +25,8 @@ import { AppService } from './app.service';
     CoursesModule,
     BookingsModule,
     CertificatesModule,
+    DocumentsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

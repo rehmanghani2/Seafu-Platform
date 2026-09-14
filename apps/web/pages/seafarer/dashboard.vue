@@ -73,7 +73,9 @@
       <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-slate-900">Certificate Vault</h2>
-          <span class="text-xs text-slate-500">Auto-Synced</span>
+          <NuxtLink to="/vault/dossier/IND-AFF-7714-ECDSA" class="text-xs font-semibold text-ocean-600 hover:text-ocean-700">
+            Open Cryptographic Dossier &rarr;
+          </NuxtLink>
         </div>
         <div class="space-y-3 text-sm">
           <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50">
