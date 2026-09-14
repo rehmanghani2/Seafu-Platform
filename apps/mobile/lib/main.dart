@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'features/courses/courses_screen.dart';
 import 'features/bookings/bookings_screen.dart';
+import 'features/vault/psc_scan_deck_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class SeafuApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF070D18),
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF0284C7),
-          secondary: Color(0xFF06B6D4),
+          secondary: Color(0xFF00E5FF),
           surface: Color(0xFF0C1628),
         ),
         useMaterial3: true,
@@ -42,7 +43,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = const [
     CoursesScreen(),
-    VaultScreen(),
+    PscScanDeckScreen(),
     BookingsScreen(),
     ProfileScreen(),
   ];
@@ -66,9 +67,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             label: 'Courses',
           ),
           NavigationDestination(
-            icon: Icon(Icons.folder_shared_outlined),
-            selectedIcon: Icon(Icons.folder_shared),
-            label: 'Vault',
+            icon: Icon(Icons.qr_code_scanner_outlined),
+            selectedIcon: Icon(Icons.qr_code_scanner),
+            label: 'PSC Vault',
           ),
           NavigationDestination(
             icon: Icon(Icons.confirmation_number_outlined),
@@ -81,25 +82,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             label: 'Profile',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class VaultScreen extends StatelessWidget {
-  const VaultScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF070D18),
-      appBar: AppBar(
-        title: const Text('Certificate Vault', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: const Color(0xFF031726),
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text('Encrypted STCW & Maritime Documents Vault'),
       ),
     );
   }

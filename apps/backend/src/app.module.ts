@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { InstitutesModule } from './institutes/institutes.module';
 import { CoursesModule } from './courses/courses.module';
 import { BookingsModule } from './bookings/bookings.module';
+import { CertificatesModule } from './certificates/certificates.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
     InstitutesModule,
     CoursesModule,
     BookingsModule,
+    CertificatesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
