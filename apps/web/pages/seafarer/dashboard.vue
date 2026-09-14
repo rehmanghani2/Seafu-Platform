@@ -146,6 +146,57 @@
         <span class="ml-auto text-lg" style="color:#00E5FF;">→</span>
       </NuxtLink>
     </div>
+
+    <!-- Community Hub CTA Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+      <NuxtLink to="/community"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#8b5cf6'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#8b5cf620; border:1px solid #8b5cf640;">
+          🌊
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">Community Forum</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">STCW, PSC tips, career advice &amp; more</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#8b5cf6;">→</span>
+      </NuxtLink>
+
+      <NuxtLink to="/community/create"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#8b5cf6'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#8b5cf620; border:1px solid #8b5cf640;">
+          ✍️
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">Ask the Community</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">18,000+ verified seafarers ready to help</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#8b5cf6;">→</span>
+      </NuxtLink>
+
+      <NuxtLink to="/courses"
+        class="group flex items-center gap-4 p-5 rounded-xl border transition"
+        style="background:#0a1628; border-color:#0c1a2e; color:#e2e8f0;"
+        onmouseenter="this.style.borderColor='#10b981'"
+        onmouseleave="this.style.borderColor='#0c1a2e'">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+          style="background:#10b98120; border:1px solid #10b98140;">
+          🎓
+        </div>
+        <div>
+          <div class="font-bold text-sm" style="color:#e2e8f0;">Course Catalog</div>
+          <div class="text-xs mt-0.5" style="color:#64748b;">DG Shipping approved STCW courses</div>
+        </div>
+        <span class="ml-auto text-lg" style="color:#10b981;">→</span>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 

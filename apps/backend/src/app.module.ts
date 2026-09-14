@@ -10,6 +10,7 @@ import { CertificatesModule } from './certificates/certificates.module';
 import { DocumentsModule } from './documents/documents.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { JobsModule } from './jobs/jobs.module';
+import { CommunityModule } from './community/community.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -29,6 +30,7 @@ import { AppService } from './app.service';
     DocumentsModule,
     NotificationsModule,
     JobsModule,
+    CommunityModule,
   ],
   controllers: [AppController],
   providers: [AppService],
