@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'features/courses/courses_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,24 +77,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             label: 'Profile',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class CoursesScreen extends StatelessWidget {
-  const CoursesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('⚓ The Seafu — DG Courses', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text('DG-Approved Maritime Courses Discovery'),
       ),
     );
   }
