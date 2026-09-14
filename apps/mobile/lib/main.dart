@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'features/courses/courses_screen.dart';
+import 'features/bookings/bookings_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +16,12 @@ class SeafuApp extends StatelessWidget {
       title: 'The Seafu',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0369A1),
-          primary: const Color(0xFF0369A1),
-          secondary: const Color(0xFF0284C7),
-          surface: const Color(0xFFF8FAFC),
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF070D18),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF0284C7),
+          secondary: Color(0xFF06B6D4),
+          surface: Color(0xFF0C1628),
         ),
         useMaterial3: true,
       ),
@@ -51,6 +53,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       body: _screens[_currentIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
+        backgroundColor: const Color(0xFF031726),
+        indicatorColor: const Color(0xFF0369A1),
         onDestinationSelected: (index) {
           setState(() {
             _currentIndex = index;
@@ -88,31 +92,14 @@ class VaultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF070D18),
       appBar: AppBar(
         title: const Text('Certificate Vault', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: const Color(0xFF031726),
         foregroundColor: Colors.white,
       ),
       body: const Center(
         child: Text('Encrypted STCW & Maritime Documents Vault'),
-      ),
-    );
-  }
-}
-
-class BookingsScreen extends StatelessWidget {
-  const BookingsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Bookings', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text('Active & Past Course Bookings'),
       ),
     );
   }
@@ -124,9 +111,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF070D18),
       appBar: AppBar(
         title: const Text('Seafarer Profile', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: const Color(0xFF031726),
         foregroundColor: Colors.white,
       ),
       body: const Center(

@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { InstitutesModule } from './institutes/institutes.module';
 import { CoursesModule } from './courses/courses.module';
+import { BookingsModule } from './bookings/bookings.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -19,6 +20,7 @@ import { AppService } from './app.service';
     UsersModule,
     InstitutesModule,
     CoursesModule,
+    BookingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
