@@ -16,6 +16,9 @@ import {
   UpdateCourseStatusDto,
   AuditLogFilterQueryDto,
   CreateAuditLogDto,
+  UpdateUserStatusDto,
+  CertificateApprovalDto,
+  CreateCmsArticleDto,
 } from './dto/admin.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
@@ -111,4 +114,77 @@ export class AdminController {
       userAgent: req.headers['user-agent'],
     });
   }
+
+  // ─── Certificate Issuance Approvals ───────────────────────────────────────
+
+  @Get('certificates/pending')
+  @ApiOperation({ summary: 'List certificates pending DG authority review and ECDSA signing' })
+  getCertificatesPendingApproval() {
+    return this.adminService.getCertificatesPendingApproval();
+  }
+
+  @Patch('certificates/:id/decision')
+  @ApiOperation({ summary: 'Approve or Reject a Certificate issuance' })
+  approveCertificate(
+    @Param('id') id: string,
+    @Body() dto: CertificateApprovalDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.adminService.approveCertificate(id, dto, user.userId);
+  }
+
+  // ─── User Management (Students, Institutes, Admins) ───────────────────────
+
+  @Get('users')
+  @ApiOperation({ summary: 'List platform users with role filter and search' })
+  getUsers(
+    @Query('role') role?: UserRole,
+    @Query('search') search?: string,
+  ) {
+    return this.adminService.getUsers(role, search);
+  }
+
+  @Patch('users/:id/status')
+  @ApiOperation({ summary: 'Update user account status (Activate / Suspend)' })
+  updateUserStatus(
+    @Param('id') id: string,
+    @Body() dto: UpdateUserStatusDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.adminService.updateUserStatus(id, dto, user.userId);
+  }
+
+  // ─── Advanced Analytics & Funnels ─────────────────────────────────────────
+
+  @Get('analytics/conversion-funnel')
+  @ApiOperation({ summary: 'Get multi-stage conversion funnel and performance metrics' })
+  getConversionAnalytics() {
+    return this.adminService.getConversionAnalytics();
+  }
+
+  // ─── Content Moderation, Reviews & Complaints ─────────────────────────────
+
+  @Get('moderation/queue')
+  @ApiOperation({ summary: 'Get reported content, course reviews, and complaints' })
+  getModerationQueue() {
+    return this.adminService.getModerationQueue();
+  }
+
+  // ─── Content Management System (CMS) ──────────────────────────────────────
+
+  @Get('cms/articles')
+  @ApiOperation({ summary: 'List CMS website notices, circulars, and advisories' })
+  getCmsArticles() {
+    return this.adminService.getCmsArticles();
+  }
+
+  @Post('cms/articles')
+  @ApiOperation({ summary: 'Create a new website notice or advisory' })
+  createCmsArticle(
+    @Body() dto: CreateCmsArticleDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.adminService.createCmsArticle(dto, user.userId);
+  }
 }
+

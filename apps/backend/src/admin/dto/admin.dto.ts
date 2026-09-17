@@ -1,6 +1,6 @@
 import { IsString, IsOptional, IsEnum, IsNumber, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
-import { InstituteVerificationStatus, CourseApprovalStatus } from '@prisma/client';
+import { InstituteVerificationStatus, CourseApprovalStatus, UserRole } from '@prisma/client';
 
 export class UpdateInstituteStatusDto {
   @IsEnum(InstituteVerificationStatus)
@@ -18,6 +18,46 @@ export class UpdateCourseStatusDto {
   @IsOptional()
   @IsString()
   reason?: string;
+}
+
+export class UpdateUserStatusDto {
+  @IsString()
+  status: string; // 'ACTIVE' | 'SUSPENDED' | 'PENDING_KYC'
+
+  @IsOptional()
+  @IsString()
+  reason?: string;
+}
+
+export class CertificateApprovalDto {
+  @IsString()
+  decision: 'APPROVED' | 'REJECTED';
+
+  @IsOptional()
+  @IsString()
+  remarks?: string;
+}
+
+export class CreateCmsArticleDto {
+  @IsString()
+  title: string;
+
+  @IsString()
+  category: string; // 'CIRCULAR' | 'ADMISSION' | 'ADVISORY' | 'INDUSTRY'
+
+  @IsString()
+  content: string;
+
+  @IsOptional()
+  @IsString()
+  summary?: string;
+
+  @IsOptional()
+  @IsString()
+  targetAudience?: string; // 'ALL' | 'SEAFARERS' | 'INSTITUTES'
+
+  @IsOptional()
+  isPublished?: boolean;
 }
 
 export class AuditLogFilterQueryDto {

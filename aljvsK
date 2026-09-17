@@ -1,0 +1,31 @@
+[1mdiff --git a/apps/backend/.env.example b/apps/backend/.env.example[m
+[1mindex 9448386..e69de29 100644[m
+[1m--- a/apps/backend/.env.example[m
+[1m+++ b/apps/backend/.env.example[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-﻿PORT=4000[m
+[31m-NODE_ENV=development[m
+[31m-[m
+[31m-# Database (PostgreSQL / Supabase)[m
+[31m-DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres[m
+[31m-[m
+[31m-# Supabase Storage & Services[m
+[31m-SUPABASE_URL=https://[YOUR-PROJECT-REF].supabase.co[m
+[31m-SUPABASE_SERVICE_ROLE_KEY=[YOUR-SUPABASE-SERVICE-KEY][m
+[31m-[m
+[31m-# JWT Authentication[m
+[31m-JWT_SECRET=seafu_super_secret_jwt_key_development_only[m
+[31m-JWT_EXPIRES_IN=7d[m
+[31m-JWT_REFRESH_SECRET=seafu_refresh_secret_key_development_only[m
+[31m-JWT_REFRESH_EXPIRES_IN=30d[m
+[31m-[m
+[31m-# Payment Gateways[m
+[31m-RAZORPAY_KEY_ID=rzp_test_key[m
+[31m-RAZORPAY_KEY_SECRET=rzp_test_secret[m
+[31m-STRIPE_SECRET_KEY=sk_test_key[m
+[31m-STRIPE_WEBHOOK_SECRET=whsec_test_secret[m
+[31m-[m
+[31m-# Communications[m
+[31m-SENDGRID_API_KEY=SG.test_key[m
+[31m-SENDGRID_FROM_EMAIL=noreply@theseafu.com[m
+[31m-MSG91_AUTH_KEY=test_msg91_key[m
