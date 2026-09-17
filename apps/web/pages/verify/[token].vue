@@ -3,12 +3,14 @@
     <div class="max-w-xl mx-auto w-full space-y-6">
       <!-- Header -->
       <div class="text-center">
-        <div class="text-2xl font-black text-cyan-400 flex items-center justify-center space-x-2">
-          <span>?</span>
-          <span>THE SEAFU VERIFIER</span>
+        <div class="inline-flex items-center space-x-2 text-cyan-400 mb-2">
+          <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span class="text-2xl font-black tracking-tight text-white">THE SEAFU VERIFIER</span>
         </div>
-        <p class="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider">
-          Directorate General of Shipping ? Cryptographic Verification Terminal
+        <p class="text-xs font-mono text-slate-400 uppercase tracking-wider">
+          Directorate General of Shipping &bull; Cryptographic Verification Terminal
         </p>
       </div>
 
@@ -18,7 +20,7 @@
           <div class="flex items-center space-x-2">
             <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
             <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
-              AUTHENTICITY CONFIRMED ? PSC CLEAR
+              AUTHENTICITY CONFIRMED &bull; PSC CLEAR
             </span>
           </div>
           <span class="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
@@ -48,7 +50,7 @@
           </div>
           <div>
             <span class="text-[10px] text-slate-500 block">BIOMETRIC MATCH</span>
-            <span class="font-bold text-emerald-400">99.8% (Iris & Thumb)</span>
+            <span class="font-bold text-emerald-400">99.8% (Iris &amp; Thumb)</span>
           </div>
         </div>
 
@@ -75,16 +77,16 @@
         <div class="mt-6 pt-4 border-t border-slate-800 flex justify-center">
           <NuxtLink
             :to="`/vault/dossier/${token}`"
-            class="w-full text-center py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs font-mono transition shadow-lg shadow-cyan-500/20"
+            class="w-full text-center py-2.5 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs font-mono transition shadow-lg shadow-cyan-500/20 uppercase tracking-wider"
           >
-            Inspect Complete Cryptographic Dossier & Ledger &rarr;
+            Inspect Complete Cryptographic Dossier &amp; Ledger &rarr;
           </NuxtLink>
         </div>
       </div>
     </div>
 
     <footer class="text-center text-[10px] font-mono text-slate-500 mt-8">
-      Directorate General of Shipping ? ECDSA secp256k1 Signed Node ? IMO STCW Compliance Gateway
+      Directorate General of Shipping &bull; ECDSA secp256k1 Signed Node &bull; IMO STCW Compliance Gateway
     </footer>
   </div>
 </template>
