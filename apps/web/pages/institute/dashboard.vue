@@ -9,7 +9,9 @@
         <div class="flex items-start sm:items-center gap-3.5">
           <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-xl text-slate-950 shadow-xl"
             style="background:linear-gradient(135deg,#0369A1,#00E5FF); border:2px solid #00E5FF40;">
-            ⚓
+            <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
+            </svg>
           </div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
@@ -45,22 +47,31 @@
         style="border-color:#0c1a2e;">
         <button class="px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5"
           style="background:#00E5FF; color:#070D18;">
-          <span>🕹️</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+          </svg>
           <span>Ops Command</span>
         </button>
         <button class="px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5"
           style="background:#0a1628; color:#94a3b8; border:1px solid #1e3a5f;">
-          <span>🎓</span>
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+          </svg>
           <span>Pre-Sea Intakes</span>
         </button>
         <button class="px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5"
           style="background:#0a1628; color:#94a3b8; border:1px solid #1e3a5f;">
-          <span>🖥️</span>
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
           <span>Simulators &amp; Labs</span>
         </button>
         <button class="px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5"
           style="background:#0a1628; color:#94a3b8; border:1px solid #1e3a5f;">
-          <span>📜</span>
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
           <span>DG Endorsements</span>
         </button>
       </div>
@@ -110,9 +121,12 @@
       <div class="rounded-2xl border p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl"
         style="background:linear-gradient(135deg,#0a1628 0%,#0f2238 100%); border-color:#0369A160;">
         <div class="flex items-start gap-3.5">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-amber-400 shrink-0"
             style="background:#f59e0b20; border:1px solid #f59e0b40;">
-            🔥
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+            </svg>
           </div>
           <div>
             <div class="text-[10px] font-mono font-bold tracking-wider text-amber-400">
@@ -549,7 +563,9 @@
 
             <button class="w-full py-2.5 rounded-xl text-xs font-bold transition shadow-lg flex items-center justify-center gap-2"
               style="background:linear-gradient(135deg,#0369A1,#0ea5e9); color:#fff;">
-              <span>🔏</span>
+              <svg class="w-4 h-4 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
               <span>Sign &amp; Dispatch mtiverification.com Stamped Batch</span>
             </button>
             <p class="text-[10px] text-center" style="color:#64748b;">
@@ -607,7 +623,9 @@
                 </div>
               </div>
               <div class="flex items-start gap-2">
-                <span class="text-cyan-400 mt-0.5">📞</span>
+                <svg class="w-3.5 h-3.5 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                 <div>
                   <div class="font-bold text-white">Admissions &amp; Cadet Desk</div>
                   <div class="text-[10px] font-mono" style="color:#64748b;">+92 336 6668475 · info@mti.edu.pk</div>

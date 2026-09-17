@@ -19,7 +19,7 @@
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold border"
               style="background:#0369A115; border-color:#0369A145; color:#00E5FF;">
               <span class="w-2 h-2 rounded-full animate-pulse" style="background:#00E5FF;"></span>
-              <span>PRE-SEA CADET ADMISSIONS 2026/27 · DG SHIPPING ACCREDITED</span>
+              <span>PRE-SEA CADET ADMISSIONS 2026/27 · DG PORTS &amp; SHIPPING APPROVED</span>
             </div>
 
             <!-- Main Heading -->
@@ -33,7 +33,7 @@
 
             <!-- Subtitle -->
             <p class="text-sm sm:text-base leading-relaxed max-w-xl" style="color:#94a3b8;">
-              Start your Merchant Navy journey with structured pre-sea cadet training, IMO Model Courses, Class-A DNV-GL certified simulators, and internationally accredited DG &amp; UK MCA recognized maritime qualifications.
+              Start your Merchant Navy career with structured pre-sea cadet training, IMO Model Courses, Class-A DNV-GL certified simulators, and internationally accredited DG Ports &amp; Shipping and UK MCA recognized maritime qualifications.
             </p>
 
             <!-- Dual CTAs -->
@@ -44,10 +44,13 @@
                 <span>Explore Programs &amp; Batches</span>
                 <span>→</span>
               </NuxtLink>
-              <NuxtLink to="/vault/dossier/IND-AFF-7714-ECDSA"
-                class="px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center gap-2"
+              <NuxtLink to="/verify/IND-AFF-7714-ECDSA"
+                class="px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center gap-2 group"
                 style="border-color:#1e3a5f; color:#cbd5e1; background:#0a1628;">
-                <span>🔐 Verify STCW Dossier</span>
+                <svg class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>Verify STCW Dossier</span>
               </NuxtLink>
             </div>
 
@@ -142,7 +145,7 @@
             </h2>
           </div>
           <p class="text-xs max-w-md leading-relaxed" style="color:#64748b;">
-            DG Shipping and Indian Maritime University aligned pre-sea residential programmes preparing cadets for immediate placement across international shipping fleets.
+            DG Ports &amp; Shipping and IMO Model Course aligned pre-sea residential programmes preparing cadets for immediate placement across international shipping fleets.
           </p>
         </div>
 
@@ -167,7 +170,7 @@
               </p>
               <div class="flex flex-wrap gap-1.5 pt-2">
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
-                  10th Pass (40% Marks)
+                  Matric / 10th (40% Marks)
                 </span>
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
                   Age 17.5 – 25 Yrs
@@ -209,10 +212,10 @@
               </p>
               <div class="flex flex-wrap gap-1.5 pt-2">
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
-                  10+2 PCM (60% Min)
+                  F.Sc / 10+2 PCM (60% Min)
                 </span>
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
-                  IMU-CET Qualified
+                  DG Cadet Assessment
                 </span>
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
                   Age 17 – 21 Yrs
@@ -251,7 +254,7 @@
               </p>
               <div class="flex flex-wrap gap-1.5 pt-2">
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
-                  10+2 PCM (60% Min)
+                  F.Sc Pre-Eng / DAE Mechanical (60%)
                 </span>
                 <span class="text-[10px] px-2 py-0.5 rounded" style="background:#070D18; color:#94a3b8; border:1px solid #1e3a5f;">
                   English 50%
@@ -328,7 +331,7 @@
             <div class="pt-4 mt-4 border-t flex items-center justify-between" style="border-color:#1e3a5f;">
               <div>
                 <span class="text-xs font-mono" style="color:#64748b;">{{ c.duration }} · </span>
-                <span class="text-xs font-bold text-white">₹{{ c.price.toLocaleString() }}</span>
+                <span class="text-xs font-bold text-white">PKR {{ c.price.toLocaleString() }}</span>
               </div>
               <NuxtLink :to="`/courses`"
                 class="text-xs font-bold hover:text-cyan-300 transition" style="color:#00E5FF;">
@@ -566,11 +569,15 @@
         <div class="mt-8 rounded-xl border p-4 flex flex-col sm:flex-row items-center justify-between gap-4"
           style="background:#0369A115; border-color:#0369A145;">
           <div class="flex items-center gap-3">
-            <span class="text-2xl">🛡️</span>
+            <div class="w-10 h-10 rounded-lg bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
             <div>
               <div class="text-xs font-bold text-white">Online Student &amp; Certificate Verification</div>
               <div class="text-[11px]" style="color:#94a3b8;">
-                Port State Control officers, vetting inspectors and manning agents can verify STCW credentials 24/7.
+                Port State Control officers, vetting inspectors, and manning agents can verify STCW credentials 24/7.
               </div>
             </div>
           </div>
@@ -615,14 +622,14 @@
                 <span class="text-xs font-mono" style="color:#64748b;">16 Sep 2026</span>
               </div>
               <h3 class="text-xl font-bold text-white leading-snug">
-                DG Shipping Issues Advisory: Revised Minimum Safe Sea-Time Criteria for Second Mate FG Examinations 2026
+                DG Ports &amp; Shipping Issues Advisory: Revised Minimum Safe Sea-Time Criteria for Second Mate FG Examinations
               </h3>
               <p class="text-xs leading-relaxed" style="color:#94a3b8;">
-                The Directorate General of Shipping has issued an updated circular regarding sea-time evaluation guidelines for Cadets completing distance-learning training programmes. All candidates enrolled in Batch 53 and onwards must document a minimum of 18 months qualifying bridge watchkeeping sea-service.
+                The Directorate General of Ports &amp; Shipping has issued an updated statutory circular regarding sea-time evaluation guidelines for Cadets completing structured pre-sea training. All candidates enrolled in Batch 53 and onwards must document a minimum of 12 to 18 months qualifying bridge watchkeeping sea-service.
               </p>
             </div>
             <div class="pt-4 mt-4 border-t flex items-center justify-between" style="border-color:#1e3a5f;">
-              <span class="text-xs font-mono" style="color:#00E5FF;">CIRCULAR NO: DGS-TR-09/2026</span>
+              <span class="text-xs font-mono" style="color:#00E5FF;">CIRCULAR NO: DGPS-TR-09/2026</span>
               <NuxtLink to="/community" class="text-xs font-bold text-white hover:text-cyan-300 transition">
                 Read Full Circular →
               </NuxtLink>
@@ -640,10 +647,10 @@
                 <span class="text-xs font-mono" style="color:#64748b;">14 Sep 2026</span>
               </div>
               <h4 class="font-bold text-sm text-white">
-                MMD Mumbai Announces Dates for October 2026 Chief Mate Oral Assessments
+                Mercantile Marine Department (MMD) Announces Schedule for October 2026 Chief Mate &amp; Master Orals
               </h4>
               <p class="text-xs" style="color:#94a3b8;">
-                Online seat booking opens on 20 Sep 2026 at 10:00 AM IST via the Seafu governance gateway.
+                Online candidate slot booking opens on 20 Sep 2026 at 10:00 AM PKT via the Seafu governance gateway.
               </p>
             </div>
 
@@ -656,10 +663,10 @@
                 <span class="text-xs font-mono" style="color:#64748b;">11 Sep 2026</span>
               </div>
               <h4 class="font-bold text-sm text-white">
-                Major Tanker Operator Essence Shipping Conducts On-Campus Cadet Selections
+                National &amp; Global Fleets (PNSC, Anglo-Eastern, Maersk) Conduct On-Campus Cadet Selections
               </h4>
               <p class="text-xs" style="color:#94a3b8;">
-                32 Deck and Engine cadets selected for placement on modern dual-fuel LNG vessels.
+                32 Deck and Engine cadets selected for placement on modern dual-fuel Aframax tankers and container carriers.
               </p>
             </div>
           </div>
@@ -681,18 +688,22 @@
             Ready to Set Sail with The Seafu?
           </h2>
           <p class="mt-3 text-xs sm:text-sm max-w-xl mx-auto" style="color:#94a3b8;">
-            Apply online for the upcoming batch admissions, book your mandatory STCW modular courses, or speak directly with our cadet admissions counsellor.
+            Apply online for upcoming batch admissions, book your mandatory STCW modular courses, or speak directly with our cadet admissions counsellor.
           </p>
           <div class="mt-8 flex flex-wrap justify-center gap-4">
             <NuxtLink to="/auth/register?role=SEAFARER"
-              class="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-lg"
+              class="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-lg flex items-center space-x-2"
               style="background:linear-gradient(135deg,#0369A1,#0ea5e9); color:#fff;">
-              Apply Online Now →
+              <span>Apply Online Now</span>
+              <span>→</span>
             </NuxtLink>
-            <a href="tel:+912261204000"
-              class="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm border transition"
+            <a href="tel:+923366668475"
+              class="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm border transition flex items-center space-x-2 hover:border-cyan-500"
               style="border-color:#1e3a5f; color:#cbd5e1; background:#070D18;">
-              📞 Call Helpline: +91 22 6120 4000
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>Helpline: +92 336 6668475</span>
             </a>
           </div>
         </div>
