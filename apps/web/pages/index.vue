@@ -7,11 +7,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center space-x-2.5 group">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 flex items-center justify-center text-white shadow-md shadow-blue-900/10 group-hover:scale-105 transition-transform">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
-            </svg>
-          </div>
+          <img
+            src="/logo-crest.png"
+            alt="The Seafu Crest"
+            class="w-9 h-9 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform"
+          />
           <span class="text-xl font-black text-slate-900 tracking-tight">The Seafu</span>
         </NuxtLink>
 
@@ -840,12 +840,12 @@
           
           <!-- Col 1: Brand -->
           <div class="space-y-3">
-            <div class="flex items-center space-x-2">
-              <div class="w-8 h-8 rounded-lg bg-[#0A1936] flex items-center justify-center text-white">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
-                </svg>
-              </div>
+            <div class="flex items-center space-x-2.5">
+              <img
+                src="/logo-crest.png"
+                alt="The Seafu Crest"
+                class="w-8 h-8 object-contain rounded-full shadow-xs"
+              />
               <span class="text-base font-extrabold text-slate-900 tracking-tight">The Seafu</span>
             </div>
             <p class="text-slate-500 leading-relaxed max-w-xs text-xs">

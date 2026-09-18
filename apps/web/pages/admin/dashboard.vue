@@ -1,13 +1,11 @@
 <template>
-  <div class="min-h-screen" style="background:#070D18; color:#e2e8f0;">
+  <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased pb-24">
     <!-- ═════════════════════════════════════════════════════════════════ -->
     <!-- DESKTOP ENFORCEMENT OVERLAY (BLOCKS MOBILE ACCESS)              -->
     <!-- ═════════════════════════════════════════════════════════════════ -->
     <div v-if="!overrideDesktop && isSmallScreen"
-      class="fixed inset-0 z-50 flex items-center justify-center p-6 text-center"
-      style="background:#070D18; backdrop-filter:blur(16px);">
-      <div class="max-w-md p-8 rounded-2xl border space-y-4"
-        style="background:#0a1628; border-color:#0369A150; box-shadow:0 0 40px rgba(3,105,161,0.2);">
+      class="fixed inset-0 z-50 flex items-center justify-center p-6 text-center bg-slate-900/60 backdrop-blur-md">
+      <div class="max-w-md p-8 rounded-2xl border border-slate-200 bg-white shadow-xl space-y-4">
         <div class="w-14 h-14 mx-auto rounded-2xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shadow-xl">
           <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -19,12 +17,12 @@
         <h2 class="text-xl font-bold text-white">
           Secure Regulatory Terminal
         </h2>
-        <p class="text-xs leading-relaxed" style="color:#94a3b8;">
+        <p class="text-xs leading-relaxed" style="color:#64748b;">
           The DG Shipping Platform Governance &amp; Regulatory Console contains sensitive financial ledgers, cryptographic signing workflows, and candidate registries. Access is restricted to desktop monitors (min. 1280px).
         </p>
         <div class="pt-2 flex flex-col gap-2">
           <NuxtLink to="/" class="py-2.5 px-4 rounded-xl text-xs font-bold transition"
-            style="background:#0369A1; color:#fff;">
+            style="background:#0A1936; color:#fff;">
             Return to Public Portal
           </NuxtLink>
           <button @click="overrideDesktop = true" class="text-[11px] underline" style="color:#64748b;">
@@ -35,19 +33,14 @@
     </div>
 
     <!-- ── TOP STATUTORY GOVERNANCE BAR ────────────────────────────────── -->
-    <div class="border-b px-6 py-4" style="border-color:#0c1a2e; background:#040711;">
+    <div class="border-b border-slate-200 bg-white px-6 py-4 shadow-xs">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg shadow-lg"
-            style="background:linear-gradient(135deg,#0369A1,#00E5FF); color:#070D18;">
-            <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
-            </svg>
-          </div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"><img src="/logo-crest.png" alt="The Seafu" class="w-10 h-10 object-contain rounded-full shadow-xs" /></div>
           <div>
             <div class="flex items-center gap-2">
               <div class="w-2.5 h-2.5 rounded-full animate-pulse" style="background:#00E5FF;"></div>
-              <span class="text-xs font-mono tracking-widest font-bold" style="color:#00E5FF;">
+              <span class="text-xs font-mono tracking-widest font-bold" style="color:#1d4ed8;">
                 DG SHIPPING MARITIME AUTHORITY · CENTRAL GOVERNANCE CONSOLE
               </span>
               <span class="text-[9px] font-mono px-2 py-0.5 rounded font-bold"
@@ -55,7 +48,7 @@
                 DESKTOP TERMINAL 101
               </span>
             </div>
-            <h1 class="text-xl font-black text-white mt-0.5">
+            <h1 class="text-xl font-black text-slate-900 mt-0.5">
               Platform Governance, Auditing &amp; Oversight Node
             </h1>
           </div>
@@ -63,11 +56,11 @@
 
         <div class="flex items-center gap-3">
           <span class="text-xs font-mono px-3 py-1.5 rounded border font-bold"
-            style="background:#0369A120; border-color:#0369A150; color:#38bdf8;">
+            style="background:#eff6ff; border-color:#93c5fd; color:#1d4ed8;">
             SUPER_ADMIN
           </span>
           <NuxtLink to="/" class="text-xs font-bold px-3 py-1.5 rounded-lg border transition"
-            style="border-color:#1e3a5f; color:#94a3b8;">
+            style="border-color:#0f172a; color:#64748b;">
             Public Portal
           </NuxtLink>
           <button @click="authStore.logout()"
@@ -84,19 +77,19 @@
       <!-- ── EXECUTIVE STATS STRIP ────────────────────────────────────── -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Card 1: Gross GMV & Dual Invoices -->
-        <div class="rounded-xl p-5 border" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl p-5 border" style="background:#ffffff; border-color:#0f172a;">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono tracking-wider" style="color:#64748b;">GROSS BOOKINGS GMV</span>
             <span class="text-[10px] px-2 py-0.5 rounded font-bold" style="background:#22c55e20; color:#22c55e;">DUAL INVOICED</span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-white">₹2,48,00,000</div>
+          <div class="text-3xl font-black mt-2 font-mono text-slate-900">₹2,48,00,000</div>
           <div class="text-xs mt-1" style="color:#64748b;">
-            Commission (10%): <strong style="color:#00E5FF;">₹24.80 L</strong> · TDS: 1%
+            Commission (10%): <strong style="color:#1d4ed8;">₹24.80 L</strong> · TDS: 1%
           </div>
         </div>
 
         <!-- Card 2: Approvals Backlog -->
-        <div class="rounded-xl p-5 border" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl p-5 border" style="background:#ffffff; border-color:#0f172a;">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono tracking-wider" style="color:#64748b;">APPROVALS BACKLOG</span>
             <span class="text-[10px] px-2 py-0.5 rounded font-bold" style="background:#f59e0b20; color:#f59e0b;">ACTION REQ</span>
@@ -108,19 +101,19 @@
         </div>
 
         <!-- Card 3: Platform Users -->
-        <div class="rounded-xl p-5 border" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl p-5 border" style="background:#ffffff; border-color:#0f172a;">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono tracking-wider" style="color:#64748b;">REGISTERED USERS</span>
-            <span class="text-[10px] px-2 py-0.5 rounded font-bold" style="background:#0369A120; color:#38bdf8;">ACTIVE</span>
+            <span class="text-[10px] px-2 py-0.5 rounded font-bold" style="background:#eff6ff; color:#1d4ed8;">ACTIVE</span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-white">18,462</div>
+          <div class="text-3xl font-black mt-2 font-mono text-slate-900">18,462</div>
           <div class="text-xs mt-1" style="color:#64748b;">
             18,420 Seafarers · 42 Maritime Academies
           </div>
         </div>
 
         <!-- Card 4: PSC Integrity -->
-        <div class="rounded-xl p-5 border" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl p-5 border" style="background:#ffffff; border-color:#0f172a;">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono tracking-wider" style="color:#64748b;">PSC ZERO-DEFICIENCY RATE</span>
             <span class="text-[10px] px-2 py-0.5 rounded font-bold" style="background:#8b5cf620; color:#a78bfa;">ECDSA VERIFIED</span>
@@ -131,17 +124,17 @@
       </div>
 
       <!-- ── MULTI-MODULE TAB NAVIGATION ──────────────────────────────── -->
-      <div class="flex items-center gap-2 border-b pb-3 overflow-x-auto" style="border-color:#0c1a2e;">
+      <div class="flex items-center gap-2 border-b pb-3 overflow-x-auto" style="border-color:#0f172a;">
         <button v-for="tab in adminTabs" :key="tab.id"
           class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition shrink-0"
           :style="activeTab === tab.id
-            ? 'background:#0369A1; color:#fff;'
-            : 'background:#0a1628; color:#94a3b8; border:1px solid #1e3a5f;'"
+            ? 'background:#0A1936; color:#fff;'
+            : 'background:#ffffff; color:#64748b; border:1px solid #1e3a5f;'"
           @click="activeTab = tab.id">
           <span>{{ tab.icon }}</span>
           <span>{{ tab.label }}</span>
           <span v-if="tab.badge" class="px-1.5 py-0.2 rounded-full text-[10px] font-mono"
-            :style="activeTab === tab.id ? 'background:#070D18; color:#00E5FF;' : 'background:#0369A130; color:#38bdf8;'">
+            :style="activeTab === tab.id ? 'background:#f8fafc; color:#1d4ed8;' : 'background:#dbeafe; color:#1d4ed8;'">
             {{ tab.badge }}
           </span>
         </button>
@@ -156,8 +149,8 @@
           <button v-for="sub in ['INSTITUTES', 'COURSES', 'CERTIFICATES']" :key="sub"
             class="px-4 py-2 rounded-lg text-xs font-bold transition"
             :style="approvalSubTab === sub
-              ? 'background:#0369A120; color:#00E5FF; border:1px solid #0369A1;'
-              : 'background:#0a1628; color:#64748b; border:1px solid #1e3a5f;'"
+              ? 'background:#eff6ff; color:#1d4ed8; border:1px solid #0369A1;'
+              : 'background:#ffffff; color:#64748b; border:1px solid #1e3a5f;'"
             @click="approvalSubTab = sub">
             {{ sub }} APPROVALS
           </button>
@@ -165,15 +158,15 @@
 
         <!-- 1A. Institute Approvals -->
         <div v-if="approvalSubTab === 'INSTITUTES'" class="rounded-xl border overflow-hidden"
-          style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0c1a2e;">
-            <div class="text-sm font-bold text-white">DG Shipping Training Academy Approvals Queue</div>
-            <span class="text-xs font-mono" style="color:#00E5FF;">{{ institutes.length }} Registered</span>
+          style="background:#ffffff; border-color:#0f172a;">
+          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0f172a;">
+            <div class="text-sm font-bold text-slate-900">DG Shipping Training Academy Approvals Queue</div>
+            <span class="text-xs font-mono" style="color:#1d4ed8;">{{ institutes.length }} Registered</span>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">INSTITUTE NAME &amp; DETAILS</th>
                   <th class="px-5 py-3.5">DG APPROVAL NO.</th>
                   <th class="px-5 py-3.5">CAMPUS LOCATION</th>
@@ -182,15 +175,15 @@
                   <th class="px-5 py-3.5 text-right">GOVERNANCE ACTION</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="inst in institutes" :key="inst.id" class="hover:bg-slate-900/40 transition">
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="inst in institutes" :key="inst.id" class="hover:bg-slate-50 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-sm text-white">{{ inst.name }}</div>
+                    <div class="font-bold text-sm text-slate-900">{{ inst.name }}</div>
                     <div class="text-[11px]" style="color:#64748b;">{{ inst.email }} · {{ inst.phone }}</div>
                   </td>
-                  <td class="px-5 py-4 font-mono font-bold" style="color:#00E5FF;">{{ inst.dgNo }}</td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ inst.city }}, {{ inst.state }}</td>
-                  <td class="px-5 py-4 font-mono" style="color:#94a3b8;">{{ inst.courses }} Courses</td>
+                  <td class="px-5 py-4 font-mono font-bold" style="color:#1d4ed8;">{{ inst.dgNo }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ inst.city }}, {{ inst.state }}</td>
+                  <td class="px-5 py-4 font-mono" style="color:#64748b;">{{ inst.courses }} Courses</td>
                   <td class="px-5 py-4">
                     <span class="px-2.5 py-1 rounded-full text-[10px] font-bold"
                       :style="statusPillStyle(inst.verificationStatus)">
@@ -225,15 +218,15 @@
 
         <!-- 1B. Course Approvals -->
         <div v-if="approvalSubTab === 'COURSES'" class="rounded-xl border overflow-hidden"
-          style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0c1a2e;">
-            <div class="text-sm font-bold text-white">STCW Course Syllabus &amp; Batch Quota Approvals</div>
-            <span class="text-xs font-mono" style="color:#00E5FF;">{{ courses.length }} Curriculums</span>
+          style="background:#ffffff; border-color:#0f172a;">
+          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0f172a;">
+            <div class="text-sm font-bold text-slate-900">STCW Course Syllabus &amp; Batch Quota Approvals</div>
+            <span class="text-xs font-mono" style="color:#1d4ed8;">{{ courses.length }} Curriculums</span>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">COURSE TITLE &amp; CODE</th>
                   <th class="px-5 py-3.5">INSTITUTE</th>
                   <th class="px-5 py-3.5">CATEGORY</th>
@@ -242,15 +235,15 @@
                   <th class="px-5 py-3.5 text-right">DECISION</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="c in courses" :key="c.id" class="hover:bg-slate-900/40 transition">
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="c in courses" :key="c.id" class="hover:bg-slate-50 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-sm text-white">{{ c.title }}</div>
-                    <div class="font-mono text-[11px]" style="color:#00E5FF;">{{ c.code }}</div>
+                    <div class="font-bold text-sm text-slate-900">{{ c.title }}</div>
+                    <div class="font-mono text-[11px]" style="color:#1d4ed8;">{{ c.code }}</div>
                   </td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ c.institute }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ c.institute }}</td>
                   <td class="px-5 py-4">
-                    <span class="px-2 py-0.5 rounded text-[10px]" style="background:#0369A120; color:#38bdf8;">
+                    <span class="px-2 py-0.5 rounded text-[10px]" style="background:#eff6ff; color:#1d4ed8;">
                       {{ c.category }}
                     </span>
                   </td>
@@ -286,18 +279,18 @@
 
         <!-- 1C. Certificate Issuance Approvals -->
         <div v-if="approvalSubTab === 'CERTIFICATES'" class="rounded-xl border overflow-hidden"
-          style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0c1a2e;">
+          style="background:#ffffff; border-color:#0f172a;">
+          <div class="p-4 border-b flex items-center justify-between" style="border-color:#0f172a;">
             <div>
-              <div class="text-sm font-bold text-white">Certificate Issuance &amp; ECDSA Cryptographic Signing Desk</div>
+              <div class="text-sm font-bold text-slate-900">Certificate Issuance &amp; ECDSA Cryptographic Signing Desk</div>
               <div class="text-xs" style="color:#64748b;">Review candidate training attendance and assessment scores before signing</div>
             </div>
             <span class="text-xs font-mono" style="color:#22c55e;">{{ pendingCerts.length }} Pending Sign-Off</span>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">CANDIDATE / INDOS</th>
                   <th class="px-5 py-3.5">COURSE &amp; CERT NUMBER</th>
                   <th class="px-5 py-3.5">ACADEMY</th>
@@ -306,17 +299,17 @@
                   <th class="px-5 py-3.5 text-right">ECDSA SIGNING</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="cert in pendingCerts" :key="cert.id" class="hover:bg-slate-900/40 transition">
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="cert in pendingCerts" :key="cert.id" class="hover:bg-slate-50 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-sm text-white">{{ cert.candidate }}</div>
-                    <div class="font-mono text-[11px]" style="color:#00E5FF;">INDoS: {{ cert.indos }}</div>
+                    <div class="font-bold text-sm text-slate-900">{{ cert.candidate }}</div>
+                    <div class="font-mono text-[11px]" style="color:#1d4ed8;">INDoS: {{ cert.indos }}</div>
                   </td>
                   <td class="px-5 py-4">
                     <div class="text-white font-medium">{{ cert.course }}</div>
                     <div class="font-mono text-[10px]" style="color:#64748b;">Ref: {{ cert.certNo }}</div>
                   </td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ cert.institute }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ cert.institute }}</td>
                   <td class="px-5 py-4">
                     <span class="font-bold font-mono" :style="cert.attendance >= 90 ? 'color:#22c55e;' : 'color:#f59e0b;'">
                       {{ cert.attendance }}%
@@ -351,11 +344,11 @@
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <div v-if="activeTab === 'analytics'" class="space-y-6">
         <!-- 2A. Conversion Funnel -->
-        <div class="rounded-xl border p-6" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl border p-6" style="background:#ffffff; border-color:#0f172a;">
           <div class="flex items-center justify-between mb-6">
             <div>
               <div class="text-xs font-mono tracking-widest text-cyan-400">SEAFARER JOURNEY ANALYTICS</div>
-              <h3 class="text-lg font-bold text-white">Full-Funnel Conversion Engine</h3>
+              <h3 class="text-lg font-bold text-slate-900">Full-Funnel Conversion Engine</h3>
             </div>
             <span class="text-xs font-mono" style="color:#22c55e;">● REAL-TIME TELEMETRY</span>
           </div>
@@ -364,9 +357,9 @@
           <div class="space-y-3">
             <div v-for="(stage, idx) in funnelStages" :key="stage.name"
               class="p-4 rounded-xl border flex items-center gap-4"
-              style="background:#070D18; border-color:#1e3a5f;">
+              style="background:#f8fafc; border-color:#0f172a;">
               <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold font-mono text-xs"
-                style="background:#0369A120; color:#00E5FF; border:1px solid #0369A150;">
+                style="background:#eff6ff; color:#1d4ed8; border:1px solid #0369A150;">
                 0{{ idx + 1 }}
               </div>
               <div class="flex-1">
@@ -386,12 +379,12 @@
         <!-- 2B. Revenue Growth & Performance Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Monthly Revenue Breakdown -->
-          <div class="rounded-xl border p-6" style="background:#0a1628; border-color:#0c1a2e;">
+          <div class="rounded-xl border p-6" style="background:#ffffff; border-color:#0f172a;">
             <div class="text-xs font-mono tracking-widest text-cyan-400 mb-1">FINANCIAL GROWTH</div>
-            <h3 class="text-base font-bold text-white mb-4">Monthly Platform Commission Revenue (INR)</h3>
+            <h3 class="text-base font-bold text-slate-900 mb-4">Monthly Platform Commission Revenue (INR)</h3>
             <div class="space-y-3 text-xs">
               <div v-for="m in monthlyRevenue" :key="m.month"
-                class="flex items-center justify-between p-3 rounded-lg" style="background:#070D18; border:1px solid #1e3a5f;">
+                class="flex items-center justify-between p-3 rounded-lg" style="background:#f8fafc; border:1px solid #1e3a5f;">
                 <div>
                   <div class="font-bold text-white">{{ m.month }}</div>
                   <div class="text-[10px]" style="color:#64748b;">GMV: ₹{{ (m.gmv / 100000).toFixed(1) }}L</div>
@@ -405,26 +398,26 @@
           </div>
 
           <!-- Operational Performance KPIs -->
-          <div class="rounded-xl border p-6" style="background:#0a1628; border-color:#0c1a2e;">
+          <div class="rounded-xl border p-6" style="background:#ffffff; border-color:#0f172a;">
             <div class="text-xs font-mono tracking-widest text-cyan-400 mb-1">SYSTEM LATENCY &amp; QUALITY</div>
-            <h3 class="text-base font-bold text-white mb-4">Operational Performance Metrics</h3>
+            <h3 class="text-base font-bold text-slate-900 mb-4">Operational Performance Metrics</h3>
             <div class="grid grid-cols-2 gap-4">
-              <div class="p-4 rounded-xl border text-center" style="background:#070D18; border-color:#1e3a5f;">
+              <div class="p-4 rounded-xl border text-center" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="text-2xl font-black font-mono text-cyan-400">2m 14s</div>
                 <div class="text-[11px] font-bold text-white mt-1">Avg Booking Speed</div>
                 <div class="text-[10px]" style="color:#64748b;">From course select to seat lock</div>
               </div>
-              <div class="p-4 rounded-xl border text-center" style="background:#070D18; border-color:#1e3a5f;">
+              <div class="p-4 rounded-xl border text-center" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="text-2xl font-black font-mono text-emerald-400">92.4%</div>
                 <div class="text-[11px] font-bold text-white mt-1">Batch Fill Rate</div>
                 <div class="text-[10px]" style="color:#64748b;">Across 42 verified academies</div>
               </div>
-              <div class="p-4 rounded-xl border text-center" style="background:#070D18; border-color:#1e3a5f;">
+              <div class="p-4 rounded-xl border text-center" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="text-2xl font-black font-mono text-purple-400">14ms</div>
                 <div class="text-[11px] font-bold text-white mt-1">QR API P99 Latency</div>
                 <div class="text-[10px]" style="color:#64748b;">Port State Control scan ping</div>
               </div>
-              <div class="p-4 rounded-xl border text-center" style="background:#070D18; border-color:#1e3a5f;">
+              <div class="p-4 rounded-xl border text-center" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="text-2xl font-black font-mono text-amber-400">0.00%</div>
                 <div class="text-[11px] font-bold text-white mt-1">Overbooking Rate</div>
                 <div class="text-[10px]" style="color:#64748b;">Atomic quota locks enforced</div>
@@ -441,7 +434,7 @@
         <div class="flex items-center justify-between">
           <div>
             <div class="text-xs font-mono tracking-widest text-cyan-400">PORTAL CONTENT PUBLISHING</div>
-            <h3 class="text-lg font-bold text-white">Website Notices, Advisories &amp; Circulars (CMS)</h3>
+            <h3 class="text-lg font-bold text-slate-900">Website Notices, Advisories &amp; Circulars (CMS)</h3>
           </div>
           <button @click="showCmsModal = true"
             class="px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
@@ -450,11 +443,11 @@
           </button>
         </div>
 
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl border overflow-hidden" style="background:#ffffff; border-color:#0f172a;">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">NOTICE TITLE</th>
                   <th class="px-5 py-3.5">CATEGORY</th>
                   <th class="px-5 py-3.5">TARGET AUDIENCE</th>
@@ -464,25 +457,25 @@
                   <th class="px-5 py-3.5 text-right">ACTION</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="post in cmsPosts" :key="post.id" class="hover:bg-slate-900/40 transition">
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="post in cmsPosts" :key="post.id" class="hover:bg-slate-50 transition">
                   <td class="px-5 py-4 font-bold text-white max-w-sm">{{ post.title }}</td>
                   <td class="px-5 py-4">
-                    <span class="px-2 py-0.5 rounded font-mono text-[10px]" style="background:#0369A120; color:#38bdf8;">
+                    <span class="px-2 py-0.5 rounded font-mono text-[10px]" style="background:#eff6ff; color:#1d4ed8;">
                       {{ post.category }}
                     </span>
                   </td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ post.targetAudience }}</td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ post.author }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ post.targetAudience }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ post.author }}</td>
                   <td class="px-5 py-4 font-mono text-cyan-400">{{ post.views }}</td>
                   <td class="px-5 py-4">
                     <span class="px-2 py-0.5 rounded font-bold text-[10px]"
-                      :style="post.isPublished ? 'background:#22c55e20; color:#22c55e;' : 'background:#64748b20; color:#94a3b8;'">
+                      :style="post.isPublished ? 'background:#22c55e20; color:#22c55e;' : 'background:#64748b20; color:#64748b;'">
                       {{ post.isPublished ? 'PUBLISHED' : 'DRAFT' }}
                     </span>
                   </td>
                   <td class="px-5 py-4 text-right space-x-2">
-                    <button class="text-xs" style="color:#00E5FF;" @click="post.isPublished = !post.isPublished">
+                    <button class="text-xs" style="color:#1d4ed8;" @click="post.isPublished = !post.isPublished">
                       {{ post.isPublished ? 'Unpublish' : 'Publish' }}
                     </button>
                     <button class="text-xs" style="color:#f87171;">Delete</button>
@@ -497,8 +490,8 @@
         <div v-if="showCmsModal" class="fixed inset-0 z-50 flex items-center justify-center p-6"
           style="background:rgba(7,13,24,0.85); backdrop-filter:blur(8px);">
           <div class="rounded-2xl border p-6 max-w-xl w-full space-y-4"
-            style="background:#0a1628; border-color:#0369A150;">
-            <div class="flex items-center justify-between border-b pb-3" style="border-color:#1e3a5f;">
+            style="background:#ffffff; border-color:#93c5fd;">
+            <div class="flex items-center justify-between border-b pb-3" style="border-color:#0f172a;">
               <h4 class="font-bold text-white text-base">Create Notice / Regulatory Circular</h4>
               <button @click="showCmsModal = false" class="text-slate-400 hover:text-white">✕</button>
             </div>
@@ -507,13 +500,13 @@
                 <label class="text-[10px] font-mono text-slate-400 block mb-1">TITLE</label>
                 <input v-model="newArticle.title" type="text" placeholder="e.g. DG Shipping Advisory: Sea-Time Rules 2026"
                   class="w-full px-3 py-2 rounded-lg border outline-none text-white"
-                  style="background:#070D18; border-color:#1e3a5f;" />
+                  style="background:#f8fafc; border-color:#0f172a;" />
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="text-[10px] font-mono text-slate-400 block mb-1">CATEGORY</label>
                   <select v-model="newArticle.category" class="w-full px-3 py-2 rounded-lg border outline-none text-white"
-                    style="background:#070D18; border-color:#1e3a5f;">
+                    style="background:#f8fafc; border-color:#0f172a;">
                     <option value="CIRCULAR">CIRCULAR</option>
                     <option value="ADMISSION">ADMISSION</option>
                     <option value="EXAM_SCHEDULE">EXAM SCHEDULE</option>
@@ -523,7 +516,7 @@
                 <div>
                   <label class="text-[10px] font-mono text-slate-400 block mb-1">AUDIENCE</label>
                   <select v-model="newArticle.targetAudience" class="w-full px-3 py-2 rounded-lg border outline-none text-white"
-                    style="background:#070D18; border-color:#1e3a5f;">
+                    style="background:#f8fafc; border-color:#0f172a;">
                     <option value="ALL">ALL USERS</option>
                     <option value="SEAFARERS">SEAFARERS ONLY</option>
                     <option value="INSTITUTES">INSTITUTES ONLY</option>
@@ -534,12 +527,12 @@
                 <label class="text-[10px] font-mono text-slate-400 block mb-1">CONTENT / BODY</label>
                 <textarea v-model="newArticle.content" rows="5" placeholder="Official announcement text..."
                   class="w-full px-3 py-2 rounded-lg border outline-none text-white"
-                  style="background:#070D18; border-color:#1e3a5f;"></textarea>
+                  style="background:#f8fafc; border-color:#0f172a;"></textarea>
               </div>
             </div>
             <div class="pt-2 flex justify-end gap-3">
               <button @click="showCmsModal = false" class="px-4 py-2 rounded-lg text-xs border"
-                style="border-color:#1e3a5f; color:#94a3b8;">Cancel</button>
+                style="border-color:#0f172a; color:#64748b;">Cancel</button>
               <button @click="publishArticle" class="px-5 py-2 rounded-lg text-xs font-bold"
                 style="background:linear-gradient(135deg,#0369A1,#0ea5e9); color:#fff;">Publish Now</button>
             </div>
@@ -554,15 +547,15 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div class="text-xs font-mono tracking-widest text-cyan-400">IDENTITY &amp; ACCESS CONTROL</div>
-            <h3 class="text-lg font-bold text-white">Full User Management Registry</h3>
+            <h3 class="text-lg font-bold text-slate-900">Full User Management Registry</h3>
           </div>
           <!-- Search & Filter -->
           <div class="flex items-center gap-2">
             <input v-model="userSearch" type="text" placeholder="Search by name, email, INDoS..."
               class="px-3.5 py-2 rounded-lg border text-xs outline-none text-white w-64"
-              style="background:#070D18; border-color:#1e3a5f;" />
+              style="background:#f8fafc; border-color:#0f172a;" />
             <select v-model="userRoleFilter" class="px-3 py-2 rounded-lg border text-xs outline-none text-white"
-              style="background:#070D18; border-color:#1e3a5f;">
+              style="background:#f8fafc; border-color:#0f172a;">
               <option value="ALL">All Roles</option>
               <option value="SEAFARER">Seafarer (Student)</option>
               <option value="INSTITUTE_ADMIN">Institute Admin</option>
@@ -571,11 +564,11 @@
           </div>
         </div>
 
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl border overflow-hidden" style="background:#ffffff; border-color:#0f172a;">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">USER NAME &amp; EMAIL</th>
                   <th class="px-5 py-3.5">ROLE</th>
                   <th class="px-5 py-3.5">INDOS / AFFILIATION</th>
@@ -584,10 +577,10 @@
                   <th class="px-5 py-3.5 text-right">ACTION</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="u in filteredUsers" :key="u.id" class="hover:bg-slate-900/40 transition">
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="u in filteredUsers" :key="u.id" class="hover:bg-slate-50 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-sm text-white">{{ u.name }}</div>
+                    <div class="font-bold text-sm text-slate-900">{{ u.name }}</div>
                     <div class="text-[11px]" style="color:#64748b;">{{ u.email }}</div>
                   </td>
                   <td class="px-5 py-4">
@@ -596,16 +589,16 @@
                       {{ u.role }}
                     </span>
                   </td>
-                  <td class="px-5 py-4 font-mono" style="color:#00E5FF;">{{ u.indos || u.institute || '—' }}</td>
+                  <td class="px-5 py-4 font-mono" style="color:#1d4ed8;">{{ u.indos || u.institute || '—' }}</td>
                   <td class="px-5 py-4">
                     <span class="px-2 py-0.5 rounded font-bold text-[10px]"
                       :style="u.status === 'ACTIVE' ? 'background:#22c55e20; color:#22c55e;' : 'background:#dc262620; color:#f87171;'">
                       {{ u.status }}
                     </span>
                   </td>
-                  <td class="px-5 py-4" style="color:#94a3b8;">{{ u.joined }}</td>
+                  <td class="px-5 py-4" style="color:#64748b;">{{ u.joined }}</td>
                   <td class="px-5 py-4 text-right space-x-2">
-                    <button class="text-xs" style="color:#00E5FF;"
+                    <button class="text-xs" style="color:#1d4ed8;"
                       @click="u.status = u.status === 'ACTIVE' ? 'SUSPENDED' : 'ACTIVE'">
                       {{ u.status === 'ACTIVE' ? 'Suspend' : 'Reactivate' }}
                     </button>
@@ -625,21 +618,21 @@
         <div class="flex items-center justify-between">
           <div>
             <div class="text-xs font-mono tracking-widest text-cyan-400">FINANCIAL AUDIT &amp; SETTLEMENT</div>
-            <h3 class="text-lg font-bold text-white">Dual-Invoicing Ledger &amp; Institute Commission Reports</h3>
+            <h3 class="text-lg font-bold text-slate-900">Dual-Invoicing Ledger &amp; Institute Commission Reports</h3>
           </div>
           <button class="px-4 py-2 rounded-xl text-xs font-bold border transition flex items-center gap-1"
-            style="border-color:#1e3a5f; color:#00E5FF; background:#0a1628;">
+            style="border-color:#0f172a; color:#1d4ed8; background:#ffffff;">
             <span>⬇</span>
             <span>Export Statutory GST/TDS Report (CSV)</span>
           </button>
         </div>
 
         <!-- Ledger Table -->
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
+        <div class="rounded-xl border overflow-hidden" style="background:#ffffff; border-color:#0f172a;">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead style="background:#070D18; color:#64748b;">
-                <tr class="border-b" style="border-color:#0c1a2e;">
+              <thead style="background:#f8fafc; color:#64748b;">
+                <tr class="border-b" style="border-color:#0f172a;">
                   <th class="px-5 py-3.5">BOOKING REF</th>
                   <th class="px-5 py-3.5">STUDENT &amp; COURSE</th>
                   <th class="px-5 py-3.5">TOTAL GMV</th>
@@ -649,16 +642,16 @@
                   <th class="px-5 py-3.5">ESCROW STATUS</th>
                 </tr>
               </thead>
-              <tbody class="divide-y" style="border-color:#0c1a2e;">
-                <tr v-for="item in ledgerRecords" :key="item.ref" class="hover:bg-slate-900/40 transition">
-                  <td class="px-5 py-4 font-mono font-bold" style="color:#00E5FF;">{{ item.ref }}</td>
+              <tbody class="divide-y" style="border-color:#0f172a;">
+                <tr v-for="item in ledgerRecords" :key="item.ref" class="hover:bg-slate-50 transition">
+                  <td class="px-5 py-4 font-mono font-bold" style="color:#1d4ed8;">{{ item.ref }}</td>
                   <td class="px-5 py-4">
                     <div class="font-bold text-white">{{ item.student }}</div>
                     <div class="text-[11px]" style="color:#64748b;">{{ item.course }}</div>
                   </td>
                   <td class="px-5 py-4 font-bold text-white font-mono">₹{{ item.amount.toLocaleString() }}</td>
                   <td class="px-5 py-4 font-mono font-bold text-cyan-400">₹{{ item.commission.toLocaleString() }}</td>
-                  <td class="px-5 py-4 font-mono text-[11px]" style="color:#94a3b8;">
+                  <td class="px-5 py-4 font-mono text-[11px]" style="color:#64748b;">
                     GST: ₹{{ item.gst }} · TDS: ₹{{ item.tds }}
                   </td>
                   <td class="px-5 py-4 font-mono font-bold" style="color:#22c55e;">
@@ -684,7 +677,7 @@
         <div class="flex items-center justify-between">
           <div>
             <div class="text-xs font-mono tracking-widest text-cyan-400">QUALITY ASSURANCE &amp; GRIEVANCE DESK</div>
-            <h3 class="text-lg font-bold text-white">Monitoring &amp; Moderation Console</h3>
+            <h3 class="text-lg font-bold text-slate-900">Monitoring &amp; Moderation Console</h3>
           </div>
           <span class="text-xs font-mono text-emerald-400">● 3 TICKETS PENDING RESOLUTION</span>
         </div>
@@ -692,14 +685,14 @@
         <!-- 3-Column Split -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <!-- Col 1: Flagged Forum Content -->
-          <div class="rounded-xl border p-5 space-y-4" style="background:#0a1628; border-color:#0c1a2e;">
-            <div class="flex items-center justify-between border-b pb-2" style="border-color:#1e3a5f;">
+          <div class="rounded-xl border p-5 space-y-4" style="background:#ffffff; border-color:#0f172a;">
+            <div class="flex items-center justify-between border-b pb-2" style="border-color:#0f172a;">
               <span class="font-bold text-xs text-white">Flagged Community Content</span>
               <span class="text-[10px] font-mono text-amber-400">2 Reports</span>
             </div>
             <div class="space-y-3">
               <div v-for="flag in reportedContent" :key="flag.id"
-                class="p-3 rounded-lg border space-y-2" style="background:#070D18; border-color:#1e3a5f;">
+                class="p-3 rounded-lg border space-y-2" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="text-xs font-bold text-white">{{ flag.title }}</div>
                 <div class="text-[11px]" style="color:#f87171;">Reason: {{ flag.reason }}</div>
                 <div class="text-[10px]" style="color:#64748b;">Author: {{ flag.author }} (INDoS: {{ flag.indos }})</div>
@@ -714,19 +707,19 @@
           </div>
 
           <!-- Col 2: Course Reviews Moderation -->
-          <div class="rounded-xl border p-5 space-y-4" style="background:#0a1628; border-color:#0c1a2e;">
-            <div class="flex items-center justify-between border-b pb-2" style="border-color:#1e3a5f;">
+          <div class="rounded-xl border p-5 space-y-4" style="background:#ffffff; border-color:#0f172a;">
+            <div class="flex items-center justify-between border-b pb-2" style="border-color:#0f172a;">
               <span class="font-bold text-xs text-white">Student Academy Reviews</span>
               <span class="text-[10px] font-mono text-emerald-400">Verified INDoS</span>
             </div>
             <div class="space-y-3">
               <div v-for="rev in studentReviews" :key="rev.id"
-                class="p-3 rounded-lg border space-y-1.5" style="background:#070D18; border-color:#1e3a5f;">
+                class="p-3 rounded-lg border space-y-1.5" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-white">{{ rev.course }}</span>
                   <span class="text-xs text-amber-400">{'★'.repeat(rev.rating)}</span>
                 </div>
-                <div class="text-[11px] leading-relaxed" style="color:#94a3b8;">"{{ rev.comment }}"</div>
+                <div class="text-[11px] leading-relaxed" style="color:#64748b;">"{{ rev.comment }}"</div>
                 <div class="text-[10px]" style="color:#64748b;">By {{ rev.student }} · {{ rev.institute }}</div>
                 <div class="flex gap-2 pt-1">
                   <button class="text-[10px] font-bold text-emerald-400">✓ Approved</button>
@@ -737,14 +730,14 @@
           </div>
 
           <!-- Col 3: Grievance & Complaint Desk -->
-          <div class="rounded-xl border p-5 space-y-4" style="background:#0a1628; border-color:#0c1a2e;">
-            <div class="flex items-center justify-between border-b pb-2" style="border-color:#1e3a5f;">
+          <div class="rounded-xl border p-5 space-y-4" style="background:#ffffff; border-color:#0f172a;">
+            <div class="flex items-center justify-between border-b pb-2" style="border-color:#0f172a;">
               <span class="font-bold text-xs text-white">Grievance &amp; Complaints</span>
               <span class="text-[10px] font-mono text-amber-400">3 Open</span>
             </div>
             <div class="space-y-3">
               <div v-for="tkt in complaintDesk" :key="tkt.id"
-                class="p-3 rounded-lg border space-y-1.5" style="background:#070D18; border-color:#1e3a5f;">
+                class="p-3 rounded-lg border space-y-1.5" style="background:#f8fafc; border-color:#0f172a;">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-mono font-bold text-cyan-400">{{ tkt.id }}</span>
                   <span class="text-[9px] px-1.5 py-0.5 rounded font-bold"
@@ -757,7 +750,7 @@
                 <div class="flex items-center justify-between pt-1">
                   <span class="text-[10px] font-mono text-amber-400">{{ tkt.status }}</span>
                   <button class="text-[10px] font-bold px-2 py-0.5 rounded"
-                    style="background:#0369A1; color:#fff;"
+                    style="background:#0A1936; color:#fff;"
                     @click="tkt.status = 'RESOLVED'">
                     Resolve Ticket
                   </button>
@@ -1069,18 +1062,18 @@ function statusPillStyle(status: string): string {
     PENDING: 'background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b40;',
     PENDING_APPROVAL: 'background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b40;',
     REJECTED: 'background:#dc262620; color:#f87171; border:1px solid #dc262640;',
-    SUSPENDED: 'background:#64748b20; color:#94a3b8; border:1px solid #64748b40;',
+    SUSPENDED: 'background:#64748b20; color:#64748b; border:1px solid #64748b40;',
   };
-  return map[status] || 'background:#1e3a5f; color:#94a3b8;';
+  return map[status] || 'background:#1e3a5f; color:#64748b;';
 }
 
 function roleBadgeStyle(role: string): string {
   const map: Record<string, string> = {
     SUPER_ADMIN: 'background:#8b5cf625; color:#a78bfa; border:1px solid #8b5cf650;',
-    ADMIN: 'background:#0369A125; color:#38bdf8; border:1px solid #0369A150;',
+    ADMIN: 'background:#0369A125; color:#1d4ed8; border:1px solid #0369A150;',
     INSTITUTE_ADMIN: 'background:#22c55e20; color:#22c55e; border:1px solid #22c55e40;',
-    SEAFARER: 'background:#00E5FF15; color:#00E5FF; border:1px solid #00E5FF30;',
+    SEAFARER: 'background:#00E5FF15; color:#1d4ed8; border:1px solid #00E5FF30;',
   };
-  return map[role] || 'background:#1e3a5f; color:#94a3b8;';
+  return map[role] || 'background:#1e3a5f; color:#64748b;';
 }
 </script>

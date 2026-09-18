@@ -1,106 +1,118 @@
 <template>
-  <div class="min-h-screen" style="background:#070D18;">
+  <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-blue-600 selection:text-white pb-24">
     <!-- Header -->
-    <div class="border-b px-6 py-4" style="border-color:#0c1a2e; background:#0a1628;">
-      <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <div class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <div class="w-2 h-2 rounded-full animate-pulse" style="background:#00E5FF;"></div>
-            <span class="text-xs font-mono tracking-widest" style="color:#00E5FF;">THE SEAFU · STCW CERTIFICATE VAULT</span>
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            <span class="text-xs font-mono font-bold tracking-widest text-blue-700 uppercase">THE SEAFU &bull; STCW CERTIFICATE VAULT</span>
           </div>
-          <h1 class="text-xl font-bold" style="color:#e2e8f0;">Certificate Vault</h1>
-          <p class="text-xs mt-0.5" style="color:#64748b;">
-            All verified STCW, MLC & DG Shipping certificates with cryptographic integrity
+          <h1 class="text-2xl font-black text-slate-900 tracking-tight">Certificate Vault</h1>
+          <p class="text-xs text-slate-500 mt-0.5">
+            All verified STCW, MLC &amp; DG Shipping certificates with cryptographic integrity
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <NuxtLink to="/vault/dossier/IND-AFF-7714-ECDSA"
-            class="text-xs font-bold px-4 py-2 rounded-lg transition"
-            style="background:linear-gradient(135deg,#0369A1,#0ea5e9); color:#fff;">
-            🔐 Full Cryptographic Dossier →
+          <NuxtLink
+            to="/vault/dossier/IND-AFF-7714-ECDSA"
+            class="text-xs font-bold px-4 py-2.5 rounded-xl transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs flex items-center space-x-1.5"
+          >
+            <span>🔐</span>
+            <span>Full Cryptographic Dossier &rarr;</span>
           </NuxtLink>
         </div>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-6 space-y-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
       <!-- ── COMPLIANCE OVERVIEW ──────────────────────────────────────── -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="rounded-xl border p-4 text-center" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-2xl font-black" style="color:#22c55e;">{{ validCount }}</div>
-          <div class="text-[11px] font-mono mt-1" style="color:#64748b;">VALID CERTS</div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
+          <div class="text-3xl font-black text-emerald-600 font-mono">{{ validCount }}</div>
+          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">VALID CERTS</div>
         </div>
-        <div class="rounded-xl border p-4 text-center" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-2xl font-black" style="color:#f59e0b;">{{ expiringSoonCount }}</div>
-          <div class="text-[11px] font-mono mt-1" style="color:#64748b;">EXPIRING SOON</div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
+          <div class="text-3xl font-black text-amber-500 font-mono">{{ expiringSoonCount }}</div>
+          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">EXPIRING SOON</div>
         </div>
-        <div class="rounded-xl border p-4 text-center" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-2xl font-black" style="color:#dc2626;">{{ expiredCount }}</div>
-          <div class="text-[11px] font-mono mt-1" style="color:#64748b;">EXPIRED</div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
+          <div class="text-3xl font-black text-rose-600 font-mono">{{ expiredCount }}</div>
+          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">EXPIRED</div>
         </div>
-        <div class="rounded-xl border p-4 text-center" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-2xl font-black" style="color:#00E5FF;">{{ certificates.length }}</div>
-          <div class="text-[11px] font-mono mt-1" style="color:#64748b;">TOTAL CERTS</div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
+          <div class="text-3xl font-black text-blue-700 font-mono">{{ certificates.length }}</div>
+          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">TOTAL CERTS</div>
         </div>
       </div>
 
       <!-- ── CERTIFICATE GRID ──────────────────────────────────────────── -->
-      <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
-        <div class="p-4 border-b flex items-center justify-between" style="border-color:#0c1a2e;">
-          <div class="text-sm font-bold" style="color:#e2e8f0;">STCW Certificate Registry</div>
-          <div class="flex gap-2">
-            <button v-for="f in ['ALL', 'VALID', 'EXPIRING', 'EXPIRED']" :key="f"
-              class="text-xs px-3 py-1.5 rounded transition"
-              :style="vaultFilter === f
-                ? 'background:#0369A1; color:#fff;'
-                : 'background:#070D18; color:#64748b; border:1px solid #1e3a5f;'"
-              @click="vaultFilter = f">
+      <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+        <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="text-base font-black text-slate-900">STCW Certificate Registry</div>
+            <p class="text-xs text-slate-500 mt-0.5">Audited tamper-evident credentials</p>
+          </div>
+          <div class="flex gap-2 flex-wrap">
+            <button
+              v-for="f in ['ALL', 'VALID', 'EXPIRING', 'EXPIRED']"
+              :key="f"
+              class="text-xs font-bold px-3.5 py-1.5 rounded-lg transition"
+              :class="vaultFilter === f ? 'bg-[#0A1936] text-white shadow-xs' : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100'"
+              @click="vaultFilter = f"
+            >
               {{ f }}
             </button>
           </div>
         </div>
 
-        <div class="divide-y" style="border-color:#0c1a2e;">
-          <div v-for="cert in filteredCerts" :key="cert.id"
-            class="p-5 flex items-start gap-4 hover:bg-slate-900/30 transition">
+        <div class="divide-y divide-slate-100">
+          <div
+            v-for="cert in filteredCerts"
+            :key="cert.id"
+            class="p-5 flex flex-col sm:flex-row items-start gap-4 hover:bg-slate-50/60 transition"
+          >
             <!-- Category Icon -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0"
-              style="background:#0369A120; border:1px solid #0369A140;">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 bg-blue-50 border border-blue-200/80">
               {{ cert.icon }}
             </div>
 
             <div class="flex-1 min-w-0">
               <!-- Name + badge -->
               <div class="flex items-center gap-2 flex-wrap mb-1">
-                <span class="font-bold text-sm" style="color:#e2e8f0;">{{ cert.name }}</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold"
-                  :style="certStatusStyle(cert)">
+                <span class="font-black text-sm text-slate-900">{{ cert.name }}</span>
+                <span
+                  class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold border"
+                  :class="certStatusClass(cert)"
+                >
                   {{ certStatusText(cert) }}
                 </span>
-                <span v-if="cert.ecdsa" class="text-[10px] px-2 py-0.5 rounded-full font-mono"
-                  style="background:#00E5FF15; color:#00E5FF; border:1px solid #00E5FF30;">
+                <span
+                  v-if="cert.ecdsa"
+                  class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200"
+                >
                   ECDSA ✓
                 </span>
               </div>
 
               <!-- Meta info -->
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1 text-xs mt-2">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1.5 text-xs mt-2.5">
                 <div>
-                  <div class="text-[10px]" style="color:#475569;">REF NO.</div>
-                  <div class="font-mono" style="color:#94a3b8;">{{ cert.certNo }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-400">REF NO.</div>
+                  <div class="font-mono text-slate-700 font-semibold">{{ cert.certNo }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px]" style="color:#475569;">ISSUING INSTITUTE</div>
-                  <div style="color:#94a3b8;">{{ cert.institute }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-400">ISSUING INSTITUTE</div>
+                  <div class="text-slate-700">{{ cert.institute }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px]" style="color:#475569;">ISSUED ON</div>
-                  <div style="color:#94a3b8;">{{ cert.issuedOn }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-400">ISSUED ON</div>
+                  <div class="text-slate-700">{{ cert.issuedOn }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px]" style="color:#475569;">VALID UNTIL</div>
-                  <div :style="cert.daysLeft !== null && cert.daysLeft < 30 ? 'color:#f59e0b; font-weight:bold;' : 'color:#94a3b8;'">
+                  <div class="text-[10px] uppercase font-bold text-slate-400">VALID UNTIL</div>
+                  <div :class="cert.daysLeft !== null && cert.daysLeft < 30 ? 'text-amber-600 font-bold' : 'text-slate-700'">
                     {{ cert.validUntil || '—' }}
                   </div>
                 </div>
@@ -109,73 +121,81 @@
               <!-- Expiry progress bar -->
               <div v-if="cert.daysLeft !== null && cert.daysLeft <= 180" class="mt-3">
                 <div class="flex items-center justify-between text-[11px] mb-1">
-                  <span style="color:#64748b;">Validity Remaining</span>
-                  <span :style="cert.daysLeft <= 30 ? 'color:#dc2626; font-weight:bold;' : 'color:#f59e0b;'">
+                  <span class="text-slate-500">Validity Remaining</span>
+                  <span :class="cert.daysLeft <= 30 ? 'text-rose-600 font-bold' : 'text-amber-600 font-semibold'">
                     {{ cert.daysLeft > 0 ? cert.daysLeft + ' days left' : 'EXPIRED' }}
                   </span>
                 </div>
-                <div class="h-1.5 rounded-full overflow-hidden" style="background:#1e3a5f;">
-                  <div class="h-full rounded-full"
-                    :style="{
-                      width: Math.max(0, Math.min(100, (cert.daysLeft / 180) * 100)) + '%',
-                      background: cert.daysLeft <= 30 ? '#dc2626' : '#f59e0b'
-                    }"></div>
+                <div class="h-1.5 rounded-full overflow-hidden bg-slate-100">
+                  <div
+                    class="h-full rounded-full"
+                    :class="cert.daysLeft <= 30 ? 'bg-rose-600' : 'bg-amber-500'"
+                    :style="{ width: Math.max(0, Math.min(100, (cert.daysLeft / 180) * 100)) + '%' }"
+                  ></div>
                 </div>
               </div>
 
               <!-- STCW Regulation Reference -->
-              <div class="mt-2 text-[11px] font-mono" style="color:#334155;">
-                STCW Ref: {{ cert.stcwRef }} · {{ cert.convention }}
+              <div class="mt-2.5 text-[11px] font-mono text-slate-400">
+                STCW Ref: {{ cert.stcwRef }} &bull; {{ cert.convention }}
               </div>
             </div>
 
             <!-- Actions -->
-            <div class="flex flex-col gap-2 shrink-0">
-              <a :href="'/verify/' + cert.certNo"
-                class="text-xs px-3 py-1.5 rounded border text-center transition"
-                style="border-color:#0369A140; color:#00E5FF;">
+            <div class="flex sm:flex-col gap-2 shrink-0 w-full sm:w-auto mt-3 sm:mt-0">
+              <a
+                :href="'/verify/' + cert.certNo"
+                class="text-xs font-bold px-3 py-1.5 rounded-lg border border-blue-200 text-blue-700 bg-blue-50/50 hover:bg-blue-100 text-center transition"
+              >
                 QR Verify
               </a>
-              <button class="text-xs px-3 py-1.5 rounded border transition text-center"
-                style="border-color:#1e3a5f; color:#64748b;">
+              <button class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition text-center">
                 Download
               </button>
-              <NuxtLink v-if="cert.daysLeft !== null && cert.daysLeft <= 90"
+              <NuxtLink
+                v-if="cert.daysLeft !== null && cert.daysLeft <= 90"
                 to="/courses"
-                class="text-xs px-3 py-1.5 rounded text-center font-bold"
-                style="background:#f59e0b; color:#070D18;">
+                class="text-xs px-3 py-1.5 rounded-lg text-center font-bold bg-amber-500 hover:bg-amber-600 text-white transition shadow-2xs"
+              >
                 Renew
               </NuxtLink>
             </div>
           </div>
 
-          <div v-if="!filteredCerts.length" class="p-10 text-center">
-            <p class="text-sm" style="color:#64748b;">No certificates found for this filter</p>
+          <div v-if="!filteredCerts.length" class="p-12 text-center">
+            <p class="text-sm text-slate-500">No certificates found for this filter.</p>
           </div>
         </div>
       </div>
 
       <!-- ── STCW COMPLIANCE SUMMARY TABLE ──────────────────────────── -->
-      <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
-        <div class="p-4 border-b" style="border-color:#0c1a2e;">
-          <div class="text-sm font-bold" style="color:#e2e8f0;">STCW Manila Amendment 2010 — Compliance Checklist</div>
-          <p class="text-xs mt-0.5" style="color:#64748b;">Required certificates for Class I (Master Mariner) certification</p>
+      <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+        <div class="p-5 border-b border-slate-100">
+          <div class="text-base font-black text-slate-900">STCW Manila Amendment 2010 — Compliance Checklist</div>
+          <p class="text-xs text-slate-500 mt-0.5">Required certificates for Class I (Master Mariner) certification</p>
         </div>
-        <div class="divide-y" style="border-color:#0c1a2e;">
-          <div v-for="req in stcwRequirements" :key="req.code"
-            class="flex items-center justify-between px-5 py-3.5">
+        <div class="divide-y divide-slate-100">
+          <div
+            v-for="req in stcwRequirements"
+            :key="req.code"
+            class="flex items-center justify-between px-5 py-3.5 hover:bg-slate-50/50 transition"
+          >
             <div class="flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-                :style="req.status === 'HELD' ? 'background:#22c55e20; color:#22c55e;' : req.status === 'EXPIRING' ? 'background:#f59e0b20; color:#f59e0b;' : 'background:#dc262620; color:#f87171;'">
+              <span
+                class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                :class="req.status === 'HELD' ? 'bg-emerald-100 text-emerald-700' : req.status === 'EXPIRING' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'"
+              >
                 {{ req.status === 'HELD' ? '✓' : req.status === 'EXPIRING' ? '!' : '✕' }}
               </span>
               <div>
-                <div class="text-sm font-medium" style="color:#e2e8f0;">{{ req.name }}</div>
-                <div class="text-xs font-mono" style="color:#64748b;">{{ req.code }} · {{ req.convention }}</div>
+                <div class="text-sm font-bold text-slate-800">{{ req.name }}</div>
+                <div class="text-xs font-mono text-slate-400">{{ req.code }} &bull; {{ req.convention }}</div>
               </div>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold"
-              :style="req.status === 'HELD' ? 'background:#22c55e20; color:#22c55e;' : req.status === 'EXPIRING' ? 'background:#f59e0b20; color:#f59e0b;' : 'background:#dc262620; color:#f87171;'">
+            <span
+              class="text-xs px-2.5 py-1 rounded-full font-bold"
+              :class="req.status === 'HELD' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : req.status === 'EXPIRING' ? 'bg-amber-50 text-amber-700 border border-amber-200' : 'bg-rose-50 text-rose-700 border border-rose-200'"
+            >
               {{ req.status }}
             </span>
           </div>
@@ -186,10 +206,12 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'Certificate Vault · The Seafu' })
-definePageMeta({ middleware: ['auth'] })
+import { ref, computed } from 'vue';
 
-const vaultFilter = ref('ALL')
+useHead({ title: 'Certificate Vault · The Seafu' });
+definePageMeta({ middleware: ['auth'] });
+
+const vaultFilter = ref('ALL');
 
 const certificates = ref([
   {
@@ -290,7 +312,7 @@ const certificates = ref([
     convention: 'STCW 2010 Manila',
     status: 'EXPIRED',
   },
-])
+]);
 
 const stcwRequirements = [
   { code: 'STCW A-VI/1', name: 'Basic Safety Training (BST)', convention: 'SOLAS Reg. VI/1', status: 'EXPIRING' },
@@ -300,32 +322,32 @@ const stcwRequirements = [
   { code: 'STCW A-II/1', name: 'Navigation at Operational Level', convention: 'SOLAS Reg. V/19', status: 'HELD' },
   { code: 'STCW A-II/2', name: 'Navigation at Management Level', convention: 'STCW 2010 Manila', status: 'EXPIRED' },
   { code: 'STCW A-VI/5', name: 'Ship Security Officer', convention: 'ISPS Code', status: 'HELD' },
-]
+];
 
 const filteredCerts = computed(() => {
-  if (vaultFilter.value === 'ALL') return certificates.value
+  if (vaultFilter.value === 'ALL') return certificates.value;
   return certificates.value.filter(c => {
-    if (vaultFilter.value === 'VALID') return c.daysLeft === null || c.daysLeft > 90
-    if (vaultFilter.value === 'EXPIRING') return c.daysLeft !== null && c.daysLeft > 0 && c.daysLeft <= 90
-    if (vaultFilter.value === 'EXPIRED') return c.daysLeft !== null && c.daysLeft <= 0
-    return true
-  })
-})
+    if (vaultFilter.value === 'VALID') return c.daysLeft === null || c.daysLeft > 90;
+    if (vaultFilter.value === 'EXPIRING') return c.daysLeft !== null && c.daysLeft > 0 && c.daysLeft <= 90;
+    if (vaultFilter.value === 'EXPIRED') return c.daysLeft !== null && c.daysLeft <= 0;
+    return true;
+  });
+});
 
-const validCount = computed(() => certificates.value.filter(c => c.daysLeft === null || c.daysLeft > 90).length)
-const expiringSoonCount = computed(() => certificates.value.filter(c => c.daysLeft !== null && c.daysLeft > 0 && c.daysLeft <= 90).length)
-const expiredCount = computed(() => certificates.value.filter(c => c.daysLeft !== null && c.daysLeft <= 0).length)
+const validCount = computed(() => certificates.value.filter(c => c.daysLeft === null || c.daysLeft > 90).length);
+const expiringSoonCount = computed(() => certificates.value.filter(c => c.daysLeft !== null && c.daysLeft > 0 && c.daysLeft <= 90).length);
+const expiredCount = computed(() => certificates.value.filter(c => c.daysLeft !== null && c.daysLeft <= 0).length);
 
-function certStatusStyle(cert: any): string {
-  if (cert.daysLeft !== null && cert.daysLeft <= 0) return 'background:#dc262620; color:#f87171; border:1px solid #dc262640;'
-  if (cert.daysLeft !== null && cert.daysLeft <= 90) return 'background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b40;'
-  return 'background:#22c55e20; color:#22c55e; border:1px solid #22c55e40;'
+function certStatusClass(cert: any): string {
+  if (cert.daysLeft !== null && cert.daysLeft <= 0) return 'bg-rose-50 text-rose-700 border-rose-200';
+  if (cert.daysLeft !== null && cert.daysLeft <= 90) return 'bg-amber-50 text-amber-700 border-amber-200';
+  return 'bg-emerald-50 text-emerald-700 border-emerald-200';
 }
 
 function certStatusText(cert: any): string {
-  if (cert.daysLeft !== null && cert.daysLeft <= 0) return '● EXPIRED'
-  if (cert.daysLeft !== null && cert.daysLeft <= 30) return '⚠ CRITICAL'
-  if (cert.daysLeft !== null && cert.daysLeft <= 90) return '⚠ EXPIRING SOON'
-  return '● VALID'
+  if (cert.daysLeft !== null && cert.daysLeft <= 0) return '● EXPIRED';
+  if (cert.daysLeft !== null && cert.daysLeft <= 30) return '⚠ CRITICAL';
+  if (cert.daysLeft !== null && cert.daysLeft <= 90) return '⚠ EXPIRING SOON';
+  return '● VALID';
 }
 </script>

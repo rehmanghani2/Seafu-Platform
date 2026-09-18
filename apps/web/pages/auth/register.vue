@@ -17,11 +17,11 @@
         <!-- Brand Header -->
         <div class="text-center">
           <NuxtLink to="/" class="inline-flex items-center space-x-2.5 group mb-3">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-700 to-indigo-900 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
-              </svg>
-            </div>
+            <img
+              src="/logo-crest.png"
+              alt="The Seafu"
+              class="w-14 h-14 object-contain rounded-full shadow-sm group-hover:scale-105 transition-transform"
+            />
           </NuxtLink>
           <h2 class="text-2xl font-black text-slate-900 tracking-tight">Create Official Maritime Account</h2>
           <p class="mt-1 text-xs sm:text-sm text-slate-500 max-w-md mx-auto">

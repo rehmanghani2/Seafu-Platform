@@ -7,11 +7,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <!-- Brand -->
         <NuxtLink to="/" class="flex items-center space-x-2.5 group">
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v2a2 2 0 002 2h1v3a5 5 0 0010 0v-3h1a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" />
-            </svg>
-          </div>
+          <img
+            src="/logo-crest.png"
+            alt="The Seafu Crest"
+            class="w-9 h-9 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform"
+          />
           <span class="text-lg font-black text-slate-900 tracking-tight">The Seafu</span>
         </NuxtLink>
 
@@ -753,10 +753,12 @@
         </button>
 
         <div class="flex items-center justify-between border-b border-blue-900/50 pb-3">
-          <div class="flex items-center space-x-2">
-            <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
-              ⚓
-            </div>
+          <div class="flex items-center space-x-2.5">
+            <img
+              src="/logo-crest.png"
+              alt="The Seafu"
+              class="w-7 h-7 object-contain rounded-full shadow-sm"
+            />
             <div>
               <div class="text-xs font-black tracking-wider text-white">THE SEAFU DIGITAL ID</div>
               <div class="text-[9px] text-blue-300 font-mono">IMO STCW 2010 VERIFIED</div>
