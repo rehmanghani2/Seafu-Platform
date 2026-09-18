@@ -1,368 +1,38 @@
 <template>
   <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <!-- 1. TOP STATUTORY & ADMISSIONS TICKER (MTI Style)                -->
+    <!-- PROFESSIONAL MTI MARITIME NAVBAR (Modular Domain Component)    -->
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <div class="bg-[#0A1936] text-white text-[11px] py-2 px-4 border-b border-blue-900/50">
-      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        <!-- Live Alert / Marquee -->
-        <div class="flex items-center space-x-2.5 overflow-hidden">
-          <span class="inline-flex items-center px-2 py-0.5 rounded text-[9px] font-extrabold uppercase bg-amber-400 text-slate-950 tracking-wider animate-pulse shrink-0">
-            Admissions Open
-          </span>
-          <div class="truncate text-slate-200 font-medium text-[11px]">
-            <span class="text-amber-300 font-bold">BATCH 2026 INTAKE:</span> GP-III Pre-Sea &bull; HND Nautical Sciences &bull; HND Marine Engineering &bull; Entry Test Schedule Announced
-          </div>
-        </div>
+    <LandingNavbar
+      @open-admission="handleOpenAdmission"
+      @open-video="openVideoModal = true"
+    />
 
-        <!-- Right Quick Info -->
-        <div class="flex items-center space-x-5 text-slate-300 text-[11px] shrink-0">
-          <a href="https://wa.me/923366668475" target="_blank" class="hover:text-emerald-400 transition flex items-center space-x-1.5 font-semibold text-emerald-300">
-            <span>💬 WhatsApp:</span>
-            <span>+92 336 6668475</span>
-          </a>
-          <span class="text-slate-600 hidden sm:inline">|</span>
-          <a href="tel:+922135681234" class="hover:text-white transition hidden md:flex items-center space-x-1">
-            <span>📞 Helpline:</span>
-            <span>+92 21 3568 1234</span>
-          </a>
-          <span class="text-slate-600 hidden sm:inline">|</span>
-          <NuxtLink to="/verify/IND-AFF-7714-ECDSA" class="text-cyan-300 hover:text-cyan-200 font-bold flex items-center space-x-1">
-            <span>🛡️ Verify Certificate</span>
-          </NuxtLink>
-        </div>
+
+    <main id="main-content">
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- 3. HERO ADMISSIONS & SLIDER (Modular Component)                 -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <LandingHeroSlider
+        :slides="heroSlides"
+        @open-admission="handleOpenAdmission"
+        @open-prospectus="openProspectusModal = true"
+        @open-video="openVideoModal = true"
+      />
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- 4. SECTION: SHAPING FUTURES (Modular Component)                 -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="about">
+        <LandingNoticeBoard
+          :notices="notices"
+          @open-video="openVideoModal = true"
+          @open-admission="openAdmissionModal = true"
+          @select-notice="handleSelectNotice"
+          @view-all-notices="openNoticeModal = true"
+        />
       </div>
-    </div>
-
-    <!-- ═════════════════════════════════════════════════════════════════ -->
-    <!-- 2. MAIN MARITIME ACADEMY HEADER & NAVIGATION                    -->
-    <!-- ═════════════════════════════════════════════════════════════════ -->
-    <header class="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-22 flex items-center justify-between">
-        
-        <!-- Brand / Maritime Crest Logo -->
-        <NuxtLink to="/" class="flex items-center space-x-3.5 group shrink-0">
-          <div class="relative">
-            <img
-              src="/logo-crest.png"
-              alt="Maritime Academy Crest"
-              class="w-13 h-13 object-contain rounded-full shadow-sm group-hover:scale-105 transition-transform"
-            />
-            <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-600 border-2 border-white rounded-full flex items-center justify-center text-[8px] text-white font-black">⚓</span>
-          </div>
-          <div class="flex flex-col">
-            <div class="flex items-center space-x-2">
-              <span class="text-xl sm:text-2xl font-black text-[#0A1936] tracking-tight leading-tight">The Seafu</span>
-              <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200">MTI ACADEMY</span>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Maritime Training &amp; Global Seafarer Platform</span>
-          </div>
-        </NuxtLink>
-
-        <!-- Desktop Navigation Items (MTI Structure) -->
-        <nav class="hidden xl:flex items-center space-x-6 text-[13px] font-bold text-slate-700">
-          <NuxtLink to="/" class="text-blue-700 font-extrabold border-b-2 border-blue-700 pb-1">Home</NuxtLink>
-          
-          <!-- Dropdown / Anchor Links -->
-          <a href="#about" class="hover:text-blue-700 transition">About Us</a>
-          <a href="#courses" class="hover:text-blue-700 transition">Courses &amp; Programs</a>
-          <a href="#simulators" class="hover:text-blue-700 transition">Simulators &amp; Labs</a>
-          <a href="#numbers" class="hover:text-blue-700 transition">Key Facts</a>
-          <a href="#testimonials" class="hover:text-blue-700 transition">Testimonials</a>
-          <a href="#faqs" class="hover:text-blue-700 transition">FAQs</a>
-          <a href="#contact" class="hover:text-blue-700 transition">Contact</a>
-        </nav>
-
-        <!-- Action CTAs -->
-        <div class="flex items-center space-x-3">
-          <button
-            @click="openAdmissionModal = true"
-            class="hidden sm:inline-flex items-center px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition transform hover:-translate-y-0.5">
-            <span>Apply Now</span>
-            <span class="ml-1.5">⚡</span>
-          </button>
-
-          <NuxtLink
-            to="/auth/login"
-            class="inline-flex items-center px-4 py-2.5 rounded-lg text-xs font-bold text-slate-700 hover:text-blue-900 bg-slate-100 hover:bg-slate-200 border border-slate-300/80 transition">
-            <span>Portal Login</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/auth/register"
-            class="inline-flex items-center px-4 py-2.5 rounded-lg text-xs font-black text-white bg-[#0A1936] hover:bg-[#112752] shadow-sm transition">
-            <span>Register</span>
-          </NuxtLink>
-        </div>
-      </div>
-    </header>
-
-    <main id="home">
-      <!-- ═════════════════════════════════════════════════════════════════ -->
-      <!-- 3. HERO ADMISSIONS & SLIDER BANNER (MTI Header Carousel)       -->
-      <!-- ═════════════════════════════════════════════════════════════════ -->
-      <section class="relative bg-gradient-to-br from-[#0A1936] via-[#102347] to-[#1E3A8A] text-white py-16 lg:py-24 overflow-hidden">
-        <!-- Maritime Nautical Wave Background Overlay -->
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38BDF8_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
-        <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <!-- Slide Switcher Buttons (Interactive Hero Carousel Tabs) -->
-          <div class="flex items-center justify-center sm:justify-start gap-2 mb-8 overflow-x-auto pb-2">
-            <button
-              v-for="(slide, idx) in heroSlides"
-              :key="idx"
-              @click="currentSlide = idx"
-              class="px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center space-x-2 shrink-0"
-              :class="currentSlide === idx ? 'bg-amber-400 text-slate-950 shadow-md font-black' : 'bg-white/10 text-slate-200 hover:bg-white/20'">
-              <span class="w-2 h-2 rounded-full" :class="currentSlide === idx ? 'bg-slate-900' : 'bg-slate-400'"></span>
-              <span>{{ slide.tabTitle }}</span>
-            </button>
-          </div>
-
-          <!-- Active Slide Content -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            <!-- Left 7 cols: Content -->
-            <div class="lg:col-span-7 space-y-6 text-left">
-              
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-blue-500/20 border border-blue-400/40 text-blue-200">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>{{ heroSlides[currentSlide].badge }}</span>
-              </div>
-
-              <div class="space-y-3">
-                <div class="text-amber-400 text-xs sm:text-sm font-extrabold uppercase tracking-widest">
-                  {{ heroSlides[currentSlide].subheading }}
-                </div>
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
-                  {{ heroSlides[currentSlide].heading }}
-                </h1>
-                <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl font-normal">
-                  {{ heroSlides[currentSlide].description }}
-                </p>
-              </div>
-
-              <!-- Feature Checks -->
-              <div class="grid grid-cols-2 sm:grid-cols-2 gap-2.5 py-2 max-w-xl text-xs sm:text-sm text-slate-200 font-semibold">
-                <div v-for="(feat, fIdx) in heroSlides[currentSlide].features" :key="fIdx" class="flex items-center space-x-2">
-                  <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-[10px] font-black shrink-0">✓</span>
-                  <span>{{ feat }}</span>
-                </div>
-              </div>
-
-              <!-- Action CTAs -->
-              <div class="flex flex-wrap items-center gap-3.5 pt-2">
-                <button
-                  @click="openAdmissionModal = true"
-                  class="px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wider bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-lg shadow-amber-400/20 transition transform hover:-translate-y-0.5 flex items-center space-x-2">
-                  <span>{{ heroSlides[currentSlide].primaryBtn }}</span>
-                  <span>→</span>
-                </button>
-
-                <a
-                  href="https://wa.me/923366668475"
-                  target="_blank"
-                  class="px-5 py-3.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition flex items-center space-x-2">
-                  <span>💬 WhatsApp Counselor</span>
-                </a>
-
-                <button
-                  @click="openProspectusModal = true"
-                  class="px-5 py-3.5 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-xs transition flex items-center space-x-2">
-                  <span>📥 Prospectus 2026</span>
-                </button>
-              </div>
-
-            </div>
-
-            <!-- Right 5 cols: Card Visual / Video Preview -->
-            <div class="lg:col-span-5 relative">
-              <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900 group">
-                <img
-                  :src="heroSlides[currentSlide].image"
-                  :alt="heroSlides[currentSlide].heading"
-                  class="w-full h-80 sm:h-96 object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-                />
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0A1936] via-[#0A1936]/40 to-transparent"></div>
-
-                <!-- Floating Play Button for Video Tour -->
-                <button
-                  @click="openVideoModal = true"
-                  class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <div class="w-18 h-18 rounded-full bg-amber-400/90 text-slate-950 flex items-center justify-center shadow-2xl shadow-amber-400/50">
-                    <svg class="w-8 h-8 translate-x-0.5 fill-current" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </button>
-
-                <!-- Floating Bottom Badge -->
-                <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/20 flex items-center justify-between">
-                  <div class="flex items-center space-x-3">
-                    <div class="w-9 h-9 rounded-lg bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-300 font-bold text-sm">
-                      ⚓
-                    </div>
-                    <div>
-                      <div class="text-xs font-black text-white">{{ heroSlides[currentSlide].cardHighlight }}</div>
-                      <div class="text-[10px] text-slate-300">IMO Model Course &bull; CIP Grade A1</div>
-                    </div>
-                  </div>
-                  <span class="text-[10px] font-black uppercase px-2 py-1 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                    Watch Tour
-                  </span>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Bottom 4 Pillars Bar (MTI Style) -->
-          <div class="mt-14 pt-8 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
-            <div class="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition">
-              <div class="text-amber-400 font-extrabold text-sm mb-1">Pre-Sea Maritime Training</div>
-              <div class="text-xs text-slate-300">GP-III Deck &amp; Engine structured programs for merchant navy induction.</div>
-            </div>
-            <div class="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition">
-              <div class="text-amber-400 font-extrabold text-sm mb-1">Modern Simulator Fleet</div>
-              <div class="text-xs text-slate-300">Full-Mission 360° Bridge, Engine Room, ECDIS, GMDSS, and LICOS suites.</div>
-            </div>
-            <div class="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition">
-              <div class="text-amber-400 font-extrabold text-sm mb-1">Global Sea Placement</div>
-              <div class="text-xs text-slate-300">Captive intake partnerships with leading international shipping lines.</div>
-            </div>
-            <div class="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition">
-              <div class="text-amber-400 font-extrabold text-sm mb-1">100% Escrow Protection</div>
-              <div class="text-xs text-slate-300">Guaranteed fee refund protection backed by smart maritime contract escrow.</div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ═════════════════════════════════════════════════════════════════ -->
-      <!-- 4. SECTION: SHAPING FUTURES THROUGH MARITIME EXCELLENCE (MTI)    -->
-      <!-- ═════════════════════════════════════════════════════════════════ -->
-      <section id="about" class="py-20 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <!-- Section Heading with MTI Two-Bar Ornament -->
-          <div class="text-center max-w-3xl mx-auto mb-14">
-            <div class="text-xs font-extrabold text-blue-700 uppercase tracking-widest mb-2">MTI Academic Profile &amp; Mission</div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              Shaping Futures Through <span class="text-blue-700">Maritime Excellence</span>
-            </h2>
-            <!-- MTI Bars -->
-            <div class="flex items-center justify-center gap-2 mt-4">
-              <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
-              <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
-            </div>
-          </div>
-
-          <!-- MTI 3-Column Grid: Media | Academic Text | Live Notice Board -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            <!-- Col 1: Video / Training Grounds Media (4 cols) -->
-            <div class="lg:col-span-4 flex flex-col">
-              <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-800 h-full min-h-[360px] group">
-                <img
-                  src="https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80"
-                  alt="Bridge Simulator Center"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0A1936]/90 via-[#0A1936]/30 to-transparent"></div>
-                
-                <button
-                  @click="openVideoModal = true"
-                  class="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <div class="w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-center shadow-xl shadow-blue-900/40">
-                    <svg class="w-7 h-7 translate-x-0.5 fill-current" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </button>
-
-                <div class="absolute bottom-5 left-5 right-5 text-white">
-                  <span class="px-2 py-0.5 rounded bg-blue-600 text-[10px] font-black uppercase tracking-wider mb-2 inline-block">Campus Tour</span>
-                  <h4 class="text-base font-bold leading-tight">Advanced Simulator Labs &amp; Practical Training Facilities</h4>
-                </div>
-              </div>
-            </div>
-
-            <!-- Col 2: Mission Statement & Philosophy (4 cols) -->
-            <div class="lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200">
-              <div class="space-y-4">
-                <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 text-lg font-black">
-                  🎓
-                </div>
-                <h3 class="text-xl font-extrabold text-slate-900">
-                  Committed to delivering premier maritime education aligned with international standards.
-                </h3>
-                <p class="text-sm text-slate-600 leading-relaxed">
-                  At Maritime Training Institute (The Seafu Platform), we are dedicated to delivering quality maritime education and professional training that is practical, industry-focused, and accessible to aspiring seafarers.
-                </p>
-                <p class="text-sm text-slate-600 leading-relaxed">
-                  With a strong emphasis on skill development, IMO safety standards, and career readiness, we prepare cadets to excel in the merchant marine sector at national and international levels.
-                </p>
-              </div>
-
-              <div class="pt-6 border-t border-slate-200 flex items-center justify-between">
-                <button
-                  @click="openAdmissionModal = true"
-                  class="px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider bg-blue-700 hover:bg-blue-800 text-white shadow-md transition">
-                  Apply for Admission
-                </button>
-                <NuxtLink to="/courses" class="text-xs font-bold text-blue-700 hover:underline">
-                  All Courses →
-                </NuxtLink>
-              </div>
-            </div>
-
-            <!-- Col 3: Vertical Live Notice Board (4 cols - Exact MTI Style) -->
-            <div class="lg:col-span-4 flex flex-col rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
-              <div class="bg-blue-700 px-5 py-3.5 text-white flex items-center justify-between">
-                <span class="text-xs font-black uppercase tracking-wider flex items-center space-x-2">
-                  <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                  <span>News &amp; Statutory Notices</span>
-                </span>
-                <span class="text-[10px] text-blue-100 font-semibold">Live Board</span>
-              </div>
-
-              <!-- Notice List Container -->
-              <div class="divide-y divide-slate-100 p-2 overflow-y-auto max-h-[350px]">
-                <div
-                  v-for="(notice, nIdx) in notices"
-                  :key="nIdx"
-                  class="p-3.5 hover:bg-slate-50 rounded-xl transition cursor-pointer group"
-                  @click="selectedNotice = notice">
-                  <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded" :class="notice.tagClass">
-                      {{ notice.category }}
-                    </span>
-                    <span class="text-[10px] font-bold text-slate-400">{{ notice.date }}</span>
-                  </div>
-                  <h5 class="text-xs font-bold text-slate-800 group-hover:text-blue-700 transition leading-snug">
-                    {{ notice.title }}
-                  </h5>
-                  <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">{{ notice.excerpt }}</p>
-                </div>
-              </div>
-
-              <!-- Footer of Board -->
-              <div class="p-3 bg-slate-50 border-t border-slate-100 text-center">
-                <span class="text-[11px] font-bold text-blue-700 hover:underline cursor-pointer" @click="openNoticeModal = true">
-                  View All Regulatory Circulars (24) →
-                </span>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
       <!-- ═════════════════════════════════════════════════════════════════ -->
       <!-- 5. SECTION: MTI ACADEMIC COURSES & PROGRAMS                    -->
@@ -375,7 +45,7 @@
             <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Explore Our <span class="text-blue-700">Maritime Programs</span>
             </h2>
-            <div class="flex items-center justify-center gap-2 mt-3">
+            <div class="flex items-center justify-center gap-2 mt-3" aria-hidden="true">
               <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
               <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
             </div>
@@ -385,12 +55,14 @@
           </div>
 
           <!-- Course Filter Category Tabs -->
-          <div class="flex items-center justify-center flex-wrap gap-2 mb-10">
+          <div class="flex items-center justify-center flex-wrap gap-2 mb-10" role="tablist" aria-label="Course Categories">
             <button
               v-for="cat in courseCategories"
               :key="cat"
               @click="selectedCategory = cat"
-              class="px-4 py-2 rounded-xl text-xs font-bold transition"
+              role="tab"
+              :aria-selected="selectedCategory === cat"
+              class="px-4 py-2 rounded-xl text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-blue-700"
               :class="selectedCategory === cat ? 'bg-blue-700 text-white shadow-sm font-black' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'">
               {{ cat }}
             </button>
@@ -398,7 +70,7 @@
 
           <!-- Course Cards Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
+            <article
               v-for="(course, cIdx) in filteredCourses"
               :key="cIdx"
               class="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden group">
@@ -448,27 +120,27 @@
                 <div class="flex items-center space-x-2">
                   <NuxtLink
                     :to="'/courses/' + course.slug"
-                    class="px-3 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-blue-700 bg-slate-100 hover:bg-slate-200 transition">
+                    class="px-3 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-blue-700 bg-slate-100 hover:bg-slate-200 transition focus:outline-none focus:ring-1 focus:ring-blue-600">
                     Syllabus
                   </NuxtLink>
                   <button
                     @click="enrollCourse(course)"
-                    class="px-4 py-2 rounded-lg text-xs font-black uppercase tracking-wider bg-blue-700 hover:bg-blue-800 text-white shadow-xs transition">
+                    class="px-4 py-2 rounded-lg text-xs font-black uppercase tracking-wider bg-blue-700 hover:bg-blue-800 text-white shadow-xs transition focus:outline-none focus:ring-2 focus:ring-blue-700">
                     Enroll Now
                   </button>
                 </div>
               </div>
 
-            </div>
+            </article>
           </div>
 
           <!-- Bottom View All Button -->
           <div class="mt-12 text-center">
             <NuxtLink
               to="/courses"
-              class="inline-flex items-center px-8 py-3.5 rounded-xl font-black text-xs uppercase tracking-wider bg-[#0A1936] hover:bg-[#112752] text-white shadow-md transition space-x-2">
+              class="inline-flex items-center px-8 py-3.5 rounded-xl font-black text-xs uppercase tracking-wider bg-[#0A1936] hover:bg-[#112752] text-white shadow-md transition space-x-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
               <span>View All Accredited Programs &amp; Batches</span>
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </NuxtLink>
           </div>
 
@@ -476,72 +148,15 @@
       </section>
 
       <!-- ═════════════════════════════════════════════════════════════════ -->
-      <!-- 6. SECTION: ADVANCED SIMULATOR LABS & INFRASTRUCTURE (MTI)      -->
+      <!-- 6. SECTION: SIMULATOR SUITES (Modular Component)                -->
       <!-- ═════════════════════════════════════════════════════════════════ -->
-      <section id="simulators" class="py-20 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div class="text-center max-w-3xl mx-auto mb-14">
-            <div class="text-xs font-extrabold text-blue-700 uppercase tracking-widest mb-2">Hands-On Maritime Technology</div>
-            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              Advanced <span class="text-blue-700">Simulator Facilities</span>
-            </h2>
-            <div class="flex items-center justify-center gap-2 mt-3">
-              <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
-              <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
-            </div>
-            <p class="text-sm text-slate-600 mt-4">
-              Experience practical maritime training through modern simulation laboratories designed to enhance technical skills, operational confidence, and compliance with IMO Model Courses.
-            </p>
-          </div>
-
-          <!-- Simulators Grid (6 Suites matching MTI) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div v-for="(sim, sIdx) in simulatorSuites" :key="sIdx" class="rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col group">
-              <div class="relative h-48 overflow-hidden bg-slate-800">
-                <img :src="sim.image" :alt="sim.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <div class="absolute top-3 left-3">
-                  <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-blue-600 text-white tracking-wider">
-                    {{ sim.badge }}
-                  </span>
-                </div>
-                <div class="absolute bottom-3 left-3 right-3 text-white">
-                  <h4 class="text-base font-bold leading-tight">{{ sim.title }}</h4>
-                </div>
-              </div>
-              
-              <div class="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
-                <p class="text-xs text-slate-600 leading-relaxed">
-                  {{ sim.description }}
-                </p>
-                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span class="font-semibold text-slate-500">{{ sim.hardware }}</span>
-                  <button @click="openSimulatorDetail(sim)" class="font-bold text-blue-700 hover:underline">
-                    Lab Specs →
-                  </button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Schedule a Visit Bar -->
-          <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0A1936] to-blue-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
-            <div>
-              <h3 class="text-xl font-black">Want to inspect our campus and simulator labs in person?</h3>
-              <p class="text-xs sm:text-sm text-slate-300 mt-1">Book an official academy walkthrough for candidates, parents, and shipping executives.</p>
-            </div>
-            <button
-              @click="openAdmissionModal = true"
-              class="px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider bg-amber-400 hover:bg-amber-300 text-slate-950 shrink-0 transition">
-              Book a Campus Visit
-            </button>
-          </div>
-
-        </div>
-      </section>
+      <div id="simulators">
+        <LandingSimulatorCards
+          :suites="simulatorSuites"
+          @select-sim="openVideoModal = true"
+          @book-visit="openAdmissionModal = true"
+        />
+      </div>
 
       <!-- ═════════════════════════════════════════════════════════════════ -->
       <!-- 7. SECTION: HIGHLIGHTS IN NUMBERS (MTI Key Facts)               -->
@@ -591,57 +206,56 @@
       </section>
 
       <!-- ═════════════════════════════════════════════════════════════════ -->
-      <!-- 8. SECTION: ACCREDITATIONS & INTERNATIONAL COLLABORATION        -->
+      <!-- 8. SECTION: MARITIME INSIGHTS & BLOG (Knowledge Center)         -->
       <!-- ═════════════════════════════════════════════════════════════════ -->
-      <section class="py-16 bg-white border-b border-slate-200">
+      <section id="blog" class="py-20 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div class="lg:col-span-6 space-y-4 text-left">
-              <span class="text-xs font-extrabold text-blue-700 uppercase tracking-widest">Global Maritime Standards</span>
-              <h3 class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
-                Accredited by National Maritime Administrations &amp; International Bodies
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                Our curriculum strictly adheres to the standards of the International Maritime Organization (IMO) STCW 1978 as amended in Manila 2010. Accredited with DNV-GL CIP Grade A1 Outstanding and aligned with Flag State administrations worldwide.
-              </p>
-              
-              <div class="grid grid-cols-2 gap-3 pt-2 text-xs font-bold text-slate-700">
-                <div class="flex items-center space-x-2 p-2 rounded-lg bg-slate-50 border border-slate-200">
-                  <span class="text-blue-700">🛡️</span>
-                  <span>DG Shipping Approved</span>
+          <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="text-xs font-extrabold text-blue-700 uppercase tracking-widest mb-2">Maritime Knowledge &amp; Updates</div>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Industry Insights &amp; <span class="text-blue-700">Advisories</span>
+            </h2>
+            <div class="flex items-center justify-center gap-2 mt-3" aria-hidden="true">
+              <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
+              <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
+            </div>
+            <p class="text-sm text-slate-600 mt-4">
+              Stay ahead with statutory circulars, decarbonization guidelines, STCW revalidation deadlines, and merchant navy career insights.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <article v-for="(post, pIdx) in blogPosts" :key="pIdx" class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+              <div>
+                <div class="relative h-48 overflow-hidden bg-slate-800">
+                  <img :src="post.image" :alt="post.title" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#0A1936] text-white">
+                    {{ post.category }}
+                  </span>
                 </div>
-                <div class="flex items-center space-x-2 p-2 rounded-lg bg-slate-50 border border-slate-200">
-                  <span class="text-blue-700">🇬🇧</span>
-                  <span>UK MCA Recognized</span>
-                </div>
-                <div class="flex items-center space-x-2 p-2 rounded-lg bg-slate-50 border border-slate-200">
-                  <span class="text-blue-700">⭐</span>
-                  <span>DNV CIP Grade A1</span>
-                </div>
-                <div class="flex items-center space-x-2 p-2 rounded-lg bg-slate-50 border border-slate-200">
-                  <span class="text-blue-700">⚓</span>
-                  <span>City of Glasgow Outreach</span>
+                <div class="p-6">
+                  <div class="flex items-center space-x-2 text-[11px] text-slate-400 font-bold mb-2">
+                    <span>{{ post.date }}</span>
+                    <span>&bull;</span>
+                    <span>{{ post.readTime }}</span>
+                  </div>
+                  <h3 class="text-base font-black text-slate-900 hover:text-blue-700 transition leading-snug mb-2">
+                    {{ post.title }}
+                  </h3>
+                  <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                    {{ post.excerpt }}
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <!-- Right Box: Outreach Campus of City of Glasgow College (MTI Highlight) -->
-            <div class="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 relative overflow-hidden">
-              <div class="text-xs font-black uppercase tracking-wider text-blue-700 mb-2">International Academic Collaboration</div>
-              <h4 class="text-xl font-extrabold text-slate-900 mb-3">City of Glasgow College Outreach Partnership</h4>
-              <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                Continuing the legacy of the historic Glasgow College of Nautical Studies, students in our Higher National Diploma (HND) programs benefit from world-class maritime curriculum articulation, reciprocal recognition, and global sea pathway options.
-              </p>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-200">
-                <span class="text-xs font-bold text-slate-500">Scotland, United Kingdom</span>
-                <NuxtLink to="/institutes/compare" class="text-xs font-black text-blue-700 hover:underline">
-                  Compare Accreditations →
+              <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-200/60 mt-4 text-xs font-bold">
+                <span class="text-slate-500">By {{ post.author }}</span>
+                <NuxtLink to="/community" class="text-blue-700 hover:underline">
+                  Read Article →
                 </NuxtLink>
               </div>
-            </div>
-
+            </article>
           </div>
 
         </div>
@@ -658,7 +272,7 @@
             <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               What Our <span class="text-blue-700">Seafarers Say</span>
             </h2>
-            <div class="flex items-center justify-center gap-2 mt-3">
+            <div class="flex items-center justify-center gap-2 mt-3" aria-hidden="true">
               <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
               <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
             </div>
@@ -668,14 +282,14 @@
             
             <div v-for="(test, tIdx) in testimonials" :key="tIdx" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between space-y-6">
               <div class="space-y-3">
-                <div class="flex text-amber-400 text-sm">★★★★★</div>
+                <div class="flex text-amber-400 text-sm" aria-label="5 out of 5 stars">★★★★★</div>
                 <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed">
                   "{{ test.quote }}"
                 </p>
               </div>
 
               <div class="flex items-center space-x-3.5 pt-4 border-t border-slate-100">
-                <img :src="test.avatar" :alt="test.name" class="w-11 h-11 rounded-full object-cover border border-slate-200" />
+                <img :src="test.avatar" :alt="'Photo of ' + test.name" class="w-11 h-11 rounded-full object-cover border border-slate-200" />
                 <div>
                   <div class="text-xs font-extrabold text-slate-900">{{ test.name }}</div>
                   <div class="text-[11px] text-blue-700 font-semibold">{{ test.rank }} &bull; {{ test.company }}</div>
@@ -699,7 +313,7 @@
             <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Frequently Asked <span class="text-blue-700">Questions</span>
             </h2>
-            <div class="flex items-center justify-center gap-2 mt-3">
+            <div class="flex items-center justify-center gap-2 mt-3" aria-hidden="true">
               <span class="w-8 h-1 bg-blue-700 rounded-full"></span>
               <span class="w-8 h-1 bg-slate-300 rounded-full"></span>
             </div>
@@ -712,9 +326,10 @@
               class="border border-slate-200 rounded-xl overflow-hidden">
               <button
                 @click="activeFaq = activeFaq === fIdx ? null : fIdx"
-                class="w-full text-left p-5 flex items-center justify-between font-extrabold text-slate-900 text-sm sm:text-base hover:bg-slate-50 transition">
+                class="w-full text-left p-5 flex items-center justify-between font-extrabold text-slate-900 text-sm sm:text-base hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-blue-700"
+                :aria-expanded="activeFaq === fIdx">
                 <span>{{ faq.question }}</span>
-                <span class="text-blue-700 text-lg font-bold ml-4">{{ activeFaq === fIdx ? '−' : '+' }}</span>
+                <span class="text-blue-700 text-lg font-bold ml-4" aria-hidden="true">{{ activeFaq === fIdx ? '−' : '+' }}</span>
               </button>
               <div v-if="activeFaq === fIdx" class="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
                 {{ faq.answer }}
@@ -744,15 +359,15 @@
 
               <div class="space-y-4 pt-2 text-xs sm:text-sm text-slate-700 font-medium">
                 <div class="flex items-start space-x-3">
-                  <span class="text-blue-700 text-base">📍</span>
+                  <span class="text-blue-700 text-base" aria-hidden="true">📍</span>
                   <span><strong>Campus Address:</strong> Marine Complex, Dockyard Road, Port Area, Karachi, Pakistan.</span>
                 </div>
                 <div class="flex items-center space-x-3">
-                  <span class="text-blue-700 text-base">📞</span>
+                  <span class="text-blue-700 text-base" aria-hidden="true">📞</span>
                   <span><strong>Admissions Office:</strong> +92 21 3568 1234 / +92 336 6668475</span>
                 </div>
                 <div class="flex items-center space-x-3">
-                  <span class="text-blue-700 text-base">✉️</span>
+                  <span class="text-blue-700 text-base" aria-hidden="true">✉️</span>
                   <span><strong>Email Inquiries:</strong> admissions@mti.edu.pk / info@seafu.org</span>
                 </div>
               </div>
@@ -763,11 +378,12 @@
               <h3 class="text-lg font-black text-slate-900 mb-1">Admissions &amp; Course Inquiry Form</h3>
               <p class="text-xs text-slate-500 mb-6">Fill in your details below and our maritime admissions coordinator will reach out within 24 hours.</p>
 
-              <form @submit.prevent="submitContactForm" class="space-y-4">
+              <form @submit.prevent="submitContactForm" class="space-y-4" aria-label="Admissions Inquiry Form">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
+                    <label for="contact-name" class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
                     <input
+                      id="contact-name"
                       v-model="contactForm.name"
                       type="text"
                       required
@@ -776,8 +392,9 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                    <label for="contact-email" class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
                     <input
+                      id="contact-email"
                       v-model="contactForm.email"
                       type="email"
                       required
@@ -789,8 +406,9 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Phone / WhatsApp *</label>
+                    <label for="contact-phone" class="block text-xs font-bold text-slate-700 mb-1">Phone / WhatsApp *</label>
                     <input
+                      id="contact-phone"
                       v-model="contactForm.phone"
                       type="tel"
                       required
@@ -799,8 +417,9 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Program of Interest</label>
+                    <label for="contact-program" class="block text-xs font-bold text-slate-700 mb-1">Program of Interest</label>
                     <select
+                      id="contact-program"
                       v-model="contactForm.program"
                       class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-hidden">
                       <option>GP-III Pre-Sea Course</option>
@@ -814,21 +433,22 @@
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Your Message / Query</label>
+                  <label for="contact-message" class="block text-xs font-bold text-slate-700 mb-1">Your Message / Query</label>
                   <textarea
+                    id="contact-message"
                     v-model="contactForm.message"
                     rows="3"
                     placeholder="Ask about entry test schedules, fee structure, or seat availability..."
                     class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-hidden"></textarea>
                 </div>
 
-                <div v-if="formSubmitted" class="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold rounded-lg">
+                <div v-if="formSubmitted" class="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold rounded-lg" role="alert">
                   ✓ Thank you! Your admission inquiry has been received. Our counselor will contact you via WhatsApp / Phone shortly.
                 </div>
 
                 <button
                   type="submit"
-                  class="w-full py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-blue-700 hover:bg-blue-800 text-white shadow-md transition">
+                  class="w-full py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-blue-700 hover:bg-blue-800 text-white shadow-md transition focus:outline-none focus:ring-2 focus:ring-blue-700">
                   Submit Admissions Inquiry
                 </button>
               </form>
@@ -844,7 +464,7 @@
     <!-- ═════════════════════════════════════════════════════════════════ -->
     <!-- 12. COMPREHENSIVE MARITIME ACADEMY FOOTER                      -->
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <footer class="bg-[#0A1936] text-slate-300 pt-16 pb-8 border-t border-slate-800">
+    <footer class="bg-[#0A1936] text-slate-300 pt-16 pb-8 border-t border-slate-800" role="contentinfo">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
@@ -852,7 +472,7 @@
           <!-- Col 1: Brand (2 cols) -->
           <div class="lg:col-span-2 space-y-4">
             <div class="flex items-center space-x-3">
-              <img src="/logo-crest.png" alt="Maritime Academy Crest" class="w-12 h-12 rounded-full object-contain" />
+              <img src="/logo-crest.png" alt="The Seafu Official Crest" class="w-12 h-12 rounded-full object-contain" />
               <div>
                 <span class="text-xl font-black text-white tracking-tight">The Seafu</span>
                 <div class="text-[10px] text-amber-400 font-extrabold uppercase tracking-wider">Maritime Training Institute</div>
@@ -898,9 +518,9 @@
           <div class="space-y-3">
             <div class="text-xs font-black uppercase tracking-wider text-white">Access Portals</div>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li><NuxtLink to="/seafarer/dashboard" class="hover:text-cyan-300 transition">Seafarer Panel</NuxtLink></li>
-              <li><NuxtLink to="/institute/dashboard" class="hover:text-cyan-300 transition">Maritime Academy Portal</NuxtLink></li>
-              <li><NuxtLink to="/admin/dashboard" class="hover:text-cyan-300 transition">Statutory Admin Console</NuxtLink></li>
+              <li><NuxtLink to="/seafarer" class="hover:text-cyan-300 transition">Seafarer Panel</NuxtLink></li>
+              <li><NuxtLink to="/institute" class="hover:text-cyan-300 transition">Maritime Academy Portal</NuxtLink></li>
+              <li><NuxtLink to="/admin" class="hover:text-cyan-300 transition">Statutory Admin Console</NuxtLink></li>
               <li><NuxtLink to="/verify/IND-AFF-7714-ECDSA" class="hover:text-cyan-300 transition">Instant QR Verification</NuxtLink></li>
               <li><NuxtLink to="/institutes/compare" class="hover:text-cyan-300 transition">Compare Academies</NuxtLink></li>
               <li><NuxtLink to="/auth/login" class="hover:text-cyan-300 transition">Candidate Login</NuxtLink></li>
@@ -916,9 +536,9 @@
           </div>
           <div class="flex items-center space-x-4">
             <span class="text-slate-400">IMO STCW Manila 2010</span>
-            <span>&bull;</span>
+            <span aria-hidden="true">&bull;</span>
             <span class="text-slate-400">CIP Grade A1 Outstanding</span>
-            <span>&bull;</span>
+            <span aria-hidden="true">&bull;</span>
             <span class="text-slate-400">DG / UK MCA Compliant</span>
           </div>
         </div>
@@ -927,18 +547,18 @@
     </footer>
 
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <!-- 13. INTERACTIVE MODALS (Admission, Video, Prospectus, Notice)    -->
+    <!-- 13. INTERACTIVE MODALS (Admission, Video, Prospectus)           -->
     <!-- ═════════════════════════════════════════════════════════════════ -->
 
     <!-- Modal 1: Quick Admission Apply Modal -->
-    <div v-if="openAdmissionModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div v-if="openAdmissionModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
-        <button @click="openAdmissionModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+        <button @click="openAdmissionModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg font-bold" aria-label="Close admission modal">✕</button>
         
         <div class="flex items-center space-x-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 font-black">⚓</div>
+          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 font-black" aria-hidden="true">⚓</div>
           <div>
-            <h3 class="text-lg font-black text-slate-900">MTI Pre-Sea &amp; Cadetship Admission</h3>
+            <h3 id="modal-title" class="text-lg font-black text-slate-900">MTI Pre-Sea &amp; Cadetship Admission</h3>
             <p class="text-xs text-slate-500">Intake 2026 • Limited Class Quota</p>
           </div>
         </div>
@@ -946,21 +566,21 @@
         <form @submit.prevent="submitModalAdmission" class="space-y-3 text-xs">
           <div>
             <label class="block font-bold text-slate-700 mb-1">Candidate Name *</label>
-            <input v-model="modalForm.name" type="text" required placeholder="Full name as per Matric / Passport" class="w-full px-3 py-2 border rounded-lg" />
+            <input v-model="modalForm.name" type="text" required placeholder="Full name as per Matric / Passport" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none" />
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block font-bold text-slate-700 mb-1">WhatsApp No. *</label>
-              <input v-model="modalForm.whatsapp" type="tel" required placeholder="+92 336 1234567" class="w-full px-3 py-2 border rounded-lg" />
+              <input v-model="modalForm.whatsapp" type="tel" required placeholder="+92 336 1234567" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none" />
             </div>
             <div>
               <label class="block font-bold text-slate-700 mb-1">Date of Birth</label>
-              <input v-model="modalForm.dob" type="date" class="w-full px-3 py-2 border rounded-lg" />
+              <input v-model="modalForm.dob" type="date" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none" />
             </div>
           </div>
           <div>
             <label class="block font-bold text-slate-700 mb-1">Desired Program *</label>
-            <select v-model="modalForm.program" class="w-full px-3 py-2 border rounded-lg">
+            <select v-model="modalForm.program" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
               <option>GP-III Pre-Sea Rating Course</option>
               <option>Advance Diploma in Nautical Science (Deck)</option>
               <option>Advance Diploma in Marine Engineering</option>
@@ -969,7 +589,7 @@
           </div>
           <div>
             <label class="block font-bold text-slate-700 mb-1">Educational Qualification</label>
-            <select v-model="modalForm.education" class="w-full px-3 py-2 border rounded-lg">
+            <select v-model="modalForm.education" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
               <option>Matriculation / O-Levels (Science)</option>
               <option>Intermediate / F.Sc (Pre-Engineering)</option>
               <option>Graduation / B.Sc</option>
@@ -977,11 +597,11 @@
             </select>
           </div>
 
-          <div v-if="modalSubmitted" class="p-2.5 bg-emerald-50 text-emerald-800 font-bold rounded-lg text-center">
+          <div v-if="modalSubmitted" class="p-2.5 bg-emerald-50 text-emerald-800 font-bold rounded-lg text-center" role="alert">
             ✓ Registration initiated! Our admissions officer will message your WhatsApp with the Entry Test Date.
           </div>
 
-          <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-xl mt-2 transition">
+          <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-xl mt-2 transition focus:outline-none focus:ring-2 focus:ring-amber-500">
             Submit Application
           </button>
         </form>
@@ -989,16 +609,16 @@
     </div>
 
     <!-- Modal 2: Campus & Simulator Video Modal -->
-    <div v-if="openVideoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs">
+    <div v-if="openVideoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
       <div class="bg-slate-900 rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-700 relative text-white">
-        <button @click="openVideoModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
-        <h3 class="text-lg font-black mb-2">Maritime Training Institute • Campus &amp; Simulator Tour</h3>
+        <button @click="openVideoModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold" aria-label="Close video tour modal">✕</button>
+        <h3 id="video-modal-title" class="text-lg font-black mb-2">Maritime Training Institute • Campus &amp; Simulator Tour</h3>
         <p class="text-xs text-slate-300 mb-4">A virtual walkthrough of our full-mission bridge, engine room, and survival grounds.</p>
         
         <div class="relative aspect-video rounded-xl overflow-hidden bg-black flex items-center justify-center border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80" alt="Simulator Video" class="w-full h-full object-cover opacity-60" />
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80" alt="Full Mission Simulator Screen Tour" class="w-full h-full object-cover opacity-60" />
           <div class="absolute text-center p-4">
-            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-xl font-black">▶</div>
+            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-xl font-black" aria-hidden="true">▶</div>
             <div class="text-sm font-bold">Full Virtual Simulation Video Tour</div>
             <div class="text-xs text-slate-300 mt-1">Simulating night passage through Dover Strait with adverse sea conditions.</div>
           </div>
@@ -1007,16 +627,16 @@
     </div>
 
     <!-- Modal 3: Prospectus 2026 Download Modal -->
-    <div v-if="openProspectusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div v-if="openProspectusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs" role="dialog" aria-modal="true" aria-labelledby="prospectus-title">
       <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative text-center">
-        <button @click="openProspectusModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
-        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl">📥</div>
-        <h3 class="text-lg font-black text-slate-900">Download Prospectus 2026</h3>
+        <button @click="openProspectusModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg font-bold" aria-label="Close prospectus modal">✕</button>
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl" aria-hidden="true">📥</div>
+        <h3 id="prospectus-title" class="text-lg font-black text-slate-900">Download Prospectus 2026</h3>
         <p class="text-xs text-slate-500 mt-1 mb-5">Contains complete curriculum details, fee schedule, simulator specifications, and placement records.</p>
         
         <div class="space-y-2">
           <a
-            href="https://mti.edu.pk/wp-content/uploads/2026/05/cropped-MTI-LOGO-FINAL.png"
+            href="/logo-crest.png"
             target="_blank"
             download
             class="block w-full py-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-black text-xs uppercase tracking-wider transition">
@@ -1046,8 +666,15 @@ useHead({
       name: 'description',
       content: 'Official portal of Maritime Training Institute (The Seafu) delivering pre-sea GP-III, HND Nautical Sciences, HND Marine Engineering, and STCW simulator training.',
     },
+    {
+      name: 'keywords',
+      content: 'Maritime Training Institute, MTI, GP-III Pre-Sea, HND Nautical Science, Marine Engineering, STCW 2010, Ship Simulator, Seafu',
+    },
   ],
 });
+
+// ── Mobile Navigation Drawer State ──────────────────────────────────────────
+const mobileNavOpen = ref(false);
 
 // ── Modals State ─────────────────────────────────────────────────────────────
 const openAdmissionModal = ref(false);
@@ -1056,7 +683,19 @@ const openProspectusModal = ref(false);
 const openNoticeModal = ref(false);
 const selectedNotice = ref<any>(null);
 
-const currentSlide = ref(0);
+function handleOpenAdmission(programTitle?: string) {
+  openAdmissionModal.value = true;
+  if (programTitle) {
+    modalForm.value.program = programTitle;
+  }
+}
+
+function handleSelectNotice(notice: any) {
+  selectedNotice.value = notice;
+  openAdmissionModal.value = true;
+}
+
+// ── Hero Slides Data (for LandingHeroSlider component) ────────────────────────
 const heroSlides = [
   {
     tabTitle: 'GP-III Pre-Sea',
@@ -1108,7 +747,7 @@ const heroSlides = [
   },
 ];
 
-// ── Live Notices (MTI Structure) ──────────────────────────────────────────────
+// ── Live Notices Data (for LandingNoticeBoard component) ──────────────────────
 const notices = [
   {
     category: 'Admissions',
@@ -1243,7 +882,7 @@ const filteredCourses = computed(() => {
   return allCourses.filter(c => c.category === selectedCategory.value);
 });
 
-// ── Simulator Suites (MTI Style) ─────────────────────────────────────────────
+// ── Simulator Suites Data (for LandingSimulatorCards component) ───────────────
 const simulatorSuites = [
   {
     title: 'Full-Mission Bridge Simulator (360°)',
@@ -1289,14 +928,41 @@ const simulatorSuites = [
   },
 ];
 
-function openSimulatorDetail(sim: any) {
-  openVideoModal.value = true;
-}
-
 function enrollCourse(course: any) {
   openAdmissionModal.value = true;
   modalForm.value.program = course.title;
 }
+
+// ── Blog / Maritime Insights Data ────────────────────────────────────────────
+const blogPosts = [
+  {
+    category: 'IMO Circular',
+    date: '14 June 2026',
+    readTime: '4 min read',
+    title: 'IMO 2026 Decarbonization Mandates: Dual-Fuel Training Requirements',
+    excerpt: 'A comprehensive briefing on ME Engine operation, LNG/Methanol bunker handling protocols, and safety qualifications required for new generation green merchant fleets.',
+    author: 'Capt. Bilal Tariq',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    category: 'Career Guide',
+    date: '08 June 2026',
+    readTime: '6 min read',
+    title: 'From Pre-Sea GP-III to Chief Mate: The Modern Sea Service Pathway',
+    excerpt: 'Detailed roadmap for ratings aspiring to earn their Second Mate Certificate of Competency (CoC) through structured sea-time logging and verified simulator credits.',
+    author: 'Faculty of Navigation',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    category: 'Regulatory',
+    date: '29 May 2026',
+    readTime: '5 min read',
+    title: 'Port State Control (PSC) Trends: Digital Certificate Verification in 2026',
+    excerpt: 'How Tokyo & Paris MoU inspectors are utilizing ECDSA cryptographic verification for instant STCW document authentication at berth.',
+    author: 'Compliance Desk',
+    image: 'https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=600&q=80',
+  },
+];
 
 // ── Testimonials ─────────────────────────────────────────────────────────────
 const testimonials = [

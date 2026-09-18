@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -43,3 +43,7 @@ logs
 Thumbs.db
 .vscode/
 .idea/
+
+# UI & Design Reference Files
+stitch_the_seafu_landing_platform(UI)/
+stitch_the_seafu_landing_platform*
