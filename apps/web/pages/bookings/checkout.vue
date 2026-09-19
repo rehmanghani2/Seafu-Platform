@@ -8,7 +8,7 @@
           <span>DG SHIPPING CIRCULAR:</span>
         </span>
         <span class="text-slate-300 truncate">
-          MS Notice 04/2024 ? Mandatory Electronic Seatime Verification & STCW-2010 Refresher Compliance
+          MS Notice 04/2024 · Mandatory Electronic Seatime Verification & STCW-2010 Refresher Compliance
         </span>
       </div>
       <div class="hidden md:flex items-center space-x-6 text-[10px] text-slate-400 font-mono">
@@ -40,10 +40,7 @@
             <span>INDoS: <strong>08ZL9431</strong> VERIFIED</span>
           </div>
 
-          <div class="flex items-center bg-[#0d1c33] rounded-lg p-0.5 text-[10px] font-mono border border-slate-700">
-            <button class="px-2 py-0.5 rounded bg-cyan-600 text-white font-bold">INR</button>
-            <button class="px-2 py-0.5 text-slate-400 hover:text-white">USD</button>
-          </div>
+          <CommonCurrencySelector />
 
           <div class="flex items-center space-x-2">
             <div class="w-8 h-8 rounded-full bg-cyan-900 border border-cyan-400/40 flex items-center justify-center text-xs font-bold text-cyan-200">
@@ -237,7 +234,7 @@
                 Valid through 28 Nov 2026 ? Dr. K. Mehta (DG #DOC-401)
               </p>
               <div class="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-500">
-                Fit for Smoke/Dive: <span class="text-emerald-400 font-bold">YES ? CLASS-A</span>
+                Fit for Smoke/Dive: <span class="text-emerald-400 font-bold">YES · CLASS-A</span>
               </div>
             </div>
           </div>
@@ -290,7 +287,6 @@
             <div class="p-5 rounded-xl bg-[#091122] border border-slate-800">
               <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                 <span class="text-xs font-bold text-white flex items-center space-x-1.5">
-                  <span>??</span>
                   <span>Candidate Tax Invoice (Seafarer Receipt)</span>
                 </span>
                 <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-700/50">
@@ -301,23 +297,23 @@
               <div class="mt-4 space-y-2 text-xs font-mono">
                 <div class="flex justify-between text-slate-400">
                   <span>Course Tuition Base:</span>
-                  <span class="text-slate-200">?{{ baseFee.toFixed(2) }}</span>
+                  <span class="text-slate-200">{{ currencyStore.format(baseFee) }}</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                   <span>CGST (9.0%):</span>
-                  <span class="text-slate-200">?{{ cgst.toFixed(2) }}</span>
+                  <span class="text-slate-200">{{ currencyStore.format(cgst) }}</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                   <span>SGST (9.0%):</span>
-                  <span class="text-slate-200">?{{ sgst.toFixed(2) }}</span>
+                  <span class="text-slate-200">{{ currencyStore.format(sgst) }}</span>
                 </div>
                 <div v-if="discountApplied" class="flex justify-between text-emerald-400">
                   <span>Promo Discount:</span>
-                  <span>- ?{{ discountAmount.toFixed(2) }}</span>
+                  <span>- {{ currencyStore.format(discountAmount) }}</span>
                 </div>
                 <div class="pt-2 border-t border-slate-800 flex justify-between font-bold text-sm text-cyan-400">
                   <span>Total Payable:</span>
-                  <span>?{{ discountedPrice.toFixed(2) }}</span>
+                  <span>{{ currencyStore.format(discountedPrice) }}</span>
                 </div>
               </div>
             </div>
@@ -326,7 +322,6 @@
             <div class="p-5 rounded-xl bg-[#091122] border border-slate-800">
               <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                 <span class="text-xs font-bold text-white flex items-center space-x-1.5">
-                  <span>???</span>
                   <span>Institute Escrow Settlement Ledger</span>
                 </span>
                 <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-700/50">
@@ -337,19 +332,19 @@
               <div class="mt-4 space-y-2 text-xs font-mono">
                 <div class="flex justify-between text-slate-400">
                   <span>Gross Collected:</span>
-                  <span class="text-slate-200">?{{ discountedPrice.toFixed(2) }}</span>
+                  <span class="text-slate-200">{{ currencyStore.format(discountedPrice) }}</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                   <span>Platform Commission (10%):</span>
-                  <span class="text-rose-400">- ?{{ commission.toFixed(2) }}</span>
+                  <span class="text-rose-400">- {{ currencyStore.format(commission) }}</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                   <span>Statutory TDS (1%):</span>
-                  <span class="text-rose-400">- ?{{ tds.toFixed(2) }}</span>
+                  <span class="text-rose-400">- {{ currencyStore.format(tds) }}</span>
                 </div>
                 <div class="pt-2 border-t border-slate-800 flex justify-between font-bold text-sm text-emerald-400">
                   <span>Net Escrow Payout:</span>
-                  <span>?{{ netEscrowPayout.toFixed(2) }}</span>
+                  <span>{{ currencyStore.format(netEscrowPayout) }}</span>
                 </div>
               </div>
               <div class="mt-3 text-[10px] text-slate-500 font-mono">
@@ -443,7 +438,7 @@
               class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-xl shadow-cyan-500/20 disabled:opacity-50"
             >
               <span v-if="isProcessing">Initiating Secure Gateway Handshake...</span>
-              <span v-else>Authorize ?{{ discountedPrice.toFixed(2) }} & Lock Seat &rarr;</span>
+              <span v-else>Authorize {{ currencyStore.format(discountedPrice) }} & Lock Seat &rarr;</span>
             </button>
           </div>
         </div>
@@ -452,9 +447,7 @@
       <!-- STEP 3: DG e-Samudra Confirmation & Dossier -->
       <div v-if="currentStep === 3" class="mt-8 space-y-6">
         <div class="p-8 rounded-2xl bg-[#0c1628] border border-cyan-500/40 text-center">
-          <div class="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-400/60 flex items-center justify-center text-3xl mx-auto mb-4">
-            ?
-          </div>
+          <div class="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-400/60 flex items-center justify-center text-emerald-400 mx-auto mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
           <h2 class="text-2xl font-black text-white">Seat Confirmed & Cryptographically Sealed</h2>
           <p class="text-xs text-slate-400 mt-2 max-w-xl mx-auto">
             Booking reference <strong class="font-mono text-cyan-300">{{ bookingReference }}</strong> has been recorded on the DG e-Samudra node and registered with Anglo-Eastern Maritime Academy.
@@ -514,7 +507,7 @@
         </span>
       </div>
       <div>
-        INDoS: <span class="text-slate-300">08ZL9431</span> ? Signed Ledger: <span class="text-cyan-400">0x7B...E98C</span>
+        INDoS: <span class="text-slate-300">08ZL9431</span> · Signed Ledger: <span class="text-cyan-400">0x7B...E98C</span>
       </div>
     </div>
   </div>
@@ -522,7 +515,9 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useCurrencyStore } from '~/stores/currency';
 
+const currencyStore = useCurrencyStore();
 const currentStep = ref(1);
 const declarationAgreed = ref(true);
 const selectedGateway = ref<'RAZORPAY' | 'STRIPE'>('RAZORPAY');
@@ -574,16 +569,23 @@ const netEscrowPayout = computed(() => {
 });
 
 function applyCoupon() {
-  if (couponCode.value.trim().toUpperCase() === 'WOMENSEAFARER') {
+  const code = couponCode.value.trim().toUpperCase();
+  if (code === 'WOMENMARITIME' || code === 'WOMENSEAFARER') {
     discountApplied.value = true;
-    discountAmount.value = Math.round(rawGrossPrice * 0.15); // 15% discount
-    couponMessage.value = '? 15% Women Seafarer Special Grant Applied!';
-  } else if (couponCode.value.trim().toUpperCase() === 'EARLYBIRD') {
+    discountAmount.value = Math.round(rawGrossPrice * 0.30); // 30% discount
+    couponMessage.value = '30% Women in Maritime scholarship grant applied!';
+  } else if (code === 'CADET2026') {
     discountApplied.value = true;
-    discountAmount.value = 500;
-    couponMessage.value = '? ?500 Early Bird Seat Grant Applied!';
+    discountAmount.value = Math.round(rawGrossPrice * 0.15); // 15% cadet discount
+    couponMessage.value = '15% Maritime Academy Cadet discount applied!';
+  } else if (code === 'SEAFU10' || code === 'EARLYBIRD') {
+    discountApplied.value = true;
+    discountAmount.value = Math.round(rawGrossPrice * 0.10); // 10% early bird
+    couponMessage.value = '10% Early Bird seat lock discount applied!';
   } else {
-    couponMessage.value = 'Invalid or expired promotional code';
+    discountApplied.value = false;
+    discountAmount.value = 0;
+    couponMessage.value = 'Invalid code. Try WOMENMARITIME, CADET2026 or SEAFU10';
   }
 }
 

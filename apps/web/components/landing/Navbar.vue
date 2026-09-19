@@ -38,6 +38,8 @@
             </svg>
             <span class="hidden sm:inline">Verify Certificate</span>
           </NuxtLink>
+          <span class="text-slate-700 hidden sm:inline" aria-hidden="true">|</span>
+          <CommonCurrencySelector />
         </div>
       </div>
     </div>

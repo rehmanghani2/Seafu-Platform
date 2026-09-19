@@ -168,6 +168,13 @@
           >
             FAQ
           </button>
+          <NuxtLink
+            to="/courses/bundles"
+            class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition flex items-center gap-1.5 ml-auto"
+          >
+            <span>Career Combos &amp; Bundles (Save 25%)</span>
+            <svg class="w-3 h-3 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </NuxtLink>
         </div>
       </div>
     </header>
