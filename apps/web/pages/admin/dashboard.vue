@@ -38,11 +38,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
         <!-- Brand & Crest -->
         <div class="flex items-center space-x-3.5">
-          <img
-            src="/logo-crest.png"
-            alt="The Seafu"
-            class="w-10 h-10 object-contain rounded-full shadow-xs shrink-0"
-          />
+          <div class="w-10 h-10 rounded-xl bg-[#0A1936] text-white flex items-center justify-center font-bold shadow-xs shrink-0 border border-slate-700/50">
+            <svg class="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
           <div>
             <div class="flex items-center space-x-2">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -61,7 +61,7 @@
 
         <!-- Right Admin Controls -->
         <div class="flex items-center space-x-3 shrink-0">
-          <span class="hidden md:inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-mono font-bold">
+          <span class="hidden md:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 text-xs font-mono font-bold">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
             <span>SUPER_ADMIN</span>
           </span>
@@ -81,8 +81,54 @@
       </div>
     </header>
 
+    <!-- ── REFERENCE HERO / STATUTORY AUTHORITY BANNER ─────────────────── -->
+    <div class="w-full bg-[#0A1936] text-white py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-md">
+      <div class="absolute -right-12 -top-12 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[11px] font-mono tracking-wider uppercase text-blue-200 border border-white/10">
+              MARITIME GOVERNANCE TERMINAL
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-amber-300 bg-amber-950/40 border border-amber-500/30 px-3 py-1 rounded-full font-medium">
+              <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>DNV, MCA &amp; Flag State Approved Authority</span>
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
+            Directorate General of Shipping Governance &amp; Regulatory Node
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+            Centralized administration console governing maritime academy accreditations, STCW syllabus compliance, cryptographic ECDSA certificate issuance, dual-invoicing escrow settlements, and Port State Control compliance.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap shrink-0">
+          <button
+            @click="showCmsModal = true"
+            class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow-xs transition inline-flex items-center gap-1.5"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>Publish Circular</span>
+          </button>
+          <button
+            @click="exportFinancialReport"
+            class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl border border-white/15 transition inline-flex items-center gap-1.5 backdrop-blur-md"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Audit Report (CSV)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- ── STATUTORY TELEMETRY TICKER ─────────────────────────────────── -->
-    <div class="bg-slate-50 border-b border-slate-200/80 text-[11px] py-2 px-4 text-slate-600">
+    <div class="bg-slate-50 border-b border-slate-200/80 text-[11px] py-2.5 px-4 text-slate-600">
       <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center space-x-2.5">
           <span class="font-mono text-blue-700 font-bold uppercase tracking-wider text-[10px]">
@@ -107,64 +153,85 @@
       <!-- ── EXECUTIVE STATS STRIP (4 METRIC CARDS) ───────────────────── -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Card 1: Gross GMV & Dual Invoices -->
-        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-md transition">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-[0_4px_12px_rgba(30,58,138,0.06)] hover:shadow-md transition flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">GROSS BOOKINGS GMV</span>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-              DUAL INVOICED
+            <span class="p-2 bg-blue-50 text-blue-700 rounded-xl border border-blue-100">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-slate-900">₹2,48,00,000</div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            Commission (10%): <strong class="text-blue-700 font-mono">₹24.80 L</strong> &bull; TDS: 1%
+          <div class="mt-3">
+            <div class="text-2xl sm:text-3xl font-black font-mono text-slate-900 tracking-tight">₹2,48,00,000</div>
+            <div class="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5 flex-wrap">
+              <span>Commission:</span>
+              <strong class="text-blue-700 font-mono">₹24.80 L</strong>
+              <span class="text-slate-300">&bull;</span>
+              <span class="text-emerald-600 font-bold font-mono">Dual Invoiced</span>
+            </div>
           </div>
         </div>
 
         <!-- Card 2: Approvals Backlog -->
-        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-md transition">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-[0_4px_12px_rgba(30,58,138,0.06)] hover:shadow-md transition flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">APPROVALS BACKLOG</span>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-              ACTION REQ
+            <span class="p-2 bg-amber-50 text-amber-700 rounded-xl border border-amber-100">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-amber-600">{{ pendingTotal }}</div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            {{ institutes.filter(i=>i.verificationStatus==='PENDING').length }} Inst. &bull; {{ courses.filter(c=>c.approvalStatus==='PENDING_APPROVAL').length }} Courses &bull; {{ pendingCerts.filter(c=>c.status==='PENDING').length }} Certs
+          <div class="mt-3">
+            <div class="text-2xl sm:text-3xl font-black font-mono text-amber-600 tracking-tight">{{ pendingTotal }} Action Req</div>
+            <div class="text-xs text-slate-500 mt-1.5">
+              {{ institutes.filter(i=>i.verificationStatus==='PENDING').length }} Inst. &bull; {{ courses.filter(c=>c.approvalStatus==='PENDING_APPROVAL').length }} Courses &bull; {{ pendingCerts.filter(c=>c.status==='PENDING').length }} Certs
+            </div>
           </div>
         </div>
 
         <!-- Card 3: Platform Users -->
-        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-md transition">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-[0_4px_12px_rgba(30,58,138,0.06)] hover:shadow-md transition flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">REGISTERED MARINERS</span>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-              ACTIVE
+            <span class="p-2 bg-sky-50 text-sky-700 rounded-xl border border-sky-100">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
             </span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-slate-900">18,462</div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            18,420 Seafarers &bull; 42 Maritime Academies
+          <div class="mt-3">
+            <div class="text-2xl sm:text-3xl font-black font-mono text-slate-900 tracking-tight">18,462</div>
+            <div class="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5">
+              <span>18,420 Seafarers</span>
+              <span class="text-slate-300">&bull;</span>
+              <span class="text-blue-700 font-bold">42 Academies</span>
+            </div>
           </div>
         </div>
 
         <!-- Card 4: PSC Integrity -->
-        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-md transition">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-[0_4px_12px_rgba(30,58,138,0.06)] hover:shadow-md transition flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">PSC INTEGRITY RATE</span>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-              ECDSA VERIFIED
+            <span class="p-2 bg-emerald-50 text-emerald-700 rounded-xl border border-emerald-100">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </span>
           </div>
-          <div class="text-3xl font-black mt-2 font-mono text-emerald-600">99.8%</div>
-          <div class="text-xs text-slate-500 mt-1.5">
-            Zero Paris/Tokyo MOU credential detentions
+          <div class="mt-3">
+            <div class="text-2xl sm:text-3xl font-black font-mono text-emerald-600 tracking-tight">99.8%</div>
+            <div class="text-xs text-slate-500 mt-1.5">
+              Zero Paris / Tokyo MoU credential detentions
+            </div>
           </div>
         </div>
       </div>
 
       <!-- ── MULTI-MODULE TAB NAVIGATION BAR ──────────────────────────── -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-2 shadow-xs flex items-center gap-2 overflow-x-auto">
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-2 shadow-xs flex items-center gap-2 overflow-x-auto">
         <button
           v-for="tab in adminTabs"
           :key="tab.id"
@@ -174,11 +241,40 @@
             : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'"
           @click="activeTab = tab.id"
         >
-          <span>{{ tab.icon }}</span>
+          <template v-if="tab.icon === 'building'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </template>
+          <template v-else-if="tab.icon === 'chart'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </template>
+          <template v-else-if="tab.icon === 'cms'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </template>
+          <template v-else-if="tab.icon === 'users'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </template>
+          <template v-else-if="tab.icon === 'finance'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+          </template>
+          <template v-else-if="tab.icon === 'shield'">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </template>
           <span>{{ tab.label }}</span>
           <span
             v-if="tab.badge"
-            class="px-1.5 py-0.5 rounded-full text-[10px] font-mono"
+            class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold"
             :class="activeTab === tab.id ? 'bg-blue-900 text-blue-200' : 'bg-slate-100 text-slate-600'"
           >
             {{ tab.badge }}
@@ -264,24 +360,33 @@
                     </button>
                     <button
                       v-if="inst.verificationStatus !== 'VERIFIED'"
-                      class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs"
+                      class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs inline-flex items-center gap-1"
                       @click="inst.verificationStatus = 'VERIFIED'"
                     >
-                      ✓ Approve
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Approve</span>
                     </button>
                     <button
                       v-if="inst.verificationStatus !== 'REJECTED'"
-                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs"
+                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs inline-flex items-center gap-1"
                       @click="inst.verificationStatus = 'REJECTED'"
                     >
-                      ✕ Reject
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      <span>Reject</span>
                     </button>
                     <button
                       v-if="inst.verificationStatus === 'VERIFIED'"
-                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-amber-200 text-amber-700 hover:bg-amber-50 transition shadow-2xs"
+                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-amber-200 text-amber-700 hover:bg-amber-50 transition shadow-2xs inline-flex items-center gap-1"
                       @click="inst.verificationStatus = 'SUSPENDED'"
                     >
-                      ⚠️ Suspend
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      <span>Suspend</span>
                     </button>
                   </td>
                 </tr>
@@ -347,17 +452,23 @@
                     </button>
                     <button
                       v-if="c.approvalStatus !== 'APPROVED'"
-                      class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs"
+                      class="px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs inline-flex items-center gap-1"
                       @click="c.approvalStatus = 'APPROVED'"
                     >
-                      ✓ Approve
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Approve</span>
                     </button>
                     <button
                       v-if="c.approvalStatus !== 'REJECTED'"
-                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs"
+                      class="px-3 py-1.5 rounded-lg font-bold text-xs border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs inline-flex items-center gap-1"
                       @click="c.approvalStatus = 'REJECTED'"
                     >
-                      ✕ Reject
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      <span>Reject</span>
                     </button>
                   </td>
                 </tr>
@@ -417,14 +528,18 @@
                       class="px-4 py-2 rounded-xl text-xs font-bold transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs inline-flex items-center gap-1.5"
                       @click="signCertificate(cert)"
                     >
-                      <span>🔐</span>
+                      <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
                       <span>Sign &amp; Issue</span>
                     </button>
                     <span
                       v-else
                       class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 inline-flex items-center gap-1"
                     >
-                      <span>✓</span>
+                      <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
                       <span>ECDSA SIGNED</span>
                     </span>
                   </td>
@@ -610,7 +725,15 @@
           <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
               <h4 class="font-black text-slate-900 text-base">Create Regulatory Notice / Advisory</h4>
-              <button @click="showCmsModal = false" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+              <button
+                @click="showCmsModal = false"
+                class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                aria-label="Close modal"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
             <div class="space-y-3.5 text-xs">
               <div>
@@ -775,7 +898,15 @@
           <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-md w-full space-y-4 shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
               <h4 class="font-black text-slate-900 text-base">Onboard Regulatory Officer</h4>
-              <button @click="showAddUserModal = false" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+              <button
+                @click="showAddUserModal = false"
+                class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                aria-label="Close modal"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
             <div class="space-y-3.5 text-xs">
               <div>
@@ -840,14 +971,18 @@
               @click="exportFinancialReport"
               class="px-4 py-2.5 rounded-xl text-xs font-bold border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 transition shadow-2xs flex items-center gap-1.5"
             >
-              <span>📥</span>
+              <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
               <span>Export GST/TDS Report (CSV)</span>
             </button>
             <button
               @click="settleAllPendingEscrows"
               class="px-4 py-2.5 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs flex items-center gap-1.5"
             >
-              <span>⚡</span>
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
               <span>Settle All Ready Escrows</span>
             </button>
           </div>
@@ -976,12 +1111,22 @@
               >
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-black text-slate-900">{{ rev.course }}</span>
-                  <span class="text-xs text-amber-500 font-bold">★ {{ rev.rating }}.0</span>
+                  <span class="text-xs text-amber-500 font-bold inline-flex items-center gap-1 font-mono">
+                    <svg class="w-3.5 h-3.5 fill-current text-amber-400" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span>{{ rev.rating }}.0</span>
+                  </span>
                 </div>
                 <div class="text-[11px] text-slate-600 leading-relaxed italic">"{{ rev.comment }}"</div>
                 <div class="text-[10px] text-slate-400">By {{ rev.student }} &bull; {{ rev.institute }}</div>
                 <div class="flex gap-2 pt-1">
-                  <span class="text-[10px] font-bold text-emerald-600">✓ Verified Review</span>
+                  <span class="text-[10px] font-bold text-emerald-600 inline-flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Verified INDoS Review</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -1026,7 +1171,12 @@
                   >
                     Resolve &amp; Refund
                   </button>
-                  <span v-else class="text-[10px] font-mono text-emerald-600">✓ Arbitrated</span>
+                  <span v-else class="text-[10px] font-mono text-emerald-600 inline-flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Arbitrated</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -1047,7 +1197,15 @@
             <div class="text-[10px] font-mono font-bold text-blue-700 uppercase">COMPREHENSIVE INSPECTION PROGRAMME (CIP)</div>
             <h4 class="font-black text-slate-900 text-lg">{{ selectedInstitute?.name }}</h4>
           </div>
-          <button @click="auditModalOpen = false" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+          <button
+            @click="auditModalOpen = false"
+            class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+            aria-label="Close modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         <div class="space-y-3.5 text-xs text-slate-700">
@@ -1066,15 +1224,30 @@
             <span class="text-[10px] font-mono font-bold text-slate-400 uppercase block mb-1.5">SIMULATOR &amp; LAB INVENTORY AUDIT</span>
             <div class="space-y-1.5">
               <div class="flex items-center justify-between p-2 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
-                <span>✓ Kongsberg / Transas 360° Bridge Simulator</span>
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Kongsberg / Transas 360° Bridge Simulator</span>
+                </span>
                 <span class="font-mono text-[11px]">DNV Class A</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
-                <span>✓ 5-Console Engine Room Simulator (ERS)</span>
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>5-Console Engine Room Simulator (ERS)</span>
+                </span>
                 <span class="font-mono text-[11px]">MAN B&amp;W Slow Speed</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
-                <span>✓ 4-Deck Steel Mock Ship Fire Field</span>
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>4-Deck Steel Mock Ship Fire Field</span>
+                </span>
                 <span class="font-mono text-[11px]">SOLAS Standard</span>
               </div>
             </div>
@@ -1121,7 +1294,15 @@
             <div class="text-[10px] font-mono font-bold text-blue-700 uppercase">IMO MODEL CURRICULUM AUDIT</div>
             <h4 class="font-black text-slate-900 text-lg">{{ selectedCourse?.title }}</h4>
           </div>
-          <button @click="courseModalOpen = false" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+          <button
+            @click="courseModalOpen = false"
+            class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+            aria-label="Close modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         <div class="space-y-3.5 text-xs text-slate-700">
@@ -1213,12 +1394,12 @@ const pendingTotal = computed(() => {
 });
 
 const adminTabs = computed(() => [
-  { id: 'approvals', label: 'Approval Workflows', icon: '🏛️', badge: String(pendingTotal.value) },
-  { id: 'analytics', label: 'Advanced Analytics', icon: '📊', badge: 'Live' },
-  { id: 'cms', label: 'Website CMS', icon: '✍️', badge: null },
-  { id: 'users', label: 'User Management', icon: '👥', badge: '18.4K' },
-  { id: 'finance', label: 'Financial Oversight', icon: '💳', badge: '10%' },
-  { id: 'moderation', label: 'Moderation & Complaints', icon: '🛡️', badge: '3' },
+  { id: 'approvals', label: 'Approval Workflows', icon: 'building', badge: String(pendingTotal.value) },
+  { id: 'analytics', label: 'Advanced Analytics', icon: 'chart', badge: 'Live' },
+  { id: 'cms', label: 'Website CMS', icon: 'cms', badge: null },
+  { id: 'users', label: 'User Management', icon: 'users', badge: '18.4K' },
+  { id: 'finance', label: 'Financial Oversight', icon: 'finance', badge: '10%' },
+  { id: 'moderation', label: 'Moderation & Complaints', icon: 'shield', badge: '3' },
 ]);
 
 // ─── 1. APPROVALS WORKFLOW DATA ──────────────────────────────────────────
