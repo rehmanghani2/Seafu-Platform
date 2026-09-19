@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <header class="sticky top-0 z-50 w-full" :class="scrolled ? 'shadow-xl shadow-slate-900/40' : ''" role="banner">
 
     <!-- TOP TICKER -->
@@ -134,6 +134,27 @@
             </div>
           </div>
 
+          <NuxtLink to="/courses"
+            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Courses
+          </NuxtLink>
+          <NuxtLink to="/webinars"
+            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Webinars
+          </NuxtLink>
+          <NuxtLink to="/publications"
+            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Publications
+          </NuxtLink>
+          <NuxtLink to="/jobs"
+            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Jobs
+          </NuxtLink>
+          <a href="#about"
+            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
+            :class="activeSection === 'about' ? 'text-white' : ''">
+            About Us
+          </a>
           <a href="#testimonials"
             class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
             :class="activeSection === 'testimonials' ? 'text-white' : ''">Testimonials</a>
@@ -143,9 +164,6 @@
           <a href="#contact"
             class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
             :class="activeSection === 'contact' ? 'text-white' : ''">Contact</a>
-          <a href="#blog"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'blog' ? 'text-white' : ''">Blog</a>
         </nav>
 
         <!-- CTAs -->
@@ -187,12 +205,14 @@
         <div v-if="mobileOpen" class="lg:hidden bg-[#071C42] border-t border-white/10 px-4 pt-4 pb-6">
           <nav class="flex flex-col space-y-0.5 text-sm font-medium text-slate-300" aria-label="Mobile Navigation">
             <NuxtLink to="/" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Home</NuxtLink>
+            <NuxtLink to="/courses" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Courses &amp; Programs</NuxtLink>
+            <NuxtLink to="/webinars" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Webinars &amp; Masterclasses</NuxtLink>
+            <NuxtLink to="/publications" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Publications &amp; Library</NuxtLink>
+            <NuxtLink to="/jobs" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Maritime Jobs</NuxtLink>
             <a href="#about" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">About Us</a>
-            <a href="#courses" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Courses &amp; Programs</a>
             <a href="#testimonials" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Testimonials</a>
             <a href="#faqs" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">FAQs</a>
             <a href="#contact" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Contact</a>
-            <a href="#blog" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Blog</a>
           </nav>
           <div class="pt-4 mt-3 border-t border-white/10 grid grid-cols-2 gap-2">
             <NuxtLink to="/auth/login" @click="mobileOpen = false" class="py-2.5 text-center text-xs font-medium text-white bg-white/10 rounded-xl border border-white/15 hover:bg-white/15 transition">Login</NuxtLink>
