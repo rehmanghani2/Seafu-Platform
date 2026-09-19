@@ -629,30 +629,30 @@
 <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB A: SEAFARER DOSSIER VIEW (MATCHES REFERENCE SCREENSHOT)     -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-if="activeTab === 'dossier'" class="p-4 sm:p-6 lg:p-8 space-y-6">
+      <main v-if="activeTab === 'dossier'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
         
         <!-- Sub-Header / Breadcrumb & Status Bar -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <section aria-labelledby="dossier-heading" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div class="flex items-center space-x-2 text-xs text-slate-500 mb-1.5">
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
               <span>User Management</span>
-              <span>&rsaquo;</span>
+              <span aria-hidden="true">&rsaquo;</span>
               <span>Seafarers &amp; Cadets</span>
-              <span>&rsaquo;</span>
+              <span aria-hidden="true">&rsaquo;</span>
               <span class="font-bold text-slate-900">Capt. Rajesh Kumar (SF-99412)</span>
-            </div>
+            </nav>
             <div class="flex items-center gap-2 flex-wrap text-xs">
-              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-2xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true"></span>
                 <span>ACTIVE SEA SERVICE</span>
               </span>
-              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-slate-100 text-slate-700 border border-slate-200 font-mono">
+              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-slate-100 text-slate-800 border border-slate-300 font-mono shadow-2xs">
                 DG SHIPPING VERIFIED
               </span>
-              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-blue-50 text-blue-700 border border-blue-200 font-mono">
+              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-blue-50 text-blue-800 border border-blue-300 font-mono shadow-2xs">
                 STCW 2010 / MANILA COMPLIANT
               </span>
-              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-mono">
+              <span class="px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-purple-50 text-purple-800 border border-purple-300 font-mono shadow-2xs">
                 MLC 2006 TIER 1 VALIDATED
               </span>
             </div>
@@ -662,9 +662,10 @@
           <div class="flex items-center space-x-2.5 shrink-0 flex-wrap">
             <button
               @click="runGisisCheck"
-              class="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition shadow-2xs inline-flex items-center space-x-1.5"
+              type="button"
+              class="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-2xs inline-flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-hidden"
             >
-              <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               <span>Flag State GISIS Check</span>
@@ -672,9 +673,10 @@
 
             <button
               @click="exportImoDossier"
-              class="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition shadow-2xs inline-flex items-center space-x-1.5"
+              type="button"
+              class="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-2xs inline-flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-hidden"
             >
-              <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
               <span>Export IMO Dossier</span>
@@ -683,127 +685,116 @@
             <div class="relative">
               <button
                 @click="showEndorseMenu = !showEndorseMenu"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-2xs inline-flex items-center space-x-1.5"
+                type="button"
+                aria-haspopup="true"
+                :aria-expanded="showEndorseMenu"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-2xs inline-flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-hidden"
               >
                 <span>Manage Endorsements</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
+              <div
+                v-if="showEndorseMenu"
+                class="absolute right-0 mt-1.5 w-52 bg-white rounded-xl shadow-xl border border-slate-200 z-30 py-1.5 text-xs text-slate-700 divide-y divide-slate-100"
+              >
+                <div class="p-2 text-[10px] font-mono text-slate-500 uppercase font-bold">Endorsement Actions</div>
+                <button @click="showEndorseMenu = false; alert('Renewing Flag State GMDSS endorsement...')" class="w-full text-left px-3 py-2 hover:bg-slate-50">Renew GMDSS Endorsement</button>
+                <button @click="showEndorseMenu = false; alert('Initiating Medical PEME Fitness review...')" class="w-full text-left px-3 py-2 hover:bg-slate-50">PEME Fitness Examination</button>
+                <button @click="showEndorseMenu = false; alert('Transmitting ILO 185 biometric identity validation...')" class="w-full text-left px-3 py-2 hover:bg-slate-50 text-blue-700 font-bold">Transmit Biometric SID</button>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Officer Identity & Service Summary Card -->
-        <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
-          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <!-- Officer Identity & Credentials Card -->
+        <section aria-label="Officer Profile and Credentials" class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             
-            <!-- Left: Officer Info & Credentials -->
-            <div class="flex items-start space-x-4">
-              <!-- Officer Photo -->
-              <div class="relative w-20 h-24 rounded-xl overflow-hidden bg-slate-800 border-2 border-slate-300 shadow-sm shrink-0 flex items-center justify-center">
-                <div class="text-center text-white p-1">
-                  <div class="text-2xl">👨‍✈️</div>
-                  <div class="text-[9px] font-bold font-mono uppercase mt-1 text-cyan-300">MASTER</div>
+            <!-- Left: Portrait, Epaulettes, Officer Details -->
+            <div class="flex items-start sm:items-center space-x-4 min-w-0">
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-slate-800 to-[#0A1936] border-2 border-slate-300 p-1 flex items-center justify-center text-white shadow-md">
+                  <svg class="w-12 h-12 text-slate-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg>
                 </div>
-                <span class="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white"></span>
+                <!-- Master 4-Bar Gold Epaulette Badge -->
+                <div class="absolute -bottom-2 -right-1 bg-amber-400 text-slate-950 font-black text-[9px] px-1.5 py-0.5 rounded-md border border-amber-500 shadow-xs flex items-center gap-0.5 font-mono" title="Master Mariner 4-Bar Command Epaulette">
+                  <span>⚓ 4-BAR</span>
+                </div>
               </div>
 
-              <div class="space-y-1">
-                <div class="flex items-center space-x-2">
-                  <h2 class="text-xl font-black text-slate-900 tracking-tight">Capt. Rajesh Kumar</h2>
-                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+              <div class="min-w-0 space-y-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h1 id="dossier-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Capt. Rajesh Kumar</h1>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-mono font-black bg-[#0A1936] text-cyan-300 border border-slate-700">
+                    SF-99412
+                  </span>
                 </div>
-                <div class="text-xs font-bold text-slate-700">Master Mariner (FG – Foreign Going Unlimited)</div>
-                <div class="text-xs text-slate-500 font-mono">
-                  CoC: <span class="font-bold text-slate-800">IND-COC-88914</span> &bull; Exp: <span class="text-slate-800 font-bold">14 Nov 2028</span>
-                </div>
-                <div class="text-xs text-slate-600 flex items-center gap-1 mt-1">
-                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                  <span>Current: <em>Maersk Mc-Kinney Moller (Command Navigation)</em></span>
+                <div class="text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-2 flex-wrap">
+                  <span>Master Mariner (FG Unlimited)</span>
+                  <span aria-hidden="true" class="text-slate-300">&bull;</span>
+                  <span class="text-blue-700 font-mono">CoC IND-COC-88914</span>
                 </div>
 
-                <!-- Structured Registry Sub-block -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-[11px] font-mono text-slate-600">
-                  <div>
-                    <span class="text-slate-400 block text-[9px]">INDOS REGISTRY</span>
-                    <strong class="text-slate-900">04NL8821</strong>
+                <!-- Credential Badges Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-[11px] font-mono">
+                  <div class="p-1.5 rounded-lg bg-slate-50 border border-slate-200">
+                    <span class="text-[9px] text-slate-500 uppercase block font-bold">INDoS No</span>
+                    <strong class="text-slate-800">04NL8821</strong>
                   </div>
-                  <div>
-                    <span class="text-slate-400 block text-[9px]">CDC SEAFARER NO</span>
-                    <strong class="text-slate-900">C-9842109</strong>
+                  <div class="p-1.5 rounded-lg bg-slate-50 border border-slate-200">
+                    <span class="text-[9px] text-slate-500 uppercase block font-bold">CDC (Seaman Book)</span>
+                    <strong class="text-slate-800">C-9842109</strong>
                   </div>
-                  <div>
-                    <span class="text-slate-400 block text-[9px]">BIOMETRIC SID</span>
-                    <strong class="text-slate-900">IN-SID-2022-79140</strong>
+                  <div class="p-1.5 rounded-lg bg-slate-50 border border-slate-200">
+                    <span class="text-[9px] text-slate-500 uppercase block font-bold">Biometric SID</span>
+                    <strong class="text-blue-700 font-bold">IN-SID-2022-79140</strong>
                   </div>
-                  <div>
-                    <span class="text-slate-400 block text-[9px]">FLAG ADMINISTRATION</span>
-                    <strong class="text-blue-700">India (DG Shipping)</strong>
+                  <div class="p-1.5 rounded-lg bg-slate-50 border border-slate-200">
+                    <span class="text-[9px] text-slate-500 uppercase block font-bold">PEME Medical Fit</span>
+                    <strong class="text-emerald-700 font-bold">Valid thru Sep 2026</strong>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Right: 3 KPI Telemetry Badges -->
-            <div class="flex items-center gap-3 w-full lg:w-auto overflow-x-auto pb-1">
-              <!-- KPI 1: Total Sea Time -->
-              <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 min-w-[150px] shrink-0">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase">
-                  <span>TOTAL SEA TIME</span>
-                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div class="text-2xl font-black font-mono text-slate-900 mt-1">3,840</div>
-                <div class="text-[10px] text-slate-500 font-medium">Days (10.5 Yrs)</div>
-                <div class="text-[10px] text-blue-700 font-bold mt-0.5">1,420 Days in Command</div>
+            <div class="grid grid-cols-3 gap-3 border-t lg:border-t-0 lg:border-l border-slate-200 pt-4 lg:pt-0 lg:pl-6 shrink-0">
+              <div class="text-center px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[9px] font-mono font-bold text-slate-500 uppercase block">Total Sea Time</span>
+                <div class="text-lg sm:text-xl font-black font-mono text-slate-900 mt-0.5">3,840</div>
+                <span class="text-[10px] text-slate-600 font-bold">Days / 10.5 Yrs</span>
               </div>
-
-              <!-- KPI 2: STCW Badges -->
-              <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 min-w-[150px] shrink-0">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase">
-                  <span>STCW BADGES</span>
-                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div class="text-2xl font-black font-mono text-slate-900 mt-1">18 / 18</div>
-                <div class="text-[10px] text-slate-500 font-medium">Endorsements Active</div>
-                <div class="text-[10px] text-amber-600 font-bold mt-0.5">1 due in 62d (PSCRB)</div>
+              <div class="text-center px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[9px] font-mono font-bold text-slate-500 uppercase block">STCW Badges</span>
+                <div class="text-lg sm:text-xl font-black font-mono text-blue-700 mt-0.5">18/18</div>
+                <span class="text-[10px] text-emerald-700 font-bold">Zero Deficiencies</span>
               </div>
-
-              <!-- KPI 3: Compliance Index -->
-              <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 min-w-[150px] shrink-0">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase">
-                  <span>COMPLIANCE INDEX</span>
-                  <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div class="text-2xl font-black font-mono text-emerald-600 mt-1">99.8%</div>
-                <div class="text-[10px] text-slate-500 font-medium">PSC Detentions: 0</div>
-                <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Paris / Tokyo MoU Clean</div>
+              <div class="text-center px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[9px] font-mono font-bold text-slate-500 uppercase block">Compliance</span>
+                <div class="text-lg sm:text-xl font-black font-mono text-emerald-700 mt-0.5">99.8%</div>
+                <span class="text-[10px] text-slate-600 font-bold">0 Detentions</span>
               </div>
             </div>
 
           </div>
-        </div>
+        </section>
 
-        <!-- Horizontal Sub-Tabs -->
-        <div class="border-b border-slate-200 flex items-center gap-6 text-xs font-bold overflow-x-auto">
+        <!-- Dossier Sub-Navigation Tabs -->
+        <div role="tablist" aria-label="Dossier Sections" class="border-b border-slate-200 flex items-center space-x-6 text-xs font-bold overflow-x-auto">
           <button
             v-for="sub in dossierTabs"
             :key="sub.id"
+            role="tab"
+            :aria-selected="activeDossierSubTab === sub.id"
             @click="activeDossierSubTab = sub.id"
-            class="pb-3 pt-1 border-b-2 transition whitespace-nowrap"
+            class="pb-3 pt-1 border-b-2 transition whitespace-nowrap focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-hidden"
             :class="activeDossierSubTab === sub.id
               ? 'border-blue-700 text-blue-700 font-black'
-              : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'"
+              : 'border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300'"
           >
             {{ sub.label }}
           </button>
@@ -816,17 +807,19 @@
           <div class="lg:col-span-2 space-y-6">
             
             <!-- Filters Row -->
-            <div class="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
               <div class="flex items-center gap-2 flex-wrap flex-1">
                 <input
                   v-model="dossierVesselFilter"
                   type="text"
                   placeholder="Filter vessel"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-800 text-xs outline-none focus:bg-white focus:border-blue-600 w-36 sm:w-44"
+                  aria-label="Filter voyages by vessel name"
+                  class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 text-xs focus:bg-white focus:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600/20 w-36 sm:w-44"
                 />
                 <select
                   v-model="dossierVesselType"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 text-xs outline-none focus:bg-white font-medium"
+                  aria-label="Filter voyages by vessel type"
+                  class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 text-xs focus:bg-white focus:border-blue-600 font-medium"
                 >
                   <option value="ALL">All Vessel Types (Container, Tanker, Bulk)</option>
                   <option value="CONTAINER">Container</option>
@@ -835,7 +828,8 @@
                 </select>
                 <select
                   v-model="dossierRankFilter"
-                  class="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 text-xs outline-none focus:bg-white font-medium"
+                  aria-label="Filter voyages by officer rank"
+                  class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 text-xs focus:bg-white focus:border-blue-600 font-medium"
                 >
                   <option value="ALL">Rank: All (Master, C/O, 2/O)</option>
                   <option value="MASTER">Master</option>
@@ -843,14 +837,16 @@
                 </select>
               </div>
 
-              <div class="flex items-center space-x-3 text-[11px] font-mono text-slate-500">
-                <span>SHOWING: <strong>4 VERIFIED VOYAGES</strong></span>
+              <div class="flex items-center space-x-3 text-[11px] font-mono text-slate-600">
+                <span>SHOWING: <strong class="text-slate-900">4 VERIFIED VOYAGES</strong></span>
                 <button
                   @click="downloadVoyagesCsv"
-                  class="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700"
-                  title="Download CSV"
+                  type="button"
+                  class="p-1.5 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-hidden"
+                  title="Download voyages CSV log"
+                  aria-label="Download voyages CSV log"
                 >
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                 </button>
@@ -861,161 +857,141 @@
             <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
               <div class="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                  <svg class="w-4 h-4 text-blue-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 text-blue-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  <h3 class="text-sm font-black text-slate-900 tracking-tight">Verified Continuous Discharge Ledger (CDB/CDC Log)</h3>
+                  <h2 class="text-sm font-black text-slate-900 tracking-tight">Verified Continuous Discharge Ledger (CDB/CDC Log)</h2>
                 </div>
-                <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                <span class="text-[10px] font-mono font-bold text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-300">
                   FLAG STATE SYNCHRONIZED
                 </span>
               </div>
 
-              <div class="overflow-x-auto">
+              <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Continuous Discharge Ledger Table">
                 <table class="w-full text-left text-xs">
-                  <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] tracking-wider border-b border-slate-200">
+                  <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] tracking-wider border-b border-slate-200">
                     <tr>
-                      <th class="px-4 py-3">VESSEL &amp; SPEC</th>
-                      <th class="px-4 py-3">CAPACITY / RANK</th>
-                      <th class="px-4 py-3">VOYAGE WINDOW</th>
-                      <th class="px-4 py-3 text-center">SEA DAYS</th>
-                      <th class="px-4 py-3 text-right">AUTHENTICATION &amp; STAMP</th>
+                      <th scope="col" class="px-4 py-3">VESSEL &amp; SPEC</th>
+                      <th scope="col" class="px-4 py-3">CAPACITY / RANK</th>
+                      <th scope="col" class="px-4 py-3">VOYAGE WINDOW</th>
+                      <th scope="col" class="px-4 py-3 text-center">SEA DAYS</th>
+                      <th scope="col" class="px-4 py-3 text-right">AUTHENTICATION &amp; STAMP</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-slate-100 text-slate-700">
-                    <!-- Row 1: Maersk Mc-Kinney Moller -->
                     <tr class="hover:bg-slate-50/70 transition">
                       <td class="px-4 py-3.5">
                         <div class="font-black text-slate-900">Maersk Mc-Kinney Moller</div>
-                        <div class="text-[10px] text-slate-400 font-mono">
-                          IMO 9619987 &bull; 18,278 TEU (165,000 DWT)
-                        </div>
-                        <div class="text-[10px] text-slate-500">MAN B&amp;W 8S95ME-C9.2 (59,360 kW)</div>
+                        <div class="text-[10px] text-slate-500 font-mono">IMO 9619987 &bull; 18,278 TEU (165,000 DWT)</div>
+                        <div class="text-[10px] text-slate-600">MAN B&amp;W 8S95ME-C9.2 (59,360 kW)</div>
                       </td>
                       <td class="px-4 py-3.5">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#0A1936] text-white font-mono">
-                          MASTER / CAPTAIN
-                        </span>
-                        <div class="text-[10px] text-slate-500 mt-1">Command Navigation</div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#0A1936] text-white font-mono">MASTER / CAPTAIN</span>
+                        <div class="text-[10px] text-slate-600 mt-1">Command Navigation</div>
                       </td>
                       <td class="px-4 py-3.5 font-mono text-[11px]">
-                        <div class="font-bold text-slate-800">12 Jan 2024 &ndash; 18 Aug 2024</div>
-                        <div class="text-[10px] text-slate-500">Rotterdam (NLD) &rarr; Singapore (SGP)</div>
+                        <div class="font-bold text-slate-900">12 Jan 2024 &ndash; 18 Aug 2024</div>
+                        <div class="text-[10px] text-slate-600">Rotterdam (NLD) &rarr; Singapore (SGP)</div>
                       </td>
                       <td class="px-4 py-3.5 text-center">
                         <div class="text-base font-black font-mono text-slate-900">219</div>
-                        <div class="text-[10px] text-slate-400">Days</div>
+                        <div class="text-[10px] text-slate-500">Days</div>
                       </td>
                       <td class="px-4 py-3.5 text-right">
-                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-cyan-800 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">
-                          <svg class="w-3 h-3 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-cyan-900 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-300">
+                          <svg class="w-3 h-3 text-cyan-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                           </svg>
                           <span>Maersk Fleet Ops API</span>
                         </span>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Supt. Capt. J. Westergaard</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Supt. Capt. J. Westergaard</div>
                       </td>
                     </tr>
 
-                    <!-- Row 2: Mumbai Maersk -->
                     <tr class="hover:bg-slate-50/70 transition">
                       <td class="px-4 py-3.5">
                         <div class="font-black text-slate-900">Mumbai Maersk</div>
-                        <div class="text-[10px] text-slate-400 font-mono">
-                          IMO 9780471 &bull; 20,568 TEU (214,286 DWT)
-                        </div>
-                        <div class="text-[10px] text-slate-500">MAN B&amp;W G95ME (Triple-E 2nd Gen)</div>
+                        <div class="text-[10px] text-slate-500 font-mono">IMO 9780471 &bull; 20,568 TEU (214,286 DWT)</div>
+                        <div class="text-[10px] text-slate-600">MAN B&amp;W G95ME (Triple-E 2nd Gen)</div>
                       </td>
                       <td class="px-4 py-3.5">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#0A1936] text-white font-mono">
-                          MASTER / CAPTAIN
-                        </span>
-                        <div class="text-[10px] text-slate-500 mt-1">Command Navigation</div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#0A1936] text-white font-mono">MASTER / CAPTAIN</span>
+                        <div class="text-[10px] text-slate-600 mt-1">Command Navigation</div>
                       </td>
                       <td class="px-4 py-3.5 font-mono text-[11px]">
-                        <div class="font-bold text-slate-800">05 Mar 2023 &ndash; 28 Oct 2023</div>
-                        <div class="text-[10px] text-slate-500">Tanjung Pelepas &rarr; Bremerhaven</div>
+                        <div class="font-bold text-slate-900">05 Mar 2023 &ndash; 28 Oct 2023</div>
+                        <div class="text-[10px] text-slate-600">Tanjung Pelepas &rarr; Bremerhaven</div>
                       </td>
                       <td class="px-4 py-3.5 text-center">
                         <div class="text-base font-black font-mono text-slate-900">237</div>
-                        <div class="text-[10px] text-slate-400">Days</div>
+                        <div class="text-[10px] text-slate-500">Days</div>
                       </td>
                       <td class="px-4 py-3.5 text-right">
-                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                          <svg class="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-blue-900 bg-blue-50 px-2 py-0.5 rounded border border-blue-300">
+                          <svg class="w-3 h-3 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                           </svg>
                           <span>DG Flag Surveyor Endorsed</span>
                         </span>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Mumbai MMD Verified Log #811</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Mumbai MMD Verified Log #811</div>
                       </td>
                     </tr>
 
-                    <!-- Row 3: Safmarine Chilka -->
                     <tr class="hover:bg-slate-50/70 transition">
                       <td class="px-4 py-3.5">
                         <div class="font-black text-slate-900">Safmarine Chilka</div>
-                        <div class="text-[10px] text-slate-400 font-mono">
-                          IMO 9355355 &bull; 4,568 TEU Post-Panamax
-                        </div>
-                        <div class="text-[10px] text-slate-500">Sulzer 8RTA84C</div>
+                        <div class="text-[10px] text-slate-500 font-mono">IMO 9355355 &bull; 4,568 TEU Post-Panamax</div>
+                        <div class="text-[10px] text-slate-600">Sulzer 8RTA84C</div>
                       </td>
                       <td class="px-4 py-3.5">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-white font-mono">
-                          CHIEF OFFICER
-                        </span>
-                        <div class="text-[10px] text-slate-500 mt-1">Cargo &amp; Nav Watch (4-8)</div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-white font-mono">CHIEF OFFICER</span>
+                        <div class="text-[10px] text-slate-600 mt-1">Cargo &amp; Nav Watch (4-8)</div>
                       </td>
                       <td class="px-4 py-3.5 font-mono text-[11px]">
-                        <div class="font-bold text-slate-800">10 Feb 2022 &ndash; 15 Sep 2022</div>
-                        <div class="text-[10px] text-slate-500">Durban &rarr; Jebel Ali &rarr; Nhava Sheva</div>
+                        <div class="font-bold text-slate-900">10 Feb 2022 &ndash; 15 Sep 2022</div>
+                        <div class="text-[10px] text-slate-600">Durban &rarr; Jebel Ali &rarr; Nhava Sheva</div>
                       </td>
                       <td class="px-4 py-3.5 text-center">
                         <div class="text-base font-black font-mono text-slate-900">217</div>
-                        <div class="text-[10px] text-slate-400">Days</div>
+                        <div class="text-[10px] text-slate-500">Days</div>
                       </td>
                       <td class="px-4 py-3.5 text-right">
-                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                          <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                          <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                           </svg>
                           <span>Discharge Book Stamped</span>
                         </span>
-                        <div class="text-[10px] text-slate-400 mt-0.5">Shipping Master Kolkata</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Shipping Master Kolkata</div>
                       </td>
                     </tr>
 
-                    <!-- Row 4: APL Raffles -->
                     <tr class="hover:bg-slate-50/70 transition">
                       <td class="px-4 py-3.5">
                         <div class="font-black text-slate-900">APL Raffles</div>
-                        <div class="text-[10px] text-slate-400 font-mono">
-                          IMO 9632064 &bull; 14,000 TEU Container
-                        </div>
-                        <div class="text-[10px] text-slate-500">MAN B&amp;W 11S90ME-C9.2</div>
+                        <div class="text-[10px] text-slate-500 font-mono">IMO 9632064 &bull; 14,000 TEU Container</div>
+                        <div class="text-[10px] text-slate-600">MAN B&amp;W 11S90ME-C9.2</div>
                       </td>
                       <td class="px-4 py-3.5">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-white font-mono">
-                          CHIEF OFFICER
-                        </span>
-                        <div class="text-[10px] text-slate-500 mt-1">Cargo &amp; Nav Watch</div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-white font-mono">CHIEF OFFICER</span>
+                        <div class="text-[10px] text-slate-600 mt-1">Cargo &amp; Nav Watch</div>
                       </td>
                       <td class="px-4 py-3.5 font-mono text-[11px]">
-                        <div class="font-bold text-slate-800">14 Aug 2020 &ndash; 22 Feb 2021</div>
-                        <div class="text-[10px] text-slate-500">Shanghai &rarr; Los Angeles</div>
+                        <div class="font-bold text-slate-900">14 Aug 2020 &ndash; 22 Feb 2021</div>
+                        <div class="text-[10px] text-slate-600">Shanghai &rarr; Los Angeles</div>
                       </td>
                       <td class="px-4 py-3.5 text-center">
                         <div class="text-base font-black font-mono text-slate-900">192</div>
-                        <div class="text-[10px] text-slate-400">Days</div>
+                        <div class="text-[10px] text-slate-500">Days</div>
                       </td>
                       <td class="px-4 py-3.5 text-right">
-                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                          <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                          <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                           </svg>
                           <span>Discharge Book Stamped</span>
                         </span>
-                        <div class="text-[10px] text-slate-400 mt-0.5">CMA CGM / APL Fleet Personnel</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">CMA CGM / APL Fleet Personnel</div>
                       </td>
                     </tr>
                   </tbody>
@@ -1023,9 +999,9 @@
               </div>
 
               <!-- Pagination Footer -->
-              <div class="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
-                <span>Continuous Discharge Certificate Record Page: <strong>14 of 28</strong></span>
-                <button class="text-blue-700 font-bold hover:underline">
+              <div class="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600 font-mono">
+                <span>Continuous Discharge Record Page: <strong class="text-slate-900">14 of 28</strong></span>
+                <button type="button" @click="downloadVoyagesCsv" class="text-blue-700 font-bold hover:underline focus-visible:ring-2 focus-visible:ring-blue-600">
                   View Full Archive Logbook (10.5 Years) &rarr;
                 </button>
               </div>
@@ -1033,15 +1009,13 @@
 
             <!-- Bridge Watchkeeping & Voyage Domain Breakdown -->
             <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-4">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-10h2v8h-2V6z" />
-                  </svg>
-                  <div>
-                    <h3 class="text-sm font-black text-slate-900 tracking-tight">Bridge Watchkeeping &amp; Voyage Domain Breakdown</h3>
-                    <p class="text-[11px] text-slate-500">Distribution of command experience across critical maritime navigational environments</p>
-                  </div>
+              <div class="flex items-center space-x-2">
+                <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-10h2v8h-2V6z" />
+                </svg>
+                <div>
+                  <h3 class="text-sm font-black text-slate-900 tracking-tight">Bridge Watchkeeping &amp; Voyage Domain Breakdown</h3>
+                  <p class="text-[11px] text-slate-600">Distribution of command experience across critical maritime navigational environments</p>
                 </div>
               </div>
 
@@ -1049,38 +1023,38 @@
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div class="flex justify-between items-baseline">
-                    <span class="text-[9px] font-mono text-slate-500 uppercase">OPEN OCEAN</span>
-                    <span class="text-base font-black font-mono text-blue-700">62%</span>
+                    <span class="text-[9px] font-mono text-slate-600 uppercase font-bold">OPEN OCEAN</span>
+                    <span class="text-base font-black font-mono text-blue-800">62%</span>
                   </div>
-                  <div class="text-[11px] font-bold text-slate-800 mt-1">2,380 Days</div>
-                  <div class="text-[9px] text-slate-400">Transpacific / Atlantic</div>
+                  <div class="text-[11px] font-bold text-slate-900 mt-1">2,380 Days</div>
+                  <div class="text-[10px] text-slate-500">Transpacific / Atlantic</div>
                 </div>
 
                 <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div class="flex justify-between items-baseline">
-                    <span class="text-[9px] font-mono text-slate-500 uppercase">CONGESTED TSS</span>
-                    <span class="text-base font-black font-mono text-cyan-700">24%</span>
+                    <span class="text-[9px] font-mono text-slate-600 uppercase font-bold">CONGESTED TSS</span>
+                    <span class="text-base font-black font-mono text-cyan-800">24%</span>
                   </div>
-                  <div class="text-[11px] font-bold text-slate-800 mt-1">921 Days</div>
-                  <div class="text-[9px] text-slate-400">Malacca, Dover, Singapore</div>
+                  <div class="text-[11px] font-bold text-slate-900 mt-1">921 Days</div>
+                  <div class="text-[10px] text-slate-500">Malacca, Dover, Singapore</div>
                 </div>
 
                 <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div class="flex justify-between items-baseline">
-                    <span class="text-[9px] font-mono text-slate-500 uppercase">TYPHOON/HEAVY SEA</span>
-                    <span class="text-base font-black font-mono text-amber-700">10%</span>
+                    <span class="text-[9px] font-mono text-slate-600 uppercase font-bold">TYPHOON/HEAVY SEA</span>
+                    <span class="text-base font-black font-mono text-amber-800">10%</span>
                   </div>
-                  <div class="text-[11px] font-bold text-slate-800 mt-1">384 Days</div>
-                  <div class="text-[9px] text-slate-400">North Pacific Winter &amp; SW</div>
+                  <div class="text-[11px] font-bold text-slate-900 mt-1">384 Days</div>
+                  <div class="text-[10px] text-slate-500">North Pacific Winter &amp; SW</div>
                 </div>
 
                 <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div class="flex justify-between items-baseline">
-                    <span class="text-[9px] font-mono text-slate-500 uppercase">POLAR / ICE RIM</span>
-                    <span class="text-base font-black font-mono text-indigo-700">4%</span>
+                    <span class="text-[9px] font-mono text-slate-600 uppercase font-bold">POLAR / ICE RIM</span>
+                    <span class="text-base font-black font-mono text-indigo-800">4%</span>
                   </div>
-                  <div class="text-[11px] font-bold text-slate-800 mt-1">155 Days</div>
-                  <div class="text-[9px] text-slate-400">Sub-Arctic Baltic winter</div>
+                  <div class="text-[11px] font-bold text-slate-900 mt-1">155 Days</div>
+                  <div class="text-[10px] text-slate-500">Sub-Arctic Baltic winter</div>
                 </div>
               </div>
 
@@ -1088,7 +1062,7 @@
               <div class="bg-[#0A1936] text-white rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
                 <div class="flex items-center space-x-3">
                   <div class="w-8 h-8 rounded-lg bg-blue-600/30 border border-blue-400/40 flex items-center justify-center shrink-0 text-cyan-300">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
@@ -1099,7 +1073,8 @@
                 </div>
                 <button
                   @click="verifySeaLogPdf"
-                  class="px-3.5 py-1.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-lg transition shrink-0"
+                  type="button"
+                  class="px-3.5 py-1.5 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg transition shrink-0 focus-visible:ring-2 focus-visible:ring-cyan-200"
                 >
                   Verify Official Sea Log PDF
                 </button>
@@ -1116,12 +1091,12 @@
             <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-3.5">
               <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                 <div class="flex items-center space-x-2">
-                  <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                   <h3 class="text-xs font-black text-slate-900 uppercase tracking-wider">Cryptographic Verification</h3>
                 </div>
-                <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span class="text-[9px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-300">
                   LIVE SHA-256
                 </span>
               </div>
@@ -1129,18 +1104,17 @@
               <!-- Visual QR Hash Block -->
               <div class="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
                 <div class="w-14 h-14 bg-white border border-slate-300 rounded-lg p-1.5 shrink-0 flex items-center justify-center">
-                  <!-- Simplified QR code vector -->
-                  <svg class="w-full h-full text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-full h-full text-slate-800" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm8-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-4h2v2h-2v-2zm4 0h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2 2h2v4h-2v-4zm4 0h2v2h-2v-2z"/>
                   </svg>
                 </div>
                 <div class="min-w-0">
-                  <span class="text-[9px] font-mono text-slate-400 uppercase block">IMO GISIS LEDGER HASH</span>
+                  <span class="text-[9px] font-mono text-slate-500 uppercase block font-bold">IMO GISIS LEDGER HASH</span>
                   <div class="text-[11px] font-mono font-bold text-blue-700 truncate">
                     9e4a8b2c...311b8f04
                   </div>
-                  <div class="text-[10px] text-emerald-600 flex items-center gap-1 mt-0.5">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="text-[10px] text-emerald-700 font-bold flex items-center gap-1 mt-0.5">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     <span>Matched with India DG Shipping Core</span>
@@ -1148,127 +1122,68 @@
                 </div>
               </div>
 
-              <button
-                @click="triggerBiometricSid"
-                class="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-center space-x-2"
-              >
-                <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.75 9.564M12 11c0-3.517.991-6.799 2.75-9.564M12 11h.01M5.75 19.564C3.991 16.799 3 13.517 3 11c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.517-.991 5.799-2.75 8.564" />
-                </svg>
-                <span>Trigger Biometric SID Verification</span>
-              </button>
+              <!-- Interactive Buttons -->
+              <div class="space-y-2 pt-1 text-xs">
+                <button
+                  @click="triggerBiometricSid"
+                  type="button"
+                  class="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold transition flex items-center justify-between focus-visible:ring-2 focus-visible:ring-blue-600"
+                >
+                  <span class="flex items-center space-x-2">
+                    <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2H9.17A3.001 3.001 0 0112 14z" />
+                    </svg>
+                    <span>Audit Biometric SID Record</span>
+                  </span>
+                  <span class="text-[10px] font-mono text-slate-500 font-bold">ILO 185</span>
+                </button>
+              </div>
             </div>
 
-            <!-- Card 2: STCW Endorsements -->
-            <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-3">
+            <!-- Card 2: Next Scheduled Assignment -->
+            <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-3.5">
               <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                <div>
-                  <h3 class="text-xs font-black text-slate-900 uppercase tracking-wider">STCW Endorsements</h3>
-                  <p class="text-[10px] text-slate-400">Regulation II/2 Master &amp; High-Voltage</p>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <h3 class="text-xs font-black text-slate-900 uppercase tracking-wider">Next Scheduled Assignment</h3>
                 </div>
-                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
-                  18 Total
+                <span class="text-[9px] font-mono font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-300">
+                  CONFIRMED
                 </span>
               </div>
 
-              <div class="space-y-2 text-xs">
-                <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start justify-between gap-2">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex justify-between items-start">
                   <div>
-                    <div class="font-bold text-slate-900">Master CoC (STCW Reg II/2 Unlimited)</div>
-                    <div class="text-[10px] text-slate-500 font-mono">DG QR Verified A9941a8 &bull; Exp: 14 Nov 2028</div>
+                    <h4 class="font-black text-slate-900 text-sm">Emma Maersk</h4>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">IMO 9321483 &bull; 15,500 TEU</span>
                   </div>
-                  <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">VALID</span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-[#0A1936] text-cyan-300">
+                    MASTER
+                  </span>
                 </div>
 
-                <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start justify-between gap-2">
+                <div class="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-slate-200/60 font-mono">
                   <div>
-                    <div class="font-bold text-slate-900">ECDIS Type Specific (3 Systems)</div>
-                    <div class="text-[10px] text-slate-500 font-mono">JRC, Furuno FMD-3300, Sperry VisionMaster</div>
+                    <span class="text-[9px] text-slate-500 uppercase font-bold block">Embarkation Port</span>
+                    <strong class="text-slate-800">Felixstowe (GBR)</strong>
                   </div>
-                  <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">VALID</span>
-                </div>
-
-                <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start justify-between gap-2">
                   <div>
-                    <div class="font-bold text-slate-900">Bridge Resource Management (BRM)</div>
-                    <div class="text-[10px] text-slate-500 font-mono">Warsash Maritime Academy (Manned Model)</div>
+                    <span class="text-[9px] text-slate-500 uppercase font-bold block">Sign-On Window</span>
+                    <strong class="text-slate-800">15 Oct 2026</strong>
                   </div>
-                  <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">VALID</span>
-                </div>
-
-                <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start justify-between gap-2">
-                  <div>
-                    <div class="font-bold text-slate-900">Advanced Fire Fighting (AFF)</div>
-                    <div class="text-[10px] text-slate-500 font-mono">STCW A-VI/3 &bull; Refresher done Oct 2023</div>
-                  </div>
-                  <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">VALID</span>
-                </div>
-
-                <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-start justify-between gap-2">
-                  <div>
-                    <div class="font-bold text-slate-900">Medical Care Onboard (STCW A-VI/4-2)</div>
-                    <div class="text-[10px] text-slate-500 font-mono">Full Medical Officer Certification</div>
-                  </div>
-                  <span class="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">VALID</span>
-                </div>
-
-                <!-- Urgent Refresher alert -->
-                <div class="p-2.5 rounded-xl border border-rose-200 bg-rose-50/60 space-y-1">
-                  <div class="flex items-center justify-between">
-                    <div class="font-bold text-rose-900 flex items-center gap-1.5">
-                      <svg class="w-3.5 h-3.5 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                      <span>Survival Craft &amp; Rescue Boats (PSCRB)</span>
-                    </div>
-                    <span class="text-[9px] font-mono font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-300 uppercase">REFRESHER</span>
-                  </div>
-                  <div class="text-[10px] text-rose-700 font-mono">STCW A-VI/2-1 &bull; <strong>Expires in 62 Days</strong></div>
-                  <div class="text-[10px] text-rose-800 font-medium">Slot Reserved: Anglo-Eastern Academy Mumbai</div>
-                </div>
-              </div>
-
-              <button class="w-full text-center text-xs font-bold text-blue-700 hover:underline pt-1">
-                Inspect all 18 STCW Manila Certificates &rarr;
-              </button>
-            </div>
-
-            <!-- Card 3: Next Scheduled Assignment -->
-            <div class="bg-[#071022] text-white border border-slate-800 rounded-2xl p-5 shadow-md space-y-3.5">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                <span class="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase">NEXT SCHEDULED ASSIGNMENT</span>
-                <span class="text-[9px] font-mono font-bold text-cyan-300 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">
-                  100% Cleared
-                </span>
-              </div>
-
-              <div>
-                <h4 class="text-base font-black text-white">Emma Maersk</h4>
-                <div class="text-xs text-slate-400 font-mono">Ultra-Large Container Vessel &bull; 15,500 TEU</div>
-                <div class="text-xs text-cyan-400 font-mono mt-0.5">Departure: 10 Oct 2024 &bull; Felixstowe (GBR)</div>
-              </div>
-
-              <div class="space-y-1.5 text-xs text-slate-300 font-mono">
-                <div class="flex justify-between">
-                  <span class="text-slate-400">MLC 2006 Rest Hours Audit:</span>
-                  <span class="text-emerald-400 font-bold">Compliant (78h Rest/Wk)</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-slate-400">Flag State Endorsement (DIS):</span>
-                  <span class="text-white font-bold">Danish Maritime CRA Ready</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-slate-400">Vessel Specific Matrix:</span>
-                  <span class="text-emerald-400 font-bold">Matches Company Tier 1</span>
                 </div>
               </div>
 
               <button
                 @click="endorseDeploymentDispatch"
-                class="w-full py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs transition shadow-sm flex items-center justify-center space-x-2"
+                type="button"
+                class="w-full py-2.5 px-4 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white text-xs font-bold transition shadow-xs flex items-center justify-center space-x-2 focus-visible:ring-2 focus-visible:ring-blue-400"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
                 <span>Endorse Deployment Dispatch</span>
               </button>
@@ -1283,38 +1198,61 @@
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB B: OVERVIEW & ANALYTICS                                     -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'overview'" class="p-4 sm:p-6 lg:p-8 space-y-6">
+      <main v-else-if="activeTab === 'overview'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <!-- Breadcrumb & Header -->
+        <section aria-labelledby="overview-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+              <span>Fleet Operations</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span>System Analytics</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="font-bold text-slate-900">Performance &amp; Revenue Telemetry</span>
+            </nav>
+            <h1 id="overview-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Operational Fleet Performance &amp; Clearinghouse
+            </h1>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-600" aria-hidden="true"></span>
+              <span>LIVE REGULATORY FEED ACTIVE</span>
+            </span>
+          </div>
+        </section>
+
         <!-- 4 Stat Metric Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">GROSS BOOKINGS GMV</span>
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">GROSS BOOKINGS GMV</span>
             <div class="mt-3">
               <div class="text-3xl font-black font-mono text-slate-900 tracking-tight">₹2,48,00,000</div>
-              <div class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+              <div class="text-xs text-slate-600 mt-1 flex items-center gap-1.5">
                 <span>Commission (10%):</span>
-                <strong class="text-blue-700 font-mono">₹24.80 L</strong>
+                <strong class="text-blue-800 font-mono font-bold">₹24.80 L</strong>
               </div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">APPROVALS BACKLOG</span>
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">APPROVALS BACKLOG</span>
             <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-amber-600 tracking-tight">{{ pendingTotal }} Action Req</div>
-              <div class="text-xs text-slate-500 mt-1">Institutes, Courses &amp; Certs</div>
+              <div class="text-3xl font-black font-mono text-amber-700 tracking-tight">{{ pendingTotal }} Action Req</div>
+              <div class="text-xs text-slate-600 mt-1">Institutes, Courses &amp; Certs</div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">REGISTERED MARINERS</span>
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">REGISTERED MARINERS</span>
             <div class="mt-3">
               <div class="text-3xl font-black font-mono text-slate-900 tracking-tight">18,462</div>
-              <div class="text-xs text-slate-500 mt-1">18,420 Seafarers &bull; 42 Academies</div>
+              <div class="text-xs text-slate-600 mt-1">18,420 Seafarers &bull; 42 Academies</div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">PSC INTEGRITY RATE</span>
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">PSC INTEGRITY RATE</span>
             <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-emerald-600 tracking-tight">99.8%</div>
-              <div class="text-xs text-slate-500 mt-1">Zero Detentions Reported</div>
+              <div class="text-3xl font-black font-mono text-emerald-700 tracking-tight">99.8%</div>
+              <div class="text-xs text-slate-600 mt-1">Zero Detentions Reported</div>
             </div>
           </div>
         </div>
@@ -1322,31 +1260,31 @@
         <!-- Funnel Engine & Revenue -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-            <h3 class="text-base font-black text-slate-900 mb-4">Seafarer Journey Telemetry</h3>
+            <h2 class="text-base font-black text-slate-900 mb-4">Seafarer Journey Telemetry</h2>
             <div class="space-y-3">
               <div v-for="(stage, idx) in funnelStages" :key="stage.name" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
                 <div class="flex justify-between text-xs mb-1 font-bold">
-                  <span>{{ stage.name }}</span>
-                  <span class="text-blue-700 font-mono">{{ stage.count.toLocaleString() }} ({{ stage.rate }}%)</span>
+                  <span class="text-slate-800">{{ stage.name }}</span>
+                  <span class="text-blue-800 font-mono">{{ stage.count.toLocaleString() }} ({{ stage.rate }}%)</span>
                 </div>
-                <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
-                  <div class="h-full bg-blue-600 rounded-full" :style="{ width: stage.rate + '%' }"></div>
+                <div class="h-2 rounded-full bg-slate-200 overflow-hidden" role="progressbar" :aria-valuenow="stage.rate" aria-valuemin="0" aria-valuemax="100">
+                  <div class="h-full bg-blue-700 rounded-full" :style="{ width: stage.rate + '%' }"></div>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-            <h3 class="text-base font-black text-slate-900 mb-4">Monthly Platform Commission Revenue (INR)</h3>
+            <h2 class="text-base font-black text-slate-900 mb-4">Monthly Platform Commission Clearinghouse (INR)</h2>
             <div class="space-y-3 text-xs">
               <div v-for="m in monthlyRevenue" :key="m.month" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
                 <div>
                   <div class="font-black text-slate-900">{{ m.month }}</div>
-                  <div class="text-[11px] text-slate-500 font-mono">Gross GMV: ₹{{ (m.gmv / 100000).toFixed(1) }}L</div>
+                  <div class="text-[11px] text-slate-600 font-mono">Gross GMV: ₹{{ (m.gmv / 100000).toFixed(1) }}L</div>
                 </div>
                 <div class="text-right font-mono">
-                  <div class="font-bold text-blue-700">₹{{ (m.commission / 1000).toFixed(0) }}K Platform Fee</div>
-                  <div class="text-[10px] text-emerald-600 font-bold">GST: ₹{{ m.gst }} &bull; TDS: ₹{{ m.tds }}</div>
+                  <div class="font-bold text-blue-800">₹{{ (m.commission / 1000).toFixed(0) }}K Platform Fee</div>
+                  <div class="text-[10px] text-emerald-700 font-bold">GST: ₹{{ m.gst }} &bull; TDS: ₹{{ m.tds }}</div>
                 </div>
               </div>
             </div>
@@ -1357,260 +1295,422 @@
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB C: APPROVAL WORKFLOWS                                       -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'approvals'" class="p-4 sm:p-6 lg:p-8 space-y-6">
-        <div class="flex items-center justify-between gap-4 flex-wrap">
-          <div class="flex gap-2">
-            <button
-              v-for="sub in ['INSTITUTES', 'COURSES', 'CERTIFICATES']"
-              :key="sub"
-              class="px-4 py-2 rounded-xl text-xs font-bold transition border"
-              :class="approvalSubTab === sub
-                ? 'bg-blue-50 text-blue-700 border-blue-300 font-black'
-                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'"
-              @click="approvalSubTab = sub"
-            >
-              {{ sub }} QUEUE
-            </button>
+      <main v-else-if="activeTab === 'approvals'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <section aria-labelledby="approvals-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+              <span>Fleet Operations</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span>Regulatory Workflows</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="font-bold text-slate-900">Approvals &amp; Accreditation Backlog</span>
+            </nav>
+            <h1 id="approvals-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Statutory Approvals &amp; CIP Accreditations
+            </h1>
           </div>
+          <button
+            @click="showAddBatchModal = true"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs inline-flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>+ New Approval Batch</span>
+          </button>
+        </section>
+
+        <!-- Queue Sub-Tabs -->
+        <div role="tablist" aria-label="Approval Queues" class="flex gap-2 border-b border-slate-200 pb-3">
+          <button
+            v-for="sub in ['INSTITUTES', 'COURSES', 'CERTIFICATES']"
+            :key="sub"
+            role="tab"
+            :aria-selected="approvalSubTab === sub"
+            class="px-4 py-2 rounded-xl text-xs font-bold transition border focus-visible:ring-2 focus-visible:ring-blue-600"
+            :class="approvalSubTab === sub
+              ? 'bg-blue-50 text-blue-800 border-blue-300 font-black'
+              : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'"
+            @click="approvalSubTab = sub"
+          >
+            {{ sub }} QUEUE
+          </button>
         </div>
 
         <!-- Institutes Queue -->
         <div v-if="approvalSubTab === 'INSTITUTES'" class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
           <div class="p-4 border-b border-slate-100 flex items-center justify-between">
-            <h3 class="text-sm font-black text-slate-900">Maritime Academy Accreditations Queue</h3>
-            <span class="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+            <h2 class="text-sm font-black text-slate-900">Maritime Academy Accreditations Queue</h2>
+            <span class="text-xs font-mono font-bold text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-300">
               {{ institutes.length }} Registered
             </span>
           </div>
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">ACADEMY</th>
-                <th class="px-4 py-3">DG APPROVAL NO</th>
-                <th class="px-4 py-3">STATUS</th>
-                <th class="px-4 py-3 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="inst in institutes" :key="inst.id" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3 font-bold text-slate-900">{{ inst.name }}</td>
-                <td class="px-4 py-3 font-mono font-bold text-blue-700">{{ inst.dgNo }}</td>
-                <td class="px-4 py-3">
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border" :class="statusPillClass(inst.verificationStatus)">
-                    {{ inst.verificationStatus }}
-                  </span>
-                </td>
-                <td class="px-4 py-3 text-right space-x-2">
-                  <button @click="openInstituteAuditModal(inst)" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200">
-                    Audit &rarr;
-                  </button>
-                  <button v-if="inst.verificationStatus !== 'VERIFIED'" @click="inst.verificationStatus = 'VERIFIED'" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 text-white">
-                    Approve
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Institutes Accreditation Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">ACADEMY</th>
+                  <th scope="col" class="px-4 py-3">LOCATION</th>
+                  <th scope="col" class="px-4 py-3">CIP GRADE</th>
+                  <th scope="col" class="px-4 py-3">STATUS</th>
+                  <th scope="col" class="px-4 py-3 text-right">ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="inst in institutes" :key="inst.id" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5">
+                    <div class="font-bold text-slate-900">{{ inst.name }}</div>
+                    <div class="text-[10px] text-slate-500 font-mono">CODE: {{ inst.code }}</div>
+                  </td>
+                  <td class="px-4 py-3.5 text-slate-700">{{ inst.location }}</td>
+                  <td class="px-4 py-3.5">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-50 text-blue-800 border border-blue-300">
+                      {{ inst.cipGrade }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border" :class="statusPillClass(inst.verificationStatus)">
+                      {{ inst.verificationStatus }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3.5 text-right space-x-2">
+                    <button
+                      @click="openInstituteAuditModal(inst)"
+                      type="button"
+                      class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 focus-visible:ring-2 focus-visible:ring-blue-600"
+                    >
+                      Audit &rarr;
+                    </button>
+                    <button
+                      v-if="inst.verificationStatus !== 'VERIFIED'"
+                      @click="inst.verificationStatus = 'VERIFIED'"
+                      type="button"
+                      class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-700 hover:bg-emerald-800 text-white focus-visible:ring-2 focus-visible:ring-emerald-400"
+                    >
+                      Approve
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Courses Queue -->
         <div v-if="approvalSubTab === 'COURSES'" class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
           <div class="p-4 border-b border-slate-100 flex items-center justify-between">
-            <h3 class="text-sm font-black text-slate-900">STCW Course Syllabus &amp; Quotas</h3>
+            <h2 class="text-sm font-black text-slate-900">STCW Course Syllabus &amp; Approval Quotas</h2>
           </div>
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">COURSE TITLE</th>
-                <th class="px-4 py-3">INSTITUTE</th>
-                <th class="px-4 py-3">FEE</th>
-                <th class="px-4 py-3">STATUS</th>
-                <th class="px-4 py-3 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="c in courses" :key="c.id" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3 font-bold text-slate-900">{{ c.title }} ({{ c.code }})</td>
-                <td class="px-4 py-3 text-slate-600">{{ c.institute }}</td>
-                <td class="px-4 py-3 font-mono font-bold">₹{{ c.price.toLocaleString() }}</td>
-                <td class="px-4 py-3">
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border" :class="statusPillClass(c.approvalStatus)">
-                    {{ c.approvalStatus }}
-                  </span>
-                </td>
-                <td class="px-4 py-3 text-right space-x-2">
-                  <button @click="openCourseModal(c)" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100">Syllabus</button>
-                  <button v-if="c.approvalStatus !== 'APPROVED'" @click="c.approvalStatus = 'APPROVED'" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 text-white">Approve</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Course Approval Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">COURSE TITLE</th>
+                  <th scope="col" class="px-4 py-3">INSTITUTE</th>
+                  <th scope="col" class="px-4 py-3">TUITION FEE</th>
+                  <th scope="col" class="px-4 py-3">STATUS</th>
+                  <th scope="col" class="px-4 py-3 text-right">ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="c in courses" :key="c.id" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5">
+                    <div class="font-bold text-slate-900">{{ c.title }}</div>
+                    <div class="text-[10px] text-blue-700 font-mono font-bold">{{ c.code }}</div>
+                  </td>
+                  <td class="px-4 py-3.5 text-slate-700">{{ c.institute }}</td>
+                  <td class="px-4 py-3.5 font-mono font-bold text-slate-900">₹{{ c.price.toLocaleString() }}</td>
+                  <td class="px-4 py-3.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border" :class="statusPillClass(c.approvalStatus)">
+                      {{ c.approvalStatus }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3.5 text-right space-x-2">
+                    <button
+                      @click="openCourseModal(c)"
+                      type="button"
+                      class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 focus-visible:ring-2 focus-visible:ring-blue-600"
+                    >
+                      Syllabus
+                    </button>
+                    <button
+                      v-if="c.approvalStatus !== 'APPROVED'"
+                      @click="c.approvalStatus = 'APPROVED'"
+                      type="button"
+                      class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-700 hover:bg-emerald-800 text-white focus-visible:ring-2 focus-visible:ring-emerald-400"
+                    >
+                      Approve
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Certificates Queue -->
         <div v-if="approvalSubTab === 'CERTIFICATES'" class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
           <div class="p-4 border-b border-slate-100 flex items-center justify-between">
-            <h3 class="text-sm font-black text-slate-900">Certificate Cryptographic Signing Desk</h3>
+            <h2 class="text-sm font-black text-slate-900">Candidate Certificate Cryptographic Signing Desk</h2>
           </div>
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">CANDIDATE</th>
-                <th class="px-4 py-3">COURSE</th>
-                <th class="px-4 py-3">ATTENDANCE</th>
-                <th class="px-4 py-3 text-right">SIGNING</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="cert in pendingCerts" :key="cert.id" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3 font-bold text-slate-900">{{ cert.candidate }} ({{ cert.indos }})</td>
-                <td class="px-4 py-3">{{ cert.course }}</td>
-                <td class="px-4 py-3 font-mono font-bold text-emerald-600">{{ cert.attendance }}%</td>
-                <td class="px-4 py-3 text-right">
-                  <button
-                    v-if="cert.status === 'PENDING'"
-                    @click="signCertificate(cert)"
-                    class="px-3.5 py-1.5 rounded-xl bg-[#0A1936] text-white font-bold text-xs"
-                  >
-                    ECDSA Sign &amp; Issue
-                  </button>
-                  <span v-else class="text-emerald-600 font-mono font-bold text-xs">✓ SIGNED</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Certificate Signing Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">CANDIDATE</th>
+                  <th scope="col" class="px-4 py-3">COURSE</th>
+                  <th scope="col" class="px-4 py-3">ATTENDANCE</th>
+                  <th scope="col" class="px-4 py-3 text-right">SIGNING</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="cert in pendingCerts" :key="cert.id" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5">
+                    <div class="font-bold text-slate-900">{{ cert.candidate }}</div>
+                    <div class="text-[10px] font-mono text-blue-700 font-bold">INDoS: {{ cert.indos }}</div>
+                  </td>
+                  <td class="px-4 py-3.5 text-slate-700">{{ cert.course }}</td>
+                  <td class="px-4 py-3.5 font-mono font-bold text-emerald-700">{{ cert.attendance }}%</td>
+                  <td class="px-4 py-3.5 text-right">
+                    <button
+                      v-if="cert.status === 'PENDING'"
+                      @click="signCertificate(cert)"
+                      type="button"
+                      class="px-3.5 py-1.5 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white font-bold text-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+                    >
+                      ECDSA Sign &amp; Issue
+                    </button>
+                    <span v-else class="text-emerald-700 font-mono font-bold text-xs">✓ SIGNED</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
 
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB D: USER MANAGEMENT                                          -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'users'" class="p-4 sm:p-6 lg:p-8 space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <main v-else-if="activeTab === 'users'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <section aria-labelledby="users-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 class="text-lg font-black text-slate-900">User Identity &amp; Access Registry</h3>
-            <p class="text-xs text-slate-500">Manage cadets, active seafarers, institute registrars, and regulatory auditors</p>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+              <span>Fleet Operations</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span>Personnel &amp; Governance</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="font-bold text-slate-900">Verified Maritime Registry</span>
+            </nav>
+            <h1 id="users-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              User Identity &amp; Access Registry
+            </h1>
+            <p class="text-xs text-slate-600">Active seafarers, cadets, institute registrars, and regulatory compliance auditors</p>
           </div>
           <button
             @click="showAddUserModal = true"
-            class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
           >
-            + Onboard Officer
+            + Onboard Regulatory Officer
           </button>
+        </section>
+
+        <!-- Users Filter Bar -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2 flex-wrap flex-1">
+            <input
+              v-model="userSearch"
+              type="text"
+              placeholder="Search user by name or INDoS..."
+              aria-label="Search users by name, email, or INDoS"
+              class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 text-xs focus:bg-white focus:border-blue-600 w-48 sm:w-64"
+            />
+            <select
+              v-model="userRoleFilter"
+              aria-label="Filter users by maritime role"
+              class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 text-xs focus:bg-white focus:border-blue-600 font-medium"
+            >
+              <option value="ALL">All Roles (Seafarer, Institute Admin, Super Admin)</option>
+              <option value="SEAFARER">Seafarer</option>
+              <option value="INSTITUTE_ADMIN">Institute Admin</option>
+              <option value="SUPER_ADMIN">Super Admin</option>
+            </select>
+          </div>
+          <span class="text-[11px] font-mono text-slate-600">Total Registered: <strong class="text-slate-900">{{ users.length }} Officers</strong></span>
         </div>
 
         <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">NAME &amp; EMAIL</th>
-                <th class="px-4 py-3">ROLE</th>
-                <th class="px-4 py-3">INDOS / AFFILIATION</th>
-                <th class="px-4 py-3 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="u in users" :key="u.id" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3">
-                  <div class="font-bold text-slate-900">{{ u.name }}</div>
-                  <div class="text-[10px] text-slate-500">{{ u.email }}</div>
-                </td>
-                <td class="px-4 py-3">
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border" :class="roleBadgeClass(u.role)">
-                    {{ u.role }}
-                  </span>
-                </td>
-                <td class="px-4 py-3 font-mono font-bold text-blue-700">{{ u.indos || u.institute || '—' }}</td>
-                <td class="px-4 py-3 text-right space-x-2">
-                  <button
-                    v-if="u.role === 'SEAFARER'"
-                    @click="activeTab = 'dossier'"
-                    class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100"
-                  >
-                    View Dossier &rarr;
-                  </button>
-                  <button @click="resetUserAuth(u.name)" class="text-xs font-bold text-slate-500 hover:text-slate-800">
-                    Reset 2FA
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Users Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">NAME &amp; EMAIL</th>
+                  <th scope="col" class="px-4 py-3">ROLE</th>
+                  <th scope="col" class="px-4 py-3">INDOS / AFFILIATION</th>
+                  <th scope="col" class="px-4 py-3 text-right">ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="u in users" :key="u.id" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5">
+                    <div class="font-bold text-slate-900">{{ u.name }}</div>
+                    <div class="text-[10px] text-slate-600 font-mono">{{ u.email }}</div>
+                  </td>
+                  <td class="px-4 py-3.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border" :class="roleBadgeClass(u.role)">
+                      {{ u.role }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3.5 font-mono font-bold text-blue-800">{{ u.indos || u.institute || '—' }}</td>
+                  <td class="px-4 py-3.5 text-right space-x-2">
+                    <button
+                      v-if="u.role === 'SEAFARER'"
+                      @click="activeTab = 'dossier'"
+                      type="button"
+                      class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 focus-visible:ring-2 focus-visible:ring-blue-600"
+                    >
+                      View Dossier &rarr;
+                    </button>
+                    <button
+                      @click="resetUserAuth(u.name)"
+                      type="button"
+                      class="text-xs font-bold text-slate-600 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-600"
+                    >
+                      Reset 2FA
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
 
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB E: FINANCIAL OVERSIGHT                                      -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'finance'" class="p-4 sm:p-6 lg:p-8 space-y-6">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-black text-slate-900">Dual-Invoicing Escrow Ledger &amp; Commissions</h3>
-          <button @click="exportFinancialReport" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">
+      <main v-else-if="activeTab === 'finance'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <section aria-labelledby="finance-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+              <span>Fleet Operations</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span>Financial Oversight</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="font-bold text-slate-900">Escrow Clearinghouse &amp; Payouts</span>
+            </nav>
+            <h1 id="finance-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Dual-Invoicing Escrow Clearinghouse &amp; Commissions
+            </h1>
+          </div>
+          <button
+            @click="exportFinancialReport"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
             Export GST/TDS Report (CSV)
           </button>
-        </div>
+        </section>
 
         <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">REF</th>
-                <th class="px-4 py-3">CANDIDATE &amp; COURSE</th>
-                <th class="px-4 py-3">TOTAL GMV</th>
-                <th class="px-4 py-3">COMMISSION (10%)</th>
-                <th class="px-4 py-3">PAYOUT (90%)</th>
-                <th class="px-4 py-3 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="l in ledgerRecords" :key="l.ref" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3 font-mono font-bold text-blue-700">{{ l.ref }}</td>
-                <td class="px-4 py-3">{{ l.student }} &bull; {{ l.course }}</td>
-                <td class="px-4 py-3 font-mono font-bold">₹{{ l.amount.toLocaleString() }}</td>
-                <td class="px-4 py-3 font-mono text-blue-700 font-bold">₹{{ l.commission }}</td>
-                <td class="px-4 py-3 font-mono text-emerald-600 font-bold">₹{{ l.payout.toLocaleString() }}</td>
-                <td class="px-4 py-3 text-right">
-                  <button v-if="l.status === 'ESCROW_HELD'" @click="releaseEscrow(l)" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0A1936] text-white">
-                    Release Escrow
-                  </button>
-                  <span v-else class="text-emerald-600 font-mono text-xs font-bold">SETTLED</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Financial Ledger Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">REF ID</th>
+                  <th scope="col" class="px-4 py-3">CANDIDATE &amp; COURSE</th>
+                  <th scope="col" class="px-4 py-3">TOTAL GMV</th>
+                  <th scope="col" class="px-4 py-3">COMMISSION (10%)</th>
+                  <th scope="col" class="px-4 py-3">PAYOUT (90%)</th>
+                  <th scope="col" class="px-4 py-3 text-right">ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="l in ledgerRecords" :key="l.ref" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5 font-mono font-bold text-blue-800">{{ l.ref }}</td>
+                  <td class="px-4 py-3.5">
+                    <div class="font-bold text-slate-900">{{ l.student }}</div>
+                    <div class="text-[10px] text-slate-600">{{ l.course }}</div>
+                  </td>
+                  <td class="px-4 py-3.5 font-mono font-bold text-slate-900">₹{{ l.amount.toLocaleString() }}</td>
+                  <td class="px-4 py-3.5 font-mono text-blue-800 font-bold">₹{{ l.commission }}</td>
+                  <td class="px-4 py-3.5 font-mono text-emerald-700 font-bold">₹{{ l.payout.toLocaleString() }}</td>
+                  <td class="px-4 py-3.5 text-right">
+                    <button
+                      v-if="l.status === 'ESCROW_HELD'"
+                      @click="releaseEscrow(l)"
+                      type="button"
+                      class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white focus-visible:ring-2 focus-visible:ring-blue-400"
+                    >
+                      Release Escrow
+                    </button>
+                    <span v-else class="text-emerald-700 font-mono text-xs font-bold">SETTLED</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
 
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB F: REVIEWS & MODERATION                                     -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'moderation'" class="p-4 sm:p-6 lg:p-8 space-y-6">
-        <h3 class="text-lg font-black text-slate-900">Maritime Reviews &amp; Dispute Arbitration Console</h3>
+      <main v-else-if="activeTab === 'moderation'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <section aria-labelledby="moderation-heading">
+          <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+            <span>Fleet Operations</span>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Quality Assurance</span>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span class="font-bold text-slate-900">Cadet Reviews &amp; Dispute Arbitration</span>
+          </nav>
+          <h1 id="moderation-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            Maritime Reviews &amp; Dispute Arbitration Console
+          </h1>
+        </section>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
-            <h4 class="font-black text-xs uppercase text-slate-900">Verified INDoS Cadet Reviews</h4>
+            <h2 class="font-black text-xs uppercase text-slate-900 tracking-wider">Verified INDoS Cadet Reviews</h2>
             <div v-for="rev in studentReviews" :key="rev.id" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
               <div class="flex justify-between font-bold">
-                <span>{{ rev.course }}</span>
-                <span class="text-amber-500">★ {{ rev.rating }}.0</span>
+                <span class="text-slate-900">{{ rev.course }}</span>
+                <span class="text-amber-600 flex items-center gap-1 font-mono font-bold">
+                  <svg class="w-3.5 h-3.5 fill-amber-500 text-amber-500" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <span>{{ rev.rating }}.0</span>
+                </span>
               </div>
-              <p class="text-slate-600 italic mt-1">"{{ rev.comment }}"</p>
-              <div class="text-[10px] text-slate-400 mt-1">By {{ rev.student }}</div>
+              <p class="text-slate-700 italic mt-1.5">"{{ rev.comment }}"</p>
+              <div class="text-[11px] text-slate-600 font-medium mt-1">Submitted by: <strong class="text-slate-900">{{ rev.student }}</strong></div>
             </div>
           </div>
 
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
-            <h4 class="font-black text-xs uppercase text-slate-900">Grievance &amp; Dispute Tickets</h4>
-            <div v-for="tkt in complaintDesk" :key="tkt.id" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs flex justify-between items-center">
+            <h2 class="font-black text-xs uppercase text-slate-900 tracking-wider">Grievance &amp; Dispute Tickets</h2>
+            <div v-for="tkt in complaintDesk" :key="tkt.id" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs flex justify-between items-center gap-2">
               <div>
-                <div class="font-mono text-blue-700 font-bold">{{ tkt.id }} &bull; {{ tkt.priority }}</div>
-                <div class="font-bold text-slate-800">{{ tkt.subject }}</div>
-                <div class="text-[10px] text-slate-500">Filed by: {{ tkt.filer }}</div>
+                <div class="font-mono text-blue-800 font-bold text-[11px]">{{ tkt.id }} &bull; PRIORITY: {{ tkt.priority }}</div>
+                <div class="font-bold text-slate-900 text-sm mt-0.5">{{ tkt.subject }}</div>
+                <div class="text-[11px] text-slate-600 mt-0.5">Filed by: <strong class="text-slate-900">{{ tkt.filer }}</strong></div>
               </div>
-              <button v-if="tkt.status !== 'RESOLVED'" @click="tkt.status = 'RESOLVED'" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0A1936] text-white">
+              <button
+                v-if="tkt.status !== 'RESOLVED'"
+                @click="tkt.status = 'RESOLVED'"
+                type="button"
+                class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shrink-0 focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
                 Resolve
               </button>
-              <span v-else class="text-emerald-600 font-bold text-xs">RESOLVED</span>
+              <span v-else class="text-emerald-700 font-bold text-xs shrink-0">✓ RESOLVED</span>
             </div>
           </div>
         </div>
@@ -1619,109 +1719,423 @@
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB G: CMS & CONTENT                                            -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
-      <main v-else-if="activeTab === 'cms'" class="p-4 sm:p-6 lg:p-8 space-y-6">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-black text-slate-900">DG Shipping Statutory Circulars &amp; Notices</h3>
-          <button @click="showCmsModal = true" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">
-            + Publish Circular
+      <main v-else-if="activeTab === 'cms'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <section aria-labelledby="cms-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
+              <span>Fleet Operations</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span>Communications</span>
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="font-bold text-slate-900">DG Shipping Circulars &amp; Syllabus Advisories</span>
+            </nav>
+            <h1 id="cms-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              DG Shipping Statutory Circulars &amp; Notices
+            </h1>
+          </div>
+          <button
+            @click="showCmsModal = true"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            + Publish Circular Notice
           </button>
-        </div>
+        </section>
 
         <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] border-b border-slate-200">
-              <tr>
-                <th class="px-4 py-3">TITLE</th>
-                <th class="px-4 py-3">CATEGORY</th>
-                <th class="px-4 py-3">AUDIENCE</th>
-                <th class="px-4 py-3 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr v-for="post in cmsPosts" :key="post.id" class="hover:bg-slate-50/70">
-                <td class="px-4 py-3 font-bold text-slate-900">{{ post.title }}</td>
-                <td class="px-4 py-3 font-mono text-blue-700 font-bold">{{ post.category }}</td>
-                <td class="px-4 py-3 text-slate-600">{{ post.targetAudience }}</td>
-                <td class="px-4 py-3 text-right">
-                  <button @click="deletePost(post.id)" class="text-rose-600 font-bold hover:underline">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Regulatory Circulars Table">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[10px] border-b border-slate-200">
+                <tr>
+                  <th scope="col" class="px-4 py-3">TITLE &amp; REFERENCE</th>
+                  <th scope="col" class="px-4 py-3">CATEGORY</th>
+                  <th scope="col" class="px-4 py-3">TARGET AUDIENCE</th>
+                  <th scope="col" class="px-4 py-3 text-right">ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr v-for="post in cmsPosts" :key="post.id" class="hover:bg-slate-50/70 transition">
+                  <td class="px-4 py-3.5 font-bold text-slate-900">{{ post.title }}</td>
+                  <td class="px-4 py-3.5">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-50 text-blue-800 border border-blue-300">
+                      {{ post.category }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3.5 text-slate-700">{{ post.targetAudience }}</td>
+                  <td class="px-4 py-3.5 text-right">
+                    <button
+                      @click="deletePost(post.id)"
+                      type="button"
+                      class="text-rose-700 font-bold hover:underline focus-visible:ring-2 focus-visible:ring-rose-600"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
 
     </div>
 
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <!-- MODALS                                                            -->
+    <!-- ACCESSIBLE MODALS (WCAG 2.1 AA COMPLIANT)                         -->
     <!-- ═════════════════════════════════════════════════════════════════ -->
-    <div v-if="showCmsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
+
+    <!-- Modal 1: New Approval Batch -->
+    <div
+      v-if="showAddBatchModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-batch-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+    >
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-lg w-full space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b pb-3">
-          <h4 class="font-black text-slate-900 text-base">Create Regulatory Notice</h4>
-          <button @click="showCmsModal = false" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600/10 text-blue-700 flex items-center justify-center font-bold">
+              ⚓
+            </div>
+            <h2 id="modal-batch-title" class="font-black text-slate-900 text-base">New Approval Batch</h2>
+          </div>
+          <button
+            @click="showAddBatchModal = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition focus-visible:ring-2 focus-visible:ring-blue-600"
+            aria-label="Close batch modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <div class="space-y-3 text-xs">
-          <input v-model="newArticle.title" type="text" placeholder="Notice Title" class="w-full p-2.5 rounded-xl border bg-slate-50" />
-          <textarea v-model="newArticle.content" rows="4" placeholder="Body Content" class="w-full p-2.5 rounded-xl border bg-slate-50"></textarea>
-        </div>
-        <div class="flex justify-end gap-2 pt-2">
-          <button @click="showCmsModal = false" class="px-4 py-2 rounded-xl text-xs font-bold border">Cancel</button>
-          <button @click="publishArticle" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">Publish</button>
-        </div>
+
+        <form @submit.prevent="createBatch" class="space-y-3.5 text-xs">
+          <div>
+            <label for="batch-title" class="block font-bold text-slate-800 mb-1">Batch Identifier / Name</label>
+            <input
+              id="batch-title"
+              v-model="newBatch.title"
+              type="text"
+              required
+              placeholder="e.g. AFF-2026-OCT-B04"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600/20"
+            />
+          </div>
+
+          <div>
+            <label for="batch-institute" class="block font-bold text-slate-800 mb-1">Training Academy</label>
+            <select
+              id="batch-institute"
+              v-model="newBatch.institute"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 font-medium"
+            >
+              <option value="Anglo-Eastern Maritime Academy">Anglo-Eastern Maritime Academy (IND-001)</option>
+              <option value="Samundra Institute of Maritime Studies">Samundra Institute of Maritime Studies (IND-004)</option>
+              <option value="Goa Offshore Safety Institute">Goa Offshore Safety Institute (IND-034)</option>
+              <option value="Maritime Training Academy Mumbai">Maritime Training Academy Mumbai (IND-042)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="batch-course" class="block font-bold text-slate-800 mb-1">STCW Model Course</label>
+            <select
+              id="batch-course"
+              v-model="newBatch.course"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 font-medium"
+            >
+              <option value="Advanced Fire Fighting (STCW A-VI/3)">Advanced Fire Fighting (AFF - STCW A-VI/3)</option>
+              <option value="High Voltage Safety & Switchgear (STCW A-III/1-2)">High Voltage Safety (STCW A-III/1-2)</option>
+              <option value="ECDIS Electronic Navigation (STCW A-II/1)">ECDIS Navigation (STCW A-II/1)</option>
+              <option value="PSCRB Survival Craft (STCW A-VI/2-1)">PSCRB Survival Craft (STCW A-VI/2-1)</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="batch-date" class="block font-bold text-slate-800 mb-1">Commencement Date</label>
+              <input
+                id="batch-date"
+                v-model="newBatch.startDate"
+                type="date"
+                required
+                class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 font-mono"
+              />
+            </div>
+            <div>
+              <label for="batch-capacity" class="block font-bold text-slate-800 mb-1">Candidate Quota (Max 24)</label>
+              <input
+                id="batch-capacity"
+                v-model.number="newBatch.capacity"
+                type="number"
+                min="1"
+                max="30"
+                required
+                class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 font-mono"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
+            <button
+              @click="showAddBatchModal = false"
+              type="button"
+              class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 hover:bg-slate-50 text-slate-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+            >
+              Issue Batch Endorsement
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
-    <div v-if="showAddUserModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <!-- Modal 2: Create Regulatory Notice -->
+    <div
+      v-if="showCmsModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-cms-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+    >
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
+        <div class="flex items-center justify-between border-b pb-3">
+          <h2 id="modal-cms-title" class="font-black text-slate-900 text-base">Create DG Shipping Regulatory Notice</h2>
+          <button
+            @click="showCmsModal = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition focus-visible:ring-2 focus-visible:ring-blue-600"
+            aria-label="Close notice modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form @submit.prevent="publishArticle" class="space-y-3.5 text-xs">
+          <div>
+            <label for="cms-title" class="block font-bold text-slate-800 mb-1">Advisory Title</label>
+            <input
+              id="cms-title"
+              v-model="newArticle.title"
+              type="text"
+              required
+              placeholder="e.g. Revised Minimum Safe Sea-Time Criteria 2026"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600"
+            />
+          </div>
+          <div>
+            <label for="cms-content" class="block font-bold text-slate-800 mb-1">Body Directives</label>
+            <textarea
+              id="cms-content"
+              v-model="newArticle.content"
+              rows="4"
+              required
+              placeholder="Enter official statutory circular content..."
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600"
+            ></textarea>
+          </div>
+          <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+            <button
+              @click="showCmsModal = false"
+              type="button"
+              class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 hover:bg-slate-50 text-slate-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+            >
+              Publish Circular
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 3: Onboard Regulatory Officer -->
+    <div
+      v-if="showAddUserModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-user-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+    >
       <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-md w-full space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b pb-3">
-          <h4 class="font-black text-slate-900 text-base">Onboard Regulatory Officer</h4>
-          <button @click="showAddUserModal = false" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+          <h2 id="modal-user-title" class="font-black text-slate-900 text-base">Onboard Regulatory Officer</h2>
+          <button
+            @click="showAddUserModal = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition focus-visible:ring-2 focus-visible:ring-blue-600"
+            aria-label="Close user modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form @submit.prevent="createUser" class="space-y-3.5 text-xs">
+          <div>
+            <label for="user-name" class="block font-bold text-slate-800 mb-1">Full Officer Name</label>
+            <input
+              id="user-name"
+              v-model="newUser.name"
+              type="text"
+              required
+              placeholder="e.g. Capt. Sandeep Joshi"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600"
+            />
+          </div>
+          <div>
+            <label for="user-email" class="block font-bold text-slate-800 mb-1">Official Maritime Email</label>
+            <input
+              id="user-email"
+              v-model="newUser.email"
+              type="email"
+              required
+              placeholder="e.g. sandeep.joshi@mmd.gov.in"
+              class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-blue-600 font-mono"
+            />
+          </div>
+          <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+            <button
+              @click="showAddUserModal = false"
+              type="button"
+              class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 hover:bg-slate-50 text-slate-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+            >
+              Create Credentials
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 4: CIP Audit Evaluation -->
+    <div
+      v-if="auditModalOpen"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-audit-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+    >
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
+        <div class="flex items-center justify-between border-b pb-3">
+          <h2 id="modal-audit-title" class="font-black text-slate-900 text-base">
+            CIP Comprehensive Audit Evaluation &bull; {{ selectedInstitute?.name }}
+          </h2>
+          <button
+            @click="auditModalOpen = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition focus-visible:ring-2 focus-visible:ring-blue-600"
+            aria-label="Close audit modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
         <div class="space-y-3 text-xs">
-          <input v-model="newUser.name" type="text" placeholder="Full Name" class="w-full p-2.5 rounded-xl border bg-slate-50" />
-          <input v-model="newUser.email" type="email" placeholder="Official Email" class="w-full p-2.5 rounded-xl border bg-slate-50" />
+          <div class="p-3.5 bg-emerald-50 text-emerald-900 rounded-xl border border-emerald-300 font-bold space-y-1">
+            <div class="flex items-center gap-1.5 font-black">
+              <span>✓ DNV Class A Full Mission Simulator Verified</span>
+            </div>
+            <div class="text-[11px] font-normal text-emerald-800">
+              DG Approval Code: {{ selectedInstitute?.code }} &bull; Location: {{ selectedInstitute?.location }}
+            </div>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 space-y-1">
+            <div class="font-bold text-slate-900">Statutory Inspection Checkpoints:</div>
+            <ul class="list-disc list-inside space-y-0.5 text-[11px] text-slate-600">
+              <li>STCW 2010 Manila amendments instructor qualifications met</li>
+              <li>Annual fire ground &amp; enclosed space breathing apparatus drills audited</li>
+              <li>Student biometric attendance synced with INDoS portal (99.4% rate)</li>
+            </ul>
+          </div>
         </div>
-        <div class="flex justify-end gap-2 pt-2">
-          <button @click="showAddUserModal = false" class="px-4 py-2 rounded-xl text-xs font-bold border">Cancel</button>
-          <button @click="createUser" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">Create</button>
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+          <button
+            @click="auditModalOpen = false"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 hover:bg-slate-50 text-slate-700"
+          >
+            Close
+          </button>
+          <button
+            @click="confirmInstituteAudit"
+            type="button"
+            class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            Approve Grade A1 Accreditation
+          </button>
         </div>
       </div>
     </div>
 
-    <div v-if="auditModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <!-- Modal 5: STCW Course Syllabus Audit -->
+    <div
+      v-if="courseModalOpen"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-course-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+    >
       <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
         <div class="flex items-center justify-between border-b pb-3">
-          <h4 class="font-black text-slate-900 text-base">CIP Audit Evaluation &bull; {{ selectedInstitute?.name }}</h4>
-          <button @click="auditModalOpen = false" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+          <h2 id="modal-course-title" class="font-black text-slate-900 text-base">
+            Syllabus Audit &bull; {{ selectedCourse?.title }}
+          </h2>
+          <button
+            @click="courseModalOpen = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition focus-visible:ring-2 focus-visible:ring-blue-600"
+            aria-label="Close syllabus modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
         <div class="space-y-3 text-xs">
-          <div class="p-3 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-200 font-bold">
-            Simulators &amp; Fire Field: DNV Class A Verified
+          <div class="p-3.5 bg-blue-50 text-blue-900 rounded-xl border border-blue-300 font-bold">
+            IMO Model Course Compliant (40% Theoretical / 60% Kongsberg Simulator Practical)
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 space-y-1">
+            <div class="font-bold text-slate-900">Syllabus Details:</div>
+            <div class="text-[11px] text-slate-600 font-mono">Code: {{ selectedCourse?.code }} &bull; Academy: {{ selectedCourse?.institute }}</div>
+            <div class="text-[11px] text-slate-600 font-mono">Approved Candidate Fee: ₹{{ selectedCourse?.price?.toLocaleString() }}</div>
           </div>
         </div>
-        <div class="flex justify-end gap-2 pt-2">
-          <button @click="auditModalOpen = false" class="px-4 py-2 rounded-xl text-xs font-bold border">Close</button>
-          <button @click="confirmInstituteAudit" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">Approve A1</button>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="courseModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 max-w-xl w-full space-y-4 shadow-2xl">
-        <div class="flex items-center justify-between border-b pb-3">
-          <h4 class="font-black text-slate-900 text-base">Syllabus Audit &bull; {{ selectedCourse?.title }}</h4>
-          <button @click="courseModalOpen = false" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
-        </div>
-        <div class="space-y-2 text-xs">
-          <div class="p-3 bg-blue-50 text-blue-800 rounded-xl border border-blue-200 font-bold">
-            IMO Model Course 1.27 Compliant (40% Theory / 60% Practical)
-          </div>
-        </div>
-        <div class="flex justify-end gap-2 pt-2">
-          <button @click="courseModalOpen = false" class="px-4 py-2 rounded-xl text-xs font-bold border">Close</button>
-          <button @click="confirmCourseApproval" class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] text-white">Approve</button>
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+          <button
+            @click="courseModalOpen = false"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 hover:bg-slate-50 text-slate-700"
+          >
+            Close
+          </button>
+          <button
+            @click="confirmCourseApproval"
+            type="button"
+            class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            Approve Course Syllabus
+          </button>
         </div>
       </div>
     </div>
