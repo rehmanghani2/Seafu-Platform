@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white pb-24">
+  <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white pb-24">
 
     <!-- ═════════════════════════════════════════════════════════════════ -->
     <!-- 1. TOP GLOBAL HEADER                                            -->

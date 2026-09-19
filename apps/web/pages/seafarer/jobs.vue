@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white pb-24">
+  <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white pb-24">
     <!-- Header -->
     <header class="border-b border-slate-200 bg-white px-6 py-4 sticky top-0 z-30 shadow-xs">
       <div class="max-w-[1440px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">

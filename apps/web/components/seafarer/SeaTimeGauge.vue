@@ -1,7 +1,7 @@
-﻿<template>
+<template>
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
     <!-- Card 1: Cadet Alex Mercer Profile (8 cols) -->
-    <div class="lg:col-span-8 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-2xs">
+    <div class="lg:col-span-8 bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
       <div class="flex items-center space-x-4 min-w-0">
         <!-- Avatar -->
         <div class="relative shrink-0">
@@ -16,10 +16,10 @@
         <!-- Info -->
         <div class="space-y-1 min-w-0">
           <div class="flex items-center space-x-2.5 flex-wrap">
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               {{ profile.name }}
             </h2>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#38BDF8] text-white tracking-wide shadow-2xs">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide">
               {{ profile.badge }}
             </span>
           </div>
@@ -36,7 +36,7 @@
               <span>CDC No: {{ profile.cdcNo }}</span>
             </span>
             <span class="text-slate-300" aria-hidden="true">&bull;</span>
-            <span class="inline-flex items-center gap-1 font-semibold text-emerald-700">
+            <span class="inline-flex items-center gap-1 font-semibold text-emerald-800">
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
@@ -50,7 +50,7 @@
       <div class="flex flex-col items-start sm:items-end shrink-0 w-full sm:w-auto">
         <NuxtLink
           to="/seafarer/resume"
-          class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs text-center focus:outline-none focus:ring-2 focus:ring-blue-900"
+          class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs text-center focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
         >
           View Digital Resume
         </NuxtLink>
@@ -61,7 +61,7 @@
     </div>
 
     <!-- Card 2: Sea Service Log (4 cols) -->
-    <div class="lg:col-span-4 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-2xs space-y-4">
+    <div class="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-xs space-y-4">
       <div class="flex items-center justify-between">
         <span class="text-sm font-bold text-slate-800 tracking-tight">Sea Service Log</span>
         <svg class="w-5 h-5 text-[#0A1936]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
