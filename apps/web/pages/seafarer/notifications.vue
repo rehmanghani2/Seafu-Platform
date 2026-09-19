@@ -147,7 +147,7 @@
               </div>
             </div>
             <NuxtLink
-              to="/courses"
+              to="/seafarer/courses"
               class="text-xs font-semibold px-4 py-1.5 rounded-lg bg-[#0A1936] text-white hover:bg-[#112752] transition text-center shrink-0"
             >
               Renew Now
@@ -193,7 +193,7 @@ const notifications = ref([
     body: 'Your Proficiency in Survival Craft (PSCRB) certificate expires in 28 days (15 Oct 2026). Renew at a DG Shipping approved institute before it lapses.',
     timeAgo: '5 hours ago',
     action: 'Find Renewal Course',
-    actionUrl: '/courses',
+    actionUrl: '/seafarer/courses',
     read: false,
     certName: 'PSCRB · DG/CERT/MH/2021/44421',
     daysLeft: 28,
@@ -205,7 +205,7 @@ const notifications = ref([
     body: 'Your ENG-1 Medical Fitness Certificate expires on 27 Sep 2026. Without a valid medical, you cannot sign-on. Book your medical exam immediately.',
     timeAgo: '1 day ago',
     action: 'Find Medical Center',
-    actionUrl: '/courses',
+    actionUrl: '/seafarer/courses',
     read: false,
     certName: 'ENG-1 Medical Fitness',
     daysLeft: 11,
@@ -217,7 +217,7 @@ const notifications = ref([
     body: 'Congratulations! You have been shortlisted for the Deck Cadet — Ultra Large position. Global Container Lines HR has reviewed your verified sea service logs.',
     timeAgo: '2 days ago',
     action: 'View Application',
-    actionUrl: '/jobs',
+    actionUrl: '/seafarer/jobs',
     read: true,
   },
   {
@@ -247,7 +247,7 @@ const notifications = ref([
     body: 'Apex Tankers Ltd. has scheduled a preliminary interview for the Third Officer position. Check your registered email for dial-in details.',
     timeAgo: '4 days ago',
     action: 'Track Application',
-    actionUrl: '/jobs',
+    actionUrl: '/seafarer/jobs',
     read: true,
   },
   {
@@ -257,7 +257,7 @@ const notifications = ref([
     body: 'Your BST certificate is due for 5-year revalidation on 15 Dec 2026. STCW Convention Reg. VI/1 mandates revalidation. Book early to avoid last-minute rush.',
     timeAgo: '5 days ago',
     action: 'Book Refresher',
-    actionUrl: '/courses',
+    actionUrl: '/seafarer/courses',
     read: true,
     certName: 'BST — Basic Safety Training',
     daysLeft: 89,

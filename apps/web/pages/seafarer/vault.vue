@@ -170,7 +170,7 @@
               </button>
               <NuxtLink
                 v-if="cert.daysLeft !== null && cert.daysLeft <= 90"
-                to="/courses"
+                to="/seafarer/courses"
                 class="text-xs px-3 py-1.5 rounded-lg text-center font-semibold bg-amber-500 hover:bg-amber-600 text-white transition shadow-2xs"
               >
                 Renew

@@ -106,65 +106,10 @@
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-        <!-- ── LEFT SIDEBAR NAVIGATION (2.5 cols) ─────────────────────── -->
-        <aside class="lg:col-span-2 lg:sticky lg:top-24 flex flex-col justify-between space-y-8" aria-label="Seafarer Navigation">
-          <nav class="space-y-1 text-xs font-semibold">
-            <NuxtLink
-              to="/"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Home
-            </NuxtLink>
-
-            <NuxtLink
-              to="/seafarer/dashboard"
-              class="block px-3.5 py-2.5 rounded-xl bg-blue-50/90 text-blue-900 font-bold transition shadow-2xs border border-blue-200/50"
-              aria-current="page"
-            >
-              Seafarer Panel
-            </NuxtLink>
-
-            <NuxtLink
-              to="/courses"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Courses
-            </NuxtLink>
-
-            <NuxtLink
-              to="/seafarer/vault"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Certificate Vault
-            </NuxtLink>
-
-            <NuxtLink
-              to="/seafarer/documents"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Document Uploads
-            </NuxtLink>
-
-            <NuxtLink
-              to="/seafarer/resume"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Digital Resume
-            </NuxtLink>
-
-            <NuxtLink
-              to="/jobs"
-              class="block px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus:ring-1 focus:ring-blue-600"
-            >
-              Job Applications
-            </NuxtLink>
-          </nav>
-
-          <!-- Sidebar Footer Version Tag -->
-          <div class="pt-8 text-[11px] font-mono text-slate-400 px-3.5">
-            v1.2.0 Seafarer OS
-          </div>
-        </aside>
+        <!-- ── LEFT SIDEBAR NAVIGATION (2 cols) ──────────────────────── -->
+        <div class="lg:col-span-2">
+          <SeafarerSidebarNav />
+        </div>
 
         <!-- ── RIGHT WORKSPACE (9.5 cols) ─────────────────────────────── -->
         <main class="lg:col-span-10 space-y-8">

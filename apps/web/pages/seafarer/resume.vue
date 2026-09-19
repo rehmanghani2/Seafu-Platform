@@ -115,7 +115,7 @@
             </div>
           </div>
           <NuxtLink
-            to="/jobs"
+            to="/seafarer/jobs"
             class="mt-4 block text-center text-xs font-semibold py-2 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition"
           >
             Track Applications &rarr;

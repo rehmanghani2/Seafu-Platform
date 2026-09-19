@@ -1,11 +1,11 @@
-﻿<template>
+<template>
   <div class="bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-2xs space-y-4">
     <div>
       <div class="flex items-center justify-between">
         <span class="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase">
           CAREER PLACEMENT
         </span>
-        <NuxtLink to="/jobs" class="text-xs font-semibold text-blue-700 hover:text-blue-900 transition flex items-center space-x-1">
+        <NuxtLink to="/seafarer/jobs" class="text-xs font-semibold text-blue-700 hover:text-blue-900 transition flex items-center space-x-1">
           <span>View All Openings</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
