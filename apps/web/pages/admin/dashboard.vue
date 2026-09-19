@@ -107,68 +107,526 @@
     <div class="flex-1 min-w-0 flex flex-col min-h-screen">
 
       <!-- TOP COMMAND / NAVIGATION BAR -->
-      <header class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200 h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 shadow-2xs">
-        <!-- Search Input -->
-        <div class="flex-1 max-w-lg relative">
-          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 h-16 px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2.5 sm:gap-4 shadow-2xs">
+        
+        <!-- Left Side: Mobile Menu Button & Context Badge -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <!-- Mobile Drawer Toggle -->
+          <button
+            @click="isMobileSidebarOpen = true"
+            class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition focus:outline-hidden focus:ring-2 focus:ring-blue-600/30"
+            aria-label="Open Operations Menu"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
+          </button>
+
+          <!-- Maritime Context Pill -->
+          <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-100/90 border border-slate-200/80 text-[11px] font-mono font-bold text-slate-700">
+            <svg class="w-3.5 h-3.5 text-blue-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span class="text-slate-400">FLEET OPS /</span>
+            <span class="text-blue-900 font-extrabold uppercase">{{ activeTabLabel }}</span>
           </div>
-          <input
-            v-model="globalSearch"
-            type="text"
-            placeholder="Search seafarers, institutes, IMO..."
-            class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-10 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:bg-white focus:border-blue-600 transition"
-          />
-          <span class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[10px] font-mono text-slate-400">
-            ⌘K
-          </span>
         </div>
 
-        <!-- Center Status Chip -->
-        <div class="hidden lg:flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[11px] font-mono font-bold text-slate-700">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>STCW / DG SHIPPING COMPLIANT: ONLINE</span>
+        <!-- Center-Left: Universal Interactive Command Search -->
+        <div class="flex-1 max-w-lg relative">
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              ref="searchInputRef"
+              v-model="globalSearch"
+              type="text"
+              placeholder="Search seafarers, IMO, institutes, courses..."
+              @focus="isSearchFocused = true; closeAllDropdownsExcept('search')"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-16 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/15 transition shadow-2xs"
+            />
+            <!-- Clear Button -->
+            <button
+              v-if="globalSearch"
+              @click.stop="globalSearch = ''; searchInputRef?.focus()"
+              class="absolute inset-y-0 right-10 pr-1 flex items-center text-slate-400 hover:text-slate-700 transition"
+              title="Clear search"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <span class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[10px] font-mono text-slate-400 font-semibold">
+              ⌘K
+            </span>
+          </div>
+
+          <!-- Interactive Search Results Dropdown -->
+          <div
+            v-if="isSearchFocused"
+            class="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 overflow-hidden divide-y divide-slate-100"
+          >
+            <div class="p-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <span class="font-bold text-slate-700">MARITIME DIRECTORY RESULTS</span>
+              <span class="text-[10px]">Press <kbd class="px-1 py-0.5 bg-white border border-slate-200 rounded-sm font-bold">ESC</kbd> to close</span>
+            </div>
+            <div class="max-h-72 overflow-y-auto p-1.5 space-y-0.5">
+              <div
+                v-for="(item, idx) in searchResults"
+                :key="idx"
+                @click="item.action()"
+                class="flex items-center justify-between p-2 rounded-xl hover:bg-blue-50/70 cursor-pointer transition group"
+              >
+                <div class="flex items-center space-x-3 min-w-0">
+                  <span class="px-2 py-0.5 text-[9px] font-mono font-black uppercase rounded-md bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-800 shrink-0">
+                    {{ item.category }}
+                  </span>
+                  <div class="truncate">
+                    <div class="text-xs font-bold text-slate-800 group-hover:text-blue-900 truncate">
+                      {{ item.title }}
+                    </div>
+                    <div class="text-[11px] text-slate-500 truncate">
+                      {{ item.subtitle }}
+                    </div>
+                  </div>
+                </div>
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <div v-if="searchResults.length === 0" class="p-4 text-center text-xs text-slate-500">
+                No matching maritime officers, vessels, or institutes found for "{{ globalSearch }}".
+              </div>
+            </div>
+            <div class="p-2 bg-slate-50 text-[10px] text-slate-500 flex items-center justify-between">
+              <span>Quick jump: <strong>dossier</strong>, <strong>approvals</strong>, <strong>vessels</strong></span>
+              <span class="text-cyan-700 font-bold">DG Shipping Gateway Online</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Right Controls -->
-        <div class="flex items-center space-x-3 shrink-0">
+        <!-- Center: Interactive Statutory Status Pill & Zulu Clock -->
+        <div class="hidden lg:flex items-center gap-2 relative">
+          <!-- STCW / DG Shipping Status Pill with Telemetry Trigger -->
+          <div class="relative">
+            <button
+              @click.stop="toggleStatusTelemetry"
+              class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[11px] font-mono font-bold text-slate-700 transition shadow-2xs focus:outline-hidden"
+              title="Click to view regulatory connection telemetry"
+            >
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>STCW / DG SHIPPING COMPLIANT: ONLINE</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 transition-transform" :class="showStatusTelemetryDropdown ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Status Telemetry Dropdown Card -->
+            <div
+              v-if="showStatusTelemetryDropdown"
+              class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-4 divide-y divide-slate-100"
+            >
+              <div class="pb-3 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Maritime Telemetry Hub</span>
+                  </div>
+                  <div class="text-[10px] text-slate-500 font-mono">DG Shipping & IMO Real-Time Feeds</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  ALL SYSTEMS NOMINAL
+                </span>
+              </div>
+
+              <div class="py-3 space-y-2.5 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    DG Shipping Gateway
+                  </span>
+                  <span class="font-mono font-bold text-slate-800">Connected (18ms)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                    </svg>
+                    IMO GISIS Registry
+                  </span>
+                  <span class="font-mono font-bold text-slate-800">Synchronized</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    HSM Cryptographic Seal
+                  </span>
+                  <span class="font-mono font-bold text-emerald-700">Valid (SHA-256)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Vessel Bridge Net
+                  </span>
+                  <span class="font-mono font-bold text-slate-800">42 Active Beacons</span>
+                </div>
+              </div>
+
+              <div class="pt-3">
+                <button
+                  @click="triggerDiagnosticPing"
+                  :disabled="isPingingGateway"
+                  class="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center justify-center space-x-2 disabled:opacity-50"
+                >
+                  <svg v-if="isPingingGateway" class="w-3.5 h-3.5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25" />
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                  </svg>
+                  <svg v-else class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>{{ isPingingGateway ? 'Pinging Gateway...' : gatewayPingSuccess ? 'Latency: 14ms (Verified)' : 'Run Gateway Health Ping' }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zulu Maritime Clock Pill -->
+          <div
+            class="hidden xl:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 border border-slate-200 text-[11px] font-mono font-bold text-slate-700"
+            title="Standard Maritime Operational Zulu Time (UTC)"
+          >
+            <svg class="w-3.5 h-3.5 text-cyan-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke-width="2" />
+              <path stroke-width="2" d="M12 6v6l4 2" />
+            </svg>
+            <span>{{ currentZuluTime }} · ZULU</span>
+          </div>
+        </div>
+
+        <!-- Right Side: New Batch Button, Notifications Bell & Admin Profile -->
+        <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+          
+          <!-- + New Approval Batch Button -->
           <button
             @click="showAddBatchModal = true"
-            class="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white text-xs font-bold transition shadow-2xs"
+            class="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white text-xs font-bold transition shadow-2xs hover:shadow-sm"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
             <span>New Approval Batch</span>
           </button>
 
-          <!-- Notification Bell -->
-          <button
-            class="relative p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition"
-            aria-label="Notifications"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500"></span>
-          </button>
+          <!-- Notification Bell with Dropdown -->
+          <div class="relative">
+            <button
+              @click.stop="toggleNotifications"
+              class="relative p-2 sm:p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition shadow-2xs focus:outline-hidden"
+              aria-label="Operations Alerts and Notifications"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span v-if="notifications.length > 0" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-mono font-black flex items-center justify-center border-2 border-white">
+                {{ notifications.length }}
+              </span>
+            </button>
 
-          <!-- Admin Profile -->
-          <div class="flex items-center space-x-2.5 pl-2 border-l border-slate-200">
-            <div class="w-8 h-8 rounded-full bg-[#0A1936] text-white flex items-center justify-center font-bold text-xs shadow-xs shrink-0 border border-slate-700">
-              AF
-            </div>
-            <div class="hidden xl:block text-left text-xs">
-              <div class="font-black text-slate-900 leading-tight">Capt. Alistair Finch</div>
-              <div class="text-[10px] text-slate-500 font-medium">Chief Administrator</div>
+            <!-- Notifications Flyout -->
+            <div
+              v-if="showNotificationsDropdown"
+              class="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 overflow-hidden divide-y divide-slate-100"
+            >
+              <div class="p-3 bg-slate-50 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs font-black text-slate-900">OPERATIONAL ALERTS</span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-100 text-rose-700">
+                    {{ notifications.length }} Unread
+                  </span>
+                </div>
+                <button
+                  @click="notifications = []"
+                  class="text-[10px] font-bold text-blue-700 hover:text-blue-900 transition"
+                >
+                  Mark all as read
+                </button>
+              </div>
+
+              <div class="max-h-80 overflow-y-auto divide-y divide-slate-100">
+                <div
+                  v-for="item in notifications"
+                  :key="item.id"
+                  class="p-3.5 hover:bg-slate-50 transition flex items-start space-x-3"
+                >
+                  <div class="w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-xs font-bold mt-0.5"
+                    :class="item.type === 'warning' ? 'bg-amber-100 text-amber-800' : item.type === 'info' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'"
+                  >
+                    <svg v-if="item.type === 'warning'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <svg v-else-if="item.type === 'info'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
+                      <span class="text-xs font-black text-slate-800 truncate">{{ item.title }}</span>
+                      <span class="text-[10px] font-mono text-slate-400 shrink-0">{{ item.time }}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-600 leading-snug mb-1.5">{{ item.description }}</p>
+                    <button
+                      @click="item.action()"
+                      class="text-[11px] font-bold text-blue-700 hover:text-blue-900 inline-flex items-center space-x-1"
+                    >
+                      <span>{{ item.actionText }}</span>
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div v-if="notifications.length === 0" class="p-6 text-center text-xs text-slate-400 font-medium">
+                  Zero pending statutory warnings or unresolved alerts.
+                </div>
+              </div>
+
+              <div class="p-2.5 bg-slate-50 flex items-center justify-between text-[11px]">
+                <button @click="activeTab = 'moderation'; showNotificationsDropdown = false" class="text-slate-600 hover:text-slate-900 font-bold">
+                  View Moderation Queue
+                </button>
+                <button @click="activeTab = 'approvals'; showNotificationsDropdown = false" class="text-blue-700 hover:text-blue-900 font-bold">
+                  Compliance Queue &rarr;
+                </button>
+              </div>
             </div>
           </div>
+
+          <!-- Admin Profile Dropdown -->
+          <div class="relative">
+            <button
+              @click.stop="toggleProfile"
+              class="flex items-center space-x-2.5 pl-2 sm:pl-3 border-l border-slate-200 group text-left focus:outline-hidden"
+              aria-label="Administrator Menu"
+            >
+              <div class="w-8 h-8 rounded-full bg-[#0A1936] text-white flex items-center justify-center font-bold text-xs shadow-xs shrink-0 ring-2 ring-amber-400/40 group-hover:ring-amber-400 transition">
+                AF
+              </div>
+              <div class="hidden xl:block text-left text-xs">
+                <div class="font-black text-slate-900 leading-tight group-hover:text-blue-900 flex items-center gap-1">
+                  <span>Capt. Alistair Finch</span>
+                  <svg class="w-3 h-3 text-slate-400 transition-transform" :class="showProfileDropdown ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div class="text-[10px] text-slate-500 font-medium">Chief Administrator</div>
+              </div>
+            </button>
+
+            <!-- Admin Profile Flyout -->
+            <div
+              v-if="showProfileDropdown"
+              class="absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 overflow-hidden divide-y divide-slate-100"
+            >
+              <div class="p-4 bg-gradient-to-br from-slate-900 to-[#071022] text-white">
+                <div class="flex items-center space-x-3 mb-2">
+                  <div class="w-10 h-10 rounded-full bg-blue-600/30 border border-amber-400/60 flex items-center justify-center font-bold text-sm text-cyan-300">
+                    AF
+                  </div>
+                  <div>
+                    <div class="font-black text-xs text-white">Capt. Alistair Finch</div>
+                    <div class="text-[11px] text-slate-300 font-mono">admin@seafu.gov</div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-[10px] font-mono">
+                  <span class="px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 font-bold">
+                    SUPER_ADMIN · LEVEL 4
+                  </span>
+                  <span class="text-cyan-400 font-bold">IMO GISIS LIAISON</span>
+                </div>
+              </div>
+
+              <!-- Portal Switcher Links -->
+              <div class="p-2 space-y-1 text-xs font-semibold text-slate-700">
+                <button
+                  @click="activeTab = 'overview'; showProfileDropdown = false"
+                  class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-slate-100 text-left transition"
+                >
+                  <svg class="w-4 h-4 text-blue-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <span>Fleet Operations Hub</span>
+                </button>
+
+                <button
+                  @click="activeTab = 'dossier'; showProfileDropdown = false"
+                  class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-slate-100 text-left transition"
+                >
+                  <svg class="w-4 h-4 text-cyan-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2H9.17A3.001 3.001 0 0112 14z" />
+                  </svg>
+                  <span>Master Mariner Dossier</span>
+                </button>
+
+                <NuxtLink
+                  to="/institute/dashboard"
+                  class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-slate-100 text-left transition"
+                >
+                  <svg class="w-4 h-4 text-purple-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  <span>Switch to Institute Portal</span>
+                </NuxtLink>
+
+                <NuxtLink
+                  to="/dashboard"
+                  class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-slate-100 text-left transition"
+                >
+                  <svg class="w-4 h-4 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>Switch to Seafarer Portal</span>
+                </NuxtLink>
+              </div>
+
+              <!-- Sign Out Action -->
+              <div class="p-2">
+                <button
+                  @click="handleLogout"
+                  class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 text-left text-xs font-bold transition"
+                >
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  <span>Sign Out of Maritime Console</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </header>
 
-      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- Click-outside Backdrop for Dropdowns -->
+      <div
+        v-if="showNotificationsDropdown || showProfileDropdown || showStatusTelemetryDropdown || isSearchFocused"
+        @click="closeAllDropdowns"
+        class="fixed inset-0 z-25 bg-transparent"
+      ></div>
+
+      <!-- Mobile Slide-Over Operations Sidebar Drawer -->
+      <div
+        v-if="isMobileSidebarOpen"
+        class="fixed inset-0 z-50 flex md:hidden"
+      >
+        <!-- Overlay -->
+        <div
+          class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+          @click="isMobileSidebarOpen = false"
+        ></div>
+
+        <!-- Slide Drawer -->
+        <div class="relative w-72 max-w-[80vw] bg-[#071022] text-slate-300 flex flex-col justify-between h-full p-4 z-10 shadow-2xl border-r border-slate-800">
+          <div>
+            <!-- Brand and Close -->
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+              <NuxtLink to="/" class="flex items-center space-x-2.5" @click="isMobileSidebarOpen = false">
+                <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-cyan-400 shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-black text-white">The Seafu</div>
+                  <div class="text-[8px] font-mono tracking-widest text-cyan-400 font-bold uppercase">FLEET OPERATIONS</div>
+                </div>
+              </NuxtLink>
+              <button
+                @click="isMobileSidebarOpen = false"
+                class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Nav Groups -->
+            <nav class="space-y-4">
+              <div>
+                <div class="text-[9px] font-mono tracking-wider text-slate-500 uppercase px-2 mb-1.5 font-bold">
+                  CORE OPERATIONS
+                </div>
+                <div class="space-y-1">
+                  <button
+                    v-for="item in coreNavItems"
+                    :key="item.id"
+                    @click="activeTab = item.id; isMobileSidebarOpen = false"
+                    class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition"
+                    :class="activeTab === item.id
+                      ? 'bg-[#0c2240] text-white border-l-3 border-cyan-400 font-bold'
+                      : 'text-slate-400 hover:bg-slate-850 hover:text-slate-200'"
+                  >
+                    <div class="flex items-center space-x-2.5">
+                      <component :is="item.icon" class="w-4 h-4 shrink-0" />
+                      <span>{{ item.label }}</span>
+                    </div>
+                    <span v-if="item.badge" class="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-slate-800 text-slate-400">
+                      {{ item.badge }}
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-[9px] font-mono tracking-wider text-slate-500 uppercase px-2 mb-1.5 font-bold">
+                  PERSONNEL &amp; GOVERNANCE
+                </div>
+                <div class="space-y-1">
+                  <button
+                    v-for="item in governanceNavItems"
+                    :key="item.id"
+                    @click="activeTab = item.id; isMobileSidebarOpen = false"
+                    class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition"
+                    :class="activeTab === item.id
+                      ? 'bg-[#0c2240] text-white border-l-3 border-cyan-400 font-bold'
+                      : 'text-slate-400 hover:bg-slate-850 hover:text-slate-200'"
+                  >
+                    <div class="flex items-center space-x-2.5">
+                      <component :is="item.icon" class="w-4 h-4 shrink-0" />
+                      <span>{{ item.label }}</span>
+                    </div>
+                    <span v-if="item.badge" class="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-slate-800 text-slate-400">
+                      {{ item.badge }}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-800 text-[10px] font-mono">
+              <span class="text-slate-300 font-bold">VESSEL BRIDGE NET</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- ═══════════════════════════════════════════════════════════════ -->
       <!-- TAB A: SEAFARER DOSSIER VIEW (MATCHES REFERENCE SCREENSHOT)     -->
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <main v-if="activeTab === 'dossier'" class="p-4 sm:p-6 lg:p-8 space-y-6">
@@ -1272,14 +1730,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, h } from 'vue';
+import { ref, computed, onMounted, onUnmounted, h } from 'vue';
 import { useAuthStore } from '../../stores/auth';
 
 definePageMeta({ middleware: ['auth'] });
 useHead({ title: 'Fleet Operations Hub · The Seafu Maritime Console' });
 
 const authStore = useAuthStore();
-onMounted(() => { authStore.initAuth(); });
+onMounted(() => {
+  authStore.initAuth();
+  updateZuluTime();
+  timerInterval = setInterval(updateZuluTime, 1000);
+  if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', handleKeydown);
+  }
+});
+
+onUnmounted(() => {
+  if (timerInterval) clearInterval(timerInterval);
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('keydown', handleKeydown);
+  }
+});
 
 // Active Navigation State (Defaults to 'dossier' as requested!)
 const activeTab = ref('dossier');
@@ -1287,6 +1759,154 @@ const activeDossierSubTab = ref('CDC_LOG');
 const globalSearch = ref('');
 const showEndorseMenu = ref(false);
 const showAddBatchModal = ref(false);
+
+// Enhanced Navbar Reactive States
+const isMobileSidebarOpen = ref(false);
+const isSearchFocused = ref(false);
+const searchInputRef = ref<HTMLInputElement | null>(null);
+const showNotificationsDropdown = ref(false);
+const showProfileDropdown = ref(false);
+const showStatusTelemetryDropdown = ref(false);
+const currentZuluTime = ref('12:00:00 UTC');
+const isPingingGateway = ref(false);
+const gatewayPingSuccess = ref(false);
+let timerInterval: any = null;
+
+function updateZuluTime() {
+  const now = new Date();
+  const hours = String(now.getUTCHours()).padStart(2, '0');
+  const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+  currentZuluTime.value = `${hours}:${minutes}:${seconds} UTC`;
+}
+
+function handleKeydown(e: KeyboardEvent) {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    isSearchFocused.value = true;
+    searchInputRef.value?.focus();
+  } else if (e.key === 'Escape') {
+    closeAllDropdowns();
+  }
+}
+
+function closeAllDropdowns() {
+  showNotificationsDropdown.value = false;
+  showProfileDropdown.value = false;
+  showStatusTelemetryDropdown.value = false;
+  isSearchFocused.value = false;
+}
+
+function closeAllDropdownsExcept(except: string) {
+  if (except !== 'notifications') showNotificationsDropdown.value = false;
+  if (except !== 'profile') showProfileDropdown.value = false;
+  if (except !== 'telemetry') showStatusTelemetryDropdown.value = false;
+  if (except !== 'search') isSearchFocused.value = false;
+}
+
+function toggleNotifications() {
+  const next = !showNotificationsDropdown.value;
+  closeAllDropdowns();
+  showNotificationsDropdown.value = next;
+}
+
+function toggleProfile() {
+  const next = !showProfileDropdown.value;
+  closeAllDropdowns();
+  showProfileDropdown.value = next;
+}
+
+function toggleStatusTelemetry() {
+  const next = !showStatusTelemetryDropdown.value;
+  closeAllDropdowns();
+  showStatusTelemetryDropdown.value = next;
+}
+
+function triggerDiagnosticPing() {
+  isPingingGateway.value = true;
+  gatewayPingSuccess.value = false;
+  setTimeout(() => {
+    isPingingGateway.value = false;
+    gatewayPingSuccess.value = true;
+    setTimeout(() => {
+      gatewayPingSuccess.value = false;
+    }, 4000);
+  }, 900);
+}
+
+function handleLogout() {
+  authStore.logout();
+  navigateTo('/auth/login');
+}
+
+// Active Tab Display Label
+const activeTabLabel = computed(() => {
+  const item = [...coreNavItems, ...governanceNavItems].find(n => n.id === activeTab.value);
+  return item ? item.label : 'Fleet Console';
+});
+
+// Notifications List
+const notifications = ref([
+  {
+    id: 1,
+    title: 'STCW Endorsement Refresher Required',
+    description: 'Capt. Rajesh Kumar (SF-99412) PSCRB cert expires in 62 days. Mandatory refresher required under STCW Manila amendments.',
+    time: '12m ago',
+    type: 'warning',
+    actionText: 'Open Dossier',
+    action: () => { activeTab.value = 'dossier'; showNotificationsDropdown.value = false; }
+  },
+  {
+    id: 2,
+    title: 'CIP Comprehensive Inspection Renewal',
+    description: 'Anglo-Eastern Maritime Academy uploaded Annual Comprehensive Inspection Programme Grade A1 self-audit dossier.',
+    time: '45m ago',
+    type: 'info',
+    actionText: 'Review Audit',
+    action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'INSTITUTES'; showNotificationsDropdown.value = false; }
+  },
+  {
+    id: 3,
+    title: 'DG Shipping Regulatory Circular 14/2026',
+    description: 'Advisory issued regarding revised minimum safe sea-time criteria for Second Mate FG competencies.',
+    time: '2h ago',
+    type: 'statutory',
+    actionText: 'Read Circular',
+    action: () => { activeTab.value = 'cms'; showNotificationsDropdown.value = false; }
+  }
+]);
+
+// Interactive Command Palette Search Catalog
+const searchResults = computed(() => {
+  const query = globalSearch.value.trim().toLowerCase();
+  
+  const allEntries = [
+    { category: 'Officers', title: 'Capt. Rajesh Kumar (SF-99412)', subtitle: 'Master Mariner FG Unlimited · CoC IND-COC-88914', action: () => { activeTab.value = 'dossier'; isSearchFocused.value = false; } },
+    { category: 'Officers', title: 'Capt. Arvind Nair (SF-08ZL9431)', subtitle: 'Chief Mate FG · Advanced Fire Fighting', action: () => { activeTab.value = 'users'; isSearchFocused.value = false; } },
+    { category: 'Cadets', title: 'Ramesh Kumar (INDoS 149028)', subtitle: 'Deck Cadet · PSCRB Survival Craft', action: () => { activeTab.value = 'users'; isSearchFocused.value = false; } },
+    { category: 'Institutes', title: 'Anglo-Eastern Maritime Academy (AEMA)', subtitle: 'Grade A1 Outstanding · Mumbai IND (DG Shipping Approved)', action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'INSTITUTES'; isSearchFocused.value = false; } },
+    { category: 'Institutes', title: 'Maritime Training Academy Mumbai', subtitle: 'Grade A1 Outstanding · STCW Approved Center', action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'INSTITUTES'; isSearchFocused.value = false; } },
+    { category: 'Institutes', title: 'Goa Offshore Safety Institute', subtitle: 'Grade A2 Approved · Offshore Survival Drills', action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'INSTITUTES'; isSearchFocused.value = false; } },
+    { category: 'Vessels', title: 'Maersk Mc-Kinney Moller (IMO 9632064)', subtitle: '18,270 TEU · Container Ship · 165,000 DWT', action: () => { activeTab.value = 'dossier'; isSearchFocused.value = false; } },
+    { category: 'Vessels', title: 'Emma Maersk (IMO 9321483)', subtitle: '15,500 TEU · Next Scheduled Assignment', action: () => { activeTab.value = 'dossier'; isSearchFocused.value = false; } },
+    { category: 'Vessels', title: 'Mumbai Maersk (IMO 9780445)', subtitle: '20,568 TEU · Verified Voyage Discharge', action: () => { activeTab.value = 'dossier'; isSearchFocused.value = false; } },
+    { category: 'Courses', title: 'Advanced Fire Fighting (STCW A-VI/3)', subtitle: 'DG Shipping Approved Maritime Safety Course', action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'COURSES'; isSearchFocused.value = false; } },
+    { category: 'Courses', title: 'ECDIS Electronic Navigation (STCW A-II/1)', subtitle: 'Kongsberg Simulator Bridge Certification', action: () => { activeTab.value = 'approvals'; approvalSubTab.value = 'COURSES'; isSearchFocused.value = false; } },
+    { category: 'Quick Action', title: 'Flag State GISIS Verification Check', subtitle: 'Query IMO Global Integrated Shipping Registry', action: () => { runGisisCheck(); isSearchFocused.value = false; } },
+    { category: 'Quick Action', title: 'Export Official IMO Dossier', subtitle: 'Generate certified PDF/JSON seafarer ledger', action: () => { exportImoDossier(); isSearchFocused.value = false; } },
+    { category: 'Quick Action', title: 'Create New Approval Batch', subtitle: 'Statutory Course / Candidate Endorsement', action: () => { showAddBatchModal.value = true; isSearchFocused.value = false; } }
+  ];
+
+  if (!query) {
+    return allEntries.slice(0, 6);
+  }
+
+  return allEntries.filter(item =>
+    item.title.toLowerCase().includes(query) ||
+    item.subtitle.toLowerCase().includes(query) ||
+    item.category.toLowerCase().includes(query)
+  );
+});
 
 const dossierVesselFilter = ref('');
 const dossierVesselType = ref('ALL');
@@ -1378,25 +1998,17 @@ const funnelStages = [
   { name: 'Course Directory Impressions', count: 48200, rate: 100 },
   { name: 'Course Detail Page Views', count: 29400, rate: 61.0 },
   { name: '10-Min Atomic Seat Locks', count: 8150, rate: 27.7 },
-  { name: 'Payment Captured & Tax Invoiced', count: 6820, rate: 83.7 },
-  { name: 'STCW Certificate Issued & Signed', count: 6540, rate: 95.9 },
-];
-
-const monthlyRevenue = [
-  { month: 'Jun 2026', gmv: 4100000, commission: 410000, gst: 73800, tds: 4100 },
-  { month: 'Jul 2026', gmv: 5200000, commission: 520000, gst: 93600, tds: 5200 },
-  { month: 'Aug 2026', gmv: 5800000, commission: 580000, gst: 104400, tds: 5800 },
-  { month: 'Sep 2026', gmv: 6300000, commission: 630000, gst: 113400, tds: 6300 },
+  { name: 'Completed Payment & Enrolled', count: 6840, rate: 83.9 },
 ];
 
 const institutes = ref([
-  { id: 'inst-01', name: 'Southern Maritime Institute of Technology', dgNo: 'DG/TR/TN/2024/042', verificationStatus: 'PENDING' },
-  { id: 'inst-02', name: 'Goa Offshore & Safety Training Center', dgNo: 'DG/TR/GA/2024/019', verificationStatus: 'PENDING' },
-  { id: 'inst-03', name: 'Maritime Training Academy Mumbai', dgNo: 'DG/TR/MH/2023/001', verificationStatus: 'VERIFIED' },
+  { id: 'inst-01', name: 'Anglo-Eastern Maritime Academy', code: 'IND-001', location: 'Karjat, Maharashtra', verificationStatus: 'VERIFIED', cipGrade: 'A1_OUTSTANDING' },
+  { id: 'inst-02', name: 'Samundra Institute of Maritime Studies', code: 'IND-004', location: 'Lonavala, Maharashtra', verificationStatus: 'VERIFIED', cipGrade: 'A1_OUTSTANDING' },
+  { id: 'inst-03', name: 'Goa Offshore Safety Institute', code: 'IND-034', location: 'Panaji, Goa', verificationStatus: 'PENDING', cipGrade: 'A2_VERY_GOOD' },
 ]);
 
 const courses = ref([
-  { id: 'crs-01', title: 'Advanced Fire Fighting (AFF)', code: 'STCW A-VI/3', institute: 'Southern Maritime Institute', price: 8500, approvalStatus: 'PENDING_APPROVAL' },
+  { id: 'crs-01', title: 'Advanced Fire Fighting (AFF)', code: 'STCW A-VI/3', institute: 'Anglo-Eastern Maritime Academy', price: 8500, approvalStatus: 'APPROVED' },
   { id: 'crs-02', title: 'High Voltage Safety & Switchgear', code: 'STCW A-III/1-2', institute: 'Goa Offshore Safety', price: 14500, approvalStatus: 'PENDING_APPROVAL' },
   { id: 'crs-03', title: 'ECDIS Electronic Navigation', code: 'STCW A-II/1', institute: 'Maritime Training Academy Mumbai', price: 11000, approvalStatus: 'APPROVED' },
 ]);
