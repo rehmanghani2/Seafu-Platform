@@ -140,8 +140,9 @@
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Job Title *</label>
+              <label for="job-title-input" class="block text-xs font-bold text-slate-700 mb-1">Job Title *</label>
               <input
+                id="job-title-input"
                 v-model="form.title"
                 type="text"
                 required
@@ -152,8 +153,9 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Rank / Position *</label>
+                <label for="job-rank-select" class="block text-xs font-bold text-slate-700 mb-1">Rank / Position *</label>
                 <select
+                  id="job-rank-select"
                   v-model="form.rank"
                   required
                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 font-medium"
@@ -164,8 +166,9 @@
               </div>
 
               <div v-if="form.jobType === 'SHIPBOARD'">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Vessel Type *</label>
+                <label for="job-vessel-select" class="block text-xs font-bold text-slate-700 mb-1">Vessel Type *</label>
                 <select
+                  id="job-vessel-select"
                   v-model="form.shipType"
                   required
                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 font-medium"
@@ -178,8 +181,9 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div v-if="form.jobType === 'SHIPBOARD'">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Port of Joining</label>
+                <label for="job-port-select" class="block text-xs font-bold text-slate-700 mb-1">Port of Joining</label>
                 <select
+                  id="job-port-select"
                   v-model="form.portOfJoining"
                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 font-medium"
                 >
@@ -189,8 +193,9 @@
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Contract Duration</label>
+                <label for="job-contract-input" class="block text-xs font-bold text-slate-700 mb-1">Contract Duration</label>
                 <input
+                  id="job-contract-input"
                   v-model="form.contractDuration"
                   type="text"
                   placeholder="e.g. 4 months on / 2 months off"
@@ -210,8 +215,9 @@
 
             <div class="grid grid-cols-3 gap-4">
               <div class="col-span-2">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Monthly Salary *</label>
+                <label for="job-salary-input" class="block text-xs font-bold text-slate-700 mb-1">Monthly Salary *</label>
                 <input
+                  id="job-salary-input"
                   v-model.number="form.salary"
                   type="number"
                   min="0"
@@ -222,8 +228,9 @@
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Currency</label>
+                <label for="job-currency-select" class="block text-xs font-bold text-slate-700 mb-1">Currency</label>
                 <select
+                  id="job-currency-select"
                   v-model="form.currency"
                   class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 font-mono font-bold"
                 >
