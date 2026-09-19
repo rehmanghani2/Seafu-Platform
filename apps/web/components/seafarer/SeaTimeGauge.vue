@@ -1,97 +1,125 @@
-<template>
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-    <!-- Cadet Alex Mercer Card (8 cols) -->
-    <div class="lg:col-span-8 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xs">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div class="flex items-center space-x-4">
-          <div class="relative shrink-0">
-            <img
-              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80"
-              alt="Cadet Alex Mercer"
-              class="w-16 h-16 rounded-2xl object-cover border-2 border-white shadow-sm"
-            />
-            <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></span>
-          </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <h2 class="text-xl font-black text-[#0A1936] tracking-tight">Cadet Alex Mercer</h2>
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wide bg-[#38BDF8] text-[#0A1936]">
-                Verified Seafarer
-              </span>
-            </div>
-            <p class="text-xs font-semibold text-slate-500 mt-0.5">
-              Deck Officer Cadet &bull; MV Atlantic Pioneer (IMO: 9876543)
-            </p>
-          </div>
+﻿<template>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- Card 1: Cadet Alex Mercer Profile (8 cols) -->
+    <div class="lg:col-span-8 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-2xs">
+      <div class="flex items-center space-x-4 min-w-0">
+        <!-- Avatar -->
+        <div class="relative shrink-0">
+          <img
+            :src="profile.avatar"
+            :alt="profile.name"
+            class="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl object-cover border border-slate-200 shadow-xs"
+          />
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full" title="Active on duty"></span>
         </div>
 
-        <div class="flex items-center space-x-2 shrink-0">
-          <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-600">
-            CDC: IN-98765
-          </span>
-          <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-600">
-            STCW Compliant
-          </span>
+        <!-- Info -->
+        <div class="space-y-1 min-w-0">
+          <div class="flex items-center space-x-2.5 flex-wrap">
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+              {{ profile.name }}
+            </h2>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#38BDF8] text-white tracking-wide shadow-2xs">
+              {{ profile.badge }}
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-600 font-medium truncate">
+            {{ profile.rank }} &bull; {{ profile.vessel }} (IMO: {{ profile.imo }})
+          </p>
+
+          <div class="flex items-center space-x-3 text-[11px] text-slate-500 pt-1 flex-wrap gap-y-1">
+            <span class="inline-flex items-center gap-1 font-mono">
+              <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m-8-8h16m-4-6l4 6-4 6M8 6L4 12l4 6" />
+              </svg>
+              <span>CDC No: {{ profile.cdcNo }}</span>
+            </span>
+            <span class="text-slate-300" aria-hidden="true">&bull;</span>
+            <span class="inline-flex items-center gap-1 font-semibold text-emerald-700">
+              <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>{{ profile.compliance }}</span>
+            </span>
+          </div>
         </div>
       </div>
 
-      <div class="pt-6 mt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-6 text-xs text-slate-500">
-          <div>
-            <span class="font-medium">Flag State:</span>
-            <span class="font-bold text-slate-800 ml-1">India (DG Shipping)</span>
-          </div>
-          <div>
-            <span class="font-medium">Sea Experience:</span>
-            <span class="font-bold text-slate-800 ml-1">14 Months Logged</span>
-          </div>
-        </div>
-
-        <div class="flex items-center space-x-3">
-          <span class="text-[11px] text-slate-400 font-medium">Last Synced: Today, 08:30 UTC</span>
-          <NuxtLink
-            to="/seafarer/resume"
-            class="px-4 py-2 rounded-xl text-xs font-black text-white bg-[#0A1936] hover:bg-[#112752] shadow-xs transition">
-            View Digital Resume
-          </NuxtLink>
-        </div>
+      <!-- Actions -->
+      <div class="flex flex-col items-start sm:items-end shrink-0 w-full sm:w-auto">
+        <NuxtLink
+          to="/seafarer/resume"
+          class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs text-center focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+          View Digital Resume
+        </NuxtLink>
+        <span class="text-[10px] text-slate-400 font-mono mt-2 self-center sm:self-end">
+          Last Synced: Today, 08:30 UTC
+        </span>
       </div>
     </div>
 
-    <!-- Sea Service Log Card (4 cols) -->
-    <div class="lg:col-span-4 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xs">
+    <!-- Card 2: Sea Service Log (4 cols) -->
+    <div class="lg:col-span-4 bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-2xs space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-slate-800 tracking-tight">Sea Service Log</span>
+        <svg class="w-5 h-5 text-[#0A1936]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+
       <div>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-black uppercase tracking-wider text-slate-500">Sea Service Log</span>
-          <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
-            Target Met
-          </span>
-        </div>
-        
-        <div class="mt-4 flex items-baseline space-x-2">
-          <span class="text-4xl font-black text-[#0A1936] tracking-tight">420</span>
-          <span class="text-xs font-bold text-slate-500">Total Sea Days</span>
+        <div class="flex items-baseline space-x-2">
+          <span class="text-4xl font-bold font-mono text-slate-900">{{ seaDays }}</span>
+          <span class="text-xs font-semibold text-slate-500">Total Sea Days</span>
         </div>
 
-        <div class="mt-4">
-          <div class="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden">
-            <div class="h-full bg-[#38BDF8] rounded-full" style="width: 100%"></div>
-          </div>
-          <div class="flex justify-between text-[11px] font-semibold text-slate-500 mt-2">
-            <span>Rank requirement: 360 days</span>
-            <span class="font-bold text-[#0A1936]">116% Complete</span>
-          </div>
+        <div class="mt-3 h-2.5 rounded-full overflow-hidden bg-slate-200">
+          <div
+            class="h-full rounded-full bg-[#38BDF8] transition-all duration-700"
+            :style="{ width: Math.min(100, Math.round((seaDays / requirementDays) * 100)) + '%' }"
+          ></div>
         </div>
       </div>
 
-      <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs">
-        <span class="text-slate-500">Eligible for 2nd Mate Examination</span>
-        <span class="text-blue-700 font-bold">Audit Passed ✓</span>
+      <div class="flex items-center justify-between text-xs pt-1">
+        <span class="text-slate-500 font-normal">Rank requirement: {{ requirementDays }} days</span>
+        <span class="font-bold text-blue-700">Target Met</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// Props can be expanded as needed
+withDefaults(
+  defineProps<{
+    profile?: {
+      name: string;
+      badge: string;
+      rank: string;
+      vessel: string;
+      imo: string;
+      cdcNo: string;
+      compliance: string;
+      avatar: string;
+    };
+    seaDays?: number;
+    requirementDays?: number;
+  }>(),
+  {
+    profile: () => ({
+      name: 'Cadet Alex Mercer',
+      badge: 'Verified Seafarer',
+      rank: 'Deck Officer Cadet',
+      vessel: 'MV Atlantic Pioneer',
+      imo: '9876543',
+      cdcNo: 'IN-98765',
+      compliance: 'STCW Compliant',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    }),
+    seaDays: 420,
+    requirementDays: 360,
+  }
+);
 </script>

@@ -1,31 +1,40 @@
 <template>
   <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-blue-600 selection:text-white pb-24">
     <!-- Header -->
-    <div class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
+    <header class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            <span class="text-xs font-mono font-bold tracking-widest text-blue-700 uppercase">THE SEAFU &bull; DOCUMENT VAULT</span>
+            <NuxtLink to="/seafarer/dashboard" class="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              <span>Seafarer Panel</span>
+            </NuxtLink>
+            <span class="text-slate-300">&bull;</span>
+            <span class="text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">DOCUMENT CENTER</span>
           </div>
-          <h1 class="text-2xl font-black text-slate-900 tracking-tight">Document Upload Center</h1>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Document Upload Center</h1>
           <p class="text-xs text-slate-500 mt-0.5">Certificates, CDC, Passports, Medical reports &bull; Encrypted cloud storage</p>
         </div>
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-            🔒 AES-256 ENCRYPTED
+          <span class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            <span>AES-256 ENCRYPTED</span>
           </span>
           <NuxtLink
             to="/seafarer/vault"
-            class="text-xs font-bold px-4 py-2 rounded-xl border border-blue-200 text-blue-700 bg-blue-50/60 hover:bg-blue-100 transition shadow-2xs"
+            class="text-xs font-semibold px-4 py-2 rounded-xl border border-blue-200 text-blue-700 bg-blue-50/60 hover:bg-blue-100 transition shadow-2xs"
           >
             View Certificate Vault &rarr;
           </NuxtLink>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
       <!-- ── STORAGE USAGE BAR ────────────────────────────────────────── -->
       <div class="rounded-2xl border border-slate-200 bg-white p-5 mb-6 flex items-center gap-6 shadow-xs">
         <div class="flex-1">
@@ -39,23 +48,22 @@
         </div>
         <div class="text-xs text-right shrink-0">
           <div class="text-slate-500">{{ documents.length }} documents stored</div>
-          <div class="font-bold mt-0.5 text-emerald-600">Storage Healthy</div>
+          <div class="font-semibold mt-0.5 text-emerald-600">Storage Healthy</div>
         </div>
       </div>
 
       <!-- ── DOCUMENT CATEGORY TABS ──────────────────────────────────── -->
-      <div class="flex gap-2 mb-6 flex-wrap">
+      <div class="flex gap-2 mb-6 flex-wrap" role="tablist" aria-label="Document Categories">
         <button
           v-for="cat in docCategories"
           :key="cat.value"
-          class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-2xs"
+          class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition shadow-2xs focus:outline-none focus:ring-1 focus:ring-blue-600"
           :class="activeDocCat === cat.value ? 'bg-[#0A1936] text-white' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'"
           @click="activeDocCat = cat.value"
         >
-          <span>{{ cat.icon }}</span>
           <span>{{ cat.label }}</span>
           <span
-            class="px-1.5 py-0.5 rounded text-[10px] font-mono"
+            class="px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold"
             :class="activeDocCat === cat.value ? 'bg-blue-900 text-blue-200' : 'bg-slate-100 text-slate-500'"
           >
             {{ documents.filter(d => cat.value === 'ALL' || d.category === cat.value).length }}
@@ -73,26 +81,31 @@
           >
             <!-- File Icon -->
             <div
-              class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 border"
+              class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border"
               :class="doc.fileType === 'PDF' ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-blue-50 border-blue-200 text-blue-700'"
             >
-              {{ doc.fileType === 'PDF' ? '📄' : '🖼️' }}
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
             </div>
 
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 flex-wrap">
                 <div class="font-bold text-sm text-slate-900">{{ doc.name }}</div>
                 <span
-                  class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold border"
+                  class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-mono font-bold border"
                   :class="doc.verified ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'"
                 >
-                  {{ doc.verified ? '✓ VERIFIED' : '⏳ PENDING' }}
+                  <svg v-if="doc.verified" class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>{{ doc.verified ? 'VERIFIED' : 'PENDING' }}</span>
                 </span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold">
                   {{ doc.category }}
                 </span>
               </div>
-              <div class="text-xs mt-1 text-slate-500">{{ doc.fileType }} &bull; {{ doc.size }} &bull; Uploaded {{ doc.uploadedAt }}</div>
+              <div class="text-xs mt-1 text-slate-500 font-normal">{{ doc.fileType }} &bull; {{ doc.size }} &bull; Uploaded {{ doc.uploadedAt }}</div>
               <div v-if="doc.expiryDate" class="flex items-center gap-2 mt-2">
                 <span class="text-xs text-slate-400 font-medium">Expires:</span>
                 <span
@@ -106,11 +119,17 @@
             </div>
 
             <div class="flex flex-col gap-2 shrink-0">
-              <button class="text-xs px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition shadow-2xs">
-                ⬇ Download
+              <button
+                @click="downloadDoc(doc)"
+                class="text-xs px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition shadow-2xs font-semibold"
+              >
+                Download
               </button>
-              <button class="text-xs px-3 py-1.5 rounded-lg border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs">
-                🗑 Delete
+              <button
+                @click="deleteDoc(doc)"
+                class="text-xs px-3 py-1.5 rounded-lg border border-rose-200 text-rose-600 hover:bg-rose-50 transition shadow-2xs font-semibold"
+              >
+                Delete
               </button>
             </div>
           </div>
@@ -119,7 +138,6 @@
             v-if="!filteredDocuments.length"
             class="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-xs"
           >
-            <div class="text-3xl mb-3">📁</div>
             <p class="text-sm text-slate-500">No documents found in this category.</p>
           </div>
         </div>
@@ -128,13 +146,20 @@
         <div class="space-y-4">
           <!-- Upload Drop Zone -->
           <div
-            class="rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/40 p-6 text-center cursor-pointer hover:bg-blue-50/70 transition shadow-xs"
+            class="rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/40 p-6 text-center cursor-pointer hover:bg-blue-50/70 transition shadow-xs group"
             @dragover.prevent
             @drop.prevent="handleDrop"
             @click="triggerUpload"
+            role="button"
+            tabindex="0"
+            aria-label="Upload document dropzone"
           >
-            <div class="text-4xl mb-3">📤</div>
-            <div class="text-sm font-black mb-1 text-slate-900">Upload Document</div>
+            <div class="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white border border-blue-200 text-blue-700 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+            </div>
+            <div class="text-sm font-bold mb-1 text-slate-900">Upload Document</div>
             <p class="text-xs mb-4 text-slate-500">Drag &amp; drop or click to browse<br />PDF, JPEG, PNG, WebP &bull; Max 15 MB</p>
             <input
               ref="fileInput"
@@ -144,7 +169,8 @@
               @change="handleFileSelect"
             />
             <button
-              class="text-xs font-bold px-4 py-2 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs transition"
+              type="button"
+              class="text-xs font-semibold px-4 py-2 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs transition"
             >
               Browse Files
             </button>
@@ -153,16 +179,24 @@
           <!-- Upload Form (shown after file selected) -->
           <div v-if="pendingFile" class="rounded-2xl border border-slate-200 bg-white p-5 space-y-3.5 shadow-xs">
             <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-xl">📄</span>
-              <div class="flex-1 min-w-0">
-                <div class="text-sm font-bold text-slate-900 truncate">{{ pendingFile.name }}</div>
-                <div class="text-xs text-slate-500">{{ formatSize(pendingFile.size) }}</div>
+              <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
               </div>
-              <button class="text-xs text-rose-600 font-bold p-1" @click="pendingFile = null">✕</button>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-semibold text-slate-900 truncate">{{ pendingFile.name }}</div>
+                <div class="text-xs text-slate-500 font-mono">{{ formatSize(pendingFile.size) }}</div>
+              </div>
+              <button class="text-xs text-rose-600 font-bold p-1 hover:bg-rose-50 rounded" @click="pendingFile = null">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
             </div>
 
             <div>
-              <label class="text-[10px] font-mono tracking-wider font-bold block mb-1 text-slate-500 uppercase">DOCUMENT TYPE *</label>
+              <label class="text-[10px] font-mono tracking-wider font-semibold block mb-1 text-slate-500 uppercase">DOCUMENT TYPE *</label>
               <select
                 v-model="uploadForm.category"
                 class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 text-slate-800 outline-none focus:bg-white focus:border-blue-600"
@@ -173,7 +207,7 @@
             </div>
 
             <div>
-              <label class="text-[10px] font-mono tracking-wider font-bold block mb-1 text-slate-500 uppercase">DOCUMENT NAME</label>
+              <label class="text-[10px] font-mono tracking-wider font-semibold block mb-1 text-slate-500 uppercase">DOCUMENT NAME</label>
               <input
                 v-model="uploadForm.name"
                 type="text"
@@ -183,7 +217,7 @@
             </div>
 
             <div>
-              <label class="text-[10px] font-mono tracking-wider font-bold block mb-1 text-slate-500 uppercase">EXPIRY DATE (if applicable)</label>
+              <label class="text-[10px] font-mono tracking-wider font-semibold block mb-1 text-slate-500 uppercase">EXPIRY DATE (if applicable)</label>
               <input
                 v-model="uploadForm.expiryDate"
                 type="date"
@@ -192,11 +226,11 @@
             </div>
 
             <button
-              class="w-full py-2.5 rounded-xl text-xs font-bold transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs"
+              class="w-full py-2.5 rounded-xl text-xs font-semibold transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs"
               :disabled="!uploadForm.category || uploading"
               @click="uploadDocument"
             >
-              {{ uploading ? 'Uploading...' : '⬆ Upload to Encrypted Vault' }}
+              {{ uploading ? 'Uploading...' : 'Upload to Encrypted Vault' }}
             </button>
           </div>
 
@@ -215,7 +249,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -223,7 +257,7 @@
 import { ref, reactive, computed } from 'vue';
 
 useHead({ title: 'Document Vault · The Seafu' });
-definePageMeta({ middleware: ['auth'] });
+definePageMeta({ layout: false });
 
 const activeDocCat = ref('ALL');
 const fileInput = ref<HTMLInputElement | null>(null);
@@ -237,12 +271,12 @@ const uploadForm = reactive({
 });
 
 const docCategories = [
-  { value: 'ALL', label: 'All Documents', icon: '📁' },
-  { value: 'STCW_CERTIFICATE', label: 'STCW Certificates', icon: '🏆' },
-  { value: 'CDC', label: 'CDC / Passport', icon: '📘' },
-  { value: 'MEDICAL', label: 'Medical Reports', icon: '🏥' },
-  { value: 'WATCHKEEPING', label: 'Sea Service', icon: '📝' },
-  { value: 'COC', label: 'CoC / INDOS', icon: '⚓' },
+  { value: 'ALL', label: 'All Documents' },
+  { value: 'STCW_CERTIFICATE', label: 'STCW Certificates' },
+  { value: 'CDC', label: 'CDC / Passport' },
+  { value: 'MEDICAL', label: 'Medical Reports' },
+  { value: 'WATCHKEEPING', label: 'Sea Service' },
+  { value: 'COC', label: 'CoC / INDOS' },
 ];
 
 const uploadCategories = [
@@ -307,7 +341,7 @@ const documents = ref([
   },
   {
     id: 'doc-005',
-    name: 'Indian Passport — PH4912341',
+    name: 'Passport — PH4912341',
     category: 'CDC',
     fileType: 'PDF',
     size: '1.8 MB',
@@ -380,10 +414,20 @@ function formatSize(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+function downloadDoc(doc: any) {
+  alert(`Downloading verified file: ${doc.name}`);
+}
+
+function deleteDoc(doc: any) {
+  if (confirm(`Remove "${doc.name}" from your encrypted vault?`)) {
+    documents.value = documents.value.filter(d => d.id !== doc.id);
+  }
+}
+
 async function uploadDocument() {
   if (!pendingFile.value || !uploadForm.category) return;
   uploading.value = true;
-  await new Promise(r => setTimeout(r, 1500));
+  await new Promise(r => setTimeout(r, 1200));
 
   documents.value.unshift({
     id: `doc-${Date.now()}`,

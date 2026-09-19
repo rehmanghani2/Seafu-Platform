@@ -1,103 +1,124 @@
 <template>
-  <div class="min-h-screen" style="background:#070D18;">
+  <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-blue-600 selection:text-white pb-24">
     <!-- Header -->
-    <div class="border-b px-6 py-4" style="border-color:#0c1a2e; background:#0a1628;">
-      <div class="max-w-5xl mx-auto flex items-center justify-between">
+    <header class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <div class="w-2 h-2 rounded-full animate-pulse" style="background:#00E5FF;"></div>
-            <span class="text-xs font-mono tracking-widest" style="color:#00E5FF;">THE SEAFU · DIGITAL MARITIME RESUME</span>
+            <NuxtLink to="/seafarer/dashboard" class="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              <span>Seafarer Panel</span>
+            </NuxtLink>
+            <span class="text-slate-300">&bull;</span>
+            <span class="text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">DIGITAL RESUME</span>
           </div>
-          <h1 class="text-xl font-bold" style="color:#e2e8f0;">Auto-Updating Digital Maritime Profile</h1>
-          <p class="text-xs mt-0.5" style="color:#64748b;">
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Auto-Updating Maritime Profile</h1>
+          <p class="text-xs text-slate-500 mt-0.5">
             Auto-generates from your verified certificates, sea service records, and job history
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <button class="text-xs font-bold px-4 py-2 rounded-lg border transition"
-            style="border-color:#1e3a5f; color:#64748b;">
-            ⬇ Export PDF
+          <button
+            @click="exportPdf"
+            class="text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 transition shadow-2xs flex items-center space-x-1.5 focus:outline-none focus:ring-1 focus:ring-blue-600"
+          >
+            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>Export Verified PDF</span>
           </button>
-          <button class="text-xs font-bold px-4 py-2 rounded-lg transition"
-            style="background:linear-gradient(135deg,#0369A1,#0ea5e9); color:#fff;">
-            🔗 Share Public Profile
+          <button
+            @click="shareProfile"
+            class="text-xs font-semibold px-4 py-2.5 rounded-xl transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs flex items-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-blue-900"
+          >
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+            </svg>
+            <span>Share Public Profile</span>
           </button>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="max-w-5xl mx-auto px-6 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- ══════════════════════════════════════════════════════════════ -->
       <!-- LEFT SIDEBAR                                                  -->
       <!-- ══════════════════════════════════════════════════════════════ -->
       <aside class="space-y-4">
         <!-- Profile Card -->
-        <div class="rounded-xl border p-5 text-center" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center text-3xl font-black mb-3"
-            style="background:linear-gradient(135deg,#0369A1,#00E5FF); color:#070D18;">
-            AN
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs">
+          <div class="relative w-24 h-24 rounded-2xl mx-auto mb-3 overflow-hidden border border-slate-200 shadow-xs">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+              alt="Cadet Alex Mercer"
+              class="w-full h-full object-cover"
+            />
           </div>
-          <h2 class="text-base font-bold" style="color:#e2e8f0;">Capt. Arvind Nair</h2>
-          <div class="text-xs font-mono mt-0.5" style="color:#00E5FF;">Master Mariner (Class I)</div>
+          <h2 class="text-lg font-bold text-slate-900">Cadet Alex Mercer</h2>
+          <div class="text-xs font-semibold text-blue-700 mt-0.5">Deck Officer Cadet</div>
           <div class="flex items-center justify-center gap-1.5 mt-2">
-            <span class="text-xs px-2 py-0.5 rounded-full" style="background:#22c55e20; color:#22c55e; border:1px solid #22c55e30;">
-              ✓ INDoS VERIFIED
+            <span class="inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>INDoS VERIFIED</span>
             </span>
           </div>
 
           <!-- Profile Completion Ring -->
-          <div class="mt-4 p-3 rounded-lg" style="background:#070D18; border:1px solid #1e3a5f;">
-            <div class="flex items-center justify-between text-xs mb-1">
-              <span style="color:#64748b;">Profile Completeness</span>
-              <span class="font-bold" style="color:#00E5FF;">{{ profileScore }}%</span>
+          <div class="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-left">
+            <div class="flex items-center justify-between text-xs mb-1.5 font-medium">
+              <span class="text-slate-600">Profile Completeness</span>
+              <span class="font-mono font-bold text-[#0A1936]">98%</span>
             </div>
-            <div class="h-2 rounded-full overflow-hidden" style="background:#1e3a5f;">
-              <div class="h-full rounded-full"
-                :style="{ width: profileScore + '%', background: 'linear-gradient(90deg,#0369A1,#00E5FF)' }"></div>
+            <div class="h-2 rounded-full overflow-hidden bg-slate-200">
+              <div class="h-full rounded-full bg-[#0A1936]" style="width: 98%;"></div>
             </div>
           </div>
         </div>
 
         <!-- Identity Numbers -->
-        <div class="rounded-xl border p-4" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-[10px] font-mono tracking-widest mb-3" style="color:#00E5FF;">DG SHIPPING IDENTIFIERS</div>
-          <div class="space-y-2">
-            <div class="flex justify-between">
-              <span class="text-xs" style="color:#64748b;">INDoS No.</span>
-              <span class="text-xs font-mono font-bold" style="color:#e2e8f0;">08ZL9431</span>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+          <div class="text-[10px] font-mono tracking-widest mb-3 font-bold text-slate-400 uppercase">MARITIME IDENTIFIERS</div>
+          <div class="space-y-2.5 text-xs">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">INDoS No.</span>
+              <span class="font-mono font-bold text-slate-900">08ZL9431</span>
             </div>
-            <div class="flex justify-between">
-              <span class="text-xs" style="color:#64748b;">CDC No.</span>
-              <span class="text-xs font-mono" style="color:#e2e8f0;">MU-2018-441292</span>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">CDC No.</span>
+              <span class="font-mono font-bold text-slate-900">IN-98765</span>
             </div>
-            <div class="flex justify-between">
-              <span class="text-xs" style="color:#64748b;">Seafarer ID</span>
-              <span class="text-xs font-mono" style="color:#e2e8f0;">IND-0827-M</span>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">Seafarer ID</span>
+              <span class="font-mono font-bold text-slate-900">SEAFU-0827-M</span>
             </div>
-            <div class="flex justify-between">
-              <span class="text-xs" style="color:#64748b;">DG Auth. Code</span>
-              <span class="text-xs font-mono" style="color:#00E5FF;">IND-AFF-7714-ECDSA</span>
+            <div class="flex justify-between items-center pt-1 border-t border-slate-100">
+              <span class="text-slate-500">DGS Auth Hash</span>
+              <span class="font-mono text-[11px] text-blue-700 font-semibold">0x7F9B...8A12</span>
             </div>
           </div>
         </div>
 
         <!-- Active Applications widget -->
-        <div class="rounded-xl border p-4" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-[10px] font-mono tracking-widest mb-3" style="color:#00E5FF;">JOB APPLICATIONS</div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+          <div class="text-[10px] font-mono tracking-widest mb-3 font-bold text-slate-400 uppercase">JOB APPLICATIONS</div>
           <div class="space-y-2">
-            <div v-for="status in applicationSummary" :key="status.label"
-              class="flex items-center justify-between">
+            <div v-for="status in applicationSummary" :key="status.label" class="flex items-center justify-between text-xs">
               <div class="flex items-center gap-2">
-                <div class="w-2.5 h-2.5 rounded-full" :style="`background:${status.color};`"></div>
-                <span class="text-xs" style="color:#94a3b8;">{{ status.label }}</span>
+                <div class="w-2.5 h-2.5 rounded-full" :class="status.bg"></div>
+                <span class="text-slate-600 font-medium">{{ status.label }}</span>
               </div>
-              <span class="text-xs font-bold" style="color:#e2e8f0;">{{ status.count }}</span>
+              <span class="font-bold text-slate-900 font-mono">{{ status.count }}</span>
             </div>
           </div>
-          <NuxtLink to="/jobs/my-applications"
-            class="mt-3 block text-center text-xs font-bold py-2 rounded-lg transition"
-            style="background:#0369A120; color:#00E5FF; border:1px solid #0369A140;">
-            Track Applications →
+          <NuxtLink
+            to="/jobs"
+            class="mt-4 block text-center text-xs font-semibold py-2 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition"
+          >
+            Track Applications &rarr;
           </NuxtLink>
         </div>
       </aside>
@@ -107,213 +128,164 @@
       <!-- ══════════════════════════════════════════════════════════════ -->
       <div class="lg:col-span-2 space-y-5">
         <!-- Auto-update notice -->
-        <div class="flex items-start gap-3 p-3 rounded-xl"
-          style="background:#22c55e10; border:1px solid #22c55e30;">
-          <span class="text-base mt-0.5">🔄</span>
-          <div class="text-xs leading-relaxed" style="color:#64748b;">
-            <span class="font-semibold" style="color:#22c55e;">Auto-Updated:</span>
-            This profile syncs automatically with your STCW vault, booking history, and verified job applications. Last updated: <strong style="color:#94a3b8;">2 minutes ago</strong>.
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+          <svg class="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          <div class="text-xs leading-relaxed text-emerald-900 font-normal">
+            <strong class="font-semibold text-emerald-950">Auto-Updated Live CV:</strong>
+            This profile syncs automatically with your STCW certificate vault, verified sea service logs, and approved cadet training records. Last synced: <span class="font-mono font-semibold">Today, 08:30 UTC</span>.
           </div>
         </div>
 
         <!-- ── PERSONAL INFO ─────────────────────────────────────────── -->
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="flex items-center justify-between px-5 py-3.5 border-b" style="border-color:#0c1a2e;">
-            <div class="text-xs font-mono tracking-widest" style="color:#00E5FF;">PERSONAL INFORMATION</div>
-            <button class="text-xs" style="color:#64748b;">Edit ✎</button>
+        <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+          <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+            <div class="text-xs font-mono tracking-widest font-bold text-slate-400 uppercase">PERSONAL INFORMATION</div>
+            <span class="text-[11px] font-semibold text-emerald-600">✓ Verified via Passport</span>
           </div>
-          <div class="p-5 grid grid-cols-2 gap-4">
+          <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div v-for="field in personalInfo" :key="field.label">
-              <div class="text-[10px] font-mono uppercase tracking-wider" style="color:#475569;">{{ field.label }}</div>
-              <div class="text-sm mt-0.5 font-medium" style="color:#e2e8f0;">{{ field.value }}</div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">{{ field.label }}</div>
+              <div class="text-sm mt-0.5 font-semibold text-slate-900">{{ field.value }}</div>
             </div>
           </div>
         </div>
 
         <!-- ── STCW CERTIFICATES (Auto-synced) ──────────────────────── -->
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="flex items-center justify-between px-5 py-3.5 border-b" style="border-color:#0c1a2e;">
-            <div class="text-xs font-mono tracking-widest" style="color:#00E5FF;">STCW CERTIFICATES — AUTO-SYNCED FROM VAULT</div>
-            <NuxtLink to="/seafarer/vault" class="text-xs" style="color:#64748b;">Manage →</NuxtLink>
+        <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+          <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+            <div class="text-xs font-mono tracking-widest font-bold text-slate-400 uppercase">STCW CERTIFICATES &bull; AUTO-SYNCED</div>
+            <NuxtLink to="/seafarer/vault" class="text-xs font-semibold text-blue-700 hover:underline">Manage Vault &rarr;</NuxtLink>
           </div>
-          <div class="divide-y" style="border-color:#0c1a2e;">
-            <div v-for="cert in resumeCerts" :key="cert.name"
-              class="flex items-center gap-4 px-5 py-3.5">
-              <div class="text-xl shrink-0">{{ cert.icon }}</div>
-              <div class="flex-1">
-                <div class="text-sm font-medium" style="color:#e2e8f0;">{{ cert.name }}</div>
-                <div class="text-xs font-mono mt-0.5" style="color:#64748b;">{{ cert.ref }} · {{ cert.institute }}</div>
+          <div class="divide-y divide-slate-100">
+            <div
+              v-for="cert in resumeCerts"
+              :key="cert.name"
+              class="flex items-center justify-between p-5 hover:bg-slate-50/60 transition gap-4"
+            >
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-slate-900">{{ cert.name }}</div>
+                  <div class="text-xs font-mono text-slate-400 mt-0.5">{{ cert.ref }} &bull; {{ cert.institute }}</div>
+                </div>
               </div>
-              <div class="text-right">
-                <div class="text-xs" :style="cert.status === 'EXPIRED' ? 'color:#f87171;' : cert.status === 'EXPIRING' ? 'color:#f59e0b;' : 'color:#22c55e;'">
+
+              <div class="text-right shrink-0">
+                <div
+                  class="text-xs font-bold"
+                  :class="cert.status === 'EXPIRED' ? 'text-rose-600' : cert.status === 'EXPIRING' ? 'text-amber-600' : 'text-emerald-600'"
+                >
                   {{ cert.status }}
                 </div>
-                <div class="text-[11px] font-mono mt-0.5" style="color:#475569;">Until {{ cert.until }}</div>
+                <div class="text-[11px] font-mono text-slate-400 mt-0.5">Until {{ cert.until }}</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- ── SEA SERVICE EXPERIENCE ────────────────────────────────── -->
-        <div class="rounded-xl border overflow-hidden" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="flex items-center justify-between px-5 py-3.5 border-b" style="border-color:#0c1a2e;">
-            <div class="text-xs font-mono tracking-widest" style="color:#00E5FF;">SEA SERVICE EXPERIENCE</div>
-            <button class="text-xs" style="color:#64748b;">Add Entry ✎</button>
+        <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+          <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+            <div class="text-xs font-mono tracking-widest font-bold text-slate-400 uppercase">SEA SERVICE LOGBOOK</div>
+            <span class="text-xs font-mono font-bold text-slate-700">420 Days Logged</span>
           </div>
-          <div class="divide-y" style="border-color:#0c1a2e;">
-            <div v-for="job in seaService" :key="job.id" class="p-5">
+          <div class="divide-y divide-slate-100">
+            <div v-for="job in seaService" :key="job.id" class="p-6">
               <div class="flex items-start justify-between gap-4">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
-                  style="background:#0369A120; border:1px solid #0369A140;">
-                  {{ job.icon }}
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 border border-blue-100">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
                 </div>
-                <div class="flex-1">
-                  <div class="font-bold text-sm" style="color:#e2e8f0;">{{ job.rank }}</div>
-                  <div class="text-xs mt-0.5" style="color:#00E5FF;">{{ job.company }} — {{ job.vesselName }}</div>
-                  <div class="text-xs mt-0.5" style="color:#64748b;">{{ job.vesselType }} · IMO: {{ job.imo }} · {{ job.flag }} flag</div>
-                  <div class="text-xs font-mono mt-1" style="color:#475569;">{{ job.from }} — {{ job.to }}</div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-sm text-slate-900">{{ job.rank }}</div>
+                  <div class="text-xs font-semibold text-blue-700 mt-0.5">{{ job.company }} &bull; {{ job.vesselName }}</div>
+                  <div class="text-xs text-slate-500 mt-0.5">{{ job.vesselType }} &bull; IMO: {{ job.imo }} &bull; {{ job.flag }} Flag</div>
+                  <div class="text-xs font-mono text-slate-400 mt-1">{{ job.from }} — {{ job.to }}</div>
                 </div>
                 <div class="text-right shrink-0">
-                  <div class="text-sm font-bold" style="color:#e2e8f0;">{{ job.months }} months</div>
-                  <div class="text-[11px] font-mono" style="color:#64748b;">{{ job.grt }} GRT</div>
+                  <div class="text-sm font-bold text-slate-900 font-mono">{{ job.months }} mo</div>
+                  <div class="text-[11px] font-mono text-slate-400">{{ job.grt }} GRT</div>
                 </div>
-              </div>
-              <div class="mt-3 flex items-center gap-4 text-xs">
-                <span class="px-2 py-0.5 rounded" style="background:#0c1a2e; color:#94a3b8;">{{ job.tradeArea }}</span>
-                <span class="px-2 py-0.5 rounded" style="background:#0c1a2e; color:#94a3b8;">{{ job.propulsion }}</span>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- ── OBJECTIVE ─────────────────────────────────────────────── -->
-        <div class="rounded-xl border p-5" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-xs font-mono tracking-widest mb-3" style="color:#00E5FF;">CAREER OBJECTIVE</div>
-          <textarea v-model="objective" rows="3"
-            class="w-full text-sm bg-transparent outline-none resize-none"
-            style="color:#94a3b8; line-height:1.8;"
-            placeholder="Write your career objective..."></textarea>
-        </div>
-
-        <!-- ── SKILLS & ENDORSEMENTS ─────────────────────────────────── -->
-        <div class="rounded-xl border p-5" style="background:#0a1628; border-color:#0c1a2e;">
-          <div class="text-xs font-mono tracking-widest mb-3" style="color:#00E5FF;">COMPETENCIES & ENDORSEMENTS</div>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="skill in skills" :key="skill"
-              class="text-xs px-3 py-1.5 rounded-full border"
-              style="border-color:#1e3a5f; color:#94a3b8; background:#0c1a2e;">
-              {{ skill }}
-            </span>
-            <button class="text-xs px-3 py-1.5 rounded-full border border-dashed transition"
-              style="border-color:#0369A140; color:#0369A1;">
-              + Add Skill
-            </button>
-          </div>
-        </div>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'Digital Maritime Resume · The Seafu' })
-definePageMeta({ middleware: ['auth'] })
+import { ref } from 'vue';
 
-const objective = ref('Highly experienced Master Mariner with 14 years of sea service aboard VLCCs, LNG carriers, and product tankers across international trade routes. Seeking a challenging command position with a leading shipping company.')
-
-const profileScore = ref(85)
+useHead({ title: 'Digital Resume · The Seafu' });
+definePageMeta({ layout: false });
 
 const personalInfo = [
-  { label: 'Full Name', value: 'Arvind Shankar Nair' },
-  { label: 'Date of Birth', value: '14 March 1985' },
+  { label: 'Full Name', value: 'Cadet Alex Mercer' },
+  { label: 'Rank / Title', value: 'Deck Officer Cadet' },
   { label: 'Nationality', value: 'Indian' },
-  { label: 'Home Port', value: 'Mumbai, Maharashtra' },
-  { label: 'Current Rank', value: 'Master Mariner (Class I)' },
-  { label: 'Years at Sea', value: '14 Years' },
-  { label: 'Email', value: 'arvind.nair@seafu.in' },
-  { label: 'Phone', value: '+91 98765 43210' },
-]
-
-const applicationSummary = [
-  { label: 'Applied', count: 12, color: '#64748b' },
-  { label: 'Shortlisted', count: 4, color: '#0369A1' },
-  { label: 'Interview Sched.', count: 2, color: '#f59e0b' },
-  { label: 'Selected', count: 1, color: '#22c55e' },
-  { label: 'Rejected', count: 5, color: '#dc2626' },
-]
+  { label: 'Date of Birth', value: '14 August 2002' },
+  { label: 'Email', value: 'alex.mercer@seafu.org' },
+  { label: 'Contact Phone', value: '+91 98201 44520' },
+  { label: 'Passport No.', value: 'PH4912341 (Valid to 2030)' },
+  { label: 'Medical Fitness', value: 'ENG1 Valid to Jan 2026' },
+];
 
 const resumeCerts = [
-  { icon: '🔥', name: 'Advanced Fire Fighting (AFF)', ref: 'IND-AFF-7714-ECDSA', institute: 'MTAM', status: 'VALID', until: 'Sep 2031' },
-  { icon: '🆘', name: 'Proficiency in Survival Craft (PSCRB)', ref: 'DG/CERT/MH/2021/44421', institute: 'MTAM', status: 'EXPIRING', until: 'Oct 2026' },
-  { icon: '⛑️', name: 'Basic Safety Training (BST)', ref: 'DG/CERT/MH/2021/44398', institute: 'MTAM', status: 'EXPIRING', until: 'Dec 2026' },
-  { icon: '🏥', name: 'Medical First Aid (MFA)', ref: 'DG/CERT/KL/2022/77012', institute: 'CMI', status: 'VALID', until: 'Jan 2027' },
-  { icon: '🧭', name: 'ECDIS Navigation', ref: 'DG/CERT/MH/2023/51009', institute: 'MTAM', status: 'VALID', until: 'Apr 2028' },
-  { icon: '⭐', name: 'Leadership & Management', ref: 'DG/CERT/MH/2019/30018', institute: 'MTAM', status: 'EXPIRED', until: 'Mar 2024' },
-]
+  { name: 'STCW Watchkeeping Officer Cert', ref: 'IND-WKC-4091', institute: 'Maritime Training Academy Mumbai', status: 'VALID', until: '14 Oct 2027' },
+  { name: 'ENG1 Medical Fitness Certificate', ref: 'DG-MED-8820', institute: 'DG Approved Medical Examiner', status: 'VALID', until: '05 Jan 2026' },
+  { name: 'Advanced Fire Fighting (AFF)', ref: 'IND-AFF-7714', institute: 'National Maritime Institute', status: 'EXPIRING', until: 'In 14 Days' },
+  { name: 'ECDIS Type-Specific (Raytheon Anschütz)', ref: 'ECDIS-RA-2023', institute: 'Oceanic Training Hub', status: 'VALID', until: '05 Apr 2028' },
+];
 
 const seaService = [
   {
     id: 1,
-    icon: '🛢️',
-    rank: 'Master Mariner',
-    company: 'Essence Shipping Pvt Ltd',
-    vesselName: 'MV Ratna Asha',
-    vesselType: 'VLCC (Very Large Crude Carrier)',
-    imo: '9812441',
-    flag: 'Indian',
-    from: 'Apr 2023',
+    rank: 'Deck Cadet',
+    company: 'Atlantic Maritime Fleets',
+    vesselName: 'MV Atlantic Pioneer',
+    vesselType: 'Crude Oil Tanker (VLCC)',
+    imo: '9876543',
+    flag: 'Panama',
+    from: '10 Jan 2025',
     to: 'Present',
-    months: 18,
-    grt: '156,000',
-    tradeArea: 'International — Middle East / Singapore',
-    propulsion: 'MAN B&W 7S80ME-C',
+    months: '8',
+    grt: '160,000',
   },
   {
     id: 2,
-    icon: '🛥️',
-    rank: 'Chief Officer',
-    company: 'IndiaShip Management',
-    vesselName: 'MT Saraswati',
-    vesselType: 'Product Tanker',
-    imo: '9701822',
-    flag: 'Bahamas',
-    from: 'Sep 2020',
-    to: 'Jan 2023',
-    months: 28,
-    grt: '42,500',
-    tradeArea: 'Coastal + Short Sea',
-    propulsion: 'MAN 6L35MC',
+    rank: 'Trainee Deck Rating',
+    company: 'Global Container Lines Ltd.',
+    vesselName: 'MV Ocean Voyager',
+    vesselType: 'Ultra-Large Container Ship',
+    imo: '9741209',
+    flag: 'Liberia',
+    from: '01 Mar 2024',
+    to: '30 Sep 2024',
+    months: '6',
+    grt: '120,000',
   },
-  {
-    id: 3,
-    icon: '🚢',
-    rank: 'Second Officer',
-    company: 'Pacific Ship Management',
-    vesselName: 'MV Himalaya Star',
-    vesselType: 'Bulk Carrier',
-    imo: '9445201',
-    flag: 'Panama',
-    from: 'Mar 2018',
-    to: 'Jun 2020',
-    months: 27,
-    grt: '75,200',
-    tradeArea: 'Pacific Trade — Australia / Japan',
-    propulsion: 'Wartsila 7RT-flex68',
-  },
-]
+];
 
-const skills = [
-  'VLCC Command',
-  'ISM / ISPS Code',
-  'MARPOL Compliance',
-  'SOLAS Compliance',
-  'Bridge Resource Management',
-  'Cargo Calculations',
-  'ECDIS Operation',
-  'Port State Control',
-  'AIS / GMDSS',
-  'Dynamic Positioning',
-  'Stability Calculations',
-  'Crew Management',
-]
+const applicationSummary = [
+  { label: 'Applied', count: 2, bg: 'bg-slate-400' },
+  { label: 'Shortlisted', count: 1, bg: 'bg-[#38BDF8]' },
+  { label: 'Selected', count: 1, bg: 'bg-amber-400' },
+];
+
+function exportPdf() {
+  alert('Exporting official verified Seafarer CV with ECDSA digital stamp...');
+}
+
+function shareProfile() {
+  alert('Public verified profile link copied to clipboard: https://seafu.org/profile/alex-mercer-08ZL9431');
+}
 </script>

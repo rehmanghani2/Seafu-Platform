@@ -1,4 +1,4 @@
-# Dependencies
+﻿# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -47,3 +47,7 @@ Thumbs.db
 # UI & Design Reference Files
 stitch_the_seafu_landing_platform(UI)/
 stitch_the_seafu_landing_platform*
+
+# Project 
+Project Details/ 
+The Seafu – Project Scope of Work (Websolvers).pdf

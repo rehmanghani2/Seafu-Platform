@@ -1,14 +1,20 @@
 <template>
   <div class="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-blue-600 selection:text-white pb-24">
     <!-- Header -->
-    <div class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
+    <header class="border-b border-slate-200 bg-white px-6 py-5 sticky top-0 z-30 shadow-xs">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            <span class="text-xs font-mono font-bold tracking-widest text-blue-700 uppercase">THE SEAFU &bull; STCW CERTIFICATE VAULT</span>
+            <NuxtLink to="/seafarer/dashboard" class="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              <span>Seafarer Panel</span>
+            </NuxtLink>
+            <span class="text-slate-300">&bull;</span>
+            <span class="text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">STCW CERTIFICATE VAULT</span>
           </div>
-          <h1 class="text-2xl font-black text-slate-900 tracking-tight">Certificate Vault</h1>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Certificate Vault</h1>
           <p class="text-xs text-slate-500 mt-0.5">
             All verified STCW, MLC &amp; DG Shipping certificates with cryptographic integrity
           </p>
@@ -16,34 +22,36 @@
         <div class="flex items-center gap-3">
           <NuxtLink
             to="/vault/dossier/IND-AFF-7714-ECDSA"
-            class="text-xs font-bold px-4 py-2.5 rounded-xl transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs flex items-center space-x-1.5"
+            class="text-xs font-semibold px-4 py-2.5 rounded-xl transition bg-[#0A1936] hover:bg-[#112752] text-white shadow-xs flex items-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-blue-900"
           >
-            <span>🔐</span>
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
             <span>Full Cryptographic Dossier &rarr;</span>
           </NuxtLink>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
       <!-- ── COMPLIANCE OVERVIEW ──────────────────────────────────────── -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
-          <div class="text-3xl font-black text-emerald-600 font-mono">{{ validCount }}</div>
-          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">VALID CERTS</div>
+          <div class="text-3xl font-bold text-emerald-600 font-mono">{{ validCount }}</div>
+          <div class="text-[11px] font-mono font-semibold mt-1 text-slate-500 uppercase">VALID CERTS</div>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
-          <div class="text-3xl font-black text-amber-500 font-mono">{{ expiringSoonCount }}</div>
-          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">EXPIRING SOON</div>
+          <div class="text-3xl font-bold text-amber-500 font-mono">{{ expiringSoonCount }}</div>
+          <div class="text-[11px] font-mono font-semibold mt-1 text-slate-500 uppercase">EXPIRING SOON</div>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
-          <div class="text-3xl font-black text-rose-600 font-mono">{{ expiredCount }}</div>
-          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">EXPIRED</div>
+          <div class="text-3xl font-bold text-rose-600 font-mono">{{ expiredCount }}</div>
+          <div class="text-[11px] font-mono font-semibold mt-1 text-slate-500 uppercase">EXPIRED</div>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs">
-          <div class="text-3xl font-black text-blue-700 font-mono">{{ certificates.length }}</div>
-          <div class="text-[11px] font-mono font-bold mt-1 text-slate-500 uppercase">TOTAL CERTS</div>
+          <div class="text-3xl font-bold text-blue-700 font-mono">{{ certificates.length }}</div>
+          <div class="text-[11px] font-mono font-semibold mt-1 text-slate-500 uppercase">TOTAL CERTS</div>
         </div>
       </div>
 
@@ -51,14 +59,14 @@
       <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
         <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div class="text-base font-black text-slate-900">STCW Certificate Registry</div>
+            <div class="text-base font-bold text-slate-900">STCW Certificate Registry</div>
             <p class="text-xs text-slate-500 mt-0.5">Audited tamper-evident credentials</p>
           </div>
-          <div class="flex gap-2 flex-wrap">
+          <div class="flex gap-2 flex-wrap" role="tablist" aria-label="Certificate Status Filters">
             <button
               v-for="f in ['ALL', 'VALID', 'EXPIRING', 'EXPIRED']"
               :key="f"
-              class="text-xs font-bold px-3.5 py-1.5 rounded-lg transition"
+              class="text-xs font-semibold px-3.5 py-1.5 rounded-lg transition focus:outline-none focus:ring-1 focus:ring-blue-600"
               :class="vaultFilter === f ? 'bg-[#0A1936] text-white shadow-xs' : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100'"
               @click="vaultFilter = f"
             >
@@ -74,46 +82,51 @@
             class="p-5 flex flex-col sm:flex-row items-start gap-4 hover:bg-slate-50/60 transition"
           >
             <!-- Category Icon -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 bg-blue-50 border border-blue-200/80">
-              {{ cert.icon }}
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-blue-50 border border-blue-200/80 text-blue-700">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
             </div>
 
             <div class="flex-1 min-w-0">
               <!-- Name + badge -->
               <div class="flex items-center gap-2 flex-wrap mb-1">
-                <span class="font-black text-sm text-slate-900">{{ cert.name }}</span>
+                <span class="font-bold text-sm text-slate-900">{{ cert.name }}</span>
                 <span
-                  class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold border"
+                  class="text-[10px] px-2.5 py-0.5 rounded-full font-mono font-bold border"
                   :class="certStatusClass(cert)"
                 >
                   {{ certStatusText(cert) }}
                 </span>
                 <span
                   v-if="cert.ecdsa"
-                  class="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200"
+                  class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200"
                 >
-                  ECDSA ✓
+                  <svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>ECDSA Verified</span>
                 </span>
               </div>
 
               <!-- Meta info -->
               <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1.5 text-xs mt-2.5">
                 <div>
-                  <div class="text-[10px] uppercase font-bold text-slate-400">REF NO.</div>
+                  <div class="text-[10px] uppercase font-semibold text-slate-400">REF NO.</div>
                   <div class="font-mono text-slate-700 font-semibold">{{ cert.certNo }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px] uppercase font-bold text-slate-400">ISSUING INSTITUTE</div>
-                  <div class="text-slate-700">{{ cert.institute }}</div>
+                  <div class="text-[10px] uppercase font-semibold text-slate-400">ISSUING INSTITUTE</div>
+                  <div class="text-slate-700 font-medium">{{ cert.institute }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px] uppercase font-bold text-slate-400">ISSUED ON</div>
+                  <div class="text-[10px] uppercase font-semibold text-slate-400">ISSUED ON</div>
                   <div class="text-slate-700">{{ cert.issuedOn }}</div>
                 </div>
                 <div>
-                  <div class="text-[10px] uppercase font-bold text-slate-400">VALID UNTIL</div>
+                  <div class="text-[10px] uppercase font-semibold text-slate-400">VALID UNTIL</div>
                   <div :class="cert.daysLeft !== null && cert.daysLeft < 30 ? 'text-amber-600 font-bold' : 'text-slate-700'">
-                    {{ cert.validUntil || '—' }}
+                    {{ cert.validUntil || 'Lifetime' }}
                   </div>
                 </div>
               </div>
@@ -143,19 +156,22 @@
 
             <!-- Actions -->
             <div class="flex sm:flex-col gap-2 shrink-0 w-full sm:w-auto mt-3 sm:mt-0">
-              <a
-                :href="'/verify/' + cert.certNo"
-                class="text-xs font-bold px-3 py-1.5 rounded-lg border border-blue-200 text-blue-700 bg-blue-50/50 hover:bg-blue-100 text-center transition"
+              <NuxtLink
+                :to="'/verify/' + cert.certNo"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-blue-200 text-blue-700 bg-blue-50/50 hover:bg-blue-100 text-center transition"
               >
                 QR Verify
-              </a>
-              <button class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition text-center">
+              </NuxtLink>
+              <button
+                @click="downloadCert(cert)"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition text-center"
+              >
                 Download
               </button>
               <NuxtLink
                 v-if="cert.daysLeft !== null && cert.daysLeft <= 90"
                 to="/courses"
-                class="text-xs px-3 py-1.5 rounded-lg text-center font-bold bg-amber-500 hover:bg-amber-600 text-white transition shadow-2xs"
+                class="text-xs px-3 py-1.5 rounded-lg text-center font-semibold bg-amber-500 hover:bg-amber-600 text-white transition shadow-2xs"
               >
                 Renew
               </NuxtLink>
@@ -163,7 +179,7 @@
           </div>
 
           <div v-if="!filteredCerts.length" class="p-12 text-center">
-            <p class="text-sm text-slate-500">No certificates found for this filter.</p>
+            <p class="text-sm text-slate-500 font-normal">No certificates found for this filter.</p>
           </div>
         </div>
       </div>
@@ -171,7 +187,7 @@
       <!-- ── STCW COMPLIANCE SUMMARY TABLE ──────────────────────────── -->
       <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
         <div class="p-5 border-b border-slate-100">
-          <div class="text-base font-black text-slate-900">STCW Manila Amendment 2010 — Compliance Checklist</div>
+          <div class="text-base font-bold text-slate-900">STCW Manila Amendment 2010 — Compliance Checklist</div>
           <p class="text-xs text-slate-500 mt-0.5">Required certificates for Class I (Master Mariner) certification</p>
         </div>
         <div class="divide-y divide-slate-100">
@@ -185,10 +201,18 @@
                 class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
                 :class="req.status === 'HELD' ? 'bg-emerald-100 text-emerald-700' : req.status === 'EXPIRING' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'"
               >
-                {{ req.status === 'HELD' ? '✓' : req.status === 'EXPIRING' ? '!' : '✕' }}
+                <svg v-if="req.status === 'HELD'" class="w-4 h-4 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <svg v-else-if="req.status === 'EXPIRING'" class="w-4 h-4 text-amber-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+                <svg v-else class="w-4 h-4 text-rose-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
               </span>
               <div>
-                <div class="text-sm font-bold text-slate-800">{{ req.name }}</div>
+                <div class="text-sm font-semibold text-slate-800">{{ req.name }}</div>
                 <div class="text-xs font-mono text-slate-400">{{ req.code }} &bull; {{ req.convention }}</div>
               </div>
             </div>
@@ -201,7 +225,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -209,7 +233,7 @@
 import { ref, computed } from 'vue';
 
 useHead({ title: 'Certificate Vault · The Seafu' });
-definePageMeta({ middleware: ['auth'] });
+definePageMeta({ layout: false });
 
 const vaultFilter = ref('ALL');
 
@@ -217,7 +241,6 @@ const certificates = ref([
   {
     id: 'cert-001',
     name: 'Advanced Fire Fighting (AFF)',
-    icon: '🔥',
     certNo: 'IND-AFF-7714-ECDSA',
     institute: 'Maritime Training Academy Mumbai',
     issuedOn: '12 Sep 2026',
@@ -231,7 +254,6 @@ const certificates = ref([
   {
     id: 'cert-002',
     name: 'Proficiency in Survival Craft (PSCRB)',
-    icon: '🆘',
     certNo: 'DG/CERT/MH/2021/44421',
     institute: 'Maritime Training Academy Mumbai',
     issuedOn: '15 Oct 2021',
@@ -245,7 +267,6 @@ const certificates = ref([
   {
     id: 'cert-003',
     name: 'Basic Safety Training (BST)',
-    icon: '⛑️',
     certNo: 'DG/CERT/MH/2021/44398',
     institute: 'Maritime Training Academy Mumbai',
     issuedOn: '15 Dec 2021',
@@ -259,7 +280,6 @@ const certificates = ref([
   {
     id: 'cert-004',
     name: 'Medical First Aid (MFA)',
-    icon: '🏥',
     certNo: 'DG/CERT/KL/2022/77012',
     institute: 'Cochin Maritime Institute',
     issuedOn: '20 Jan 2022',
@@ -273,7 +293,6 @@ const certificates = ref([
   {
     id: 'cert-005',
     name: 'ECDIS Navigation (Type Specific)',
-    icon: '🧭',
     certNo: 'DG/CERT/MH/2023/51009',
     institute: 'Maritime Training Academy Mumbai',
     issuedOn: '05 Apr 2023',
@@ -287,7 +306,6 @@ const certificates = ref([
   {
     id: 'cert-006',
     name: 'Ship Security Officer (SSO)',
-    icon: '🔒',
     certNo: 'DG/CERT/TN/2020/18771',
     institute: 'Southern Maritime Institute',
     issuedOn: '10 Aug 2020',
@@ -301,7 +319,6 @@ const certificates = ref([
   {
     id: 'cert-007',
     name: 'Leadership & Management (Management Level)',
-    icon: '⭐',
     certNo: 'DG/CERT/MH/2019/30018',
     institute: 'Maritime Training Academy Mumbai',
     issuedOn: '10 Mar 2019',
@@ -345,9 +362,13 @@ function certStatusClass(cert: any): string {
 }
 
 function certStatusText(cert: any): string {
-  if (cert.daysLeft !== null && cert.daysLeft <= 0) return '● EXPIRED';
-  if (cert.daysLeft !== null && cert.daysLeft <= 30) return '⚠ CRITICAL';
-  if (cert.daysLeft !== null && cert.daysLeft <= 90) return '⚠ EXPIRING SOON';
-  return '● VALID';
+  if (cert.daysLeft !== null && cert.daysLeft <= 0) return 'EXPIRED';
+  if (cert.daysLeft !== null && cert.daysLeft <= 30) return 'CRITICAL';
+  if (cert.daysLeft !== null && cert.daysLeft <= 90) return 'EXPIRING SOON';
+  return 'VALID';
+}
+
+function downloadCert(cert: any) {
+  alert(`Downloading signed digital certificate for ${cert.name}...`);
 }
 </script>

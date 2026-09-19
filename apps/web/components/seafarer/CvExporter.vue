@@ -1,51 +1,68 @@
-<template>
-  <div class="bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 sm:p-7 shadow-xs flex flex-col justify-between">
+﻿<template>
+  <div class="bg-slate-100/70 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-2xs space-y-4">
     <div>
-      <div class="flex items-center justify-between mb-4">
-        <span class="text-xs font-black uppercase tracking-wider text-slate-500">Live Professional CV</span>
-        <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200">
-          Auto-Updating Resume
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase">
+          LIVE PROFESSIONAL CV
         </span>
+        <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
       </div>
 
-      <div class="space-y-4">
-        <div>
-          <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
-            <span>Profile Completeness</span>
-            <span>98%</span>
-          </div>
-          <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
-            <div class="h-full bg-[#0A1936] rounded-full" style="width: 98%"></div>
-          </div>
-        </div>
+      <h3 class="text-xl font-bold text-slate-900 tracking-tight mt-1">
+        Auto-Updating Resume
+      </h3>
 
-        <div class="space-y-2 text-xs text-slate-600">
-          <div class="flex items-center space-x-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>8 Verified STCW Certifications Attached</span>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>4 Merchant Vessels Logged (Container &amp; Bulk)</span>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>Master Mariner Endorsement by Capt. H. Vance</span>
-          </div>
+      <p class="text-xs text-slate-600 leading-relaxed mt-2 font-normal">
+        Your CV dynamically syncs with newly verified STCW certificates, sea service day counts, and vessel assignments in real time.
+      </p>
+
+      <!-- Profile Completeness Bar -->
+      <div class="mt-4 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+        <div class="flex items-center justify-between text-xs mb-1.5 font-medium">
+          <span class="text-slate-700">Profile Completeness</span>
+          <span class="font-mono font-bold text-[#0A1936]">98%</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden bg-slate-100">
+          <div class="h-full rounded-full bg-[#0A1936] transition-all duration-500" style="width: 98%;"></div>
+        </div>
+      </div>
+
+      <!-- Verified Items Checklist -->
+      <div class="mt-4 space-y-2 text-xs text-slate-700">
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="font-medium">8 Verified Certifications Linked</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="font-medium">4 Vessels Logged &amp; Verified</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="font-medium">Endorsed by Captain H. Vance</span>
         </div>
       </div>
     </div>
 
-    <div class="pt-6 mt-6 border-t border-slate-200/80 flex items-center justify-between">
-      <NuxtLink to="/seafarer/resume" class="text-xs font-bold text-blue-700 hover:underline">
-        Edit Resume &bull; View Formats
-      </NuxtLink>
-      <button
-        @click="$emit('export-pdf')"
-        class="px-4 py-2 rounded-xl text-xs font-black text-white bg-[#0A1936] hover:bg-[#112752] shadow-xs transition">
-        Export Verified CV (PDF)
-      </button>
-    </div>
+    <!-- Export Button -->
+    <button
+      @click="$emit('export-pdf')"
+      type="button"
+      class="w-full py-3 rounded-xl text-xs font-semibold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs flex items-center justify-center space-x-2 mt-4 focus:outline-none focus:ring-2 focus:ring-blue-900"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      <span>Export Verified CV (PDF)</span>
+    </button>
   </div>
 </template>
 
