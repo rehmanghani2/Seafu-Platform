@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PscScanDeckScreen extends StatefulWidget {
-  const PscScanDeckScreen({super.key});
+  final VoidCallback? onClose;
+
+  const PscScanDeckScreen({super.key, this.onClose});
 
   @override
   State<PscScanDeckScreen> createState() => _PscScanDeckScreenState();
@@ -18,8 +20,14 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
         backgroundColor: const Color(0xFF031726),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.close, color: Colors.white70),
-          onPressed: () {},
+          icon: const Icon(Icons.arrow_back, color: Colors.white70),
+          onPressed: () {
+            if (widget.onClose != null) {
+              widget.onClose!();
+            } else {
+              Navigator.of(context).maybePop();
+            }
+          },
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +44,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                   decoration: BoxDecoration(
                     color: const Color(0xFF0F2E3A),
                     borderRadius: BorderRadius.circular(4),
-                    border: Border.all(color: const Color(0xFF00E5FF).withOpacity(0.4)),
+                    border: Border.all(color: const Color(0xFF00E5FF).withValues(alpha: 0.4)),
                   ),
                   child: const Text(
                     'IMO RES.A1052',
@@ -46,7 +54,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
               ],
             ),
             const Text(
-              'Port State Control ? Offline Handshake',
+              'Port State Control · Offline Handshake Protocol',
               style: TextStyle(fontSize: 10, color: Color(0xFF94A3B8)),
             ),
           ],
@@ -65,7 +73,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                 Icon(Icons.wifi_tethering, size: 12, color: Color(0xFF2DD4BF)),
                 SizedBox(width: 4),
                 Text(
-                  'PSC MESH',
+                  'PSC MESH ACTIVE',
                   style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF2DD4BF)),
                 ),
               ],
@@ -100,7 +108,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: const Text(
-                      'ECDSA SHA-256',
+                      'ECDSA SHA-256 HSM',
                       style: TextStyle(fontSize: 9, fontFamily: 'monospace', color: Color(0xFF38BDF8)),
                     ),
                   ),
@@ -110,7 +118,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
 
             const SizedBox(height: 16),
             const Text(
-              '? Align Maritime QR or NFC Smart Token',
+              'Scan Maritime QR or Bridge NFC Token',
               style: TextStyle(fontSize: 11, fontFamily: 'monospace', color: Color(0xFF38BDF8)),
             ),
             const SizedBox(height: 12),
@@ -123,10 +131,10 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                 decoration: BoxDecoration(
                   color: const Color(0xFF0B1528),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFF00E5FF).withOpacity(0.5), width: 1.5),
+                  border: Border.all(color: const Color(0xFF00E5FF).withValues(alpha: 0.5), width: 1.5),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF00E5FF).withOpacity(0.12),
+                      color: const Color(0xFF00E5FF).withValues(alpha: 0.12),
                       blurRadius: 18,
                       spreadRadius: 2,
                     ),
@@ -143,9 +151,16 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: const Color(0xFF2DD4BF)),
                         ),
-                        child: const Text(
-                          '? QR LOCKED ? 99.8% ACCURACY',
-                          style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF2DD4BF), fontWeight: FontWeight.bold),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.check_circle, size: 12, color: Color(0xFF2DD4BF)),
+                            SizedBox(width: 4),
+                            Text(
+                              'QR LOCKED · 99.8% FIDELITY',
+                              style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF2DD4BF), fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     const SizedBox(height: 14),
@@ -158,7 +173,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                       decoration: BoxDecoration(
                         color: const Color(0xFF070D18),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFF00E5FF).withOpacity(0.4)),
+                        border: Border.all(color: const Color(0xFF00E5FF).withValues(alpha: 0.4)),
                       ),
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +181,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                           Icon(Icons.qr_code_scanner, size: 68, color: Color(0xFF00E5FF)),
                           SizedBox(height: 4),
                           Text(
-                            '? DG-eSAMUDRA',
+                            'DG-eSAMUDRA',
                             style: TextStyle(fontSize: 8, fontFamily: 'monospace', color: Color(0xFF38BDF8), fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -174,7 +189,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                     ),
                     const SizedBox(height: 14),
                     const Text(
-                      'STCW-A-II/1-2 ? ECDSA SIGN VALID',
+                      'STCW-A-II/1-2 · ECDSA SIGN VALID',
                       style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF34D399)),
                     ),
                   ],
@@ -192,7 +207,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                 decoration: BoxDecoration(
                   color: const Color(0xFF0C1628),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFF10B981).withOpacity(0.4)),
+                  border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.4)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -230,7 +245,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                     ),
                     const SizedBox(height: 6),
                     const Text(
-                      'Cert #IND-ECDIS-2023-88412 ? Tolani MTI',
+                      'Cert #IND-ECDIS-2023-88412 · Tolani Maritime Institute',
                       style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF64748B)),
                     ),
                     const SizedBox(height: 12),
@@ -249,7 +264,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('OFFICER NAME', style: TextStyle(fontSize: 9, fontFamily: 'monospace', color: Colors.grey)),
-                              Text('Capt. R. Sharma', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
+                              Text('Capt. Rajesh Sharma', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                             ],
                           ),
                           Column(
@@ -320,7 +335,14 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                               padding: const EdgeInsets.symmetric(vertical: 12),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Dossier payload beamed via Bluetooth Mesh to Rotterdam PSC Terminal'),
+                                  backgroundColor: Color(0xFF0284C7),
+                                ),
+                              );
+                            },
                             icon: const Icon(Icons.bluetooth, size: 16),
                             label: const Text('Beam via Mesh', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                           ),
@@ -334,7 +356,17 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                               padding: const EdgeInsets.symmetric(vertical: 12),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                _isScanLocked = true;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('PSC Inspection Clearance logged on immutable ledger'),
+                                  backgroundColor: Color(0xFF059669),
+                                ),
+                              );
+                            },
                             icon: const Icon(Icons.verified_user, size: 16),
                             label: const Text('Log PSC Clearance', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                           ),
@@ -348,7 +380,7 @@ class _PscScanDeckScreenState extends State<PscScanDeckScreen> {
 
             const SizedBox(height: 16),
             const Text(
-              'Rotterdam Port ? PSC Div. 4 ? Scan History (42)',
+              'Rotterdam Port · PSC Div. 4 · Ledger Sync Log (42 Inspections)',
               style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Colors.grey),
             ),
             const SizedBox(height: 24),

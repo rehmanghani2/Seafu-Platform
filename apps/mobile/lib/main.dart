@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'features/courses/courses_screen.dart';
+import 'features/vault/vault_screen.dart';
 import 'features/bookings/bookings_screen.dart';
-import 'features/vault/psc_scan_deck_screen.dart';
+import 'features/notifications/notifications_screen.dart';
 import 'features/profile/profile_screen.dart';
 
 void main() {
@@ -44,8 +45,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = const [
     CoursesScreen(),
-    PscScanDeckScreen(),
+    VaultScreen(),
     BookingsScreen(),
+    NotificationsScreen(),
     ProfileScreen(),
   ];
 
@@ -64,18 +66,32 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         },
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.explore_outlined),
+            selectedIcon: Icon(Icons.explore),
             label: 'Courses',
           ),
           NavigationDestination(
-            icon: Icon(Icons.qr_code_scanner_outlined),
-            selectedIcon: Icon(Icons.qr_code_scanner),
-            label: 'PSC Vault',
+            icon: Icon(Icons.shield_outlined),
+            selectedIcon: Icon(Icons.shield),
+            label: 'Cert Vault',
           ),
           NavigationDestination(
             icon: Icon(Icons.confirmation_number_outlined),
             selectedIcon: Icon(Icons.confirmation_number),
             label: 'Bookings',
+          ),
+          NavigationDestination(
+            icon: Badge(
+              label: Text('3', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+              backgroundColor: Color(0xFFEF4444),
+              child: Icon(Icons.notifications_outlined),
+            ),
+            selectedIcon: Badge(
+              label: Text('3', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+              backgroundColor: Color(0xFFEF4444),
+              child: Icon(Icons.notifications),
+            ),
+            label: 'Alerts',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),

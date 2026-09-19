@@ -10,11 +10,19 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF031726),
         elevation: 0,
-        title: const Text('? Seafarer Identity & Resume', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Seafarer Identity & Resume',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900, color: Colors.white),
+        ),
         actions: [
           IconButton(
+            tooltip: 'Export QR Card',
             icon: const Icon(Icons.qr_code, color: Color(0xFF00E5FF)),
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Seafarer Digital Passport QR generated')),
+              );
+            },
           ),
         ],
       ),
@@ -33,15 +41,15 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 56,
-                    height: 56,
+                    width: 60,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: const Color(0xFF070D18),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: const Color(0xFF00E5FF), width: 1.5),
                     ),
                     child: const Center(
-                      child: Text('?????', style: TextStyle(fontSize: 26)),
+                      child: Icon(Icons.sailing, color: Color(0xFF00E5FF), size: 30),
                     ),
                   ),
                   const SizedBox(width: 14),
@@ -58,18 +66,24 @@ class ProfileScreen extends StatelessWidget {
                           'Chief Officer / Master FG',
                           style: TextStyle(fontSize: 12, color: Color(0xFF00E5FF)),
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 6),
                         Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1.5),
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
                                 color: const Color(0xFF064E3B),
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: const Text(
-                                'DG e-Samudra Verified',
-                                style: TextStyle(fontSize: 9, fontFamily: 'monospace', color: Color(0xFF34D399)),
+                              child: const Row(
+                                children: [
+                                  Icon(Icons.verified, size: 10, color: Color(0xFF34D399)),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'DG e-Samudra Verified',
+                                    style: TextStyle(fontSize: 9, fontFamily: 'monospace', color: Color(0xFF34D399), fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -142,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Digital Maritime Resume exported')),
+                        const SnackBar(content: Text('Digital Maritime Resume exported to PDF')),
                       );
                     },
                     icon: const Icon(Icons.share, size: 18),
