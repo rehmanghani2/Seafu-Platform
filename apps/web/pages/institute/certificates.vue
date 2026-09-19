@@ -28,16 +28,28 @@
           </nav>
         </div>
 
-        <button
-          @click="openNewCertModal"
-          type="button"
-          class="px-3.5 py-1.5 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white font-bold text-xs transition shadow-xs flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
-        >
-          <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          <span>Issue New Certificate</span>
-        </button>
+        <div class="flex items-center space-x-2.5">
+          <button
+            @click="showBatchCertModal = true"
+            type="button"
+            class="px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition shadow-xs flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:outline-none"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>Issue Batch</span>
+          </button>
+          <button
+            @click="openNewCertModal"
+            type="button"
+            class="px-3.5 py-1.5 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white font-bold text-xs transition shadow-xs flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+          >
+            <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>Issue Individual Certificate</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -120,8 +132,13 @@
           </div>
         </div>
 
-        <!-- Candidate Certificates Table -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+        <!-- Tab View 1: Cadet Credential & Sea Service Sign-off Queue -->
+        <div v-if="activeStatusFilter === 'SEA_SERVICE_QUEUE'">
+          <InstituteSeaServiceQueue @signed="onSeaServiceSigned" />
+        </div>
+
+        <!-- Tab View 2: Candidate Certificates Table -->
+        <div v-else class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs" aria-label="Candidate certificate ledger">
               <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
@@ -375,6 +392,113 @@
         </form>
       </div>
     </div>
+
+    <!-- Modal: Issue Certificate Batch (FROM REFERENCE UI) -->
+    <div
+      v-if="showBatchCertModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-batch-cert-title"
+      @click.self="showBatchCertModal = false"
+    >
+      <div class="max-w-lg w-full bg-white rounded-2xl p-6 shadow-2xl border border-slate-200 space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-[#0A1936] text-white flex items-center justify-center font-bold text-xs" aria-hidden="true">
+              <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h3 id="modal-batch-cert-title" class="text-sm sm:text-base font-bold text-slate-900">Issue Certificate Batch</h3>
+              <p class="text-[11px] text-slate-500">Bulk STCW Credential Stamping &amp; Registry Publish</p>
+            </div>
+          </div>
+          <button
+            @click="showBatchCertModal = false"
+            type="button"
+            class="text-slate-400 hover:text-slate-700 font-bold text-sm p-1 rounded-lg focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+            aria-label="Close batch modal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Select training batch to generate bulk STCW credentials with unique cryptographic hashes and publish them directly to cadets' Seafu Digital Vaults.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <label for="batch-select-input" class="block text-xs font-bold text-slate-700 mb-1">Select Batch</label>
+            <select
+              id="batch-select-input"
+              v-model="selectedBatchForCert"
+              class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none focus:bg-white focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="Advanced Fire Fighting Batch #A-42 (24 Cadets)">Advanced Fire Fighting Batch #A-42 (24 Cadets)</option>
+              <option value="Bridge Resource Management Batch #BRM-12 (18 Cadets)">Bridge Resource Management Batch #BRM-12 (18 Cadets)</option>
+              <option value="General Purpose Rating Batch #GP3-2026-003 (40 Cadets)">General Purpose Rating Batch #GP3-2026-003 (40 Cadets)</option>
+              <option value="ECDIS Type-Specific Simulator (15 Cadets)">ECDIS Type-Specific Simulator (15 Cadets)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="batch-authority-input" class="block text-xs font-bold text-slate-700 mb-1">Issuing Authority</label>
+            <input
+              id="batch-authority-input"
+              type="text"
+              readonly
+              value="Global Maritime Academy &bull; MTI Principal Registrar"
+              class="w-full px-3 py-2 text-xs rounded-xl bg-slate-100 border border-slate-200 text-slate-700 outline-none font-medium"
+            />
+          </div>
+
+          <div class="p-3 bg-blue-50/80 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
+            <div class="font-bold flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>Cryptographic Batch Stamping</span>
+            </div>
+            <p class="text-[11px] leading-relaxed text-slate-700">
+              All selected cadets will immediately receive their verifiable QR certificates and continuous discharge logbook clearance.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-end space-x-2 border-t border-slate-100">
+          <button
+            @click="showBatchCertModal = false"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none transition"
+          >
+            Cancel
+          </button>
+          <button
+            @click="generateBatchCerts"
+            type="button"
+            class="px-5 py-2 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-xs focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
+          >
+            Generate Batch
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Toast Notification -->
+    <div
+      v-if="toastMessage"
+      class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-[#0A1936] text-white shadow-xl border border-slate-700 text-xs font-bold flex items-center space-x-2"
+      role="status"
+      aria-live="polite"
+    >
+      <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>{{ toastMessage }}</span>
+    </div>
   </div>
 </template>
 
@@ -389,18 +513,38 @@ useHead({
   title: 'Certificate Issuance & QR &bull; Academy Console',
 });
 
+const toastMessage = ref('');
+function showToast(msg: string) {
+  toastMessage.value = msg;
+  setTimeout(() => {
+    toastMessage.value = '';
+  }, 3500);
+}
+
 const showCertModal = ref(false);
 const showQrModal = ref(false);
+const showBatchCertModal = ref(false);
+const selectedBatchForCert = ref('Advanced Fire Fighting Batch #A-42 (24 Cadets)');
 const selectedQrCandidate = ref<any>(null);
 const activeStatusFilter = ref('ALL');
 const searchCandidate = ref('');
 
 const statusTabs = [
-  { id: 'ALL', label: 'All Candidates (4)' },
+  { id: 'ALL', label: 'All Certificates (4)' },
   { id: 'ISSUED', label: 'Issued & Stamped (2)' },
   { id: 'PENDING_ASSESSMENT', label: 'Pending Assessment (1)' },
   { id: 'READY_FOR_ISSUE', label: 'Ready for Issue (1)' },
+  { id: 'SEA_SERVICE_QUEUE', label: 'Sea Service Sign-offs (4)' },
 ];
+
+function generateBatchCerts() {
+  showBatchCertModal.value = false;
+  showToast(`Bulk certificates issued for ${selectedBatchForCert.value} and dispatched to cadet vaults.`);
+}
+
+function onSeaServiceSigned(item: any) {
+  showToast(`Sea-time credential verified & stamped for ${item.cadetName} (${item.module}).`);
+}
 
 const modalData = ref({
   name: '',
@@ -509,5 +653,6 @@ function previewLiveQr(cand: any) {
 function closeModals() {
   showCertModal.value = false;
   showQrModal.value = false;
+  showBatchCertModal.value = false;
 }
 </script>
