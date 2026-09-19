@@ -32,21 +32,21 @@
             :class="highlightDiffs ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-white text-slate-700 border-slate-200'"
             class="px-4 py-2.5 rounded-xl text-xs font-bold border hover:bg-slate-50 transition shadow-2xs flex items-center space-x-2"
           >
-            <span>👁️</span>
+            <svg class="w-4 h-4 text-blue-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             <span>{{ highlightDiffs ? 'Showing Key Differences' : 'Highlight Differences Only' }}</span>
           </button>
           <button
             @click="shareMatrix"
             class="px-4 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition shadow-2xs flex items-center space-x-2"
           >
-            <span>🔗</span>
+            <svg class="w-4 h-4 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
             <span>Share Matrix</span>
           </button>
           <button
             @click="exportPdf"
             class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0A1936] hover:bg-[#112752] text-white transition shadow-sm flex items-center space-x-2"
           >
-            <span>📥</span>
+            <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
             <span>Export Official Dossier (PDF)</span>
           </button>
         </div>
@@ -54,7 +54,7 @@
 
       <!-- Jump Navigation Bar -->
       <div class="mt-4 flex items-center gap-2 overflow-x-auto text-xs font-bold py-2 scrollbar-none border-b border-slate-200/80">
-        <span class="text-[10px] text-slate-400 uppercase font-mono tracking-wider mr-2 shrink-0">FOCUS SECTION:</span>
+        <span class="text-[10px] text-slate-600 uppercase font-mono tracking-wider mr-2 shrink-0">FOCUS SECTION:</span>
         <a
           v-for="s in jumpSections"
           :key="s.id"
@@ -245,7 +245,7 @@
         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg">
-              🛡️
+              <svg class="w-4 h-4 text-blue-700 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
             <div>
               <h3 class="text-lg font-black text-slate-900">1. Flag State &amp; Regulatory Accreditations</h3>
@@ -314,7 +314,7 @@
         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-lg">
-              🕹️
+              <svg class="w-4 h-4 text-cyan-700 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <div>
               <h3 class="text-lg font-black text-slate-900">2. Simulator Infrastructure &amp; Practical Grounds</h3>
@@ -400,7 +400,7 @@
         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg">
-              💳
+              <svg class="w-4 h-4 text-emerald-700 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
             </div>
             <div>
               <h3 class="text-lg font-black text-slate-900">3. Course Fees, Batch Quotas &amp; Seafu Escrow</h3>
@@ -486,7 +486,7 @@
         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg">
-              💼
+              <svg class="w-4 h-4 text-purple-700 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <div>
               <h3 class="text-lg font-black text-slate-900">4. Placement Records &amp; Corporate Sponsorships</h3>
@@ -550,7 +550,7 @@
         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-lg">
-              🏫
+              <svg class="w-4 h-4 text-blue-700 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
             </div>
             <div>
               <h3 class="text-lg font-black text-slate-900">5. Campus Infrastructure &amp; Cadet Amenities</h3>
@@ -599,15 +599,15 @@
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 items-center text-xs">
             <div class="md:col-span-3 font-bold text-slate-900">Seafarer Recommendation Rate</div>
             <div class="md:col-span-3 space-y-1">
-              <div class="text-base font-black text-amber-500">98% ★★★★★</div>
+              <div class="text-base font-black text-amber-500">98% 5.0 / 5.0 Rating</div>
               <div class="text-[11px] text-slate-500">Ranked highest in live fire practical workout experience.</div>
             </div>
             <div class="md:col-span-3 space-y-1">
-              <div class="text-base font-black text-amber-500">97% ★★★★★</div>
+              <div class="text-base font-black text-amber-500">97% 5.0 / 5.0 Rating</div>
               <div class="text-[11px] text-slate-500">Exceptional immediate vessel dispatch upon course completion.</div>
             </div>
             <div class="md:col-span-3 space-y-1">
-              <div class="text-base font-black text-amber-500">99% ★★★★★</div>
+              <div class="text-base font-black text-amber-500">99% 5.0 / 5.0 Rating</div>
               <div class="text-[11px] text-slate-500">Top rating for UK MCA Oral Examination first-attempt pass rates.</div>
             </div>
           </div>

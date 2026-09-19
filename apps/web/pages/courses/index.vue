@@ -7,13 +7,13 @@
         <div class="max-w-3xl">
           <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-3">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-            <span>Maritime Academy Admissions Portal &bull; Batch Cycle 2026</span>
+            <span>The Seafu Platform &bull; DG Shipping &amp; IMO STCW Accredited Academies</span>
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-slate-900 leading-tight">
-            MTI Karachi Course Discovery & Official Batch Booking
+            The Seafu — Maritime Training Academy & STCW Course Discovery
           </h1>
           <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Direct enrollment for DG-approved Pre-Sea Cadet Programs, HND Scottish Qualification Authority (SQA) Maritime Diplomas, and mandatory IMO STCW Modular Simulators equipped with authentic Wärtsilä & Transas technologies.
+            Direct verified enrollment for DG Shipping approved Pre-Sea Cadet Programs, SQA HND Maritime Diplomas, and mandatory IMO STCW Modular Simulators across accredited maritime academies.
           </p>
         </div>
 
@@ -25,9 +25,9 @@
             </svg>
           </div>
           <div>
-            <div class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">Placements June 2026</div>
+            <div class="text-[11px] font-bold text-slate-600 tracking-wider uppercase">Placements June 2026</div>
             <div class="text-lg font-black text-slate-900">350+ Pre-Sea Cadets</div>
-            <div class="text-[10px] text-slate-400">PNSC &bull; Anglo-Eastern &bull; Bernhard Schulte</div>
+            <div class="text-[10px] text-slate-600">PNSC &bull; Anglo-Eastern &bull; Bernhard Schulte</div>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
           <!-- Col 1: Program Level -->
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center space-x-1.5">
+            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center space-x-1.5">
               <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -54,7 +54,7 @@
                 <option value="SIMULATOR">Full-Mission Simulators (ECDIS/LCHS/ERS)</option>
                 <option value="STCW_MODULAR">STCW Mandatory Modular & Safety Refresher</option>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-600">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -64,7 +64,7 @@
 
           <!-- Col 2: Practical Grounds / Campus -->
           <div class="md:col-span-3">
-            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center space-x-1.5">
+            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center space-x-1.5">
               <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -76,14 +76,14 @@
                 v-model="selectedFacility"
                 class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:bg-white pr-8 font-medium"
               >
-                <option value="ALL">All MTI Simulator Suites Karachi</option>
+                <option value="ALL">All Verified Academy Simulator Suites</option>
                 <option value="KPT">KPT Apprentice Yard Practical Field</option>
                 <option value="TRANSAS">Transas NTPRO 4000 Bridge Suite</option>
                 <option value="WARTSILA">Wärtsilä 5-Console Engine Lab</option>
                 <option value="LCHS">Liquid Cargo Handling Simulator Hub</option>
                 <option value="GMDSS">GMDSS Sailor Transceiver Bay</option>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-600">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -93,7 +93,7 @@
 
           <!-- Col 3: Intake / Session Window -->
           <div class="md:col-span-3">
-            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center space-x-1.5">
+            <label class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center space-x-1.5">
               <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
@@ -109,7 +109,7 @@
                 <option value="WEEKLY">Weekly Simulator Batches (Immediate)</option>
                 <option value="WINTER">Winter Dec 2026 (Registration Open)</option>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-600">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -133,7 +133,7 @@
 
         <!-- Guaranteed Seats Pills -->
         <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-2 text-xs">
-          <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mr-1">GUARANTEED SEATS:</span>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mr-1">GUARANTEED SEATS:</span>
           <button
             @click="selectedCategory = 'ALL'"
             :class="selectedCategory === 'ALL' ? 'bg-blue-50 text-blue-700 border-blue-300 font-bold' : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900'"
@@ -164,7 +164,7 @@
           </button>
           <button
             @click="showFaqModal = true"
-            class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white text-slate-400 border border-slate-200 hover:text-blue-700 transition"
+            class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white text-slate-600 border border-slate-200 hover:text-blue-700 transition"
           >
             FAQ
           </button>
@@ -203,18 +203,18 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
-              <span class="text-[10px] text-slate-400">UK MCA CoC</span>
+              <span class="text-[10px] text-slate-600">UK MCA CoC</span>
             </div>
           </div>
 
-          <!-- Card 2: Filter MTI Programs Widget -->
+          <!-- Card 2: Filter Maritime Programs Widget -->
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-6">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
               <div class="flex items-center space-x-2">
                 <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                 </svg>
-                <h4 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Filter MTI Programs</h4>
+                <h4 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Filter Maritime Programs</h4>
               </div>
               <button
                 @click="resetAllFilters"
@@ -242,21 +242,21 @@
                     <input type="checkbox" v-model="filterChecks.hnd" class="rounded border-slate-200 bg-slate-900 text-cyan-500 focus:ring-0" />
                     <span>Advance Diplomas (AD / HND)</span>
                   </div>
-                  <span class="text-[10px] text-slate-400 font-mono bg-slate-800 px-1.5 py-0.5 rounded">2 Streams</span>
+                  <span class="text-[10px] text-slate-600 font-mono bg-slate-800 px-1.5 py-0.5 rounded">2 Streams</span>
                 </label>
                 <label class="flex items-center justify-between text-xs text-slate-600 cursor-pointer hover:text-slate-900">
                   <div class="flex items-center space-x-2.5">
                     <input type="checkbox" v-model="filterChecks.simulators" class="rounded border-slate-200 bg-slate-900 text-cyan-500 focus:ring-0" />
                     <span>Full-Mission Simulators</span>
                   </div>
-                  <span class="text-[10px] text-slate-400 font-mono bg-slate-800 px-1.5 py-0.5 rounded">3 Suites</span>
+                  <span class="text-[10px] text-slate-600 font-mono bg-slate-800 px-1.5 py-0.5 rounded">3 Suites</span>
                 </label>
                 <label class="flex items-center justify-between text-xs text-slate-600 cursor-pointer hover:text-slate-900">
                   <div class="flex items-center space-x-2.5">
                     <input type="checkbox" v-model="filterChecks.stcw" class="rounded border-slate-200 bg-slate-900 text-cyan-500 focus:ring-0" />
                     <span>STCW Modular Refresher</span>
                   </div>
-                  <span class="text-[10px] text-slate-400 font-mono bg-slate-800 px-1.5 py-0.5 rounded">12 Modules</span>
+                  <span class="text-[10px] text-slate-600 font-mono bg-slate-800 px-1.5 py-0.5 rounded">12 Modules</span>
                 </label>
               </div>
             </div>
@@ -347,11 +347,11 @@
                   DG Ports & Shipping Approved
                 </span>
               </div>
-              <p class="text-xs text-slate-400 mt-0.5">Karachi, Pakistan &bull; Full-Time Campus Training & Simulators</p>
+              <p class="text-xs text-slate-600 mt-0.5">DG Shipping &amp; IMO Accredited &bull; Full-Time Campus Training &amp; Kongsberg Simulators</p>
             </div>
 
             <div class="flex items-center space-x-2">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">SORT BY:</span>
+              <span class="text-[10px] font-bold text-slate-600 uppercase tracking-wider">SORT BY:</span>
               <select
                 v-model="sortOrder"
                 class="bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-cyan-400 font-medium"
@@ -382,7 +382,7 @@
                   City of Glasgow College (UK) Partnership Program — HND SQA Level 8
                 </h3>
                 <p class="text-xs text-slate-600 leading-relaxed">
-                  Comprehensive Scottish Qualifications Authority (SQA) accredited Higher National Diploma in Nautical Science or Marine Engineering at MTI. Complete Year 1 & 2 in Karachi, then transfer to City of Glasgow College, leading to the prestigious UK MCA Officer of the Watch (OOW) Certificate of Competency.
+                  Comprehensive Scottish Qualifications Authority (SQA) accredited Higher National Diploma in Nautical Science or Marine Engineering across accredited academies. Complete Year 1 & 2 at an accredited institute, then transfer to City of Glasgow College, leading to the prestigious UK MCA Officer of the Watch (OOW) Certificate of Competency.
                 </p>
                 <div class="flex flex-wrap gap-2 pt-1">
                   <span class="inline-flex items-center text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
@@ -398,7 +398,7 @@
               <div class="md:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 text-center space-y-2">
                 <div class="text-[10px] font-bold uppercase text-amber-400 tracking-wider">ENROLL ACTIVE</div>
                 <div class="text-lg font-black text-slate-900">June 2026 Batch</div>
-                <div class="text-[10px] text-slate-400">Eligibility: F.Sc Pre-Eng (Min 55%)</div>
+                <div class="text-[10px] text-slate-600">Eligibility: F.Sc Pre-Eng (Min 55%)</div>
                 <button
                   @click="openEnrollModal('City of Glasgow College HND SQA Level 8')"
                   class="w-full bg-[#0A1936] hover:bg-[#112752] text-white font-black text-xs py-2.5 px-3 rounded-lg shadow-md shadow-cyan-500/20 transition uppercase tracking-wide"
@@ -437,7 +437,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">DG-Approved #1</span>
-                        <span class="text-xs text-slate-400">&bull; General Purpose Rating</span>
+                        <span class="text-xs text-slate-600">&bull; General Purpose Rating</span>
                       </div>
                       <span class="text-[10px] font-bold text-amber-400 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
                         June 2026 Intake
@@ -455,22 +455,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">6 Months</div>
-                        <div class="text-[9px] text-slate-400">Full-Time Residential</div>
+                        <div class="text-[9px] text-slate-600">Full-Time Residential</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">SESSION WINDOW</div>
                         <div class="font-bold text-blue-700">Summer / Winter</div>
-                        <div class="text-[9px] text-slate-400">June 2026 &bull; Dec 2026</div>
+                        <div class="text-[9px] text-slate-600">June 2026 &bull; Dec 2026</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">TRAINING GROUNDS</div>
                         <div class="font-bold text-slate-900">KPT Yard</div>
-                        <div class="text-[9px] text-slate-400">Workshops & Seamanship</div>
+                        <div class="text-[9px] text-slate-600">Workshops & Seamanship</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">MIN REQUIREMENT</div>
                         <div class="font-bold text-amber-300">Matric Science</div>
-                        <div class="text-[9px] text-slate-400">SSC 50% min, Max 25 yrs</div>
+                        <div class="text-[9px] text-slate-600">SSC 50% min, Max 25 yrs</div>
                       </div>
                     </div>
                   </div>
@@ -480,7 +480,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">TOTAL FEE / TUITION</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 185,000 <span class="text-[10px] text-slate-400 font-normal">+ Govt. Pre-Sea Medical</span>
+                        PKR 185,000 <span class="text-[10px] text-slate-600 font-normal">+ Govt. Pre-Sea Medical</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -522,7 +522,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">SQA LEVEL 8</span>
-                        <span class="text-xs text-slate-400">&bull; City of Glasgow College</span>
+                        <span class="text-xs text-slate-600">&bull; City of Glasgow College</span>
                       </div>
                       <span class="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded">
                         3-Year Cadet Route
@@ -540,22 +540,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">2 Academic Years</div>
-                        <div class="text-[9px] text-slate-400">Phase 1: Karachi</div>
+                        <div class="text-[9px] text-slate-600">Phase 1: Karachi</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">INTAKE CAPACITY</div>
                         <div class="font-bold text-blue-700">7 Seats Pre-Sea</div>
-                        <div class="text-[9px] text-slate-400">Strict Merit Interview</div>
+                        <div class="text-[9px] text-slate-600">Strict Merit Interview</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">SIMULATOR LAB</div>
                         <div class="font-bold text-slate-900">Transas Bridge</div>
-                        <div class="text-[9px] text-slate-400">Visual Navigation Suite</div>
+                        <div class="text-[9px] text-slate-600">Visual Navigation Suite</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">EXAM / COC ROUTE</div>
                         <div class="font-bold text-emerald-300">UK MCA OOW</div>
-                        <div class="text-[9px] text-slate-400">Glasgow Articulation</div>
+                        <div class="text-[9px] text-slate-600">Glasgow Articulation</div>
                       </div>
                     </div>
                   </div>
@@ -565,7 +565,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">TUITION & SQA REGISTRATION</div>
                       <div class="text-base font-black text-slate-900">
-                        Structured Installments <span class="text-[10px] text-slate-400 font-normal">Semester Based Fees</span>
+                        Structured Installments <span class="text-[10px] text-slate-600 font-normal">Semester Based Fees</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -607,7 +607,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">SQA LEVEL 8</span>
-                        <span class="text-xs text-slate-400">&bull; SQA Unit Credit Hub</span>
+                        <span class="text-xs text-slate-600">&bull; SQA Unit Credit Hub</span>
                       </div>
                       <span class="text-[10px] font-bold text-amber-400 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
                         Phase 1 & II / Karachi
@@ -625,22 +625,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">2 Years Full-Time</div>
-                        <div class="text-[9px] text-slate-400">Karachi Campus</div>
+                        <div class="text-[9px] text-slate-600">Karachi Campus</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">ENTRY REQUIREMENT</div>
                         <div class="font-bold text-blue-700">F.Sc / DAE</div>
-                        <div class="text-[9px] text-slate-400">Min 55% or Mech/Elec</div>
+                        <div class="text-[9px] text-slate-600">Min 55% or Mech/Elec</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">ENGINE LAB</div>
                         <div class="font-bold text-slate-900">Wärtsilä 5-Console</div>
-                        <div class="text-[9px] text-slate-400">High-fidelity Machinery</div>
+                        <div class="text-[9px] text-slate-600">High-fidelity Machinery</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">ACADEMIC VALUE</div>
                         <div class="font-bold text-emerald-300">Level 8 Credits</div>
-                        <div class="text-[9px] text-slate-400">Glasgow Transfer Option</div>
+                        <div class="text-[9px] text-slate-600">Glasgow Transfer Option</div>
                       </div>
                     </div>
                   </div>
@@ -692,7 +692,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">STCW Reg II/1, II/2, II/3</span>
-                        <span class="text-xs text-slate-400">&bull; Transas Navi-Sailor 4000</span>
+                        <span class="text-xs text-slate-600">&bull; Transas Navi-Sailor 4000</span>
                       </div>
                       <span class="text-[10px] font-bold text-emerald-400 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
                         Weekly Batches
@@ -710,22 +710,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">5 Days (40 hrs)</div>
-                        <div class="text-[9px] text-slate-400">Hands-on Console</div>
+                        <div class="text-[9px] text-slate-600">Hands-on Console</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">TARGET AUDIENCE</div>
                         <div class="font-bold text-blue-700">Deck Officers</div>
-                        <div class="text-[9px] text-slate-400">Captains, Chief Mates, OOW</div>
+                        <div class="text-[9px] text-slate-600">Captains, Chief Mates, OOW</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">TECHNOLOGY</div>
                         <div class="font-bold text-slate-900">Transas 4000</div>
-                        <div class="text-[9px] text-slate-400">Dual Electronic Station</div>
+                        <div class="text-[9px] text-slate-600">Dual Electronic Station</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">CERTIFICATION</div>
-                        <div class="font-bold text-emerald-300">MTI & DG Approved</div>
-                        <div class="text-[9px] text-slate-400">Instant QR Verified</div>
+                        <div class="font-bold text-emerald-300">IMO & DG Approved</div>
+                        <div class="text-[9px] text-slate-600">Instant QR Verified</div>
                       </div>
                     </div>
                   </div>
@@ -735,7 +735,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">COURSE INVESTMENT</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 35,000 <span class="text-[10px] text-slate-400 font-normal">Per Candidate (Net)</span>
+                        PKR 35,000 <span class="text-[10px] text-slate-600 font-normal">Per Candidate (Net)</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -777,7 +777,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">STCW A-IV/2</span>
-                        <span class="text-xs text-slate-400">&bull; PTA / DG Shipping Approved</span>
+                        <span class="text-xs text-slate-600">&bull; PTA / DG Shipping Approved</span>
                       </div>
                       <span class="text-[10px] font-bold text-amber-400 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
                         2nd & 4th Sat
@@ -795,22 +795,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">12 Working Days</div>
-                        <div class="text-[9px] text-slate-400">Theory & Live Practice</div>
+                        <div class="text-[9px] text-slate-600">Theory & Live Practice</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">EQUIPMENT</div>
                         <div class="font-bold text-blue-700">Sailor 6000 Series</div>
-                        <div class="text-[9px] text-slate-400">Console Simulation</div>
+                        <div class="text-[9px] text-slate-600">Console Simulation</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">COVERAGE</div>
                         <div class="font-bold text-slate-900">Sea Areas A1-A4</div>
-                        <div class="text-[9px] text-slate-400">Distress / Commercial</div>
+                        <div class="text-[9px] text-slate-600">Distress / Commercial</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">EXAM BODY</div>
                         <div class="font-bold text-emerald-300">DG Ports Exam</div>
-                        <div class="text-[9px] text-slate-400">Statutory Committee</div>
+                        <div class="text-[9px] text-slate-600">Statutory Committee</div>
                       </div>
                     </div>
                   </div>
@@ -820,7 +820,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">COURSE INVESTMENT</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 45,000 <span class="text-[10px] text-slate-400 font-normal">Exclusive Exam Fee</span>
+                        PKR 45,000 <span class="text-[10px] text-slate-600 font-normal">Exclusive Exam Fee</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -862,7 +862,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">STCW Reg V/1-1, & V/1-2</span>
-                        <span class="text-xs text-slate-400">&bull; Multi-Tanker Cargo Model</span>
+                        <span class="text-xs text-slate-600">&bull; Multi-Tanker Cargo Model</span>
                       </div>
                       <span class="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded">
                         Advanced Level
@@ -880,22 +880,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">5 Days</div>
-                        <div class="text-[9px] text-slate-400">Software Scenarios 30h</div>
+                        <div class="text-[9px] text-slate-600">Software Scenarios 30h</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">VESSEL TYPES</div>
                         <div class="font-bold text-blue-700">VLCC / Chem / LNG</div>
-                        <div class="text-[9px] text-slate-400">Multi-Cargo Setups</div>
+                        <div class="text-[9px] text-slate-600">Multi-Cargo Setups</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">ELIGIBILITY</div>
                         <div class="font-bold text-slate-900">Tanker Sea-Time</div>
-                        <div class="text-[9px] text-slate-400">Deck/Engine Officers</div>
+                        <div class="text-[9px] text-slate-600">Deck/Engine Officers</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">INSTRUCTOR</div>
                         <div class="font-bold text-emerald-300">Master Mariners</div>
-                        <div class="text-[9px] text-slate-400">Extensive Tanker Cmd</div>
+                        <div class="text-[9px] text-slate-600">Extensive Tanker Cmd</div>
                       </div>
                     </div>
                   </div>
@@ -905,7 +905,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">FEE</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 55,000 <span class="text-[10px] text-slate-400 font-normal">Advanced Certification</span>
+                        PKR 55,000 <span class="text-[10px] text-slate-600 font-normal">Advanced Certification</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -947,7 +947,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">STCW Reg III/1, III/2, III/6</span>
-                        <span class="text-xs text-slate-400">&bull; Operational & Management</span>
+                        <span class="text-xs text-slate-600">&bull; Operational & Management</span>
                       </div>
                       <span class="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded">
                         Automated HV Test Bay
@@ -965,22 +965,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">5 Days Hands-on</div>
-                        <div class="text-[9px] text-slate-400">HV Breaker Bay</div>
+                        <div class="text-[9px] text-slate-600">HV Breaker Bay</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">TARGET LEVEL</div>
                         <div class="font-bold text-blue-700">EOOW / 2/E / C/E</div>
-                        <div class="text-[9px] text-slate-400">Chief Electricians</div>
+                        <div class="text-[9px] text-slate-600">Chief Electricians</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">FACILITY</div>
                         <div class="font-bold text-slate-900">Live 6.6 kV Panel</div>
-                        <div class="text-[9px] text-slate-400">Vacuum / SF6 Switchgear</div>
+                        <div class="text-[9px] text-slate-600">Vacuum / SF6 Switchgear</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">STANDARDS</div>
                         <div class="font-bold text-emerald-300">STCW 2010 Manila</div>
-                        <div class="text-[9px] text-slate-400">Mandatory HV Req.</div>
+                        <div class="text-[9px] text-slate-600">Mandatory HV Req.</div>
                       </div>
                     </div>
                   </div>
@@ -990,7 +990,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">COURSE FEE</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 50,000 <span class="text-[10px] text-slate-400 font-normal">Includes PPE Gear Usage</span>
+                        PKR 50,000 <span class="text-[10px] text-slate-600 font-normal">Includes PPE Gear Usage</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -1032,7 +1032,7 @@
                     <div class="flex items-center justify-between gap-2 mb-1.5">
                       <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">STCW Reg A-VI/3</span>
-                        <span class="text-xs text-slate-400">&bull; Fire Fighting Ground KPT</span>
+                        <span class="text-xs text-slate-600">&bull; Fire Fighting Ground KPT</span>
                       </div>
                       <span class="text-[10px] font-bold text-emerald-400 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
                         Continuous Batches
@@ -1050,22 +1050,22 @@
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">DURATION</div>
                         <div class="font-bold text-slate-900">4 Days Practical</div>
-                        <div class="text-[9px] text-slate-400">Live Smoke & Burn Field</div>
+                        <div class="text-[9px] text-slate-600">Live Smoke & Burn Field</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">ENTRY PREREQUISITE</div>
                         <div class="font-bold text-blue-700">FPFF & Seaman Book</div>
-                        <div class="text-[9px] text-slate-400">Safety Drill Validation</div>
+                        <div class="text-[9px] text-slate-600">Safety Drill Validation</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">GROUNDS</div>
                         <div class="font-bold text-slate-900">KPT Fire Field</div>
-                        <div class="text-[9px] text-slate-400">Real Ship Compartment</div>
+                        <div class="text-[9px] text-slate-600">Real Ship Compartment</div>
                       </div>
                       <div>
                         <div class="text-[9px] uppercase font-bold text-slate-500">APPROVED BY</div>
                         <div class="font-bold text-emerald-300">DG Ports PK</div>
-                        <div class="text-[9px] text-slate-400">Statutory Certificate</div>
+                        <div class="text-[9px] text-slate-600">Statutory Certificate</div>
                       </div>
                     </div>
                   </div>
@@ -1075,7 +1075,7 @@
                     <div>
                       <div class="text-[9px] text-slate-500 uppercase font-bold">COURSE FEE</div>
                       <div class="text-lg font-black text-slate-900">
-                        PKR 18,000 <span class="text-[10px] text-slate-400 font-normal">Full Practical Fee</span>
+                        PKR 18,000 <span class="text-[10px] text-slate-600 font-normal">Full Practical Fee</span>
                       </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -1102,8 +1102,8 @@
               </div>
               <div>
                 <h4 class="text-sm font-extrabold text-slate-900">Instant Online Certificate Verification System</h4>
-                <p class="text-xs text-slate-400 mt-0.5 max-w-xl">
-                  All MTI Karachi Certificates are issued with instantaneous QR-code validation and stored permanently on the national registry for port authorities and international shipowners.
+                <p class="text-xs text-slate-600 mt-0.5 max-w-xl">
+                  All maritime academy certificates are issued with instantaneous QR-code validation and stored permanently on The Seafu verified ledger for port authorities and international shipowners.
                 </p>
               </div>
             </div>
@@ -1111,7 +1111,7 @@
               to="/verification"
               class="shrink-0 bg-cyan-500/10 hover:bg-cyan-500/20 border border-blue-300 text-blue-700 font-bold text-xs py-2.5 px-4 rounded-xl transition flex items-center space-x-1.5"
             >
-              <span>Go to mtiverification.com</span>
+              <span>Verify via The Seafu Ledger</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -1129,7 +1129,7 @@
             </svg>
           </div>
           <h4 class="text-sm font-bold text-slate-900">DG Ports & Shipping Approved</h4>
-          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+          <p class="text-xs text-slate-600 mt-1 leading-relaxed">
             Accredited by the Directorate General of Ports and Shipping, Ministry of Maritime Affairs, Govt. of Pakistan under statutory STCW Manila Amendments and national training requirements.
           </p>
         </div>
@@ -1141,7 +1141,7 @@
             </svg>
           </div>
           <h4 class="text-sm font-bold text-slate-900">City of Glasgow College Link</h4>
-          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+          <p class="text-xs text-slate-600 mt-1 leading-relaxed">
             Academic articulation with Scotland's premier nautical college providing seafarers direct transfer pathways towards UK MCA maritime certificates of competency.
           </p>
         </div>
@@ -1153,17 +1153,17 @@
             </svg>
           </div>
           <h4 class="text-sm font-bold text-slate-900">25+ Years of Excellence (1998)</h4>
-          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+          <p class="text-xs text-slate-600 mt-1 leading-relaxed">
             Over two decades producing top maritime professionals, Chief Engineers, and Master Mariners serving onboard premier international merchant fleets worldwide.
           </p>
         </div>
       </section>
 
       <!-- Footer Bar -->
-      <footer class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <footer class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
         <div class="flex items-center space-x-2">
           <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-          <span>Maritime Training Institute (MTI Karachi) &bull; Training Excellence Since 1998 &bull; City of Glasgow College Academic Partner</span>
+          <span>The Seafu Maritime Training Network &bull; DG Approved Maritime Training Excellence &bull; International Academic Partners</span>
         </div>
         <div class="flex items-center space-x-4">
           <a href="tel:+923366668475" class="hover:text-blue-700 transition-colors">+92 336 6668475</a>
@@ -1180,7 +1180,7 @@
       <div class="bg-white border border-blue-300 rounded-2xl max-w-lg w-full p-6 shadow-xs shadow-cyan-950/80 relative">
         <button
           @click="bookingModalOpen = false"
-          class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 p-1 rounded-lg hover:bg-slate-800"
+          class="absolute top-4 right-4 text-slate-600 hover:text-slate-900 p-1 rounded-lg hover:bg-slate-800"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -1193,7 +1193,7 @@
             <span>Batch Registration & Seat Lock</span>
           </div>
           <h3 class="text-xl font-black text-slate-900">{{ selectedCourseForBooking }}</h3>
-          <p class="text-xs text-slate-400 mt-1">
+          <p class="text-xs text-slate-600 mt-1">
             Provide your seafarer details to reserve your seat in the upcoming batch cycle.
           </p>
 
@@ -1276,9 +1276,9 @@
             </p>
           </div>
           <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-left text-xs space-y-1">
-            <div class="text-slate-400">Candidate: <span class="text-slate-900 font-semibold">{{ bookingForm.fullName }}</span></div>
-            <div class="text-slate-400">Identifier: <span class="text-slate-900 font-mono">{{ bookingForm.cdcNumber }}</span></div>
-            <div class="text-slate-400">Batch: <span class="text-blue-700 font-semibold">{{ bookingForm.batchDate }}</span></div>
+            <div class="text-slate-600">Candidate: <span class="text-slate-900 font-semibold">{{ bookingForm.fullName }}</span></div>
+            <div class="text-slate-600">Identifier: <span class="text-slate-900 font-mono">{{ bookingForm.cdcNumber }}</span></div>
+            <div class="text-slate-600">Batch: <span class="text-blue-700 font-semibold">{{ bookingForm.batchDate }}</span></div>
           </div>
           <div class="flex items-center justify-center space-x-3 pt-2">
             <NuxtLink
@@ -1303,7 +1303,7 @@
       <div class="bg-white border border-blue-300 rounded-2xl max-w-lg w-full p-6 shadow-xs relative max-h-[85vh] overflow-y-auto">
         <button
           @click="showFaqModal = false"
-          class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 p-1 rounded-lg hover:bg-slate-800"
+          class="absolute top-4 right-4 text-slate-600 hover:text-slate-900 p-1 rounded-lg hover:bg-slate-800"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -1313,15 +1313,15 @@
         <div class="space-y-4 text-xs text-slate-600">
           <div>
             <div class="font-bold text-blue-700">Q: When does the June 2026 Pre-Sea GP-III Intake start?</div>
-            <p class="text-slate-400 mt-1">Pre-sea GP-III residential training begins early June 2026. Entrance medical examinations and uniform fittings are scheduled throughout May.</p>
+            <p class="text-slate-600 mt-1">Pre-sea GP-III residential training begins early June 2026. Entrance medical examinations and uniform fittings are scheduled throughout May.</p>
           </div>
           <div>
             <div class="font-bold text-blue-700">Q: How does the City of Glasgow College articulation work?</div>
-            <p class="text-slate-400 mt-1">Students complete Year 1 & 2 HND SQA Level 8 at MTI Karachi, followed by articulation to City of Glasgow College in the UK for MCA CoC examinations.</p>
+            <p class="text-slate-600 mt-1">Students complete Year 1 & 2 HND SQA Level 8 at an accredited maritime academy, followed by articulation to City of Glasgow College in the UK for MCA CoC examinations.</p>
           </div>
           <div>
             <div class="font-bold text-blue-700">Q: Are certificates verifiable online?</div>
-            <p class="text-slate-400 mt-1">Yes, all issued modular and competency certificates carry high-security QR codes verifiable on mtiverification.com and the national DG registry.</p>
+            <p class="text-slate-600 mt-1">Yes, all issued modular and competency certificates carry high-security QR codes verifiable on mtiverification.com and the national DG registry.</p>
           </div>
         </div>
       </div>
@@ -1386,7 +1386,7 @@ function triggerSearch() {
 }
 
 function openArticulationDetails() {
-  alert('City of Glasgow College (UK) Articulation:\n\n• Students complete 2 academic years (SQA HND Level 8) at MTI Karachi.\n• Direct credit transfer into UK MCA Cadet route in Glasgow.\n• Graduates qualify for UK MCA Officer of the Watch (OOW) oral examination.');
+  alert('City of Glasgow College (UK) Articulation:\n\n• Students complete 2 academic years (SQA HND Level 8) at an accredited maritime academy.\n• Direct credit transfer into UK MCA Cadet route in Glasgow.\n• Graduates qualify for UK MCA Officer of the Watch (OOW) oral examination.');
 }
 
 function downloadSyllabus(course: string) {
@@ -1415,7 +1415,7 @@ function openEnrollModal(courseTitle: string) {
 }
 
 function submitBooking() {
-  bookingReference.value = 'MTI-REG-' + Math.floor(100000 + Math.random() * 900000);
+  bookingReference.value = 'SF-REG-' + Math.floor(100000 + Math.random() * 900000);
   bookingConfirmed.value = true;
 }
 </script>
