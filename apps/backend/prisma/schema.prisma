@@ -524,4 +524,51 @@ model CouponPromotion {
   @@index([code])
 }
 
+enum TicketSource {
+  CHATBOT
+  WHATSAPP
+  WEB_PANEL
+  PHONE_HELPLINE
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TicketStatus {
+  OPEN
+  ESCALATED
+  INVESTIGATING
+  RESOLVED
+  CLOSED
+}
+
+model SupportTicket {
+  id            String         @id @default(uuid())
+  ticketNumber  String         @unique
+  userId        String?
+  seafarerName  String
+  indosNumber   String?
+  contactPhone  String?
+  email         String?
+  category      String         @default("GENERAL_INQUIRY") // STCW_QUERY, BOOKING_REFUND, ADMISSIONS, ESCROW_DISPUTE
+  subject       String
+  description   String
+  source        TicketSource   @default(CHATBOT)
+  priority      TicketPriority @default(MEDIUM)
+  status        TicketStatus   @default(OPEN)
+  whatsappUrl   String?
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([ticketNumber])
+  @@index([status])
+  @@index([priority])
+}
+
+
 

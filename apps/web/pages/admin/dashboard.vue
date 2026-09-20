@@ -1698,9 +1698,21 @@
             <h2 class="font-black text-xs uppercase text-slate-900 tracking-wider">Grievance &amp; Dispute Tickets</h2>
             <div v-for="tkt in complaintDesk" :key="tkt.id" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs flex justify-between items-center gap-2">
               <div>
-                <div class="font-mono text-blue-800 font-bold text-[11px]">{{ tkt.id }} &bull; PRIORITY: {{ tkt.priority }}</div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-blue-800 font-bold text-[11px]">{{ tkt.id }} &bull; PRIORITY: {{ tkt.priority }}</span>
+                  <span v-if="tkt.source === 'WHATSAPP'" class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono text-[9px] font-bold border border-emerald-300 flex items-center gap-1">
+                    <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                    WHATSAPP ESCALATION
+                  </span>
+                </div>
                 <div class="font-bold text-slate-900 text-sm mt-0.5">{{ tkt.subject }}</div>
-                <div class="text-[11px] text-slate-600 mt-0.5">Filed by: <strong class="text-slate-900">{{ tkt.filer }}</strong></div>
+                <div class="text-[11px] text-slate-600 mt-0.5 flex flex-wrap items-center gap-3">
+                  <span>Filed by: <strong class="text-slate-900">{{ tkt.filer }}</strong></span>
+                  <a v-if="tkt.whatsappUrl" :href="tkt.whatsappUrl" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:text-emerald-800 font-bold underline flex items-center gap-1">
+                    <span>Open in WhatsApp</span>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                </div>
               </div>
               <button
                 v-if="tkt.status !== 'RESOLVED'"
@@ -2450,9 +2462,9 @@ const studentReviews = ref([
   { id: 'rev-2', course: 'ECDIS Navigation', rating: 4, comment: 'High quality Kongsberg simulator consoles with active Master Mariners.', student: 'Kiran Pillai' },
 ]);
 
-const complaintDesk = ref([
-  { id: 'TKT-991', subject: 'Refund dispute for cancelled batch AFF-2026-04', filer: 'Deepak Sharma', priority: 'HIGH', status: 'INVESTIGATING' },
-  { id: 'TKT-988', subject: 'Seat lock expired during banking OTP transaction', filer: 'Mohd. Imran', priority: 'MEDIUM', status: 'RESOLVED' },
+const complaintDesk = useState<any[]>('adminComplaintDesk', () => [
+  { id: 'TKT-991', subject: 'Refund dispute for cancelled batch AFF-2026-04', filer: 'Deepak Sharma', priority: 'HIGH', status: 'INVESTIGATING', source: 'WEB_PANEL' },
+  { id: 'TKT-988', subject: 'Seat lock expired during banking OTP transaction', filer: 'Mohd. Imran', priority: 'MEDIUM', status: 'RESOLVED', source: 'WEB_PANEL' },
 ]);
 
 const cmsPosts = ref([

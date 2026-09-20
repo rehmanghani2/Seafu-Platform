@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"inverse-surface":"#283044","on-tertiary-container":"#b2d9ff","background":"#faf8ff","secondary":"#4d5f7b","on-surface-variant":"#434655","outline-variant":"#c4c5d7","secondary-container":"#cbdefe","surface-container-highest":"#dae2fd","tertiary-container":"#006194","secondary-fixed":"#d4e3ff","surface-dim":"#d2d9f4","error":"#ba1a1a","on-error-container":"#93000a","on-primary":"#ffffff","outline":"#747686","on-tertiary-fixed-variant":"#004b73","on-secondary-fixed-variant":"#354862","surface-container-lowest":"#ffffff","surface-bright":"#faf8ff","surface-variant":"#dae2fd","on-tertiary":"#ffffff","primary-container":"#1d4ed8","on-secondary":"#ffffff","on-secondary-fixed":"#071c34","on-tertiary-fixed":"#001d31","surface-container-high":"#e2e7ff","on-primary-fixed-variant":"#0039b5","primary-fixed":"#dce1ff","error-container":"#ffdad6","inverse-on-surface":"#eef0ff","on-surface":"#131b2e","on-error":"#ffffff","on-primary-container":"#cad3ff","surface-container-low":"#f2f3ff","inverse-primary":"#b7c4ff","on-primary-fixed":"#001551","tertiary-fixed":"#cce5ff","surface-tint":"#2151da","tertiary":"#004870","primary":"#0037b0","on-secondary-container":"#4f627d","on-background":"#131b2e","surface":"#faf8ff","secondary-fixed-dim":"#b5c8e7","primary-fixed-dim":"#b7c4ff","tertiary-fixed-dim":"#93ccff","surface-container":"#eaedff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.25rem","gutter":"1rem","margin":"1rem","space-xl":"2rem","margin-tablet":"1.5rem","space-md":"0.75rem","margin-desktop":"2rem","space-sm":"0.5rem","gutter-desktop":"1.5rem","space-lg":"1.25rem"},"fontFamily":{"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"code-tabular":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-sm":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"label-lg":["Inter"],"body-lg":["Inter"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},"fontSize":{"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-tabular":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container"><img alt="The Seafu Institute Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WjlYHDoEGy5SoPpxsEfcyQD0fpG1-5Bt1GamuFNRqYWbIV3OibmmC6YQZN-xmOXIxkrJf16URm9Mhjr2iaaAz0VNh_aQrmaOGcgdOMGRNkrgcgnnN3ckFdHtz8_Wxp2NcaheCCe6SBN1x8mTIqV3d_QXxFQF8q34c4Mu7PH7AJYIxsdOkzqV2xqrHk22nSPUCbQzFRFWdyBOlqXeXpjTMHdVTSHfwsutU3UHaSE-QkNwTHjgLrE84bEZuC"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm tracking-tight text-primary truncate">The Seafu</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Maritime Academy OS</span></div></div><div class="p-space-sm"><div class="p-space-sm bg-surface-container-lowest rounded-lg"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant">CAMPUS CONTEXT</span><span class="material-symbols-outlined text-[14px] text-primary">verified</span></div><div class="font-label-md text-label-md text-on-surface font-bold leading-tight truncate">Anglo-Eastern Maritime (AEMA)</div><div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">Mumbai Campus | #IND-MH-042</div></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-and-revenue" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-label-md text-label-md">Dashboard &amp; Revenue</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="course-catalog-and-stcw-builder" href="#"><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="font-label-md text-label-md">Course Catalog &amp; STCW</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="batch-scheduling-and-seats" href="#"><span class="material-symbols-outlined text-[20px]">event_seat</span><span class="font-label-md text-label-md">Batch Scheduling &amp; Seats</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certifications-and-issuance" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-md text-label-md">Certifications &amp; Issuance</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="seafarer-comms-and-alerts" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-label-md text-label-md">Seafarer Comms &amp; Alerts</span></a></nav><div class="p-space-sm bg-surface-container-lowest m-space-sm rounded-lg"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">IMO AUDIT READINESS</span><span class="font-code-tabular text-code-tabular text-primary font-bold">98.4%</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 98.4%"></div></div><div class="flex justify-between items-center mt-2 font-label-sm text-label-sm text-secondary"><span>Cycle 2024-25</span><span>v3.4.1</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded-full text-on-surface-variant whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm">DG Shipping &amp; IMO Sync: <strong class="text-tertiary">Active</strong></span></div><div class="relative flex-1"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-outline">search</span><input class="w-full pl-9 pr-space-md py-1.5 bg-surface-container-low font-body-sm text-body-sm text-on-surface rounded-lg placeholder-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search by INDoS No, CDC, Course Code (e.g. BST-2024), or Batch ID..." type="text"/></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-1.5 px-space-sm py-1.5 bg-error-container text-on-error-container rounded-lg font-label-md text-label-md hover:bg-error hover:text-on-error transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">warning</span><span>Advisory Broadcast</span></button><div class="relative flex items-center justify-center p-2 text-on-surface-variant hover:text-on-surface cursor-pointer rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[9px] font-bold">3</span></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="text-right hidden xl:block"><div class="font-label-md text-label-md text-on-surface font-bold leading-none">Capt. Rajesh Varma, Extra Master</div><div class="font-label-sm text-label-sm text-on-surface-variant mt-1 leading-none">Institute Principal &amp; Dean</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0XXpjS6Im5LHnmVaJ0cyZYsFkcGM4pXRl6sgIFjpBCB0pLhv3RHPKLLFNI6Go-u8qb_Zfc9mAlAnI2d8AY7Pz41mSzVNCoEMNxGqsGNFLvGKmiFPYhsVYrkHvZ3CAI35wxhpN_iFHRejjOnrd20TR1Tie2lL52RBvQJZFn82MJJCUz5DEmBS7CkgVFORFN4O5kfNm15RoXBsdQKzw-8ouiO062oxvqNpg2HfwDXyDKnkABEX9ZhMkRw"/></div></div></header><main class="w-full flex-1 pt-16 bg-background px-space-lg py-space-lg"><div class="flex flex-col w-full space-y-space-md">
+<!-- Top Cryptographic Ledger Status & Search Strip -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">token</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Directorate General of Shipping</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">Mainnet Fabric v2.5</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            National Maritime Trust Ledger • Govt. of India, Ministry of Ports, Shipping &amp; Waterways
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span>Consensus: <strong class="text-on-surface">Raft BFT (9 Peer Nodes)</strong></span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Finality: <strong class="text-on-surface">Irreversible (1,248 Confirmations)</strong></span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-code-tabular text-code-tabular font-bold">
+<span>Chain: Bharat-Maritime-Mainnet</span>
+</div>
+</div>
+</div>
+<!-- Explorer Searchbar -->
+<div class="bg-surface-container-low p-2 rounded-lg flex flex-col md:flex-row items-center gap-2">
+<div class="flex items-center gap-2 px-2 text-secondary w-full md:w-auto">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+<span class="font-label-md text-label-md text-on-surface whitespace-nowrap">TxHash Query</span>
+</div>
+<div class="flex-1 w-full relative">
+<input class="w-full bg-surface-container-lowest px-3 py-1.5 rounded-lg font-code-tabular text-code-tabular text-primary font-semibold focus:outline-none select-all" id="txHashInput" readonly="" type="text" value="0x9f18a24de131c4b7b25e174291fa8820c749b7c4"/>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto justify-end">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-all" onclick="navigator.clipboard.writeText('0x9f18a24de131c4b7b25e174291fa8820c749b7c4'); this.innerText='Copied!'; setTimeout(()=&gt;this.innerText='Copy Tx', 1400);" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+<span>Copy Tx</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-sm text-label-sm flex items-center gap-1 shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[15px]">refresh</span>
+<span>Re-verify Block</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary Grid: Block Header & Seafarer Dossier -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- Block / Tx Spec Header Card -->
+<div class="xl:col-span-5 flex flex-col justify-between bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-md">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-code-tabular text-code-tabular font-bold">Block #18,442,109</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Slot 4,129</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+            Confirmed &amp; Finalized
+          </span>
+</div>
+<div class="mt-space-md space-y-space-xs">
+<div class="text-secondary font-label-sm text-label-sm uppercase tracking-wider">Transaction Digest</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg font-code-tabular text-code-tabular text-on-surface break-all select-all font-semibold">
+            0x9f18a24de131c4b7b25e174291fa8820c749b7c4
+          </div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-space-md">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<div class="font-label-sm text-label-sm text-secondary">Mint Timestamp</div>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface mt-0.5">24-Oct-2024 14:38:22</div>
+<div class="font-body-sm text-body-sm text-secondary">UTC+05:30 (12 mins ago)</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<div class="font-label-sm text-label-sm text-secondary">Gas / Computation</div>
+<div class="font-code-tabular text-code-tabular font-bold text-primary mt-0.5">142,880 DGS-Gas</div>
+<div class="font-body-sm text-body-sm text-secondary">Govt Subsidized • 0 INR</div>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Smart Contract Interacted</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> MCA Certified
+            </span>
+</div>
+<div class="font-label-md text-label-md font-bold text-on-surface">STCWComplianceRegistry.sol (v4.2.1-gov)</div>
+<div class="font-code-tabular text-code-tabular text-secondary truncate">
+            Address: <span class="text-on-surface">0xDGS71c9812A4B82e09882a176eF01c8282399a1</span>
+</div>
+</div>
+</div>
+<!-- Micro Visual: Dynamic Merkle Proof Stream -->
+<div class="p-space-sm bg-surface-container rounded-lg space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-secondary">
+<span>Cryptographic Proof Depth</span>
+<span class="font-code-tabular text-primary font-bold">4-Leaf SHA256 • Balanced</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Candidate Identity & Credential Binding Card -->
+<div class="xl:col-span-7 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<img class="w-14 h-14 rounded-lg object-cover shadow-sm bg-surface-container" data-alt="Official portrait photograph of young Indian merchant navy deck cadet Aarav Mukherjee in pristine white naval officer uniform with epaulettes, clean neutral nautical academy studio background, warm directional light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS-2gyhYIt-OPZIrR3FGr9z6stSIaQQoIGGDQrbhZUtqBCvCVr4QM02JVJUigR827sq6Mmj2dMJyGYhxEMfFbEH8cwCMb_5x2KGK21gsAGC7h9pk3Ywa9gWf3K_NuwMJVQ7Ji_SzHyEqe6OqbdmQl1ZlY2B9zFWIVfO1AKLHHdjEgxWwiJON-_AMZoxgXtQgvc80rEb49vhM5ZAMQ46ywtQtSwml9s7MbGPrypxzQ5rW0mDbBtFNP7PA"/>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Aarav Mukherjee</h2>
+<span class="material-symbols-outlined text-[18px] text-primary" title="DG Shipping Biometrically Attested">verified</span>
+</div>
+<p class="font-label-md text-label-md text-secondary">Deck Officer Track • Rank: 2nd Mate FG Trainee</p>
+</div>
+</div>
+<div class="flex sm:flex-col items-end gap-1">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">STCW '95 as amended</span>
+<span class="font-code-tabular text-code-tabular text-secondary">INDoS: <strong class="text-on-surface font-bold">18-09224</strong></span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-sm">
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary">CDC Passport Record</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface mt-1">MUM-492019</div>
+<span class="font-label-sm text-label-sm text-tertiary">Continuous Discharge Cert</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary">UIDAI Aadhaar ZKP</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface mt-1">0x77c4...9a12</div>
+<span class="font-label-sm text-label-sm text-primary">ZK-Snark Proof Validated</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary">Issuing Academy Node</span>
+<div class="font-label-md text-label-md font-bold text-on-surface truncate mt-1">Anglo-Eastern (AEMA)</div>
+<span class="font-code-tabular text-code-tabular text-secondary">IND-MH-042 • MUM01</span>
+</div>
+</div>
+<!-- Official Certificate Details -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Minted STCW Hard Credential</span>
+<span class="font-code-tabular text-code-tabular text-on-surface font-bold">STCW-AEMA-2024-8841-IND</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">
+            Proficiency in Survival Craft and Rescue Boats (PSCRB - IMO Model Course 1.23)
+          </div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-secondary font-label-md text-label-md">
+<span>Validity Period: <strong class="text-on-surface">24-Oct-2024 to 23-Oct-2029</strong> (5 Years)</span>
+<span>•</span>
+<span>Port State Clearance Token: <strong class="text-primary font-code-tabular">PSC-CLEAR-IND-2024-09224</strong></span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between pt-space-xs gap-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>Digitally Signed by Govt of India Public Key Infrastructure (MCA PKI-2048)</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-primary font-label-sm text-label-sm font-bold flex items-center gap-1.5 transition-all" onclick="document.getElementById('pscModal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+<span>View PSC Token QR</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Multi-Merkle Root Cryptographic Proof Section -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">account_tree</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Merkle Tree Cryptographic Root &amp; Leaf Verification</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Dossier immutability guaranteed via SHA-256 binary hash tree. All 4 leaf nodes match institutional physical logs.
+        </p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary">Master Root Status:</span>
+<span class="font-label-sm text-label-sm text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Matched with PDF/A Payload
+        </span>
+</div>
+</div>
+<!-- Master Root Digest Bar -->
+<div class="p-space-sm rounded-lg bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Master Merkle Root Digest (Node 0)</span>
+<span class="font-code-tabular text-code-tabular text-tertiary">SHA-256 Canonical</span>
+</div>
+<div class="font-code-tabular text-code-tabular text-on-surface font-bold break-all bg-surface-container-lowest p-2 rounded">
+        8f9b2c14de7201e41d8829a98cb912fa998a0029b9f71295baeeec49a022b7c1
+      </div>
+</div>
+<!-- 4 Merkle Leaf Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-sm">
+<!-- Leaf 01 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-primary font-bold">Leaf [0x01]</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Verified
+            </span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-2">STCW Syllabus Milestones</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+            Theory 18.0 hrs, Davit launch protocols, emergency coxswain training units.
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded">
+<span class="font-label-sm text-label-sm text-secondary">Leaf Digest</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface truncate">0x4a12ec899b8214fa88f1</div>
+</div>
+</div>
+<!-- Leaf 02 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-primary font-bold">Leaf [0x02]</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Verified
+            </span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-2">Biometric Turnstiles</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+            10/10 Classroom &amp; pier sessions logged. 40.0 Total hours. 99.6% Iris/Face match.
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded">
+<span class="font-label-sm text-label-sm text-secondary">Leaf Digest</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface truncate">0x3b99cf012d8a4e1277a0</div>
+</div>
+</div>
+<!-- Leaf 03 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-primary font-bold">Leaf [0x03]</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Verified
+            </span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-2">Telemetry Rig &amp; Wet Drills</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+            Immersion sensors synced. 4.2s Davit Release under load, 120m wave basin crossing.
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded">
+<span class="font-label-sm text-label-sm text-secondary">Leaf Digest</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface truncate">0x91d4e0821aa002f1b88e</div>
+</div>
+</div>
+<!-- Leaf 04 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-primary font-bold">Leaf [0x04]</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Verified
+            </span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-2">Form 9 Marine Medical &amp; KYC</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+            Dr. S.K. Nair DGS approved examiner. Unrestricted Fit for sea service (Deck).
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded">
+<span class="font-label-sm text-label-sm text-secondary">Leaf Digest</span>
+<div class="font-code-tabular text-code-tabular font-bold text-on-surface truncate">0x62ef8801d9f3b50c1844</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Consensus Matrix: Peer Node Endorsement Table -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">hub</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Endorsement Policy &amp; Peer Signatures</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Policy requirement: <code class="font-code-tabular text-primary font-bold bg-surface-container px-1 py-0.5 rounded">AND('DGS.peer', 'MMD.peer', 'Academy.peer')</code> • Status: 5/5 Validated
+        </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Quorum Satisfied (100%)
+        </span>
+</div>
+</div>
+<!-- Table of Consensus Nodes -->
+<div class="overflow-x-auto rounded-lg">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-low font-label-sm text-label-sm text-secondary uppercase">
+<tr>
+<th class="px-4 py-2.5">Endorsing Authority &amp; Peer ID</th>
+<th class="px-4 py-2.5">Role</th>
+<th class="px-4 py-2.5">Cryptographic Signature</th>
+<th class="px-4 py-2.5">Latency</th>
+<th class="px-4 py-2.5 text-right">Verdict</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 flex items-center gap-2 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              DG Shipping HQ (Mumbai Central Peer)
+              <span class="font-code-tabular text-code-tabular text-secondary">node-dgs-mum01</span>
+</td>
+<td class="px-4 py-3 text-secondary">Root Regulatory Anchor</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-on-surface truncate max-w-xs">0x12a9efb4c80...d98a002</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-secondary">18ms</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">END_VALID</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 flex items-center gap-2 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Mercantile Marine Department (MMD Mumbai)
+              <span class="font-code-tabular text-code-tabular text-secondary">node-mmd-west02</span>
+</td>
+<td class="px-4 py-3 text-secondary">Competency Examiner</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-on-surface truncate max-w-xs">0x77d132a8901...34ebcc1</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-secondary">24ms</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">END_VALID</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 flex items-center gap-2 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Anglo-Eastern Maritime Training Endorser
+              <span class="font-code-tabular text-code-tabular text-secondary">node-aema-inst042</span>
+</td>
+<td class="px-4 py-3 text-secondary">Originating Academy</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-on-surface truncate max-w-xs">0x88c4bf33019...ee0127a</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-secondary">12ms</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">END_VALID</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 flex items-center gap-2 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              National Maritime Health Authority Node
+              <span class="font-code-tabular text-code-tabular text-secondary">node-dgmed-del01</span>
+</td>
+<td class="px-4 py-3 text-secondary">Medical Registry Gate</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-on-surface truncate max-w-xs">0x33b092ae812...7f4019c</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-secondary">31ms</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">END_VALID</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 flex items-center gap-2 font-label-md text-label-md text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Port State Control Gateway (JNPT Mumbai)
+              <span class="font-code-tabular text-code-tabular text-secondary">node-psc-jnpt01</span>
+</td>
+<td class="px-4 py-3 text-secondary">PSC Pre-Clearance</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-on-surface truncate max-w-xs">0x99e52c78110...102a98f</td>
+<td class="px-4 py-3 font-code-tabular text-code-tabular text-secondary">19ms</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">END_VALID</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Action Toolbar & Navigation -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<a class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-all w-full sm:w-auto" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Certifications &amp; Issuance</span>
+</a>
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-bold flex items-center justify-center gap-2 transition-all w-full sm:w-auto" onclick="alert('Merkle Tree Mathematical Verification: PASS.\nRoot: 8f9b2c14...\nLeaf Count: 4/4\nZero-Knowledge Identity Attestation: VALID');" type="button">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+<span>Verify Cryptographic Proof</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-all w-full sm:w-auto" onclick="downloadReceipt()" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Download Ledger Receipt (.JSON)</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-2 shadow-sm transition-all w-full sm:w-auto" onclick="document.getElementById('pscModal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+<span>PSC Inspection QR</span>
+</button>
+</div>
+</div>
+<!-- Port State Control Inspection QR Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm p-4" id="pscModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+<div class="bg-primary px-space-md py-space-sm text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="font-headline-sm text-headline-sm">Port State Control (PSC) Pass</span>
+</div>
+<button class="text-on-primary/80 hover:text-on-primary" onclick="document.getElementById('pscModal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col items-center text-center space-y-space-md">
+<div class="p-3 bg-surface-container-low rounded-xl shadow-sm">
+<!-- Stand-in Vector QR Code Representation -->
+<svg class="w-48 h-48 text-on-surface" fill="currentColor" viewbox="0 0 100 100">
+<path d="M10 10h30v30h-30z M15 15v20h20v-20z M20 20h10v10h-10z M60 10h30v30h-30z M65 15v20h20v-20z M70 20h10v10h-10z M10 60h30v30h-30z M15 65v20h20v-20z M20 70h10v10h-10z M45 10h5v15h-5z M50 25h10v5h-10z M45 35h10v10h-10z M10 45h15v5h-15z M30 45h5v10h-5z M45 60h10v5h-10z M45 70h5v15h-5z M60 50h15v5h-15z M60 65h10v15h-10z M75 60h15v10h-15z M80 75h10v15h-10z M55 85h15v5h-15z"></path>
+</svg>
+</div>
+<div>
+<span class="font-code-tabular text-code-tabular text-primary font-bold">PSC-CLEAR-IND-2024-09224</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">Aarav Mukherjee (INDoS 18-09224)</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">
+            Cryptographically signed offline verifiable token for Tokyo MOU, Paris MOU, and USCG Port State Boarding Officers.
+          </p>
+</div>
+<div class="w-full bg-surface-container-low p-2 rounded text-left font-label-sm text-label-sm text-secondary space-y-1">
+<div class="flex justify-between"><span>Certificate:</span> <strong class="text-on-surface font-code-tabular">PSCRB IMO 1.23</strong></div>
+<div class="flex justify-between"><span>Authority:</span> <strong class="text-on-surface">DG Shipping (India)</strong></div>
+<div class="flex justify-between"><span>Exp:</span> <strong class="text-on-surface">23-Oct-2029</strong></div>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold hover:bg-primary-container transition-all" onclick="document.getElementById('pscModal').classList.add('hidden')" type="button">
+          Dismiss Clearance Token
+        </button>
+</div>
+</div>
+</div>
+<script>
+    function downloadReceipt() {
+      const receipt = {
+        chain: "Bharat-Maritime-Mainnet",
+        network: "Hyperledger Fabric v2.5",
+        consensus: "Raft BFT",
+        blockNumber: 18442109,
+        txHash: "0x9f18a24de131c4b7b25e174291fa8820c749b7c4",
+        timestamp: "2024-10-24T09:08:22Z",
+        candidate: {
+          name: "Aarav Mukherjee",
+          indosNo: "18-09224",
+          cdcNo: "MUM-492019",
+          academyId: "IND-MH-042"
+        },
+        certificate: {
+          code: "PSCRB IMO 1.23",
+          registryId: "STCW-AEMA-2024-8841-IND",
+          validUntil: "2029-10-23",
+          pscToken: "PSC-CLEAR-IND-2024-09224"
+        },
+        merkleRoot: "8f9b2c14de7201e41d8829a98cb912fa998a0029b9f71295baeeec49a022b7c1",
+        endorsements: 5,
+        status: "COMMITTED"
+      };
+
+      const blob = new Blob([JSON.stringify(receipt, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'DGS_Block_18442109_Receipt.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low py-space-sm px-space-lg text-on-surface-variant shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col sm:flex-row items-center justify-between gap-space-xs font-label-sm text-label-sm"><div>DG Shipping Audit Readiness: <span class="text-primary font-semibold">98.4%</span> | Academic Cycle: 2024-25</div><div class="text-secondary">The Seafu Maritime Cloud v3.4.1 • STCW-95 Compliant Infrastructure</div></div></footer></div></body></html>

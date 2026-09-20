@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"inverse-surface":"#283044","on-tertiary-container":"#b2d9ff","background":"#faf8ff","secondary":"#4d5f7b","on-surface-variant":"#434655","outline-variant":"#c4c5d7","secondary-container":"#cbdefe","surface-container-highest":"#dae2fd","tertiary-container":"#006194","secondary-fixed":"#d4e3ff","surface-dim":"#d2d9f4","error":"#ba1a1a","on-error-container":"#93000a","on-primary":"#ffffff","outline":"#747686","on-tertiary-fixed-variant":"#004b73","on-secondary-fixed-variant":"#354862","surface-container-lowest":"#ffffff","surface-bright":"#faf8ff","surface-variant":"#dae2fd","on-tertiary":"#ffffff","primary-container":"#1d4ed8","on-secondary":"#ffffff","on-secondary-fixed":"#071c34","on-tertiary-fixed":"#001d31","surface-container-high":"#e2e7ff","on-primary-fixed-variant":"#0039b5","primary-fixed":"#dce1ff","error-container":"#ffdad6","inverse-on-surface":"#eef0ff","on-surface":"#131b2e","on-error":"#ffffff","on-primary-container":"#cad3ff","surface-container-low":"#f2f3ff","inverse-primary":"#b7c4ff","on-primary-fixed":"#001551","tertiary-fixed":"#cce5ff","surface-tint":"#2151da","tertiary":"#004870","primary":"#0037b0","on-secondary-container":"#4f627d","on-background":"#131b2e","surface":"#faf8ff","secondary-fixed-dim":"#b5c8e7","primary-fixed-dim":"#b7c4ff","tertiary-fixed-dim":"#93ccff","surface-container":"#eaedff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.25rem","gutter":"1rem","margin":"1rem","space-xl":"2rem","margin-tablet":"1.5rem","space-md":"0.75rem","margin-desktop":"2rem","space-sm":"0.5rem","gutter-desktop":"1.5rem","space-lg":"1.25rem"},"fontFamily":{"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"code-tabular":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-sm":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"label-lg":["Inter"],"body-lg":["Inter"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},"fontSize":{"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-tabular":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container"><img alt="The Seafu Institute Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WjlYHDoEGy5SoPpxsEfcyQD0fpG1-5Bt1GamuFNRqYWbIV3OibmmC6YQZN-xmOXIxkrJf16URm9Mhjr2iaaAz0VNh_aQrmaOGcgdOMGRNkrgcgnnN3ckFdHtz8_Wxp2NcaheCCe6SBN1x8mTIqV3d_QXxFQF8q34c4Mu7PH7AJYIxsdOkzqV2xqrHk22nSPUCbQzFRFWdyBOlqXeXpjTMHdVTSHfwsutU3UHaSE-QkNwTHjgLrE84bEZuC"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm tracking-tight text-primary truncate">The Seafu</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Maritime Academy OS</span></div></div><div class="p-space-sm"><div class="p-space-sm bg-surface-container-lowest rounded-lg"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant">CAMPUS CONTEXT</span><span class="material-symbols-outlined text-[14px] text-primary">verified</span></div><div class="font-label-md text-label-md text-on-surface font-bold leading-tight truncate">Anglo-Eastern Maritime (AEMA)</div><div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">Mumbai Campus | #IND-MH-042</div></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-and-revenue" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-label-md text-label-md">Dashboard &amp; Revenue</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="course-catalog-and-stcw-builder" href="#"><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="font-label-md text-label-md">Course Catalog &amp; STCW</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="batch-scheduling-and-seats" href="#"><span class="material-symbols-outlined text-[20px]">event_seat</span><span class="font-label-md text-label-md">Batch Scheduling &amp; Seats</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certifications-and-issuance" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-md text-label-md">Certifications &amp; Issuance</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="seafarer-comms-and-alerts" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="font-label-md text-label-md">Seafarer Comms &amp; Alerts</span></a></nav><div class="p-space-sm bg-surface-container-lowest m-space-sm rounded-lg"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">IMO AUDIT READINESS</span><span class="font-code-tabular text-code-tabular text-primary font-bold">98.4%</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 98.4%"></div></div><div class="flex justify-between items-center mt-2 font-label-sm text-label-sm text-secondary"><span>Cycle 2024-25</span><span>v3.4.1</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded-full text-on-surface-variant whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm">DG Shipping &amp; IMO Sync: <strong class="text-tertiary">Active</strong></span></div><div class="relative flex-1"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-outline">search</span><input class="w-full pl-9 pr-space-md py-1.5 bg-surface-container-low font-body-sm text-body-sm text-on-surface rounded-lg placeholder-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search by INDoS No, CDC, Course Code (e.g. BST-2024), or Batch ID..." type="text"/></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-1.5 px-space-sm py-1.5 bg-error-container text-on-error-container rounded-lg font-label-md text-label-md hover:bg-error hover:text-on-error transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">warning</span><span>Advisory Broadcast</span></button><div class="relative flex items-center justify-center p-2 text-on-surface-variant hover:text-on-surface cursor-pointer rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[9px] font-bold">3</span></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="text-right hidden xl:block"><div class="font-label-md text-label-md text-on-surface font-bold leading-none">Capt. Rajesh Varma, Extra Master</div><div class="font-label-sm text-label-sm text-on-surface-variant mt-1 leading-none">Institute Principal &amp; Dean</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0XXpjS6Im5LHnmVaJ0cyZYsFkcGM4pXRl6sgIFjpBCB0pLhv3RHPKLLFNI6Go-u8qb_Zfc9mAlAnI2d8AY7Pz41mSzVNCoEMNxGqsGNFLvGKmiFPYhsVYrkHvZ3CAI35wxhpN_iFHRejjOnrd20TR1Tie2lL52RBvQJZFn82MJJCUz5DEmBS7CkgVFORFN4O5kfNm15RoXBsdQKzw-8ouiO062oxvqNpg2HfwDXyDKnkABEX9ZhMkRw"/></div></div></header><main class="w-full flex-1 pt-16 bg-background px-space-lg py-space-lg"><div class="flex flex-col w-full space-y-space-md">
+<!-- Live Cryptographic Status Bar -->
+<div class="w-full bg-inverse-surface text-inverse-on-surface rounded-xl p-space-md shadow-md flex flex-wrap items-center justify-between gap-space-sm relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest/10 flex items-center justify-center text-on-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-sm text-headline-sm tracking-tight text-surface-container-lowest truncate">
+            PSC MARITIME CLEARANCE INTERLOCK
+          </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest/15 text-surface-container-lowest font-label-sm text-label-sm uppercase tracking-wider">
+            Paris MoU &amp; Tokyo MoU Standard
+          </span>
+</div>
+<div class="font-code-tabular text-body-sm text-surface-container-high truncate mt-0.5">
+          TOKEN ID: <span class="text-on-primary font-bold">PSC-CLEAR-IND-2024-09224</span> • SCANNED: 24-OCT-2024 15:12:04 UTC • OPTICAL SENSOR #NL-ROT-04
+        </div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="flex items-center gap-2 bg-surface-container-lowest/10 px-3 py-1.5 rounded-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+<span class="font-label-md text-label-md text-surface-container-lowest">IMO GISIS &amp; DG BLOCKCHAIN: <strong class="text-emerald-300">100% VERIFIED</strong></span>
+</div>
+<div class="px-2.5 py-1.5 bg-primary-container text-on-primary rounded-lg font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span>ECDSA SECP256K1</span>
+</div>
+</div>
+</div>
+<!-- Operational Header Context Banner -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="flex flex-col border-l-2 border-primary pl-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Inspection Station &amp; Facility</span>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1 truncate">Port of Rotterdam</div>
+<div class="font-body-sm text-body-sm text-secondary truncate">Maasvlakte Terminal 4 / Boarding Unit Alpha</div>
+<div class="font-label-sm text-label-sm text-primary mt-1 font-bold">Authority: Human Environment and Transport Inspectorate (ILT)</div>
+</div>
+<div class="flex flex-col border-l-2 border-primary pl-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Vessel Boarded</span>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1 truncate">M/V Anglo Atlantic</div>
+<div class="font-body-sm text-body-sm text-secondary truncate">IMO 9481231 • Call Sign: 3FYK8 • Bulk Carrier</div>
+<div class="font-label-sm text-label-sm text-secondary mt-1">Flag: Panama (PMA) • DWT: 82,200 MT</div>
+</div>
+<div class="flex flex-col border-l-2 border-primary pl-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Attending PSC Boarding Officer</span>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1 truncate">Inspector Jan Van Der Meer</div>
+<div class="font-body-sm text-body-sm text-secondary truncate">Warrant ID: PSC-NL-ROT-4409</div>
+<div class="font-label-sm text-label-sm text-secondary mt-1">Joint Paris MoU Lead / Nautical Specialist</div>
+</div>
+<div class="flex flex-col border-l-2 border-primary pl-space-sm bg-surface-container-low p-2 rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Statutory Clearance Verdict</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold truncate">NO DEFICIENCY (Code 00)</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary truncate">STCW Reg. I/14 &amp; ISM Code 6.2 Fully Met</div>
+<div class="font-label-sm text-label-sm text-tertiary mt-1 font-bold">Risk Weighting: -2 (Optimal Manning Grade)</div>
+</div>
+</div>
+<!-- Primary Candidate Dossier & Credential Summary Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left 4 Columns: Seafarer Physical Profile & Official ID -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Seafarer Identification</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-code-tabular text-label-sm">IND-MUM-2024</span>
+</div>
+<div class="flex gap-space-md mt-space-sm">
+<div class="relative shrink-0">
+<img class="w-24 h-28 object-cover rounded-lg shadow-sm" data-alt="Official biometric passport photo of Indian male deck cadet Aarav Mukherjee in white maritime uniform, neutral background, crisp lighting, high precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAYzYZQ2u5dvLI-VPVgGDDsNFTclbjVGp22Na4nHXE2ro0EidVVzoPQ1wHGIex7Eh0P4MO70MN5BhWpLVoMZHdkdt_lC3jH7lMqAH3TEcV5wgn0ZYB5n4g2XD8nxaAu69nqs6Jd7OlTPqCP1q8ltOMHdnm9KkC-G2BJbF41yeDj96eqB79qAePSaODS827-ZCfs1owMcS1BNIAaCRrJmobCoUtj-JGGkBXBWTpkUd9NRhlov2JdfDAIw"/>
+<div class="absolute bottom-1 right-1 bg-surface-container-lowest p-0.5 rounded shadow">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 justify-center">
+<span class="font-headline-md text-headline-md text-on-surface font-bold leading-snug truncate">Aarav Mukherjee</span>
+<span class="font-label-md text-label-md text-primary font-semibold truncate mt-0.5">Deck Cadet / 2nd Mate Trainee</span>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary">sailing</span>
+<span>Navigational Watch Dept.</span>
+</div>
+<div class="mt-2 flex gap-1 flex-wrap">
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface-variant text-[10px] font-bold rounded">SOLAS-A</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface-variant text-[10px] font-bold rounded">MARPOL I-VI</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md bg-surface-container-low rounded-lg p-space-sm space-y-2">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">INDoS Number:</span>
+<span class="font-code-tabular text-code-tabular font-bold text-on-surface">18-09224</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Continuous Discharge Cert (CDC):</span>
+<span class="font-code-tabular text-code-tabular font-bold text-on-surface">MUM-492019</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Passport No (India):</span>
+<span class="font-code-tabular text-code-tabular font-bold text-on-surface">Z5491028</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vessel Onboarding Date:</span>
+<span class="font-code-tabular text-code-tabular text-on-surface">12-Aug-2024 (Singapore)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sea-Time Logged (This Voyage):</span>
+<span class="font-code-tabular text-code-tabular text-primary font-bold">72.5 Days (870 Hrs Watch)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">shield</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Paris MoU Threat Rating</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-tight truncate">Low Risk Seafarer Profile (No Detentions / Clean Audit)</span>
+</div>
+</div>
+</div>
+<!-- Right 8 Columns: Specific Credential Under Inspection -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">verified_user</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Audited Statutory Endorsement</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Proficiency in Survival Craft &amp; Rescue Boats (PSCRB)</h2>
+</div>
+</div>
+<div class="px-3 py-1 bg-surface-container-high text-primary rounded-full font-label-md text-label-md font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>STCW-95 Regulation VI/2, Para 1</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Certificate Document ID</span>
+<span class="font-code-tabular text-body-md font-bold text-on-surface mt-1 truncate">STCW-AEMA-2024-8841-IND</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Issue Date: 14-Jun-2024</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Accredited Academy</span>
+<span class="font-body-md text-body-md font-bold text-on-surface mt-1 truncate">Anglo-Eastern Maritime (AEMA)</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">DG Shipping DGS-IND-042</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Validity &amp; Refresher</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold mt-1">Valid (5 Years)</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Next Refresher: Jun 2029</span>
+</div>
+</div>
+<!-- Compliance & Regulatory Alignment Row -->
+<div class="mt-space-md p-space-md bg-surface-container-high/40 rounded-xl space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Paris MoU Matrix Compliance Verification</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">100% REGULATORY CONCURRENCE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm font-body-sm text-body-sm">
+<div class="flex items-start gap-2 bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Flag State Endorsement (Panama CRA)</span>
+<span class="text-secondary text-body-sm">Certificate of Receipt of Application (CRA-PMA-248100) on file with 90-day grace.</span>
+</div>
+</div>
+<div class="flex items-start gap-2 bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">ILO Maritime Labour Convention (MLC 2006)</span>
+<span class="text-secondary text-body-sm">Seafarer Employment Agreement (SEA) active, rest hour logbook fully signed.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="px-2.5 py-1 bg-surface-container rounded font-code-tabular text-body-sm text-on-surface-variant">
+            IMO MODEL COURSE: <strong class="text-on-surface">1.23 ED. 2014</strong>
+</div>
+<div class="px-2.5 py-1 bg-surface-container rounded font-code-tabular text-body-sm text-on-surface-variant">
+            DG SHIPPING SYNC: <strong class="text-on-surface">TX-CONFIRMED</strong>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Digital Seal Cryptographically Intact</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Deep Inspection 4-Pillar Verification Matrix -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Real-Time Deep Statutory Verification Matrix (4 Pillars)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Decentralized Multi-Party Computation Audit Verified</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Pillar 1: Wet Drills & Practical Competency -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pillar 01 • Practical Drills</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">Grade A (94.5%)</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">Survival Craft Handling</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Full-scale practical wet drill evaluations conducted at AEMA Marine Lake Facility.</p>
+<div class="mt-space-sm space-y-2 bg-surface-container-low p-space-sm rounded-lg">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Free-fall Davit Launch Drill:</span>
+<span class="font-code-tabular text-on-surface font-bold">4.2s (Threshold: 6.0s)</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Inverted Liferaft Righting:</span>
+<span class="font-code-tabular text-on-surface font-bold">38.4s (Threshold: 60.0s)</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm pt-1">
+<span class="text-on-surface-variant">EPIRB / SART Deployment:</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Mastery Level 1</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-space-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">fitness_center</span>
+<span>Lead Assessor: Capt. R. Varma (Approved)</span>
+</div>
+</div>
+<!-- Pillar 2: Biometric Turnstile & Classroom Attendance -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pillar 02 • Biometrics &amp; Hours</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">100% Present</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">DGS Biometric Compliance</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Facial recognition loggers anchored hourly to prevent proxy attendance fraud.</p>
+<div class="mt-space-sm space-y-2 bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Mandated STCW Hours:</span>
+<span class="font-code-tabular text-on-surface font-bold">40.0 / 40.0 Hrs</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Biometric Turnstile Hits:</span>
+<span class="font-code-tabular text-on-surface font-bold">48 Scans (Match: 99.8%)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Geo-fence Validation:</span>
+<span class="font-code-tabular text-primary font-bold">LAT 18.73 N, LON 73.08 E</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm pt-1">
+<span class="text-on-surface-variant">Zero-Knowledge Proof:</span>
+<span class="font-code-tabular text-on-surface font-semibold text-[10px]">zkSNARK-DGS-PASS</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-space-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">fingerprint</span>
+<span>INDoS Hardware Key Verified</span>
+</div>
+</div>
+<!-- Pillar 3: Marine Medical Fitness (Form 9) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pillar 03 • Medical Fitness</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">Unrestricted Fit</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">DG Shipping Form 9 / STCW I/9</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Full sea-service medical evaluation, audiometric, and Ishihara color spectrum exam.</p>
+<div class="mt-space-sm space-y-2 bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Visual Acuity / Color:</span>
+<span class="font-code-tabular text-on-surface font-bold">6/6 Both Eyes (Ishihara Pass)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Hearing Tone Threshold:</span>
+<span class="font-code-tabular text-on-surface font-bold">Normal (&lt; 20 dB ISO)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Drug &amp; Alcohol Panel:</span>
+<span class="font-code-tabular text-primary font-bold">Clean / Negative (DOT 10)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm pt-1">
+<span class="text-on-surface-variant">Expiration Date:</span>
+<span class="font-code-tabular text-on-surface font-bold">18-Oct-2026</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-space-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">medical_services</span>
+<span>Approved Examiner: Dr. S.K. Nair (IND-MED-84)</span>
+</div>
+</div>
+<!-- Pillar 4: Maritime Blockchain Ledger & Equasis Interlock -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pillar 04 • Ledger Anchor</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">5/5 Consensus</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">National Maritime Chain</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Immutable decentralized timestamp ledger verified against Paris MoU node.</p>
+<div class="mt-space-sm space-y-2 bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Block Number:</span>
+<span class="font-code-tabular text-on-surface font-bold">#18,442,109</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Tx Hash:</span>
+<span class="font-code-tabular text-primary font-bold truncate max-w-[120px]">0x9f18a24...b7c4</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Peer Quorum:</span>
+<span class="font-code-tabular text-on-surface font-bold">DG Ship • IMO • ParisMoU</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm pt-1">
+<span class="text-on-surface-variant">Merkle Root Status:</span>
+<span class="font-code-tabular text-primary font-bold">Tamper-Proof Valid</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-space-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">account_tree</span>
+<span>Genesis Node: DG Shipping Govt India</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Action Terminal & Digital Stamp Clearance -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- Action Controls (8 Cols) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">gavel</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Port State Control Official Actions</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Endorse Clearance &amp; Dispatch Statutory Interlock</h3>
+</div>
+</div>
+<span class="px-2.5 py-1 bg-surface-container text-on-surface-variant rounded font-label-sm text-label-sm font-semibold">
+          SESSION ID: ROT-PSC-2024-SESSION-99
+        </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<button class="p-space-sm bg-primary hover:bg-primary-container text-on-primary rounded-lg flex items-center justify-between transition-all group shadow-sm text-left" id="btnEndorse">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[24px]">assignment_turned_in</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Endorse Inspection (Form A/B)</span>
+<span class="font-body-sm text-body-sm opacity-90">Record No-Deficiency in Paris MoU Central</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+<button class="p-space-sm bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg flex items-center justify-between transition-all group shadow-sm text-left" id="btnEquasis">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">cloud_sync</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Transmit to Equasis &amp; GISIS</span>
+<span class="font-body-sm text-body-sm text-secondary">Real-time sync to Tokyo/Paris database</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">send</span>
+</button>
+<button class="p-space-sm bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg flex items-center justify-between transition-all group shadow-sm text-left" id="btnDownload">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">picture_as_pdf</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Download IMO Inspection Dossier</span>
+<span class="font-body-sm text-body-sm text-secondary">ISO 19005-1 Compliant PDF/A-1b</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-space-sm bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg flex items-center justify-between transition-all group shadow-sm text-left" id="btnAdvisory">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">flag_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Issue Flag State Courtesy Copy</span>
+<span class="font-body-sm text-body-sm text-secondary">Automated dispatch to Panama Maritime Authority</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+<!-- Live Officer Memo & Sign-off Notes -->
+<div class="bg-surface-container-low p-space-sm rounded-lg space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Officer Inspection Audit Notes (Optional Observations)</label>
+<div class="relative">
+<textarea class="w-full p-2.5 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded-lg border-0 focus:outline-none focus:ring-1 focus:ring-primary resize-none placeholder-outline" placeholder="Candidate presented authentic physical STCW record book matching biometric token. PSCRB drill logbook confirmed by Chief Officer..." rows="2"></textarea>
+<div class="absolute right-2 bottom-2 text-on-surface-variant font-code-tabular text-[11px]">
+            CHARACTERS: 128 / 500
+          </div>
+</div>
+</div>
+</div>
+<!-- Official Digital Seal & Signature Card (4 Cols) -->
+<div class="xl:col-span-4 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between space-y-space-md relative overflow-hidden">
+<!-- Decorative Hologram Nautical Crest Background -->
+<div class="absolute -bottom-10 -right-10 w-44 h-44 rounded-full bg-surface-container-high/40 pointer-events-none flex items-center justify-center">
+<span class="material-symbols-outlined text-[130px] text-surface-container-highest/60">anchor</span>
+</div>
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Official Verification Stamp</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-tabular text-label-sm">FORM 19-B</span>
+</div>
+<!-- Port State Inspection Virtual Stamp -->
+<div class="mt-space-sm p-space-md rounded-xl bg-surface-container-low text-on-surface relative shadow-inner flex flex-col items-center text-center space-y-1">
+<span class="material-symbols-outlined text-primary text-[36px]">verified</span>
+<div class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">
+            PORT STATE CONTROL
+          </div>
+<div class="font-label-sm text-label-sm text-secondary uppercase font-semibold">
+            Port of Rotterdam • Netherlands
+          </div>
+<div class="font-body-sm text-body-sm text-on-surface font-bold py-1">
+            INSPECTED &amp; VERIFIED — NO DEFICIENCY
+          </div>
+<div class="font-code-tabular text-[11px] text-secondary">
+            MO-ID: NL-ROT-2024-09224 • CODE 00
+          </div>
+<div class="font-code-tabular text-[10px] text-primary font-semibold">
+            HASH: SHA256:d8c91a029...7f12e
+          </div>
+</div>
+</div>
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Authorized Boarding Signatory:</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">J. Van Der Meer</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Audit Validation Crypt-Key:</span>
+<span class="font-code-tabular text-code-tabular text-primary font-bold">ROT-SEC-8821-OK</span>
+</div>
+<div class="mt-2 w-full py-2 bg-surface-container text-primary font-label-md text-label-md text-center rounded-lg font-bold">
+          STATUTORY RECORD COMMITTED
+        </div>
+</div>
+</div>
+</div>
+<!-- Toast / Notification Element (Dynamic) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-space-sm" id="toastNotification">
+<span class="material-symbols-outlined text-emerald-400 text-[22px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold" id="toastTitle">Action Completed</span>
+<span class="font-body-sm text-body-sm text-surface-container-high" id="toastDesc">Equasis database successfully updated.</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const btnEndorse = document.getElementById('btnEndorse');
+    const btnEquasis = document.getElementById('btnEquasis');
+    const btnDownload = document.getElementById('btnDownload');
+    const btnAdvisory = document.getElementById('btnAdvisory');
+    const toast = document.getElementById('toastNotification');
+    const toastTitle = document.getElementById('toastTitle');
+    const toastDesc = document.getElementById('toastDesc');
+
+    let toastTimeout;
+
+    function showToast(title, desc) {
+      clearTimeout(toastTimeout);
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    if(btnEndorse) {
+      btnEndorse.addEventListener('click', () => {
+        showToast('PSC Endorsement Recorded', 'Form A/B signed with No-Deficiency (Code 00) for Candidate Aarav Mukherjee.');
+      });
+    }
+
+    if(btnEquasis) {
+      btnEquasis.addEventListener('click', () => {
+        showToast('Equasis & GISIS Synced', 'Inspection record broadcasted across Paris MoU & Tokyo MoU interlocks in 240ms.');
+      });
+    }
+
+    if(btnDownload) {
+      btnDownload.addEventListener('click', () => {
+        showToast('IMO PDF/A Generated', 'Dossier STCW-AEMA-2024-8841-IND compiled with cryptographic digital signature.');
+      });
+    }
+
+    if(btnAdvisory) {
+      btnAdvisory.addEventListener('click', () => {
+        showToast('Flag State Courtesy Sent', 'Notice transmitted to Panama Maritime Authority (Segumar Port Operations).');
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-low py-space-sm px-space-lg text-on-surface-variant shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col sm:flex-row items-center justify-between gap-space-xs font-label-sm text-label-sm"><div>DG Shipping Audit Readiness: <span class="text-primary font-semibold">98.4%</span> | Academic Cycle: 2024-25</div><div class="text-secondary">The Seafu Maritime Cloud v3.4.1 • STCW-95 Compliant Infrastructure</div></div></footer></div></body></html>

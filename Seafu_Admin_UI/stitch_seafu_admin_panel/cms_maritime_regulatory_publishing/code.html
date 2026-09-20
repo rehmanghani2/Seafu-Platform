@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#191c1e", "background": "#f7f9fb", "primary-container": "#0f2537", "tertiary-fixed-dim": "#ffb4a8", "inverse-primary": "#b3c9e0", "primary": "#000f1d", "on-error": "#ffffff", "on-primary-fixed-variant": "#34495c", "inverse-on-surface": "#eff1f3", "surface-container-low": "#f2f4f6", "on-secondary-fixed": "#001f26", "surface-container-lowest": "#ffffff", "surface-container-high": "#e6e8ea", "surface-container": "#eceef0", "on-surface-variant": "#43474c", "surface-tint": "#4c6075", "on-background": "#191c1e", "on-secondary": "#ffffff", "secondary-container": "#6ae1ff", "secondary": "#00687a", "secondary-fixed": "#adecff", "primary-fixed": "#cfe5fd", "error": "#ba1a1a", "surface": "#f7f9fb", "on-secondary-fixed-variant": "#004e5d", "secondary-fixed-dim": "#5dd6f3", "on-tertiary": "#ffffff", "outline-variant": "#c3c7cd", "outline": "#74777d", "error-container": "#ffdad6", "tertiary-container": "#4f0100", "on-tertiary-fixed-variant": "#8a1c10", "surface-bright": "#f7f9fb", "on-primary-container": "#788da3", "tertiary": "#260000", "surface-variant": "#e0e3e5", "on-error-container": "#93000a", "on-primary-fixed": "#061d2f", "inverse-surface": "#2d3133", "tertiary-fixed": "#ffdad4", "on-primary": "#ffffff", "surface-container-highest": "#e0e3e5", "on-secondary-container": "#006374", "on-tertiary-fixed": "#410100", "primary-fixed-dim": "#b3c9e0", "surface-dim": "#d8dadc", "on-tertiary-container": "#e65f4b" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "gutter-tablet": "1.25rem", "gutter-desktop": "1.5rem", "margin": "1rem", "space-lg": "1.5rem", "space-xl": "2rem", "gutter": "1rem", "space-sm": "0.5rem", "margin-tablet": "1.5rem", "space-md": "1rem", "margin-desktop": "2rem" }, "fontFamily": { "body-lg": [ "Inter" ], "display-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "display-lg-mobile": [ "Plus Jakarta Sans" ], "label-sm": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "body-sm": [ "Inter" ], "title-md": [ "Plus Jakarta Sans" ], "label-lg": [ "Inter" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "display-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "label-sm": [ "10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-sm": [ "16px", { "lineHeight": "22px", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "label-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "title-md": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "label-lg": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-lg-mobile": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-primary text-on-primary z-50 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,15,29,0.25)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-md flex items-center gap-space-sm bg-primary border-b border-primary-container"><img alt="The Seafu Maritime Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X4Reu4AiJwTr07Z8IRAuW6mEvojvTrk0Uv6TnK-O5gatvlSv2L5qGDmrmjRooSklV1Lzuf_frnWGquIFaBNVq2j36Y09U83nwHRuTuHQKTDEadShc2gytcTknkaz9dhThp2j9XKzivKGOK3nFt9dXrYkhvqad7sStSmnv6vFt_pt-oI7WAEglqTq6P80h7B0fKEBGWqoLZkCE0lCdcSLyEBS1dY1aXisMf_jq12B4IMzPKdMA8yxUBECQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-primary">The Seafu</span><span class="font-label-sm text-label-sm text-on-primary-container tracking-wider uppercase">Fleet Operations Hub</span></div></div><div class="px-space-md pt-space-md pb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Core Operations</span></div><nav class="px-space-sm flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-title-md"><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="overview-analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">query_stats</span><span class="font-title-md text-title-md">Overview &amp; Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="approval-workflows" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">verified</span><span class="font-title-md text-title-md">Approval Workflows</span></div><span class="bg-secondary text-on-secondary font-label-sm text-label-sm px-space-xs py-0.5 rounded">14 PENDING</span></a></nav><div class="px-space-md pt-space-lg pb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Governance &amp; Community</span></div><nav class="px-space-sm flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-title-md"><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="user-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">badge</span><span class="font-title-md text-title-md">User Management</span></div></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="financial-oversight" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">account_balance</span><span class="font-title-md text-title-md">Financial Oversight</span></div></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="reviews-moderation" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">rate_review</span><span class="font-title-md text-title-md">Reviews &amp; Moderation</span></div><span class="bg-error text-on-error font-label-sm text-label-sm px-space-xs py-0.5 rounded">3 FLAGGED</span></a><a class="flex items-center justify-between px-space-sm py-space-sm rounded text-inverse-primary hover:bg-primary-container hover:text-on-primary transition-all" data-path="cms-content" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-title-md">menu_book</span><span class="font-title-md text-title-md">CMS &amp; Content</span></div></a></nav></div><div class="p-space-md border-t border-primary-container bg-primary"><div class="flex items-center justify-between text-on-primary-container"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-title-md text-secondary-fixed-dim">anchor</span><span class="font-label-md text-label-md uppercase tracking-wider text-inverse-primary">Vessel Bridge Net</span></div><span class="w-2 h-2 rounded-full bg-secondary-container"></span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 border-b border-surface-container-high flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-title-md">search</span><input class="w-full h-9 pl-9 pr-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-secondary transition-all" placeholder="Search seafarers, institutes, IMO certificates, or vessel cohorts..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-low rounded border border-outline-variant"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm uppercase text-secondary font-bold">STCW / DG Shipping Compliant: Online</span></div><button class="h-9 px-space-sm bg-primary text-on-primary font-title-md text-title-md rounded flex items-center gap-space-xs hover:bg-primary-container transition-colors" type="button"><span class="material-symbols-outlined text-title-md">add_box</span><span>New Approval Batch</span></button><div class="relative flex items-center"><button class="w-9 h-9 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-title-md">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span></div><div class="h-6 w-px bg-outline-variant"></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Vega3_OB8pBuxCj7klzkh2irI3Y5tfrxEJVKSooDKBsvRgcnfoVcyhFeba73C8Jdy5bogNd-7dFFq2VIaQUm0SLAesZ2dHtLB6Mli5b8iyJT4RhgjH5Chjr1aDzwON4gkt05IjdNj3S8lLe9azi7gbsC70SWNI_-_ftSZ4oiHzfZmZGEiCJ936_m6LrJPAf-Qh3K0NpcYh_W0kpKW9S095J4Gr4wDUbLCXRnokjaIm970FHsmMYRgg"/><div class="flex flex-col text-left"><span class="font-title-md text-title-md text-on-surface leading-tight">Capt. Alistair Finch</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Chief Administrator</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-md"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- Top Command Action Bar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="material-symbols-outlined text-title-md" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Vessel Bridge Net // Administrative Content Layer</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Maritime Content Management System (CMS)</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage statutory mariner circulars, cadet navigation guides, simulator standard notices, and platform knowledgebases.</p>
+</div>
+<div class="flex items-center gap-space-sm self-start xl:self-auto">
+<a class="h-10 px-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface rounded font-title-md text-title-md flex items-center gap-space-xs transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined text-title-md">open_in_new</span>
+<span>Preview Live Seafarer Portal</span>
+</a>
+<button class="h-10 px-space-md bg-primary text-on-primary hover:bg-primary-container rounded font-title-md text-title-md flex items-center gap-space-xs transition-colors shadow-md" onclick="document.getElementById('quick-editor-drawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-title-md">rate_review</span>
+<span>Compose New Notice / Article</span>
+</button>
+</div>
+</div>
+<!-- Realtime Dissemination KPI Banner Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Live Circular Broadcast</span>
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+</div>
+<div class="mt-space-sm">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">14,200</div>
+<div class="flex items-center gap-space-xs text-secondary mt-1">
+<span class="material-symbols-outlined text-body-sm">check_circle</span>
+<span class="font-label-sm text-label-sm">Delivered to active bridge &amp; engine crew</span>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-container opacity-40 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[100px]">cell_tower</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Avg. Regulatory Compliance Score</span>
+<span class="material-symbols-outlined text-title-md text-on-surface-variant">verified_user</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">98.4<span class="text-headline-md">%</span></div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-body-sm text-secondary">trending_up</span>
+<span class="font-label-sm text-label-sm">+1.6% IMO STCW align index</span>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-container opacity-40 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[100px]">balance</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Monthly Reader Engagement</span>
+<span class="material-symbols-outlined text-title-md text-on-surface-variant">auto_graph</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">124.8<span class="text-headline-md">k</span></div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-body-sm text-secondary">visibility</span>
+<span class="font-label-sm text-label-sm">Cadet manuals, exam prep &amp; circulars</span>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-container opacity-40 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[100px]">menu_book</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Dual Authorization Queue</span>
+<span class="px-space-xs py-0.5 bg-error text-on-error font-label-sm text-label-sm rounded font-bold">2 CRITICAL</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-display-lg text-display-lg text-error tracking-tight">04</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-body-sm text-error">pending_actions</span>
+<span class="font-label-sm text-label-sm">Awaiting Master Mariner endorsement</span>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-container opacity-40 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[100px]">draw</span>
+</div>
+</div>
+</div>
+<!-- Content Category Nav Rail Filter -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded bg-primary text-on-primary font-title-md text-title-md shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-title-md">notifications_active</span>
+<span>Notice to Mariners &amp; Regulatory Updates (DG/IMO)</span>
+<span class="ml-1 px-1.5 py-0.5 bg-primary-container text-on-primary text-label-sm rounded font-bold">24</span>
+</button>
+<button class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-title-md text-title-md transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-title-md">school</span>
+<span>Career &amp; Cadet Advice Articles</span>
+<span class="ml-1 px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant text-label-sm rounded">82</span>
+</button>
+<button class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-title-md text-title-md transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-title-md">newspaper</span>
+<span>Maritime Industry News</span>
+<span class="ml-1 px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant text-label-sm rounded">41</span>
+</button>
+<button class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-title-md text-title-md transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-title-md">quiz</span>
+<span>Platform Knowledgebase &amp; FAQs</span>
+</button>
+<button class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-title-md text-title-md transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-title-md">campaign</span>
+<span>Institute Announcement Banners</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs px-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded transition-colors" title="Export Regulatory Register" type="button">
+<span class="material-symbols-outlined text-title-md">download</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded transition-colors" title="Column Filter" type="button">
+<span class="material-symbols-outlined text-title-md">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Main Content Mosaic: Table & Editorial Queue -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-start">
+<!-- Central Content Registry (8 Cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Table Control Topbar -->
+<div class="p-space-md bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-primary">Master Publication Registry</span>
+<span class="text-label-sm font-label-sm bg-surface-container text-on-surface-variant px-space-xs py-0.5 rounded font-bold uppercase tracking-wider">Sync: IMO GISIS 2025.2</span>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-space-xs top-1/2 -translate-y-1/2 text-on-surface-variant text-body-md">search</span>
+<input class="w-full h-8 pl-8 pr-2 bg-surface-container-lowest rounded font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Filter articles, circular IDs..." type="text"/>
+</div>
+<select class="h-8 px-2 bg-surface-container-lowest rounded font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option>All Statuses</option>
+<option>Live</option>
+<option>Scheduled</option>
+<option>Draft in Review</option>
+</select>
+</div>
+</div>
+<!-- Dense Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Article / Notice Title</th>
+<th class="py-space-sm px-space-sm">Category</th>
+<th class="py-space-sm px-space-sm">Target Audience</th>
+<th class="py-space-sm px-space-sm">SEO &amp; Audit</th>
+<th class="py-space-sm px-space-sm">Status</th>
+<th class="py-space-sm px-space-sm text-right">Engagement</th>
+<th class="py-space-sm px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Item 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-space-md px-space-md min-w-[280px]">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-headline-sm mt-0.5" title="Mandatory High-Priority Broadcast">priority_high</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-error-container text-on-error-container px-1.5 py-0.5 rounded font-bold">EMERGENCY CIRCULAR</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">DG/CIR/2025/04</span>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 group-hover:text-secondary transition-colors">Urgent: DG Shipping Circular 04/2025 - Mandatory ETO High Voltage Endorsement Deadlines</span>
+<span class="text-on-surface-variant text-label-sm mt-0.5">Author: DG Shipping Technical Board • Updated 3 hours ago</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold uppercase">Regulatory Notice</span>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="font-title-md text-title-md text-on-surface font-semibold">ETO &amp; Chief Engineers</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Flag: DG Shipping • Panama • Marshall Is.</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-primary">99/100</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">IMO Rule Tagged</span>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E6FFFA] text-[#047857] font-label-sm text-label-sm font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-[#047857]"></span>
+                    Live Broadcast (14.2k)
+                  </span>
+</td>
+<td class="py-space-md px-space-sm text-right tabular-nums">
+<div class="font-bold text-primary">28,410</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">96.8% delivery ack</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Edit Circular" type="button">
+<span class="material-symbols-outlined text-title-md">edit</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="View Transmission Telemetry" type="button">
+<span class="material-symbols-outlined text-title-md">query_stats</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="More" type="button">
+<span class="material-symbols-outlined text-title-md">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-space-md px-space-md min-w-[280px]">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-headline-sm mt-0.5">article</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-1.5 py-0.5 rounded font-bold">EXAM REVISION DECK</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">COC-ORAL-25</span>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 group-hover:text-secondary transition-colors">Comprehensive Guide: How to Clear Second Mate CoC Oral Examinations in 2025</span>
+<span class="text-on-surface-variant text-label-sm mt-0.5">Author: Capt. Alistair Finch • Chief Administrator</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold uppercase">Cadet Career Guide</span>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Deck Cadets &amp; 3rd Mates</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Worldwide Seafarer Pool</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-primary">94/100</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Schema Verified</span>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E6FFFA] text-[#047857] font-label-sm text-label-sm font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-[#047857]"></span>
+                    Live
+                  </span>
+</td>
+<td class="py-space-md px-space-sm text-right tabular-nums">
+<div class="font-bold text-primary">42,100</div>
+<div class="flex items-center justify-end gap-0.5 text-[#00687a]">
+<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold">4.9 / 5.0</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Edit Article" type="button">
+<span class="material-symbols-outlined text-title-md">edit</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Analytics" type="button">
+<span class="material-symbols-outlined text-title-md">query_stats</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="More" type="button">
+<span class="material-symbols-outlined text-title-md">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-space-md px-space-md min-w-[280px]">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-headline-sm mt-0.5">schedule_send</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-1.5 py-0.5 rounded font-bold">SCHEDULED DROP</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SIGTTO-STD-09</span>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 group-hover:text-secondary transition-colors">Transitioning from Bulk Carriers to LNG Tankers: Required SIGTTO Endorsements</span>
+<span class="text-on-surface-variant text-label-sm mt-0.5">Author: Fleet Gas Operations Lead</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold uppercase">Tanker Specialization</span>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Bulk Fleet Officers</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Experience &gt; 24 mos</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-primary">91/100</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Awaiting Canonical</span>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E0F2FE] text-[#0369A1] font-label-sm text-label-sm font-bold uppercase">
+<span class="material-symbols-outlined text-label-sm">event</span>
+                    Mar 15, 2025
+                  </span>
+</td>
+<td class="py-space-md px-space-sm text-right tabular-nums">
+<div class="font-bold text-on-surface-variant">--</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Queue ID: #8491</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Reschedule" type="button">
+<span class="material-symbols-outlined text-title-md">edit_calendar</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Review" type="button">
+<span class="material-symbols-outlined text-title-md">visibility</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="More" type="button">
+<span class="material-symbols-outlined text-title-md">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-space-md px-space-md min-w-[280px]">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-headline-sm mt-0.5">rule</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-1.5 py-0.5 rounded font-bold">DRAFT IN PEER REVIEW</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">IMO-STCW-REV26</span>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 group-hover:text-secondary transition-colors">STCW 2026 Revision: Anticipated Simulation Training Requirements</span>
+<span class="text-on-surface-variant text-label-sm mt-0.5">Author: Academic Dean &amp; IMO Liaison</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-semibold uppercase">IMO Policy Analysis</span>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Institutes &amp; Sim Centers</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Global Maritime Academies</span>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-semibold text-primary">76/100</span>
+</div>
+<span class="text-error font-label-sm text-label-sm">Needs 2nd Approval</span>
+</td>
+<td class="py-space-md px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-bold uppercase">
+<span class="material-symbols-outlined text-label-sm text-on-surface-variant">hourglass_top</span>
+                    In Peer Review
+                  </span>
+</td>
+<td class="py-space-md px-space-sm text-right tabular-nums">
+<div class="font-bold text-on-surface-variant">--</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">4 Comments</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Endorse" type="button">
+<span class="material-symbols-outlined text-title-md text-secondary">approval</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-on-surface-variant hover:text-primary transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-title-md">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Dense Pagination Bar -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Displaying 1-4 of 147 Registered Maritime Documents</span>
+<div class="flex items-center gap-space-xs">
+<button class="h-8 px-space-sm rounded bg-surface-container-lowest text-on-surface font-title-md text-title-md flex items-center justify-center disabled:opacity-50" disabled="" type="button">
+<span class="material-symbols-outlined text-body-md">chevron_left</span>
+</button>
+<button class="h-8 w-8 rounded bg-primary text-on-primary font-title-md text-title-md flex items-center justify-center" type="button">1</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-title-md text-title-md flex items-center justify-center" type="button">2</button>
+<button class="h-8 w-8 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-title-md text-title-md flex items-center justify-center" type="button">3</button>
+<button class="h-8 px-space-sm rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-title-md text-title-md flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-body-md">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Compliance Matrix & Audit Logs Component -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-title-md">security_update_good</span>
+<span class="font-headline-sm text-headline-sm text-primary">STCW / DG Shipping Regulatory Alignment Track</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">AUDIT TIMESTAMP: 2025-03-02T08:14:22 UTC</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-xs">
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">
+<span>Section A-III/6 (ETO)</span>
+<span class="text-secondary font-mono">100% COVERED</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Mandatory circular broadcast deployed</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">
+<span>Section A-II/1 (Nav Watch)</span>
+<span class="text-secondary font-mono">92% COVERED</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[92%]"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2 oral examination syllabi refreshed</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">
+<span>Section A-V/1-2 (Liquefied Gas)</span>
+<span class="text-on-surface-variant font-mono">68% DRAFTING</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[68%]"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">SIGTTO standards article queued</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: WYSIWYG Regulatory Editor & Quick Publishing Desk (4 Cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Primary Live Editor Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-title-md">edit_document</span>
+<span class="font-headline-sm text-headline-sm text-primary">Regulatory Quick-Editor</span>
+</div>
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded font-bold uppercase">DG Mode</span>
+</div>
+<!-- Document Metadata Controls -->
+<div class="flex flex-col gap-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Notice / Article Title</label>
+<input class="w-full mt-1 h-9 px-space-sm bg-surface-container-low rounded font-title-md text-title-md text-on-surface focus:bg-surface-container-lowest focus:outline-none" type="text" value="Mandatory ECDIS Performance Standards &amp; Cyber Safety Drill Protocol"/>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Document Category</label>
+<select class="w-full mt-1 h-8 px-space-xs bg-surface-container-low rounded font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option>Notice to Mariners</option>
+<option>Cadet Career Guide</option>
+<option>Technical Advisory</option>
+<option>Maritime FAQ</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Target Flag State</label>
+<select class="w-full mt-1 h-8 px-space-xs bg-surface-container-low rounded font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option>IMO Universal / All Flags</option>
+<option>Directorate General of Shipping (India)</option>
+<option>Panama Maritime Authority (AMP)</option>
+<option>Marshall Islands Maritime</option>
+</select>
+</div>
+</div>
+<!-- Target Audience Multiselect Chips -->
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Target Seafarer Cohorts</label>
+<div class="flex flex-wrap gap-1 mt-1">
+<span class="px-2 py-0.5 bg-primary text-on-primary rounded font-label-sm text-label-sm flex items-center gap-1">
+                Deck Officers
+                <button class="hover:text-secondary-fixed-dim" type="button"><span class="material-symbols-outlined text-[12px]">close</span></button>
+</span>
+<span class="px-2 py-0.5 bg-primary text-on-primary rounded font-label-sm text-label-sm flex items-center gap-1">
+                Engine Crew
+                <button class="hover:text-secondary-fixed-dim" type="button"><span class="material-symbols-outlined text-[12px]">close</span></button>
+</span>
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded font-label-sm text-label-sm cursor-pointer flex items-center gap-1">
+                + Offshore / DP
+              </span>
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest rounded font-label-sm text-label-sm cursor-pointer flex items-center gap-1">
+                + Catering &amp; Stewards
+              </span>
+</div>
+</div>
+</div>
+<!-- Visual Asset Placeholder -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Featured Portal Banner</label>
+<div class="relative w-full h-32 rounded bg-surface-container-high overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A modern commercial vessel navigational bridge equipped with illuminated ECDIS displays and radar instrumentation under low ambient night lighting, with officers on watch observing maritime shipping lanes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVf7aGH-rZYW6ozzmD6e__CWE3JsJLcTAwOfag2uKTNN_fNGveXCpjx06z-qOxptOt4-aJ4SilDr4mm4lTFxzBmFCmDQ1iunnKB3PIO0HpRARFQzEQY5bA7FAEw-gjmiMCHlWTaUiB2pNyCfB8umskGCsvQX_HvW8FfKT95cddR6kjJ6H3E9O3SoC5m3G8RMby53LRaP08LJu3VYlGLh2nVLikGfepBjhdkL3RUVgLmOKL5W3txC14qw"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-space-sm py-1 bg-surface-container-lowest text-primary font-title-md text-title-md rounded flex items-center gap-1 shadow" type="button">
+<span class="material-symbols-outlined text-body-md">upload</span>
+                Change Visual
+              </button>
+</div>
+</div>
+</div>
+<!-- Minimal Rich Text Editor Simulation -->
+<div class="flex flex-col rounded bg-surface-container-low overflow-hidden">
+<!-- Toolbar -->
+<div class="bg-surface-container-high px-space-xs py-1 flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-0.5">
+<button class="p-1 hover:bg-surface-container-lowest rounded text-on-surface" title="Bold" type="button"><span class="material-symbols-outlined text-body-md">format_bold</span></button>
+<button class="p-1 hover:bg-surface-container-lowest rounded text-on-surface" title="Italic" type="button"><span class="material-symbols-outlined text-body-md">format_italic</span></button>
+<button class="p-1 hover:bg-surface-container-lowest rounded text-on-surface" title="Bullet List" type="button"><span class="material-symbols-outlined text-body-md">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-surface-container-lowest rounded text-on-surface" title="Insert Table" type="button"><span class="material-symbols-outlined text-body-md">table_chart</span></button>
+<button class="p-1 hover:bg-surface-container-lowest rounded text-on-surface" title="Link Regulation" type="button"><span class="material-symbols-outlined text-body-md">link</span></button>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-on-surface-variant">STCW-WYSIWYG</span>
+</div>
+<!-- Editable Area -->
+<div class="p-space-sm font-body-sm text-body-sm text-on-surface min-h-[110px] focus:outline-none" contenteditable="true">
+            Pursuant to MSC.1/Circ.1589 and DG Shipping Order 12/2024, all certified Navigating Officers are required to log annual Type-Specific ECDIS Cyber Vulnerability tests prior to joining vessels transiting high-density TSS corridors...
+          </div>
+</div>
+<!-- Official Circular PDF Widget Attachment -->
+<div class="p-space-sm rounded bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-error text-headline-sm flex-shrink-0">picture_as_pdf</span>
+<div class="flex flex-col truncate">
+<span class="font-title-md text-title-md text-on-surface font-semibold truncate">DG_Ship_Circular_2025_04_Official.pdf</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">2.4 MB • Digitally Signed SHA-256</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" title="Remove PDF" type="button">
+<span class="material-symbols-outlined text-body-md">delete</span>
+</button>
+</div>
+<!-- Dual Approval Publishing Workflow Control -->
+<div class="p-space-sm bg-surface-container-high rounded flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary font-bold">Dual-Approval Protocol</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Requires Master Mariner Co-Sign</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-center gap-space-xs text-secondary mt-1">
+<span class="material-symbols-outlined text-body-sm">draw</span>
+<span class="font-label-sm text-label-sm">Endorsed by: Capt. Alistair Finch (Pending 2nd Deck Supt.)</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="flex-1 h-10 bg-primary text-on-primary hover:bg-primary-container rounded font-title-md text-title-md flex items-center justify-center gap-space-xs transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-title-md">send</span>
+<span>Broadcast Notice</span>
+</button>
+<button class="h-10 px-space-md bg-surface-container-high hover:bg-surface-container-highest text-on-surface rounded font-title-md text-title-md transition-colors" type="button">
+            Save Draft
+          </button>
+</div>
+</div>
+<!-- Quick Knowledgebase Article Health Check -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary">Content Lifecycle Alerts</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">3 Action Items</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="p-space-xs rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-error text-title-md mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">ECDIS Model SIM-400 Guide Deprecated</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Flagged for archiving due to IMO MSC.530 replacement standards.</span>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-title-md mt-0.5">schedule</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Cadet CoC Interview Prep FAQ (v2.1)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Scheduled for automatic quarterly review in 4 days.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide-Over Full WYSIWYG Drawer (Hidden State with Toggle Micro-interaction) -->
+<div class="fixed inset-y-0 right-0 w-full max-w-2xl bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-hidden" id="quick-editor-drawer">
+<!-- Drawer Header -->
+<div class="h-16 px-space-md bg-primary text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-title-md text-secondary-container">assignment_add</span>
+<span class="font-headline-sm text-headline-sm text-on-primary">Compose Statutory Maritime Publication</span>
+</div>
+<button class="text-on-primary hover:text-secondary-container transition-colors" onclick="document.getElementById('quick-editor-drawer').classList.add('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-headline-sm">close</span>
+</button>
+</div>
+<!-- Drawer Body -->
+<div class="flex-1 overflow-y-auto p-space-lg flex flex-col gap-space-md">
+<div>
+<label class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Full Article / Circular Headline</label>
+<input class="w-full mt-1 h-10 px-space-sm bg-surface-container-low rounded font-title-md text-title-md text-on-surface focus:outline-none" placeholder="e.g. Navigation in Heavy Weather: Practical Seamanship Guidelines..." type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div>
+<label class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Publishing Channel</label>
+<select class="w-full mt-1 h-9 px-space-xs bg-surface-container-low rounded font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option>Notice to Mariners &amp; Safety Circulars</option>
+<option>Cadet Knowledge Repository</option>
+<option>Maritime Academy Broadcast</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Flag / Statutory Code</label>
+<input class="w-full mt-1 h-9 px-space-sm bg-surface-container-low rounded font-body-sm text-body-sm text-on-surface focus:outline-none" placeholder="e.g. DG-CIRC-2025-05" type="text"/>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Full Body Content &amp; Guidance</label>
+<textarea class="w-full mt-1 p-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:outline-none resize-none" placeholder="Draft regulatory content here. Markdown &amp; HTML supported..." rows="10"></textarea>
+</div>
+<!-- Attachment Widget in Drawer -->
+<div>
+<label class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Attach Official Circular Documents</label>
+<div class="mt-1 border-2 border-dashed border-surface-container-highest p-space-md rounded text-center flex flex-col items-center justify-center gap-1 bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary text-headline-lg">cloud_upload</span>
+<span class="font-title-md text-title-md text-primary">Upload Marine Department PDF or IMO Circular</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Max file size 25MB (SHA-256 verified)</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<button class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-title-md text-title-md" onclick="document.getElementById('quick-editor-drawer').classList.add('translate-x-full')" type="button">
+        Discard Notice
+      </button>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-title-md text-title-md rounded" type="button">
+          Save Draft
+        </button>
+<button class="px-space-md py-space-xs bg-primary text-on-primary hover:bg-primary-container font-title-md text-title-md rounded flex items-center gap-space-xs shadow" onclick="document.getElementById('quick-editor-drawer').classList.add('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-title-md">send</span>
+<span>Submit for Dual-Approval</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
