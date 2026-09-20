@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -49,7 +49,7 @@ UI/
 stitch_the_seafu_landing_platform*
 
 # Project 
-Project Details/ 
+Project Details/
 The Seafu – Project Scope of Work (Websolvers).pdf
 
 Seafu Institute UI/
