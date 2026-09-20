@@ -49,7 +49,7 @@
         <!-- Title Banner -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            <h1 class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
               Batch Scheduling &amp; Real-Time Seat Radar
             </h1>
             <p class="text-xs text-slate-600 mt-1">
@@ -57,8 +57,8 @@
             </p>
           </div>
 
-          <div class="flex items-center space-x-2 text-xs font-semibold text-emerald-900 bg-emerald-100/90 px-3 py-1.5 rounded-xl border border-emerald-200">
-            <span class="w-2 h-2 rounded-full bg-emerald-600" aria-hidden="true"></span>
+          <div class="flex items-center space-x-2 text-xs font-mono font-semibold text-emerald-900 bg-emerald-100/90 px-3 py-1.5 rounded-xl border border-emerald-200 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true"></span>
             <span>Atomic Quota Locking Active</span>
           </div>
         </div>
@@ -66,27 +66,27 @@
         <!-- 4 Radar KPI Metrics -->
         <section aria-label="Batch Quota Metrics" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">TOTAL ACTIVE BATCHES</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">8 Batches</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">TOTAL ACTIVE BATCHES</div>
+            <div class="text-2xl font-bold font-display font-mono tabular-nums text-slate-900">8</div>
             <div class="text-[11px] text-emerald-800 font-semibold">100% Fully Staffed</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">TOTAL CAPACITY</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">420 Seats</div>
-            <div class="text-[11px] text-slate-600 font-medium">340 Enrolled</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">TOTAL CAPACITY</div>
+            <div class="text-2xl font-bold font-display font-mono tabular-nums text-slate-900">420</div>
+            <div class="text-[11px] text-slate-600 font-medium font-mono tabular-nums">340 Enrolled</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">SEAT OCCUPANCY</div>
-            <div class="text-2xl font-bold text-blue-700 font-mono">84.2%</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">SEAT OCCUPANCY</div>
+            <div class="text-2xl font-bold font-display font-mono tabular-nums text-blue-700">84.2%</div>
             <div class="text-[11px] text-blue-800 font-semibold">High Demand Cycle</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">TEMPORARY CHECKOUT LOCKS</div>
-            <div class="text-2xl font-bold text-amber-800 font-mono">12 Seats</div>
-            <div class="text-[11px] text-slate-600 font-medium">10-min countdown</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">TEMPORARY CHECKOUT LOCKS</div>
+            <div class="text-2xl font-bold font-display font-mono tabular-nums text-amber-700">12</div>
+            <div class="text-[11px] text-slate-600 font-medium font-mono">10-min countdown</div>
           </div>
         </section>
 
@@ -125,22 +125,22 @@
             <table class="w-full text-left text-xs" aria-label="Active batches schedule radar">
               <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                 <tr>
-                  <th scope="col" class="px-5 py-3.5">BATCH &amp; PROGRAM</th>
-                  <th scope="col" class="px-5 py-3.5">TIMELINE &amp; DATES</th>
-                  <th scope="col" class="px-5 py-3.5">FACILITY &amp; INSTRUCTOR</th>
-                  <th scope="col" class="px-5 py-3.5">SEAT RADAR &amp; QUOTA</th>
-                  <th scope="col" class="px-5 py-3.5">FEE (PKR)</th>
-                  <th scope="col" class="px-5 py-3.5">STATUS</th>
-                  <th scope="col" class="px-5 py-3.5 text-right">ACTIONS</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">BATCH &amp; PROGRAM</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">TIMELINE &amp; DATES</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FACILITY &amp; INSTRUCTOR</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">SEAT RADAR &amp; QUOTA</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FEE (PKR)</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">STATUS</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500 text-right">ACTIONS</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
                 <tr v-for="b in filteredBatches" :key="b.id" class="hover:bg-slate-50/70 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-slate-900">{{ b.title }}</div>
+                    <div class="font-bold font-display text-slate-900">{{ b.title }}</div>
                     <div class="text-[11px] font-mono text-blue-700 font-semibold mt-0.5">{{ b.code }} &bull; {{ b.courseName }}</div>
                   </td>
-                  <td class="px-5 py-4 font-mono text-slate-700">
+                  <td class="px-5 py-4 font-mono tabular-nums text-slate-700">
                     <div class="font-bold text-slate-900">{{ b.startDate }} &ndash; {{ b.endDate }}</div>
                     <div class="text-[10px] text-slate-500 mt-0.5">{{ b.timing }}</div>
                   </td>
@@ -150,9 +150,9 @@
                   </td>
                   <td class="px-5 py-4">
                     <div class="flex items-center space-x-2">
-                      <span class="font-bold text-slate-900 font-mono">{{ b.enrolled }} / {{ b.capacity }}</span>
+                      <span class="font-bold text-slate-900 font-mono tabular-nums">{{ b.enrolled }} / {{ b.capacity }}</span>
                       <span
-                        class="text-[10px] font-bold"
+                        class="text-[10px] font-bold font-mono tabular-nums"
                         :class="getQuotaStatusColor(b.enrolled, b.capacity)"
                       >
                         ({{ b.capacity - b.enrolled }} left)
@@ -166,8 +166,8 @@
                       ></div>
                     </div>
                   </td>
-                  <td class="px-5 py-4 font-mono font-bold text-slate-900">
-                    {{ b.fee.toLocaleString() }}
+                  <td class="px-5 py-4 font-mono tabular-nums font-bold text-slate-900">
+                    PKR {{ b.fee.toLocaleString() }}
                   </td>
                   <td class="px-5 py-4">
                     <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">

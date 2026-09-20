@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Universal OpenType Tabular Figures & Slashed Zeros for Technical Alignment */
+  .tabular-nums,
+  .font-mono,
+  [data-tabular="true"],
+  table td,
+  .metric-counter {
+    font-feature-settings: "tnum" 1, "zero" 1, "cv05" 1;
+    font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  /* Executive Heading Optical Kerning */
+  h1, h2, h3, h4, .font-display {
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer utilities {
+  /* High-Density Nautical Micro-Badge */
+  .badge-marine {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    height: 1.25rem;
+    padding: 0 0.4rem;
+    border-radius: 0.25rem;
+    font-family: theme('fontFamily.mono');
+    font-size: 0.625rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Clean Hairline Technical Divider */
+  .border-graticule {
+    border-color: rgba(226, 232, 240, 0.85);
+  }
+
+  .border-graticule-dark {
+    border-color: rgba(12, 34, 64, 0.7);
+  }
+
+  /* No Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

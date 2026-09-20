@@ -104,12 +104,18 @@
                 <span class="text-[10px] font-mono px-2 py-0.5 rounded-full font-bold bg-amber-900/80 text-amber-300 border border-amber-600/50 uppercase">
                   CIP GRADE 1
                 </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full font-bold bg-emerald-950 text-emerald-300 border border-emerald-700/60 uppercase flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  DG Shipping Sync: Active (14ms)
+                </span>
               </div>
-              <h1 class="text-lg sm:text-2xl font-bold tracking-tight text-white">
-                Global Maritime Academy &bull; MTI Karachi
+              <h1 class="text-lg sm:text-2xl font-black font-display tracking-tight text-white flex items-center gap-2">
+                <span>Anglo-Eastern Maritime Academy (AEMA)</span>
+                <span class="text-xs font-mono text-cyan-300 font-bold px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-700/60">#IND-MH-042</span>
               </h1>
-              <p class="text-xs text-slate-300 font-normal">
-                Overseeing STCW certifications, cadet credential queues, simulator facilities, and audit compliance.
+              <p class="text-xs text-slate-300 font-normal flex items-center gap-2 flex-wrap">
+                <span>Overseeing STCW certifications, cadet credential queues, simulator facilities, and audit compliance.</span>
+                <span class="text-cyan-300 font-mono font-bold">• IMO Audit Readiness: 98.4%</span>
               </p>
             </div>
           </div>
@@ -119,7 +125,7 @@
             <button
               @click="openBatchCertModal"
               type="button"
-              class="px-3.5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition shadow-xs flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:outline-none"
+              class="px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition shadow-xs flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -158,32 +164,32 @@
           </div>
         </section>
 
-        <!-- ── 5 OPS KPI METRICS WITH TRENDS ── -->
+        <!-- ── 5 OPS KPI METRICS WITH TABULAR NUMERALS ── -->
         <section aria-label="Key Performance Indicators" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1">
             <div class="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">ENROLLED CADETS</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">482</div>
+            <div class="text-2xl font-black font-display font-mono tabular-nums text-slate-900 tracking-tight">482</div>
             <div class="text-[11px] text-emerald-800 font-semibold flex items-center space-x-1">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-              <span>+12% this term</span>
+              <span class="font-mono tabular-nums">+12% this term</span>
             </div>
           </div>
 
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1">
             <div class="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">ACTIVE BATCHES</div>
-            <div class="text-2xl font-bold text-blue-700 font-mono">18</div>
-            <div class="text-[11px] text-slate-600 font-medium">STCW Standard</div>
+            <div class="text-2xl font-black font-display font-mono tabular-nums text-blue-700 tracking-tight">18</div>
+            <div class="text-[11px] text-slate-500 font-medium">STCW Standard &bull; 94.6% Fill</div>
           </div>
 
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1">
             <div class="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">PENDING SIGN-OFFS</div>
-            <div class="text-2xl font-bold text-red-600 font-mono">7</div>
-            <div class="text-[11px] text-red-700 font-medium">Requires Cryptographic Key</div>
+            <div class="text-2xl font-black font-display font-mono tabular-nums text-amber-600 tracking-tight">7</div>
+            <div class="text-[11px] text-amber-700 font-medium">HSM Level 3 Ready</div>
           </div>
 
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1">
             <div class="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">AUDIT COMPLIANCE</div>
-            <div class="text-2xl font-bold text-emerald-800 font-mono">100%</div>
+            <div class="text-2xl font-black font-display font-mono tabular-nums text-emerald-800 tracking-tight">100%</div>
             <div class="text-[11px] text-emerald-700 font-medium flex items-center space-x-1">
               <svg class="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               <span>DNV Verified</span>
@@ -192,7 +198,7 @@
 
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1 col-span-2 sm:col-span-1">
             <div class="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">GROSS REVENUE (GMV)</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">PKR 4.85M</div>
+            <div class="text-2xl font-black font-display font-mono tabular-nums text-slate-900 tracking-tight">PKR 4.85M</div>
             <div class="text-[11px] text-blue-800 font-semibold">90% Academy Escrow</div>
           </div>
         </section>

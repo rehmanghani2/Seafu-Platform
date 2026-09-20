@@ -61,7 +61,7 @@
         <!-- Title Banner -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            <h1 class="text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
               Cryptographic Certificate Issuance &amp; Public QR Ledger
             </h1>
             <p class="text-xs text-slate-600 mt-1">
@@ -69,7 +69,8 @@
             </p>
           </div>
 
-          <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-800 bg-blue-100/90 px-3 py-1.5 rounded-xl border border-blue-200">
+          <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-800 bg-blue-100/90 px-3 py-1.5 rounded-xl border border-blue-200 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse" aria-hidden="true"></span>
             <span>ECDSA SHA-256 SEALED</span>
           </div>
         </div>
@@ -77,26 +78,26 @@
         <!-- 4 Certificate KPIs -->
         <section aria-label="Certification Statistics" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">TOTAL ISSUED</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">1,420</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">TOTAL ISSUED</div>
+            <div class="text-2xl font-bold font-display text-slate-900 font-mono tabular-nums">1,420</div>
             <div class="text-[11px] text-emerald-800 font-semibold">100% Cryptographic Match</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">PENDING ASSESSMENTS</div>
-            <div class="text-2xl font-bold text-amber-800 font-mono">12</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">PENDING ASSESSMENTS</div>
+            <div class="text-2xl font-bold font-display text-amber-700 font-mono tabular-nums">12</div>
             <div class="text-[11px] text-slate-600 font-medium">Practical Fire &bull; Bridge Drill</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">READY FOR SIGNING</div>
-            <div class="text-2xl font-bold text-blue-700 font-mono">18</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">READY FOR SIGNING</div>
+            <div class="text-2xl font-bold font-display text-blue-700 font-mono tabular-nums">18</div>
             <div class="text-[11px] text-blue-800 font-semibold">Drills Complete</div>
           </div>
 
           <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs space-y-1">
-            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase">PSC VERIFICATIONS</div>
-            <div class="text-2xl font-bold text-slate-900 font-mono">99.8%</div>
+            <div class="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">PSC VERIFICATIONS</div>
+            <div class="text-2xl font-bold font-display text-slate-900 font-mono tabular-nums">99.8%</div>
             <div class="text-[11px] text-emerald-800 font-semibold">Zero Fraud Incidents</div>
           </div>
         </section>
@@ -143,22 +144,22 @@
             <table class="w-full text-left text-xs" aria-label="Candidate certificate ledger">
               <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                 <tr>
-                  <th scope="col" class="px-5 py-3.5">CANDIDATE</th>
-                  <th scope="col" class="px-5 py-3.5">INDoS &bull; CDC</th>
-                  <th scope="col" class="px-5 py-3.5">PROGRAM &bull; BATCH</th>
-                  <th scope="col" class="px-5 py-3.5">ATTENDANCE &amp; SCORE</th>
-                  <th scope="col" class="px-5 py-3.5">CERTIFICATE #</th>
-                  <th scope="col" class="px-5 py-3.5">STATUS</th>
-                  <th scope="col" class="px-5 py-3.5 text-right">ACTION</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">CANDIDATE</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">INDoS &bull; CDC</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">PROGRAM &bull; BATCH</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">ATTENDANCE &amp; SCORE</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">CERTIFICATE #</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">STATUS</th>
+                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500 text-right">ACTION</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
                 <tr v-for="cand in filteredCandidates" :key="cand.id" class="hover:bg-slate-50/70 transition">
                   <td class="px-5 py-4">
-                    <div class="font-bold text-slate-900">{{ cand.name }}</div>
+                    <div class="font-bold font-display text-slate-900">{{ cand.name }}</div>
                     <div class="text-[11px] text-slate-500">{{ cand.email }}</div>
                   </td>
-                  <td class="px-5 py-4 font-mono">
+                  <td class="px-5 py-4 font-mono tabular-nums">
                     <div class="font-bold text-blue-700">{{ cand.indos }}</div>
                     <div class="text-[10px] text-slate-500">CDC: {{ cand.cdc }}</div>
                   </td>
@@ -166,12 +167,12 @@
                     <div class="font-semibold text-slate-900">{{ cand.course }}</div>
                     <div class="text-[10px] text-slate-500 font-mono">Batch: {{ cand.batchCode }}</div>
                   </td>
-                  <td class="px-5 py-4">
+                  <td class="px-5 py-4 font-mono tabular-nums">
                     <span class="font-bold text-emerald-800">{{ cand.attendance }}</span>
                     <div class="text-[10px] text-slate-500">Exam: {{ cand.examScore }}</div>
                   </td>
-                  <td class="px-5 py-4 font-mono text-[11px]">
-                    <span v-if="cand.certNumber" class="text-slate-900 font-bold">{{ cand.certNumber }}</span>
+                  <td class="px-5 py-4 font-mono tabular-nums text-[11px]">
+                    <span v-if="cand.certNumber" class="text-slate-900 font-bold bg-slate-100 px-2 py-0.5 rounded border border-slate-200">{{ cand.certNumber }}</span>
                     <span v-else class="text-slate-400 italic">Not Generated</span>
                   </td>
                   <td class="px-5 py-4">

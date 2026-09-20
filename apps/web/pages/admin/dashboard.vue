@@ -1200,96 +1200,230 @@
       <!-- ═══════════════════════════════════════════════════════════════ -->
       <main v-else-if="activeTab === 'overview'" id="main-content" class="p-4 sm:p-6 lg:p-8 space-y-6">
         
+        <!-- Live AIS / Telemetry Status Strip -->
+        <div class="px-3.5 py-2 rounded-xl bg-[#071022] text-slate-300 font-mono text-[11px] flex flex-wrap items-center justify-between gap-3 border border-slate-800 shadow-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-cyan-400 font-bold uppercase tracking-wider text-[10px]">BRIDGE TELEMETRY / FLEET LEVEL ALPHA</span>
+            <span class="text-slate-600">&bull;</span>
+            <span class="text-slate-400 text-[10px]">SYS_ID: <strong class="text-cyan-300 font-bold">MAR-8821</strong></span>
+          </div>
+          <div class="flex items-center gap-3 text-[10px]">
+            <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Live Synced: 2 mins ago
+            </span>
+            <span class="text-slate-600">&bull;</span>
+            <span class="text-slate-300">AIS &amp; DG Data Feeds Active (<strong class="text-white">1,842 nodes</strong>)</span>
+          </div>
+        </div>
+
         <!-- Breadcrumb & Header -->
         <section aria-labelledby="overview-heading" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-600 mb-1.5 font-medium">
-              <span>Fleet Operations</span>
+            <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-500 mb-1 font-medium font-mono">
+              <span>FLEET OPERATIONS</span>
               <span aria-hidden="true">&rsaquo;</span>
-              <span>System Analytics</span>
+              <span>SYSTEM ANALYTICS</span>
               <span aria-hidden="true">&rsaquo;</span>
-              <span class="font-bold text-slate-900">Performance &amp; Revenue Telemetry</span>
+              <span class="font-bold text-slate-800">PERFORMANCE &amp; CLEARINGHOUSE</span>
             </nav>
-            <h1 id="overview-heading" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-              Operational Fleet Performance &amp; Clearinghouse
+            <h1 id="overview-heading" class="text-xl sm:text-2xl font-black font-display text-slate-900 tracking-tight">
+              Maritime Ecosystem Analytics &amp; Operations Overview
             </h1>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-600" aria-hidden="true"></span>
-              <span>LIVE REGULATORY FEED ACTIVE</span>
-            </span>
+          <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-center rounded-xl border border-slate-200 bg-white p-1 text-xs font-mono font-bold shadow-2xs">
+              <button class="px-2.5 py-1 rounded-lg bg-[#0c2240] text-white">Last 30 Days</button>
+              <button class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">Q1 2026</button>
+            </div>
+            <button
+              @click="exportFinancialReport"
+              class="px-3 py-1.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              <span>Export Compliance Report</span>
+            </button>
           </div>
         </section>
 
-        <!-- 4 Stat Metric Cards -->
+        <!-- 4 High-Density KPI Cards with Tabular Figures -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">GROSS BOOKINGS GMV</span>
+          
+          <!-- Card 1: Active Seafarers -->
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between hover:border-blue-400/60 transition">
+            <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">
+              <span>ACTIVE SEAFARERS &amp; CADETS</span>
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            </div>
             <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-slate-900 tracking-tight">₹2,48,00,000</div>
-              <div class="text-xs text-slate-600 mt-1 flex items-center gap-1.5">
-                <span>Commission (10%):</span>
-                <strong class="text-blue-800 font-mono font-bold">₹24.80 L</strong>
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-black font-display font-mono tabular-nums text-slate-900 tracking-tight">42,850</span>
+                <span class="px-1.5 py-0.2 rounded-md bg-cyan-50 text-cyan-800 text-[10px] font-mono font-bold border border-cyan-200">+12.4% MoM</span>
+              </div>
+              <div class="text-[11px] text-slate-500 mt-1">2,410 currently undergoing at-sea watchkeeping</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Accredited Institutes -->
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between hover:border-blue-400/60 transition">
+            <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">
+              <span>ACCREDITED INSTITUTES</span>
+              <svg class="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-black font-display font-mono tabular-nums text-slate-900 tracking-tight">318</span>
+                <span class="px-1.5 py-0.2 rounded-md bg-slate-100 text-slate-700 text-[10px] font-mono font-bold">26 Countries</span>
+              </div>
+              <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                <span>GLOBAL DG SYNC: <strong class="text-slate-800 font-mono">99.8% Certified</strong></span>
               </div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">APPROVALS BACKLOG</span>
+
+          <!-- Card 3: STCW Bookings -->
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between hover:border-blue-400/60 transition">
+            <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">
+              <span>STCW COURSE BOOKINGS</span>
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
             <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-amber-700 tracking-tight">{{ pendingTotal }} Action Req</div>
-              <div class="text-xs text-slate-600 mt-1">Institutes, Courses &amp; Certs</div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-black font-display font-mono tabular-nums text-slate-900 tracking-tight">18,420</span>
+                <span class="px-1.5 py-0.2 rounded-md bg-blue-50 text-blue-800 text-[10px] font-mono font-bold border border-blue-200">$4.85M GMV</span>
+              </div>
+              <div class="text-[11px] text-slate-500 mt-1">Dual-invoice escrow clearing in <strong class="font-mono text-slate-800">1.4 days</strong></div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">REGISTERED MARINERS</span>
+
+          <!-- Card 4: Net Platform Commission -->
+          <div class="bg-gradient-to-br from-[#071022] to-[#0c2240] border border-cyan-500/30 rounded-2xl p-5 shadow-xs flex flex-col justify-between text-white">
+            <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300">
+              <span>NET PLATFORM COMMISSION</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
             <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-slate-900 tracking-tight">18,462</div>
-              <div class="text-xs text-slate-600 mt-1">18,420 Seafarers &bull; 42 Academies</div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-black font-display font-mono tabular-nums text-white tracking-tight">$412,250</span>
+                <span class="px-1.5 py-0.2 rounded-md bg-emerald-950 text-emerald-300 text-[10px] font-mono font-bold border border-emerald-700/60">+18.2% YoY</span>
+              </div>
+              <div class="text-[11px] text-slate-300 mt-1">Avg take-rate: <strong class="font-mono text-cyan-300">8.5%</strong> across batches</div>
             </div>
           </div>
-          <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">PSC INTEGRITY RATE</span>
-            <div class="mt-3">
-              <div class="text-3xl font-black font-mono text-emerald-700 tracking-tight">99.8%</div>
-              <div class="text-xs text-slate-600 mt-1">Zero Detentions Reported</div>
-            </div>
-          </div>
+
         </div>
 
-        <!-- Funnel Engine & Revenue -->
+        <!-- Cadet Conversion Funnel & Commission Clearinghouse -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-            <h2 class="text-base font-black text-slate-900 mb-4">Seafarer Journey Telemetry</h2>
-            <div class="space-y-3">
-              <div v-for="(stage, idx) in funnelStages" :key="stage.name" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="flex justify-between text-xs mb-1 font-bold">
-                  <span class="text-slate-800">{{ stage.name }}</span>
-                  <span class="text-blue-800 font-mono">{{ stage.count.toLocaleString() }} ({{ stage.rate }}%)</span>
+          
+          <!-- Funnel: Discovery to Certification -->
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h2 class="text-sm font-black font-display text-slate-900 uppercase tracking-wider">Conversion Funnel: Discovery to Certification</h2>
+                <p class="text-[11px] text-slate-500 font-mono mt-0.5">Cadet throughput analysis across verified training checkpoints</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-100 text-slate-700 uppercase">Quarter-To-Date</span>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div class="flex justify-between items-center text-[11px] mb-1.5">
+                  <span class="font-bold text-slate-800">01. Course Search &amp; Discovery</span>
+                  <span class="font-bold text-blue-900 tabular-nums">142,000 <span class="text-slate-400 font-normal">(100% Baseline)</span></span>
                 </div>
-                <div class="h-2 rounded-full bg-slate-200 overflow-hidden" role="progressbar" :aria-valuenow="stage.rate" aria-valuemin="0" aria-valuemax="100">
-                  <div class="h-full bg-blue-700 rounded-full" :style="{ width: stage.rate + '%' }"></div>
+                <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+                  <div class="h-full bg-slate-800 rounded-full w-full"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div class="flex justify-between items-center text-[11px] mb-1.5">
+                  <span class="font-bold text-slate-800">02. Institute Profile &amp; Syllabus View</span>
+                  <span class="font-bold text-blue-900 tabular-nums">88,400 <span class="text-slate-400 font-normal">(62.2% Retained)</span></span>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+                  <div class="h-full bg-blue-700 rounded-full w-[62.2%]"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div class="flex justify-between items-center text-[11px] mb-1.5">
+                  <span class="font-bold text-slate-800">03. Seat Reserved &amp; Dual-Invoice Paid</span>
+                  <span class="font-bold text-blue-900 tabular-nums">21,500 <span class="text-slate-400 font-normal">(24.3% Conversion)</span></span>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+                  <div class="h-full bg-cyan-600 rounded-full w-[24.3%]"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div class="flex justify-between items-center text-[11px] mb-1.5">
+                  <span class="font-bold text-slate-800">04. STCW Cryptographic Issuance</span>
+                  <span class="font-bold text-emerald-700 tabular-nums">18,420 <span class="text-slate-400 font-normal">(85.7% Completion)</span></span>
+                </div>
+                <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+                  <div class="h-full bg-emerald-600 rounded-full w-[85.7%]"></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-            <h2 class="text-base font-black text-slate-900 mb-4">Monthly Platform Commission Clearinghouse (INR)</h2>
+          <!-- Revenue & Escrow Clearinghouse Ledger -->
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h2 class="text-sm font-black font-display text-slate-900 uppercase tracking-wider">Revenue &amp; Commission Trends</h2>
+                <p class="text-[11px] text-slate-500 font-mono mt-0.5">Gross maritime volume vs net institutional clearing commissions</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-50 text-cyan-800 border border-cyan-200 uppercase">6-Month Trajectory</span>
+            </div>
+
             <div class="space-y-3 text-xs">
-              <div v-for="m in monthlyRevenue" :key="m.month" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+              <div v-for="m in monthlyRevenue" :key="m.month" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex justify-between items-center font-mono">
                 <div>
-                  <div class="font-black text-slate-900">{{ m.month }}</div>
-                  <div class="text-[11px] text-slate-600 font-mono">Gross GMV: ₹{{ (m.gmv / 100000).toFixed(1) }}L</div>
+                  <div class="font-black text-slate-900 font-display">{{ m.month }}</div>
+                  <div class="text-[11px] text-slate-500 tabular-nums">Gross GMV: ₹{{ (m.gmv / 100000).toFixed(1) }}L</div>
                 </div>
-                <div class="text-right font-mono">
-                  <div class="font-bold text-blue-800">₹{{ (m.commission / 1000).toFixed(0) }}K Platform Fee</div>
-                  <div class="text-[10px] text-emerald-700 font-bold">GST: ₹{{ m.gst }} &bull; TDS: ₹{{ m.tds }}</div>
+                <div class="text-right">
+                  <div class="font-bold text-blue-900 tabular-nums">₹{{ (m.commission / 1000).toFixed(0) }}K Platform Fee</div>
+                  <div class="text-[10px] text-emerald-700 font-bold tabular-nums">GST: ₹{{ m.gst }} &bull; TDS: ₹{{ m.tds }}</div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+
+        <!-- Vessel Bridge Watchkeeping Telemetry Cohort Banner -->
+        <div class="p-4 rounded-2xl bg-[#071022] border border-cyan-500/30 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-md font-mono">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-400/40 flex items-center justify-center text-cyan-300 font-bold shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-white flex items-center gap-2">
+                <span>Vessel Bridge Watchkeeping Matrix: Cohort 2026-A</span>
+                <span class="px-1.5 py-0.2 rounded-full bg-emerald-950 text-emerald-400 text-[9px] font-bold border border-emerald-700/60">LIVE TELEMETRY</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-sans mt-0.5">
+                3,890 cadets currently logging certified simulator sea-time across 48 dual-certified polar and container simulation environments.
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 shrink-0 text-xs">
+            <div>
+              <span class="text-[9px] text-slate-400 uppercase font-bold block">Engine Cadets Active</span>
+              <strong class="text-cyan-300 font-bold tabular-nums">2,140 In Session</strong>
+            </div>
+            <div>
+              <span class="text-[9px] text-slate-400 uppercase font-bold block">Deck Cadets Active</span>
+              <strong class="text-white font-bold tabular-nums">1,750 In Session</strong>
+            </div>
+          </div>
+        </div>
+
       </main>
 
       <!-- ═══════════════════════════════════════════════════════════════ -->
