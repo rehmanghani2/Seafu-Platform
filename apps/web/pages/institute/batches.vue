@@ -90,109 +90,226 @@
           </div>
         </section>
 
-        <!-- Search & Status Filter -->
-        <div class="flex flex-col sm:flex-row items-center gap-3">
-          <div class="relative w-full sm:flex-1">
-            <label for="batch-search-field" class="sr-only">Search batch</label>
-            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              id="batch-search-field"
-              v-model="searchCode"
-              type="text"
-              placeholder="Search batch code (e.g. GP3-2026, SIM-BRM, HND)..."
-              class="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl bg-white border border-slate-200 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
-            />
+        <!-- ── VIEW SWITCHER TABS ── -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-200 pb-3">
+          <div class="flex items-center space-x-2 w-full sm:w-auto overflow-x-auto" role="tablist" aria-label="Scheduling View Modes">
+            <button
+              v-for="v in viewOptions"
+              :key="v.id"
+              @click="activeView = v.id"
+              type="button"
+              class="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 shrink-0 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+              :class="activeView === v.id
+                ? 'bg-[#0A1936] text-white shadow-xs'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'"
+              role="tab"
+              :aria-selected="activeView === v.id"
+            >
+              <svg class="w-3.5 h-3.5" :class="activeView === v.id ? 'text-blue-300' : 'text-slate-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="v.icon" />
+              </svg>
+              <span>{{ v.label }}</span>
+              <span
+                v-if="v.badge"
+                class="text-[10px] font-mono px-1.5 py-0.2 rounded font-bold"
+                :class="activeView === v.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'"
+              >
+                {{ v.badge }}
+              </span>
+            </button>
           </div>
 
-          <div class="flex items-center space-x-2 w-full sm:w-auto">
-            <label for="batch-status-filter" class="text-xs font-semibold text-slate-600 shrink-0">Status:</label>
-            <select
-              id="batch-status-filter"
-              v-model="filterStatus"
-              class="px-3 py-2 text-xs rounded-xl bg-white border border-slate-200 text-slate-800 outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="ALL">All Batches ({{ batches.length }})</option>
-              <option value="ACTIVE">Active Intake Only</option>
-            </select>
+          <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+            <span class="text-[11px] font-mono text-slate-500 hidden sm:inline-block">
+              DNV Class-A Audit: <strong class="text-emerald-700 font-bold">100% Compliant</strong>
+            </span>
           </div>
         </div>
 
-        <!-- Batches Table -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs" aria-label="Active batches schedule radar">
-              <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
-                <tr>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">BATCH &amp; PROGRAM</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">TIMELINE &amp; DATES</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FACILITY &amp; INSTRUCTOR</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">SEAT RADAR &amp; QUOTA</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FEE (PKR)</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">STATUS</th>
-                  <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500 text-right">ACTIONS</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100">
-                <tr v-for="b in filteredBatches" :key="b.id" class="hover:bg-slate-50/70 transition">
-                  <td class="px-5 py-4">
-                    <div class="font-bold font-display text-slate-900">{{ b.title }}</div>
-                    <div class="text-[11px] font-mono text-blue-700 font-semibold mt-0.5">{{ b.code }} &bull; {{ b.courseName }}</div>
-                  </td>
-                  <td class="px-5 py-4 font-mono tabular-nums text-slate-700">
-                    <div class="font-bold text-slate-900">{{ b.startDate }} &ndash; {{ b.endDate }}</div>
-                    <div class="text-[10px] text-slate-500 mt-0.5">{{ b.timing }}</div>
-                  </td>
-                  <td class="px-5 py-4 text-slate-700">
-                    <div class="font-medium text-slate-900">{{ b.facility }}</div>
-                    <div class="text-[10px] text-slate-500 mt-0.5">{{ b.instructor }}</div>
-                  </td>
-                  <td class="px-5 py-4">
-                    <div class="flex items-center space-x-2">
-                      <span class="font-bold text-slate-900 font-mono tabular-nums">{{ b.enrolled }} / {{ b.capacity }}</span>
-                      <span
-                        class="text-[10px] font-bold font-mono tabular-nums"
-                        :class="getQuotaStatusColor(b.enrolled, b.capacity)"
-                      >
-                        ({{ b.capacity - b.enrolled }} left)
+        <!-- ── VIEW 1: SIMULATOR GANTT TIMELINE VIEW ── -->
+        <div v-if="activeView === 'GANTT'">
+          <InstituteSimulatorGanttTimeline
+            @quick-allocate="showAllocateModal = true"
+            @select-slot="onSelectGanttSlot"
+            @view-roster="openRosterByCode"
+          />
+        </div>
+
+        <!-- ── VIEW 2: BAY TELEMETRY & HARDWARE UTILIZATION VIEW ── -->
+        <div v-else-if="activeView === 'UTILIZATION'" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+              v-for="bay in simulatorBays"
+              :key="bay.id"
+              class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs space-y-4 hover:border-slate-300 transition"
+            >
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    <h3 class="text-sm font-bold font-display text-slate-900">{{ bay.name }}</h3>
+                  </div>
+                  <p class="text-[11px] font-mono text-slate-500 mt-1">{{ bay.specs }}</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  {{ bay.status }}
+                </span>
+              </div>
+
+              <!-- Utilization Gauge -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs font-mono">
+                  <span class="text-slate-500 font-bold">WEEKLY LOAD:</span>
+                  <span class="text-slate-900 font-bold tabular-nums">{{ bay.loadPct }}% ({{ bay.hoursUsed }} / 45 hrs)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div
+                    class="h-full rounded-full transition-all duration-500"
+                    :class="bay.loadPct > 85 ? 'bg-rose-500' : bay.loadPct > 70 ? 'bg-amber-500' : 'bg-blue-600'"
+                    :style="{ width: `${bay.loadPct}%` }"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Bay Telemetry Details -->
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1 text-[11px] font-mono">
+                <div class="flex justify-between text-slate-600">
+                  <span>Capacity:</span>
+                  <strong class="text-slate-900">{{ bay.capacity }} Concurrent Consoles</strong>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                  <span>Lead Faculty:</span>
+                  <strong class="text-slate-900">{{ bay.leadInstructor }}</strong>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                  <span>Next Calibration:</span>
+                  <strong class="text-blue-700">{{ bay.nextCalibration }}</strong>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between border-t border-slate-100">
+                <span class="text-[10px] font-mono text-emerald-800 font-bold flex items-center space-x-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span>DNV Audited</span>
+                </span>
+                <button
+                  @click="openAllocateForBay(bay)"
+                  type="button"
+                  class="px-3 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 transition"
+                >
+                  Allocate Bay &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── VIEW 3: SEAT RADAR & QUOTAS TABLE VIEW ── -->
+        <div v-else class="space-y-4">
+          <!-- Search & Status Filter -->
+          <div class="flex flex-col sm:flex-row items-center gap-3">
+            <div class="relative w-full sm:flex-1">
+              <label for="batch-search-field" class="sr-only">Search batch</label>
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                id="batch-search-field"
+                v-model="searchCode"
+                type="text"
+                placeholder="Search batch code (e.g. GP3-2026, SIM-BRM, HND)..."
+                class="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl bg-white border border-slate-200 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+              />
+            </div>
+
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+              <label for="batch-status-filter" class="text-xs font-semibold text-slate-600 shrink-0">Status:</label>
+              <select
+                id="batch-status-filter"
+                v-model="filterStatus"
+                class="px-3 py-2 text-xs rounded-xl bg-white border border-slate-200 text-slate-800 outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="ALL">All Batches ({{ batches.length }})</option>
+                <option value="ACTIVE">Active Intake Only</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Batches Table -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs" aria-label="Active batches schedule radar">
+                <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+                  <tr>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">BATCH &amp; PROGRAM</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">TIMELINE &amp; DATES</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FACILITY &amp; INSTRUCTOR</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">SEAT RADAR &amp; QUOTA</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">FEE (PKR)</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500">STATUS</th>
+                    <th scope="col" class="px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider text-slate-500 text-right">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr v-for="b in filteredBatches" :key="b.id" class="hover:bg-slate-50/70 transition">
+                    <td class="px-5 py-4">
+                      <div class="font-bold font-display text-slate-900">{{ b.title }}</div>
+                      <div class="text-[11px] font-mono text-blue-700 font-semibold mt-0.5">{{ b.code }} &bull; {{ b.courseName }}</div>
+                    </td>
+                    <td class="px-5 py-4 font-mono tabular-nums text-slate-700">
+                      <div class="font-bold text-slate-900">{{ b.startDate }} &ndash; {{ b.endDate }}</div>
+                      <div class="text-[10px] text-slate-500 mt-0.5">{{ b.timing }}</div>
+                    </td>
+                    <td class="px-5 py-4 text-slate-700">
+                      <div class="font-medium text-slate-900">{{ b.facility }}</div>
+                      <div class="text-[10px] text-slate-500 mt-0.5">{{ b.instructor }}</div>
+                    </td>
+                    <td class="px-5 py-4">
+                      <div class="flex items-center space-x-2">
+                        <span class="font-bold text-slate-900 font-mono tabular-nums">{{ b.enrolled }} / {{ b.capacity }}</span>
+                        <span
+                          class="text-[10px] font-bold font-mono tabular-nums"
+                          :class="getQuotaStatusColor(b.enrolled, b.capacity)"
+                        >
+                          ({{ b.capacity - b.enrolled }} left)
+                        </span>
+                      </div>
+                      <div class="w-28 bg-slate-200 h-1.5 rounded-full overflow-hidden mt-1.5">
+                        <div
+                          class="h-full rounded-full transition-all duration-300"
+                          :class="getBarColor(b.enrolled, b.capacity)"
+                          :style="{ width: `${Math.min(100, Math.round((b.enrolled / b.capacity) * 100))}%` }"
+                        ></div>
+                      </div>
+                    </td>
+                    <td class="px-5 py-4 font-mono tabular-nums font-bold text-slate-900">
+                      PKR {{ b.fee.toLocaleString() }}
+                    </td>
+                    <td class="px-5 py-4">
+                      <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                        {{ b.status }}
                       </span>
-                    </div>
-                    <div class="w-28 bg-slate-200 h-1.5 rounded-full overflow-hidden mt-1.5">
-                      <div
-                        class="h-full rounded-full transition-all duration-300"
-                        :class="getBarColor(b.enrolled, b.capacity)"
-                        :style="{ width: `${Math.min(100, Math.round((b.enrolled / b.capacity) * 100))}%` }"
-                      ></div>
-                    </div>
-                  </td>
-                  <td class="px-5 py-4 font-mono tabular-nums font-bold text-slate-900">
-                    PKR {{ b.fee.toLocaleString() }}
-                  </td>
-                  <td class="px-5 py-4">
-                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                      {{ b.status }}
-                    </span>
-                  </td>
-                  <td class="px-5 py-4 text-right space-x-2">
-                    <button
-                      @click="viewRosterModal(b)"
-                      type="button"
-                      class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 transition focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
-                    >
-                      Roster ({{ b.enrolled }})
-                    </button>
-                    <button
-                      @click="adjustCapacity(b)"
-                      type="button"
-                      class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 transition focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
-                    >
-                      Edit Cap
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                    <td class="px-5 py-4 text-right space-x-2">
+                      <button
+                        @click="viewRosterModal(b)"
+                        type="button"
+                        class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 transition focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+                      >
+                        Roster ({{ b.enrolled }})
+                      </button>
+                      <button
+                        @click="adjustCapacity(b)"
+                        type="button"
+                        class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 transition focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+                      >
+                        Edit Cap
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </main>
@@ -380,6 +497,140 @@
         </form>
       </div>
     </div>
+    <!-- Modal: Quick Allocate Simulator Bay Slot -->
+    <div
+      v-if="showAllocateModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="alloc-modal-title"
+      @click.self="showAllocateModal = false"
+    >
+      <div class="max-w-md w-full bg-white rounded-2xl p-6 shadow-2xl border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs" aria-hidden="true">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 id="alloc-modal-title" class="text-sm font-bold font-display text-slate-900">
+                Allocate Simulator Bay Slot
+              </h3>
+              <p class="text-[10px] font-mono text-slate-500">Atomic reservation on accredited hardware console</p>
+            </div>
+          </div>
+          <button
+            @click="showAllocateModal = false"
+            type="button"
+            class="text-slate-400 hover:text-slate-700 font-bold text-sm p-1 rounded-lg focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none"
+            aria-label="Close allocation modal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <form @submit.prevent="submitAllocation" class="space-y-3.5 text-xs">
+          <div>
+            <label for="alloc-bay" class="block font-bold text-slate-700 mb-1">Target Simulator Bay *</label>
+            <select
+              id="alloc-bay"
+              v-model="allocateForm.bayId"
+              required
+              class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option v-for="b in simulatorBays" :key="b.id" :value="b.id">
+                {{ b.name }} (Cap: {{ b.capacity }})
+              </option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="alloc-code" class="block font-bold text-slate-700 mb-1">Batch Code *</label>
+              <input
+                id="alloc-code"
+                v-model="allocateForm.batchCode"
+                type="text"
+                required
+                class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono outline-none"
+              />
+            </div>
+            <div>
+              <label for="alloc-cap" class="block font-bold text-slate-700 mb-1">Seats Assigned *</label>
+              <input
+                id="alloc-cap"
+                v-model.number="allocateForm.capacity"
+                type="number"
+                required
+                min="1"
+                max="30"
+                class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-mono outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="alloc-date" class="block font-bold text-slate-700 mb-1">Schedule Date *</label>
+              <input
+                id="alloc-date"
+                v-model="allocateForm.date"
+                type="date"
+                required
+                class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none"
+              />
+            </div>
+            <div>
+              <label for="alloc-window" class="block font-bold text-slate-700 mb-1">Time Window *</label>
+              <select
+                id="alloc-window"
+                v-model="allocateForm.timeWindow"
+                required
+                class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none"
+              >
+                <option value="09:00 - 13:00">Morning (09:00 - 13:00)</option>
+                <option value="13:30 - 17:30">Afternoon (13:30 - 17:30)</option>
+                <option value="09:00 - 17:00">Full Day (09:00 - 17:00)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="alloc-inst" class="block font-bold text-slate-700 mb-1">Assigned Instructor *</label>
+            <input
+              id="alloc-inst"
+              v-model="allocateForm.instructor"
+              type="text"
+              required
+              class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 outline-none"
+            />
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-blue-50/70 border border-blue-100 text-[11px] text-blue-900 font-mono flex items-center space-x-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            <span>Collision Guard Active &bull; STCW Reg I/12 Compliant</span>
+          </div>
+
+          <div class="pt-3 flex justify-end space-x-2 border-t border-slate-100">
+            <button
+              type="button"
+              @click="showAllocateModal = false"
+              class="px-3.5 py-1.5 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold transition"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-4 py-1.5 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white font-bold transition shadow-xs"
+            >
+              Confirm Bay Allocation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -391,13 +642,104 @@ definePageMeta({
 });
 
 useHead({
-  title: 'Batch Scheduling & Seat Radar &bull; Academy Console',
+  title: 'Batch Scheduling & Simulator Bay Quota Radar • Academy Console',
 });
+
+const activeView = ref('GANTT');
+const viewOptions = [
+  {
+    id: 'GANTT',
+    label: 'Simulator Bay Gantt',
+    badge: 'Interactive',
+    icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+  },
+  {
+    id: 'TABLE',
+    label: 'Seat Radar & Quotas',
+    badge: 'Live Table',
+    icon: 'M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+  },
+  {
+    id: 'UTILIZATION',
+    label: 'Bay Telemetry & Utilization',
+    badge: '5 Bays',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+];
 
 const filterStatus = ref('ALL');
 const searchCode = ref('');
 const showBatchModal = ref(false);
+const showAllocateModal = ref(false);
 const selectedRosterBatch = ref<any>(null);
+
+const allocateForm = ref({
+  courseName: 'BRM Simulator',
+  bayId: 'bay-1',
+  batchCode: 'SIM-BRM-05',
+  date: '2026-06-25',
+  timeWindow: '09:00 - 13:00',
+  instructor: 'Capt. A. R. Khan',
+  capacity: 12,
+});
+
+const simulatorBays = ref([
+  {
+    id: 'bay-1',
+    name: 'Wärtsilä 360° FMBS-A',
+    specs: 'DNV Class-A Full Mission · 360° Visual Dome',
+    capacity: 12,
+    loadPct: 88,
+    hoursUsed: 38,
+    status: 'ONLINE',
+    leadInstructor: 'Capt. A. R. Khan',
+    nextCalibration: '28 Jun 2026',
+  },
+  {
+    id: 'bay-2',
+    name: 'Transas NTPRO 4000 Radar/ECDIS',
+    specs: 'IMO Model 1.27 · 16 Multi-Consoles ARPA',
+    capacity: 16,
+    loadPct: 92,
+    hoursUsed: 41,
+    status: 'ONLINE',
+    leadInstructor: 'Chief Mate Vance',
+    nextCalibration: '02 Jul 2026',
+  },
+  {
+    id: 'bay-3',
+    name: 'Kongsberg K-Chief Engine Room',
+    specs: 'STCW A-III/1 & 2 · High Voltage 6.6kV Switchboard',
+    capacity: 10,
+    loadPct: 74,
+    hoursUsed: 33,
+    status: 'ONLINE',
+    leadInstructor: 'Chief Engineer Farooq',
+    nextCalibration: '05 Jul 2026',
+  },
+  {
+    id: 'bay-4',
+    name: 'KPT Fire Mock Ship & Grounds',
+    specs: 'SOLAS Fire Drill · Enclosed Space Rescue',
+    capacity: 25,
+    loadPct: 82,
+    hoursUsed: 37,
+    status: 'ONLINE',
+    leadInstructor: 'Fire Master S. Nadeem',
+    nextCalibration: '25 Jun 2026',
+  },
+  {
+    id: 'bay-5',
+    name: 'Furuno GMDSS Radio Station',
+    specs: 'GOC/ROC Class · Inmarsat-C & Sailor Transceivers',
+    capacity: 15,
+    loadPct: 68,
+    hoursUsed: 30,
+    status: 'ONLINE',
+    leadInstructor: 'Radio Officer Dennis',
+    nextCalibration: '10 Jul 2026',
+  },
+]);
 
 const newBatch = ref({
   courseName: 'BRM Simulator',
@@ -405,7 +747,7 @@ const newBatch = ref({
   startDate: '2026-07-05',
   endDate: '2026-07-10',
   capacity: 15,
-  instructor: 'Capt. A. R. Khan &bull; Wärtsilä 360 Bridge',
+  instructor: 'Capt. A. R. Khan • Wärtsilä 360 Bridge',
 });
 
 const rosterCandidates = [
@@ -519,6 +861,50 @@ function saveBatch() {
   showBatchModal.value = false;
 }
 
+function openAllocateForBay(bay: any) {
+  allocateForm.value.bayId = bay.id;
+  allocateForm.value.capacity = bay.capacity;
+  allocateForm.value.instructor = bay.leadInstructor;
+  showAllocateModal.value = true;
+}
+
+function submitAllocation() {
+  const bay = simulatorBays.value.find((b) => b.id === allocateForm.value.bayId);
+  batches.value.unshift({
+    id: 'b_' + Date.now(),
+    code: allocateForm.value.batchCode,
+    courseName: allocateForm.value.courseName,
+    title: allocateForm.value.courseName + ' (' + (bay ? bay.name : 'Bay') + ')',
+    startDate: allocateForm.value.date,
+    endDate: allocateForm.value.date,
+    timing: allocateForm.value.timeWindow,
+    facility: bay ? bay.name : 'Simulator Bay',
+    instructor: allocateForm.value.instructor,
+    enrolled: 1,
+    capacity: allocateForm.value.capacity,
+    fee: 85000,
+    status: 'ACTIVE',
+  });
+  showAllocateModal.value = false;
+}
+
+function onSelectGanttSlot(slot: any) {
+  openRosterByCode(slot.batchCode);
+}
+
+function openRosterByCode(batchCode: string) {
+  const found = batches.value.find((b) => b.code === batchCode);
+  if (found) {
+    selectedRosterBatch.value = found;
+  } else {
+    selectedRosterBatch.value = {
+      code: batchCode,
+      title: `${batchCode} Simulator Training Session`,
+      enrolled: 10,
+    };
+  }
+}
+
 function adjustCapacity(batch: any) {
   const cap = window.prompt(`Adjust capacity for ${batch.code}:`, String(batch.capacity));
   if (cap && !isNaN(Number(cap))) {
@@ -532,6 +918,7 @@ function viewRosterModal(batch: any) {
 
 function closeModals() {
   showBatchModal.value = false;
+  showAllocateModal.value = false;
   selectedRosterBatch.value = null;
 }
 </script>
