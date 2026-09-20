@@ -281,47 +281,125 @@
             </div>
           </div>
 
-          <!-- 2. Biometric Attendance & Practical Drill Log -->
-          <div class="p-5 rounded-2xl bg-[#0b1528] border border-slate-800">
+          <!-- 2. Biometric Attendance & Physical Drill Dossier (10 Sessions + Sensor Telemetry) -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-[#0B1528] border border-slate-800 space-y-5">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div class="flex items-center space-x-2">
-                <span class="text-cyan-400 text-sm">??</span>
-                <h3 class="font-bold text-white text-sm">Biometric Attendance & Practical Drill Log</h3>
+              <div class="flex items-center space-x-2.5">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                <h3 class="font-bold text-white text-sm font-display">Biometric Attendance &amp; Physical Drill Dossier</h3>
               </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800/50">
-                {{ dossier.biometricAttendanceLog.mandate }}
+              <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-800/50">
+                10 SESSIONS &bull; SUPREMA + IRIS ID 99.6% MATCH
               </span>
             </div>
 
-            <!-- Daily Check-in Grid -->
-            <div class="grid grid-cols-5 gap-2 mt-4 text-center font-mono">
-              <div
-                v-for="d in dossier.biometricAttendanceLog.days"
-                :key="d.day"
-                class="p-2.5 rounded-lg bg-[#070d18] border border-slate-800"
-              >
-                <div class="text-[9px] text-slate-400">{{ d.day }}</div>
-                <div class="text-emerald-400 text-sm my-0.5">?</div>
-                <div class="text-[10px] text-slate-300 font-bold">{{ d.checkIn }} / {{ d.checkOut }}</div>
+            <!-- Hardware & GPS Turnstile Metadata -->
+            <div class="p-3.5 rounded-xl bg-[#070D18] border border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase block">CAMPUS TURNSTILE GPS</span>
+                <span class="text-cyan-300 font-bold text-[11px] tabular-nums">18.9142° N, 73.3211° E</span>
+                <span class="text-[10px] text-slate-400 block">Karjat Campus Maritime Gate 02</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase block">BIOMETRIC HARDWARE</span>
+                <span class="text-white font-bold text-[11px]">Suprema BioStation 3</span>
+                <span class="text-[10px] text-slate-400 block">+ Iris ID iCAM7S Dual Scanner</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase block">AUDIT CORRELATION</span>
+                <span class="text-emerald-400 font-bold text-[11px] tabular-nums">99.6% Accuracy Match</span>
+                <span class="text-[10px] text-slate-400 block">Zero Spoof / Liveness PASS</span>
               </div>
             </div>
 
-            <!-- Scores Breakdown -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 pt-3 border-t border-slate-800 font-mono text-xs">
-              <div class="p-3 rounded-lg bg-[#070d18] border border-slate-800">
-                <div class="text-[10px] text-slate-500 uppercase">C.A.B.A. ENDURANCE</div>
-                <div class="font-bold text-cyan-400 text-sm mt-0.5">98 / 100</div>
-                <div class="text-[9px] text-slate-400 mt-1">Zero-visibility labyrinth drill in 11m 40s</div>
+            <!-- 10-Session Daily Check-in Grid -->
+            <div>
+              <div class="text-[10px] font-mono text-slate-400 font-bold uppercase mb-2">
+                10 MANDATORY CONTACT SESSIONS (TURNSTILE &amp; SIMULATOR TIME-STAMPS)
               </div>
-              <div class="p-3 rounded-lg bg-[#070d18] border border-slate-800">
-                <div class="text-[10px] text-slate-500 uppercase">PRACTICAL ASSESSMENT</div>
-                <div class="font-bold text-emerald-400 text-sm mt-0.5">COMPETENT Grade O</div>
-                <div class="text-[9px] text-slate-400 mt-1">Assessed by MOT 1st Class Surveyor</div>
+              <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center font-mono">
+                <div
+                  v-for="d in dossier.biometricAttendanceLog.days"
+                  :key="d.session"
+                  class="p-2.5 rounded-xl bg-[#070D18] border border-slate-800/80 flex flex-col justify-between"
+                >
+                  <div class="text-[9px] text-slate-400 font-bold">{{ d.session }}</div>
+                  <div class="text-[10px] text-cyan-300 font-bold truncate mt-0.5">{{ d.topic }}</div>
+                  <div class="text-emerald-400 text-xs my-1 font-bold">&#10003; 100%</div>
+                  <div class="text-[10px] text-slate-300 tabular-nums">{{ d.checkIn }} &ndash; {{ d.checkOut }}</div>
+                </div>
               </div>
-              <div class="p-3 rounded-lg bg-[#070d18] border border-slate-800">
-                <div class="text-[10px] text-slate-500 uppercase">MEDICAL PREREQUISITE</div>
-                <div class="font-bold text-white text-sm mt-0.5">FORM 1 FIT</div>
-                <div class="text-[9px] text-slate-400 mt-1">DG Approved Doctor #DOC-401</div>
+            </div>
+
+            <!-- ── SIMULATOR WET-DRILL & SENSOR TELEMETRY ── -->
+            <div class="p-4 rounded-xl bg-[#070D18] border border-cyan-900/40 space-y-4 font-mono text-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <span class="font-bold text-white text-xs uppercase flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  <span>Simulator Wet-Drill Sensor Telemetry</span>
+                </span>
+                <span class="text-[10px] text-cyan-300 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800/50">
+                  IMO Res. MSC.81(70)
+                </span>
+              </div>
+
+              <!-- Hydrostatic Davit Release Sensor Graph (SVG) -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-[11px]">
+                  <span class="text-slate-400">Hydrostatic On-Load Davit Release:</span>
+                  <span class="text-emerald-400 font-bold tabular-nums">4.2s (Threshold &lt; 6.0s &bull; PASS)</span>
+                </div>
+
+                <!-- SVG Peak Load Curve -->
+                <div class="h-20 bg-[#050B14] rounded-lg border border-slate-800 p-2 relative flex items-end">
+                  <svg class="w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                    <!-- Threshold Line (6.0s) -->
+                    <line x1="0" y1="20" x2="300" y2="20" stroke="#f43f5e" stroke-dasharray="4" stroke-width="1" />
+                    <!-- Release Curve -->
+                    <path
+                      d="M 0,55 Q 60,50 100,30 T 160,10 T 200,45 T 300,55"
+                      fill="none"
+                      stroke="#00e5ff"
+                      stroke-width="2.5"
+                    />
+                  </svg>
+                  <span class="absolute top-1.5 right-2 text-[9px] text-rose-400 font-bold">IMO 6.0s Max Cutoff</span>
+                  <span class="absolute bottom-1.5 left-2 text-[9px] text-cyan-300 font-bold">Peak Load Sensor: 31.4 kN at 4.2s</span>
+                </div>
+              </div>
+
+              <!-- Inflatable Liferaft Beaufort 5 Drill -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                  <div class="text-[10px] text-slate-500 uppercase">LIFERAFT RIGHTING DRILL</div>
+                  <div class="text-emerald-400 font-bold text-sm mt-0.5 tabular-nums">18.2s (Full Inversion Recovery)</div>
+                  <div class="text-[10px] text-slate-400 mt-1">Tested under simulated Beaufort 5 wave conditions &bull; 2.5m swell</div>
+                </div>
+
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                  <div class="text-[10px] text-slate-500 uppercase">C.A.B.A. LABYRINTH ENDURANCE</div>
+                  <div class="text-cyan-400 font-bold text-sm mt-0.5 tabular-nums">98 / 100 Score</div>
+                  <div class="text-[10px] text-slate-400 mt-1">Zero-visibility high-pressure BA smoke maze in 11m 40s</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── DG SHIPPING FORM 9 / STCW I/9 MEDICAL VERIFICATION ── -->
+            <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+              <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                  <span class="font-bold text-white text-xs">DG SHIPPING FORM 9 / STCW I/9 MEDICAL FIT STAMP</span>
+                  <span class="px-1.5 py-0.2 rounded text-[9px] bg-emerald-950 text-emerald-400 border border-emerald-700/50 font-bold">
+                    UNRESTRICTED
+                  </span>
+                </div>
+                <div class="text-[11px] text-slate-400">
+                  Visual Acuity: <strong class="text-white">6/6 Both Eyes</strong> &bull; Color Vision: <strong class="text-emerald-400">Ishihara 38 Plates PASS</strong> &bull; Audiometry: Normal
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-[11px] font-bold text-slate-200">Dr. S. K. Mukherjee, MBBS, DO</div>
+                <div class="text-[10px] text-cyan-400">DGS Approved Examiner #DOC-401</div>
               </div>
             </div>
           </div>
@@ -456,13 +534,18 @@ const dossier = ref({
     atomicTimestamp: '14 OCT 2022 ? 16:42:19.041 IST',
   },
   biometricAttendanceLog: {
-    mandate: 'DG CIP Mandatory',
+    mandate: 'DG CIP Mandatory · STCW VI/3',
     days: [
-      { day: 'DAY 1 (THEORY)', checkIn: '08:58', checkOut: '17:02' },
-      { day: 'DAY 2 (APPARATUS)', checkIn: '08:54', checkOut: '17:15' },
-      { day: 'DAY 3 (SMOKE LAB)', checkIn: '08:49', checkOut: '17:30' },
-      { day: 'DAY 4 (LIVE FIRE)', checkIn: '08:51', checkOut: '18:05' },
-      { day: 'DAY 5 (EXAM/DRILL)', checkIn: '08:45', checkOut: '16:40' },
+      { session: 'SESSION 01', topic: 'Fire Theory & Thermodynamics', checkIn: '08:58', checkOut: '12:30' },
+      { session: 'SESSION 02', topic: 'Command Team Protocols', checkIn: '13:15', checkOut: '17:02' },
+      { session: 'SESSION 03', topic: 'High-Pressure C.A.B.A.', checkIn: '08:54', checkOut: '12:45' },
+      { session: 'SESSION 04', topic: 'Labyrinth Smoke Chamber', checkIn: '13:30', checkOut: '17:15' },
+      { session: 'SESSION 05', topic: 'Engine Room Bilge Extinguishment', checkIn: '08:49', checkOut: '12:30' },
+      { session: 'SESSION 06', topic: 'Fixed Halon/CO2 Drenching', checkIn: '13:15', checkOut: '17:30' },
+      { session: 'SESSION 07', topic: 'Live Fire Mock Ship Exercise', checkIn: '08:51', checkOut: '13:00' },
+      { session: 'SESSION 08', topic: 'Hydrostatic Davit Wet-Drill', checkIn: '13:45', checkOut: '18:05' },
+      { session: 'SESSION 09', topic: 'Beaufort 5 Liferaft Righting', checkIn: '08:45', checkOut: '12:30' },
+      { session: 'SESSION 10', topic: 'MOT Practical Final Evaluation', checkIn: '13:00', checkOut: '16:40' },
     ],
   },
   dualInvoicingEscrow: {

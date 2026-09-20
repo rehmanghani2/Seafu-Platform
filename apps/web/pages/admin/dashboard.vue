@@ -1396,6 +1396,173 @@
 
         </div>
 
+        <!-- ── INCIDENT & BLACKBOX TELEMETRY TRIAGE CARD ── -->
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="p-2 rounded-xl bg-rose-50 text-rose-600 border border-rose-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </span>
+              <div>
+                <h2 class="text-sm font-bold font-display text-slate-900">
+                  Incident &amp; Blackbox Telemetry Triage &bull; Ref: INC-2026-ARPA-881
+                </h2>
+                <p class="text-xs text-slate-500 font-mono">
+                  Anglo-Eastern Maritime Academy &bull; Wärtsilä 360° FMBS Bay 01 &bull; 18-Min Grid Surge
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-rose-100 text-rose-800 border border-rose-200">
+                CRITICAL DISPUTE
+              </span>
+              <button
+                @click="showForensicPdfModal = true"
+                type="button"
+                class="px-3 py-1.5 rounded-xl bg-[#0A1936] hover:bg-[#112752] text-white text-xs font-bold font-mono transition shadow-2xs flex items-center space-x-1.5"
+              >
+                <svg class="w-3.5 h-3.5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Export Forensic PDF/A</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Voltage Drop Telemetry Graph & Impact Assessment -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 font-mono text-xs">
+            <div class="lg:col-span-2 p-4 rounded-xl bg-slate-900 text-white space-y-2 border border-slate-800">
+              <div class="flex justify-between items-center text-[11px]">
+                <span class="text-slate-400">BLACKBOX SENSOR: FMBS-A 440V MAIN BUS</span>
+                <span class="text-rose-400 font-bold tabular-nums">DROPPED TO 0V AT 14:22:10 UTC (18m Duration)</span>
+              </div>
+              <!-- Telemetry Curve SVG -->
+              <div class="h-20 bg-slate-950 rounded-lg p-2 relative flex items-end overflow-hidden">
+                <svg class="w-full h-full overflow-visible" viewBox="0 0 300 50" preserveAspectRatio="none">
+                  <path
+                    d="M 0,10 L 80,10 L 85,45 L 145,45 L 150,10 L 300,10"
+                    fill="none"
+                    stroke="#f43f5e"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span class="absolute top-1 left-2 text-[9px] text-emerald-400">440V Normal</span>
+                <span class="absolute bottom-1 left-[32%] text-[9px] text-rose-400 font-bold">18m Blackout Spike</span>
+                <span class="absolute top-1 right-2 text-[9px] text-emerald-400">Restored 14:40:10 UTC</span>
+              </div>
+              <div class="text-[11px] text-slate-300">
+                Impact: 12 Master Mariner candidates were actively navigating radar blind-pilotage vectors during official DGS exam.
+              </div>
+            </div>
+
+            <!-- Adjudication Quick-Action Matrix -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase font-bold block">DISPUTE ADJUDICATION ACTIONS</span>
+                <div class="text-xs text-slate-700 font-sans mt-1">
+                  Faculty and candidates filed joint escrow lock review. Select automated resolution:
+                </div>
+              </div>
+              <div class="space-y-1.5">
+                <button
+                  @click="resolveIncident('RESIT')"
+                  type="button"
+                  class="w-full py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition text-center shadow-2xs"
+                >
+                  Compel Free Exam Re-sit
+                </button>
+                <button
+                  @click="resolveIncident('REFUND')"
+                  type="button"
+                  class="w-full py-1.5 px-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition text-center shadow-2xs"
+                >
+                  Refund Escrow to Candidates
+                </button>
+                <button
+                  @click="resolveIncident('MEDIATE')"
+                  type="button"
+                  class="w-full py-1.5 px-3 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-xs transition text-center"
+                >
+                  Open DGS Mediation Hearing
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── DUAL-INVOICING FINANCIAL ARCHITECTURE INSPECTOR ── -->
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <h2 class="text-sm font-bold font-display text-slate-900">
+                Dual-Invoicing Financial Architecture View &bull; Live Transaction Inspector
+              </h2>
+              <p class="text-xs text-slate-500 font-mono">
+                Candidate tax invoice vs academy remittance clearing voucher (Escrow Hold #ESC-49102)
+              </p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-blue-50 text-blue-800 border border-blue-200">
+              STCW SEC. 4 DUAL-LEDGER
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 font-mono text-xs">
+            <!-- Track 01: Payer Copy -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                <span class="font-bold text-slate-900 text-xs">TRACK 01: CANDIDATE / PAYER INVOICE</span>
+                <span class="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded">PAID &bull; RECEIPT #SF-9821</span>
+              </div>
+              <div class="space-y-1 text-[11px] text-slate-600">
+                <div class="flex justify-between">
+                  <span>Gross Tuition (BRM Simulator):</span>
+                  <span class="font-bold text-slate-900 tabular-nums">PKR 85,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Maritime Education Levy (Exempt):</span>
+                  <span class="font-bold text-emerald-700 tabular-nums">PKR 0 (0% GST)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>ECDSA Cryptographic Seal Fee:</span>
+                  <span class="font-bold text-slate-900 tabular-nums">PKR 1,500</span>
+                </div>
+                <div class="flex justify-between pt-1 border-t border-slate-200 text-slate-900 font-bold">
+                  <span>Total Candidate Debit:</span>
+                  <span class="text-blue-700 tabular-nums">PKR 86,500</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Track 02: Institute Remittance Voucher -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                <span class="font-bold text-slate-900 text-xs">TRACK 02: ACADEMY ESCROW REMITTANCE</span>
+                <span class="text-[10px] text-blue-800 font-bold bg-blue-100 px-2 py-0.5 rounded">READY FOR CLEARANCE</span>
+              </div>
+              <div class="space-y-1 text-[11px] text-slate-600">
+                <div class="flex justify-between">
+                  <span>Gross Intake Allocated:</span>
+                  <span class="font-bold text-slate-900 tabular-nums">PKR 85,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Platform Commission (8.5%):</span>
+                  <span class="font-bold text-rose-600 tabular-nums">- PKR 7,225</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Statutory TDS Withholding (1%):</span>
+                  <span class="font-bold text-slate-900 tabular-nums">- PKR 850</span>
+                </div>
+                <div class="flex justify-between pt-1 border-t border-slate-200 text-slate-900 font-bold">
+                  <span>Net Academy Remittance:</span>
+                  <span class="text-emerald-700 tabular-nums">PKR 76,925</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Vessel Bridge Watchkeeping Telemetry Cohort Banner -->
         <div class="p-4 rounded-2xl bg-[#071022] border border-cyan-500/30 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-md font-mono">
           <div class="flex items-center gap-3">
@@ -2286,6 +2453,190 @@
       </div>
     </div>
 
+    <!-- Modal 6: Forensic Audit & Biometric PDF Export Modal -->
+    <div
+      v-if="showForensicPdfModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-forensic-pdf-title"
+      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-xs overflow-y-auto"
+    >
+      <div class="rounded-3xl border border-slate-700/60 bg-[#0A1424] text-white p-5 sm:p-6 max-w-2xl w-full space-y-4 shadow-2xl my-8">
+        
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shrink-0 shadow-xs">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 id="modal-forensic-pdf-title" class="font-black text-white text-base tracking-tight">
+                  Forensic Audit &amp; Biometric PDF/A Export
+                </h2>
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-700/60">
+                  ISO 19005-1 PDF/A-1b
+                </span>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">
+                Cryptographic Minutiae Vector &bull; Blackbox Telemetry Archive &bull; STCW Section I/2
+              </p>
+            </div>
+          </div>
+          <button
+            @click="showForensicPdfModal = false"
+            type="button"
+            class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition focus-visible:ring-2 focus-visible:ring-cyan-400"
+            aria-label="Close forensic modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Subject & Regulatory Scope -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+          <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-[10px] text-slate-400 uppercase block font-bold">EXAMINED CANDIDATE</span>
+            <div class="text-white font-bold mt-0.5">Capt. Rajesh Kumar (SF-99412)</div>
+            <div class="text-slate-400 text-[11px]">INDoS: 04NL8821 &bull; CoC: IND-COC-88914</div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-[10px] text-slate-400 uppercase block font-bold">INCIDENT CROSS-REFERENCE</span>
+            <div class="text-rose-400 font-bold mt-0.5">INC-2026-ARPA-881 (18m Grid Drop)</div>
+            <div class="text-slate-400 text-[11px]">Wärtsilä FMBS Bay 01 &bull; Power Blackout</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Time Warping (DTW) Telemetry Curve -->
+        <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-300 font-bold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>DYNAMIC TIME WARPING (DTW) SIMULATOR TRACE</span>
+            </span>
+            <span class="text-cyan-300 font-bold tabular-nums">99.4% SIMILARITY MATCH</span>
+          </div>
+          <div class="h-24 bg-[#050A14] rounded-xl p-2 relative overflow-hidden border border-slate-900 flex items-center">
+            <!-- Grid Lines -->
+            <div class="absolute inset-0 grid grid-cols-6 grid-rows-3 opacity-15 pointer-events-none">
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-r border-cyan-500"></div>
+              <div class="border-b border-cyan-500"></div>
+            </div>
+            <!-- Curve Comparison SVG -->
+            <svg class="w-full h-full overflow-visible" viewBox="0 0 320 60" preserveAspectRatio="none">
+              <!-- Baseline Gold Standard (Dashed) -->
+              <path
+                d="M 0,35 Q 40,15 80,30 T 160,25 T 240,40 T 320,20"
+                fill="none"
+                stroke="#64748b"
+                stroke-width="1.5"
+                stroke-dasharray="3 3"
+              />
+              <!-- Candidate Evaluated Trajectory (Cyan) -->
+              <path
+                d="M 0,34 Q 40,16 80,31 T 160,24 T 240,38 T 320,21"
+                fill="none"
+                stroke="#00E5FF"
+                stroke-width="2.5"
+              />
+            </svg>
+            <span class="absolute top-1.5 left-2.5 text-[9px] font-mono text-cyan-300 font-bold bg-[#0A1424]/80 px-1.5 py-0.5 rounded">
+              Candidate Trajectory (Cyan) vs Baseline IMO Standard (Dashed)
+            </span>
+            <span class="absolute bottom-1.5 right-2.5 text-[9px] font-mono text-emerald-400 font-bold bg-[#0A1424]/80 px-1.5 py-0.5 rounded tabular-nums">
+              DTW-D = 0.018 (Pass &lt; 0.050)
+            </span>
+          </div>
+        </div>
+
+        <!-- ILO 185 Biometric Minutiae & Hardware Telemetry -->
+        <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 font-mono text-xs">
+          <div class="flex justify-between items-center text-[11px]">
+            <span class="text-slate-400 uppercase font-bold">ILO 185 BIOMETRIC MINUTIAE EXTRACTION</span>
+            <span class="text-emerald-400 font-bold">99.8% BIO-MATCH</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 uppercase block">HARDWARE</span>
+              <strong class="text-cyan-300 text-[10px] block truncate">Suprema BioStation 3</strong>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 uppercase block">IRIS SENSOR</span>
+              <strong class="text-cyan-300 text-[10px] block truncate">Iris ID iCAM7S</strong>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 uppercase block">MINUTIAE NODES</span>
+              <strong class="text-white text-[10px] block">64 Endings / 38 Bifurcations</strong>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 uppercase block">GEO-STAMP</span>
+              <strong class="text-emerald-400 text-[10px] block tabular-nums">18.9142°N, 73.3211°E</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHA-256 Hash & HSM Cryptographic Seal -->
+        <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 font-mono text-xs">
+          <div class="flex justify-between items-center text-[10px]">
+            <span class="text-slate-400 uppercase font-bold">FIPS 140-2 LEVEL 3 HSM SIGNATURE (secp256r1)</span>
+            <button
+              @click="copyManifestHash"
+              type="button"
+              class="text-cyan-400 hover:text-cyan-300 transition text-[10px] font-bold flex items-center gap-1"
+            >
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              <span>Copy Hash</span>
+            </button>
+          </div>
+          <div class="p-2 bg-[#060D1A] rounded-lg border border-slate-800 text-[10px] text-cyan-300 break-all font-mono select-all">
+            9e4a8b2c4819df51a44c98024921ff91b10a927a6f23851b471249aa311b8f04
+          </div>
+          <div class="text-[10px] text-slate-400 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>DG Shipping &bull; IMO GISIS Registry Synchronized &bull; Zero Maritime Detentions</span>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="flex flex-col sm:flex-row justify-end gap-2 pt-2 border-t border-slate-800">
+          <button
+            @click="showForensicPdfModal = false"
+            type="button"
+            class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 hover:bg-slate-800 text-slate-300 transition"
+          >
+            Dismiss
+          </button>
+          <button
+            @click="downloadPdfA"
+            type="button"
+            class="px-5 py-2 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-mono transition shadow-xs flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-cyan-300"
+          >
+            <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download Certified ISO 19005-1 PDF/A-1b</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -2477,6 +2828,7 @@ const showCmsModal = ref(false);
 const showAddUserModal = ref(false);
 const auditModalOpen = ref(false);
 const courseModalOpen = ref(false);
+const showForensicPdfModal = ref(false);
 
 const userSearch = ref('');
 const userRoleFilter = ref('ALL');
@@ -2642,5 +2994,26 @@ function roleBadgeClass(role: string) {
   if (role === 'SUPER_ADMIN') return 'bg-purple-50 text-purple-700 border-purple-200';
   if (role === 'INSTITUTE_ADMIN') return 'bg-blue-50 text-blue-700 border-blue-200';
   return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+}
+
+function resolveIncident(action: string) {
+  if (action === 'RESIT') {
+    alert('Official Notice Transmitted: Anglo-Eastern Maritime Academy compelled to grant free exam re-sit for 12 impacted candidates under DGS Quality Standard Section 8.4.');
+  } else if (action === 'REFUND') {
+    alert('Escrow Hold Released: 100% of candidate tuition (PKR 1,038,000 total) refunded to 12 candidate ledgers. Academy SLA breach penalty logged.');
+  } else if (action === 'MEDIATE') {
+    alert('DGS Regulatory Mediation Hearing opened. Incident telemetry blackbox log dispatched to DG Shipping Directorate General with SHA-256 seal.');
+  }
+}
+
+function copyManifestHash() {
+  if (typeof navigator !== 'undefined' && navigator.clipboard) {
+    navigator.clipboard.writeText('9e4a8b2c4819df51a44c98024921ff91b10a927a6f23851b471249aa311b8f04');
+    alert('Cryptographic manifest SHA-256 hash copied to clipboard.');
+  }
+}
+
+function downloadPdfA() {
+  alert('Generating certified ISO 19005-1 PDF/A-1b archival dossier with embedded ILO 185 biometric minutiae vector and ECDSA signature...');
 }
 </script>
