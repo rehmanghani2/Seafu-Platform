@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import '../jobs/jobs_screen.dart';
+import '../webinars/webinars_screen.dart';
+import '../community/community_screen.dart';
+import '../chat/maritime_chat_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String _selectedLanguage = 'en';
+
+  final Map<String, String> _languages = {
+    'en': 'English (Maritime Standard)',
+    'hi': 'हिंदी (Hindi)',
+    'tl': 'Tagalog (Filipino)',
+    'ru': 'Русский (Russian)',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +47,7 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Officer Profile Card
             Container(
@@ -81,7 +100,12 @@ class ProfileScreen extends StatelessWidget {
                                   SizedBox(width: 4),
                                   Text(
                                     'DG e-Samudra Verified',
-                                    style: TextStyle(fontSize: 9, fontFamily: 'monospace', color: Color(0xFF34D399), fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      fontFamily: 'monospace',
+                                      color: Color(0xFF34D399),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -108,7 +132,8 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('GOVERNMENT OF INDIA MARITIME CREDENTIALS', style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Colors.grey)),
+                  const Text('GOVERNMENT OF INDIA MARITIME CREDENTIALS',
+                      style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Colors.grey)),
                   const SizedBox(height: 12),
                   _buildCredentialRow('INDoS Number', '08ZL9431', isCyan: true),
                   const Divider(color: Color(0xFF1E293B)),
@@ -119,6 +144,113 @@ class ProfileScreen extends StatelessWidget {
                   _buildCredentialRow('Logged Sea-Time', '48 months 14 days', isEmerald: true),
                   const Divider(color: Color(0xFF1E293B)),
                   _buildCredentialRow('Medical Fitness Cert', 'Valid (Class-A)'),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            // Quick Hub Services
+            const Text(
+              'MARITIME HUB SERVICES',
+              style: TextStyle(fontSize: 11, fontFamily: 'monospace', color: Color(0xFF00E5FF), fontWeight: FontWeight.bold, letterSpacing: 1),
+            ),
+            const SizedBox(height: 10),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 2.2,
+              children: [
+                _buildHubTile(
+                  icon: Icons.work_outline,
+                  color: const Color(0xFF00E5FF),
+                  title: 'Job Vacancies',
+                  subtitle: 'Shipping lines',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const JobsScreen())),
+                ),
+                _buildHubTile(
+                  icon: Icons.video_library_outlined,
+                  color: const Color(0xFF38BDF8),
+                  title: 'Live Webinars',
+                  subtitle: 'CPD Masterclasses',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const WebinarsScreen())),
+                ),
+                _buildHubTile(
+                  icon: Icons.forum_outlined,
+                  color: const Color(0xFF10B981),
+                  title: 'Peer Forum',
+                  subtitle: 'MMD & Orals',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CommunityScreen())),
+                ),
+                _buildHubTile(
+                  icon: Icons.smart_toy_outlined,
+                  color: const Color(0xFFA855F7),
+                  title: 'AI Watchkeeper',
+                  subtitle: 'STCW Q&A Desk',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MaritimeChatScreen())),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            // Maritime Localization (i18n) Preference
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF0C1628),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: const Color(0xFF1E293B)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(Icons.language, color: Color(0xFF00E5FF), size: 16),
+                      SizedBox(width: 8),
+                      Text(
+                        'MARITIME LANGUAGE PREFERENCE',
+                        style: TextStyle(fontSize: 10, fontFamily: 'monospace', color: Colors.grey, letterSpacing: 0.8),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  DropdownButtonFormField<String>(
+                    initialValue: _selectedLanguage,
+                    dropdownColor: const Color(0xFF0C1628),
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color(0xFF070D18),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Color(0xFF1E293B)),
+                      ),
+                    ),
+                    items: _languages.entries.map((e) {
+                      return DropdownMenuItem<String>(
+                        value: e.key,
+                        child: Text(e.value),
+                      );
+                    }).toList(),
+                    onChanged: (val) {
+                      if (val != null) {
+                        setState(() => _selectedLanguage = val);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('App locale switched to ${_languages[val]}'),
+                            backgroundColor: const Color(0xFF00E5FF),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ],
               ),
             ),
@@ -164,6 +296,57 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHubTile({
+    required IconData icon,
+    required Color color,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: const Color(0xFF0C1628),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFF1E293B)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withAlpha(30),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(icon, color: color, size: 18),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(color: Colors.grey, fontSize: 10),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
