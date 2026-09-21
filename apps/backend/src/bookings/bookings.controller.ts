@@ -58,6 +58,38 @@ export class BookingsController {
     return this.bookingsService.findInstituteBookings(user.instituteId);
   }
 
+  @Get('refunds/list')
+  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.INSTITUTE_ADMIN)
+  @UseGuards(RolesGuard)
+  @ApiOperation({ summary: 'List refund requests with statutory audit details' })
+  listRefunds() {
+    return this.bookingsService.listRefunds();
+  }
+
+  @Post(':id/cancel-quote')
+  @Roles(UserRole.SEAFARER)
+  @UseGuards(RolesGuard)
+  @ApiOperation({ summary: 'Calculate tiered statutory refund quote for candidate booking' })
+  getCancelQuote(@CurrentUser() user: any, @Param('id') id: string, @Body() body: { reason: any }) {
+    return this.bookingsService.getCancelQuote(user.id, id, body.reason || 'CANDIDATE_CANCELLATION');
+  }
+
+  @Post(':id/cancel-refund')
+  @Roles(UserRole.SEAFARER)
+  @UseGuards(RolesGuard)
+  @ApiOperation({ summary: 'Execute cancellation & request refund based on STCW DGS rules' })
+  requestRefund(@CurrentUser() user: any, @Param('id') id: string, @Body() body: any) {
+    return this.bookingsService.requestRefund(user.id, id, body);
+  }
+
+  @Post('refunds/:id/review')
+  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+  @UseGuards(RolesGuard)
+  @ApiOperation({ summary: 'Review and approve/process refund payout' })
+  reviewRefund(@Param('id') id: string, @Body() body: any) {
+    return this.bookingsService.reviewRefund(id, body);
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get booking details by ID including dual invoices' })
   getBookingById(@Param('id') id: string) {

@@ -129,6 +129,11 @@ model User {
   comments         CommunityComment[]
   webinarRegistrations WebinarRegistration[]
   auditLogs        AuditLog[]
+  refundRequests   RefundRequest[]
+  sentConnections     SeafarerConnection[] @relation("ConnectionRequester")
+  receivedConnections SeafarerConnection[] @relation("ConnectionAddressee")
+  sentChatMessages     ChatMessage[]        @relation("SentMessages")
+  receivedChatMessages ChatMessage[]        @relation("ReceivedMessages")
 
   createdAt        DateTime        @default(now())
   updatedAt        DateTime        @updatedAt
@@ -232,6 +237,7 @@ model Booking {
   instituteInvoiceUrl String?
 
   transactions        PaymentTransaction[]
+  refundRequests      RefundRequest[]
 
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
@@ -569,6 +575,141 @@ model SupportTicket {
   @@index([status])
   @@index([priority])
 }
+
+// ══════════════════════════════════════════════════════════════════
+// 1. TIERED REFUND & ESCROW DISPUTE ENGINE (SOW Sec. 4 Pg. 9)
+// ══════════════════════════════════════════════════════════════════
+enum RefundReason {
+  CANDIDATE_CANCELLATION
+  INSTITUTE_CANCELLATION
+  MEDICAL_UNFIT_OVERRIDE
+  BATCH_RESCHEDULE
+  OTHER
+}
+
+enum RefundStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  PROCESSED
+}
+
+model RefundRequest {
+  id                 String       @id @default(uuid())
+  refundReference    String       @unique
+  bookingId          String
+  booking            Booking      @relation(fields: [bookingId], references: [id])
+  seafarerId         String
+  seafarer           User         @relation(fields: [seafarerId], references: [id])
+  
+  originalAmount     Decimal      @db.Decimal(10, 2)
+  penaltyAmount      Decimal      @db.Decimal(10, 2) @default(0)
+  refundAmount       Decimal      @db.Decimal(10, 2)
+  currency           String       @default("INR")
+  penaltyPercentage  Int          @default(0)
+  
+  reason             RefundReason @default(CANDIDATE_CANCELLATION)
+  status             RefundStatus @default(PENDING_REVIEW)
+  medicalDocumentUrl String?
+  notes              String?
+  payoutUtr          String?
+  processedAt        DateTime?
+
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  @@index([bookingId])
+  @@index([seafarerId])
+  @@index([refundReference])
+  @@index([status])
+}
+
+// ══════════════════════════════════════════════════════════════════
+// 2. SEAFARER PEER CONNECTIONS & CHAT (SOW Sec. 4 Pg. 11)
+// ══════════════════════════════════════════════════════════════════
+enum ConnectionStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  BLOCKED
+}
+
+model SeafarerConnection {
+  id           String           @id @default(uuid())
+  requesterId  String
+  requester    User             @relation("ConnectionRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  addresseeId  String
+  addressee    User             @relation("ConnectionAddressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+  status       ConnectionStatus @default(PENDING)
+
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  @@unique([requesterId, addresseeId])
+  @@index([requesterId])
+  @@index([addresseeId])
+  @@index([status])
+}
+
+model ChatMessage {
+  id            String    @id @default(uuid())
+  senderId      String
+  sender        User      @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  recipientId   String?
+  recipient     User?     @relation("ReceivedMessages", fields: [recipientId], references: [id], onDelete: Cascade)
+  roomId        String?
+  content       String
+  attachmentUrl String?
+  isRead        Boolean   @default(false)
+  readAt        DateTime?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([senderId])
+  @@index([recipientId])
+  @@index([roomId])
+  @@index([createdAt])
+}
+
+// ══════════════════════════════════════════════════════════════════
+// 3. AUTOMATED SCRAPED MARITIME FEEDS (SOW Sec. 4 Pg. 10)
+// ══════════════════════════════════════════════════════════════════
+enum ScrapedFeedType {
+  MARITIME_JOB
+  WEBINAR_WORKSHOP
+}
+
+enum ScrapedFeedStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  PUBLISHED
+  EXPIRED
+}
+
+model ScrapedMaritimeFeed {
+  id                  String            @id @default(uuid())
+  feedType            ScrapedFeedType
+  title               String
+  sourceOrganization  String
+  sourceUrl           String
+  summary             String?
+  location            String?
+  deduplicationHash   String            @unique
+  status              ScrapedFeedStatus @default(PENDING_REVIEW)
+  metadata            Json?
+  publishedEntityId   String?
+  expiresAt           DateTime?
+
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  @@index([feedType])
+  @@index([status])
+  @@index([deduplicationHash])
+}
+
 
 
 

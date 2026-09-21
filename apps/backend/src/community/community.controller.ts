@@ -131,4 +131,68 @@ export class CommunityController {
   upvoteComment(@Param('commentId') commentId: string) {
     return this.communityService.upvoteComment(commentId);
   }
+
+  // ─── Peer Connections (SOW Sec. 4 Pg. 11) ───────────────────────────────────
+
+  @Get('connections/suggestions')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Get peer maritime officer connection suggestions' })
+  getSuggestedConnections(@CurrentUser() user: any) {
+    return this.communityService.getSuggestedConnections(user.id);
+  }
+
+  @Post('connections/request')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Dispatch peer seafarer connection request' })
+  sendConnectionRequest(@CurrentUser() user: any, @Body() body: { addresseeId: string }) {
+    return this.communityService.sendConnectionRequest(user.id, body.addresseeId);
+  }
+
+  @Post('connections/:id/respond')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Accept or decline connection request' })
+  respondToConnection(
+    @CurrentUser() user: any,
+    @Param('id') connectionId: string,
+    @Body() body: { action: 'ACCEPT' | 'DECLINE' },
+  ) {
+    return this.communityService.respondToConnection(user.id, connectionId, body.action);
+  }
+
+  @Get('connections/my-peers')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'List current user confirmed peers & pending requests' })
+  listMyConnections(@CurrentUser() user: any) {
+    return this.communityService.listMyConnections(user.id);
+  }
+
+  // ─── Direct 1-on-1 & Group Messaging (SOW Sec. 4 Pg. 11) ─────────────────
+
+  @Post('messages/send')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Send direct maritime chat message' })
+  sendMessage(@CurrentUser() user: any, @Body() body: any) {
+    return this.communityService.sendChatMessage(user.id, body);
+  }
+
+  @Get('messages/conversation/:peerId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Retrieve conversation message history with peer seafarer' })
+  getConversation(@CurrentUser() user: any, @Param('peerId') peerId: string) {
+    return this.communityService.getConversation(user.id, peerId);
+  }
+
+  @Post('messages/read/:peerId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Mark conversation messages as read' })
+  markAsRead(@CurrentUser() user: any, @Param('peerId') peerId: string) {
+    return this.communityService.markConversationAsRead(user.id, peerId);
+  }
 }

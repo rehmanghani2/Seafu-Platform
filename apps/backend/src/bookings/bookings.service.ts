@@ -310,4 +310,221 @@ export class BookingsService {
 
     return booking;
   }
+
+  // ══════════════════════════════════════════════════════════════════
+  // TIERED REFUND & ESCROW DISPUTE ENGINE (SOW Sec. 4 Pg. 9)
+  // ══════════════════════════════════════════════════════════════════
+
+  calculateRefundTier(batchStartDate: Date, reason: string, grossAmount: number) {
+    const now = new Date();
+    const daysUntilStart = Math.ceil((new Date(batchStartDate).getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+    let penaltyPercentage = 0;
+    let tierDescription = '';
+
+    if (reason === 'INSTITUTE_CANCELLATION') {
+      penaltyPercentage = 0;
+      tierDescription = 'Institute Cancellation (100% statutory refund under DGS Code)';
+    } else if (reason === 'MEDICAL_UNFIT_OVERRIDE') {
+      penaltyPercentage = 0;
+      tierDescription = 'STCW Form 9 Medical Unfit Override (100% statutory refund)';
+    } else if (reason === 'BATCH_RESCHEDULE') {
+      penaltyPercentage = 0;
+      tierDescription = 'Batch Reschedule by Maritime Academy (100% credit or refund)';
+    } else {
+      // Candidate Cancellation Tiers
+      if (daysUntilStart >= 15) {
+        penaltyPercentage = 10;
+        tierDescription = 'Early Cancellation (>15 Days Before Batch): 90% Refund (10% Admin Fee)';
+      } else if (daysUntilStart >= 7) {
+        penaltyPercentage = 50;
+        tierDescription = 'Mid-Window Cancellation (7-14 Days Before Batch): 50% Refund';
+      } else {
+        penaltyPercentage = 100;
+        tierDescription = 'Late Cancellation (<7 Days Before Batch): 0% Refund (Seat locked)';
+      }
+    }
+
+    const penaltyAmount = Math.round((grossAmount * (penaltyPercentage / 100)) * 100) / 100;
+    const refundAmount = Math.round((grossAmount - penaltyAmount) * 100) / 100;
+
+    return {
+      daysUntilStart: Math.max(0, daysUntilStart),
+      penaltyPercentage,
+      tierDescription,
+      originalAmount: grossAmount,
+      penaltyAmount,
+      refundAmount,
+    };
+  }
+
+  async getCancelQuote(seafarerId: string, bookingId: string, reason: string) {
+    const booking = await this.prisma.booking.findUnique({
+      where: { id: bookingId },
+      include: { batch: true, course: { include: { institute: true } } },
+    });
+
+    if (!booking) {
+      throw new NotFoundException('Booking not found');
+    }
+
+    if (booking.seafarerId !== seafarerId) {
+      throw new BadRequestException('Unauthorized access to booking');
+    }
+
+    const grossAmount = Number(booking.amount);
+    const quote = this.calculateRefundTier(booking.batch.startDate, reason, grossAmount);
+
+    return {
+      bookingReference: booking.bookingReference,
+      courseTitle: booking.course.title,
+      institute: booking.course.institute.name,
+      batchStartDate: booking.batch.startDate,
+      ...quote,
+    };
+  }
+
+  async requestRefund(seafarerId: string, bookingId: string, dto: { reason: any; notes?: string; medicalDocumentUrl?: string }) {
+    const booking = await this.prisma.booking.findUnique({
+      where: { id: bookingId },
+      include: { batch: true, course: { include: { institute: true } }, transactions: true },
+    });
+
+    if (!booking) {
+      throw new NotFoundException('Booking not found');
+    }
+
+    if (booking.seafarerId !== seafarerId) {
+      throw new BadRequestException('Unauthorized access to booking');
+    }
+
+    if (booking.status !== BookingStatus.CONFIRMED && booking.status !== BookingStatus.PENDING_PAYMENT) {
+      throw new ConflictException(`Cannot refund booking with status: ${booking.status}`);
+    }
+
+    const grossAmount = Number(booking.amount);
+    const quote = this.calculateRefundTier(booking.batch.startDate, dto.reason, grossAmount);
+    const refundRef = `REF-${Date.now().toString().slice(-6)}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const result = await this.prisma.$transaction(async (tx) => {
+      // 1. Create RefundRequest record
+      const refund = await tx.refundRequest.create({
+        data: {
+          refundReference: refundRef,
+          bookingId: booking.id,
+          seafarerId,
+          originalAmount: grossAmount,
+          penaltyAmount: quote.penaltyAmount,
+          refundAmount: quote.refundAmount,
+          currency: booking.currency,
+          penaltyPercentage: quote.penaltyPercentage,
+          reason: dto.reason,
+          status: 'PENDING_REVIEW',
+          medicalDocumentUrl: dto.medicalDocumentUrl,
+          notes: dto.notes,
+        },
+      });
+
+      // 2. Return seat inventory to batch
+      await tx.courseBatch.update({
+        where: { id: booking.batchId },
+        data: { availableSeats: { increment: 1 } },
+      });
+
+      // 3. Update booking status
+      const nextBookingStatus = dto.reason === 'INSTITUTE_CANCELLATION' 
+        ? BookingStatus.CANCELLED_BY_INSTITUTE 
+        : BookingStatus.CANCELLED_BY_CANDIDATE;
+
+      await tx.booking.update({
+        where: { id: booking.id },
+        data: { status: nextBookingStatus },
+      });
+
+      return refund;
+    });
+
+    return {
+      message: 'Refund request registered and submitted for compliance verification',
+      refund: result,
+      auditNotice: quote.tierDescription,
+    };
+  }
+
+  async listRefunds(status?: string) {
+    return this.prisma.refundRequest.findMany({
+      where: status ? { status: status as any } : undefined,
+      include: {
+        booking: {
+          include: {
+            course: { include: { institute: true } },
+            batch: true,
+          },
+        },
+        seafarer: {
+          select: {
+            id: true,
+            fullName: true,
+            email: true,
+            phone: true,
+            indosNumber: true,
+          },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async reviewRefund(refundId: string, dto: { status: any; payoutUtr?: string; notes?: string }) {
+    const refund = await this.prisma.refundRequest.findUnique({
+      where: { id: refundId },
+      include: { booking: true },
+    });
+
+    if (!refund) {
+      throw new NotFoundException('Refund request not found');
+    }
+
+    const updated = await this.prisma.$transaction(async (tx) => {
+      const res = await tx.refundRequest.update({
+        where: { id: refundId },
+        data: {
+          status: dto.status,
+          payoutUtr: dto.payoutUtr,
+          notes: dto.notes ? `${refund.notes ? refund.notes + ' | ' : ''}${dto.notes}` : refund.notes,
+          processedAt: dto.status === 'PROCESSED' ? new Date() : undefined,
+        },
+      });
+
+      if (dto.status === 'PROCESSED') {
+        await tx.booking.update({
+          where: { id: refund.bookingId },
+          data: { status: BookingStatus.REFUNDED },
+        });
+
+        // Record payment transaction refund
+        await tx.paymentTransaction.create({
+          data: {
+            bookingId: refund.bookingId,
+            gateway: PaymentGateway.RAZORPAY,
+            amount: refund.refundAmount,
+            currency: refund.currency,
+            status: PaymentStatus.REFUNDED,
+            metadata: {
+              refundReference: refund.refundReference,
+              payoutUtr: dto.payoutUtr || `HDFC-REF-${Date.now()}`,
+              processedAt: new Date().toISOString(),
+            },
+          },
+        });
+      }
+
+      return res;
+    });
+
+    return {
+      message: `Refund ${dto.status.toLowerCase()} successfully`,
+      refund: updated,
+    };
+  }
 }

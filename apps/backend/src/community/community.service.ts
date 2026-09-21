@@ -204,4 +204,172 @@ export class CommunityService {
       },
     });
   }
+
+  // ─── Peer Connections (SOW Sec. 4 Pg. 11) ───────────────────────────────────
+
+  async getSuggestedConnections(userId: string) {
+    const me = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!me) throw new NotFoundException('User not found');
+
+    // Find existing connections
+    const existing = await this.prisma.seafarerConnection.findMany({
+      where: { OR: [{ requesterId: userId }, { addresseeId: userId }] },
+    });
+    const connectedIds = new Set(
+      existing.map((c) => (c.requesterId === userId ? c.addresseeId : c.requesterId))
+    );
+    connectedIds.add(userId);
+
+    // Find suggestions based on rank or institute
+    return this.prisma.user.findMany({
+      where: {
+        id: { notIn: Array.from(connectedIds) },
+        role: UserRole.SEAFARER,
+      },
+      take: 8,
+      select: {
+        id: true,
+        fullName: true,
+        rank: true,
+        avatarUrl: true,
+        indosNumber: true,
+        institute: { select: { name: true } },
+      },
+    });
+  }
+
+  async sendConnectionRequest(requesterId: string, addresseeId: string) {
+    if (requesterId === addresseeId) {
+      throw new ForbiddenException('Cannot connect with yourself');
+    }
+
+    const existing = await this.prisma.seafarerConnection.findFirst({
+      where: {
+        OR: [
+          { requesterId, addresseeId },
+          { requesterId: addresseeId, addresseeId: requesterId },
+        ],
+      },
+    });
+
+    if (existing) {
+      return { message: 'Connection already exists', connection: existing };
+    }
+
+    const connection = await this.prisma.seafarerConnection.create({
+      data: {
+        requesterId,
+        addresseeId,
+        status: 'PENDING',
+      },
+      include: {
+        addressee: { select: { id: true, fullName: true, rank: true } },
+      },
+    });
+
+    return { message: 'Connection request dispatched', connection };
+  }
+
+  async respondToConnection(userId: string, connectionId: string, action: 'ACCEPT' | 'DECLINE') {
+    const connection = await this.prisma.seafarerConnection.findUnique({
+      where: { id: connectionId },
+    });
+
+    if (!connection) throw new NotFoundException('Connection request not found');
+    if (connection.addresseeId !== userId) {
+      throw new ForbiddenException('Not authorized to respond to this connection request');
+    }
+
+    const updated = await this.prisma.seafarerConnection.update({
+      where: { id: connectionId },
+      data: { status: action === 'ACCEPT' ? 'ACCEPTED' : 'DECLINED' },
+    });
+
+    return { message: `Connection ${action.toLowerCase()}ed`, connection: updated };
+  }
+
+  async listMyConnections(userId: string) {
+    const [accepted, pendingReceived, pendingSent] = await Promise.all([
+      this.prisma.seafarerConnection.findMany({
+        where: {
+          status: 'ACCEPTED',
+          OR: [{ requesterId: userId }, { addresseeId: userId }],
+        },
+        include: {
+          requester: { select: { id: true, fullName: true, rank: true, avatarUrl: true, indosNumber: true } },
+          addressee: { select: { id: true, fullName: true, rank: true, avatarUrl: true, indosNumber: true } },
+        },
+      }),
+      this.prisma.seafarerConnection.findMany({
+        where: { status: 'PENDING', addresseeId: userId },
+        include: {
+          requester: { select: { id: true, fullName: true, rank: true, avatarUrl: true, indosNumber: true } },
+        },
+      }),
+      this.prisma.seafarerConnection.findMany({
+        where: { status: 'PENDING', requesterId: userId },
+        include: {
+          addressee: { select: { id: true, fullName: true, rank: true, avatarUrl: true, indosNumber: true } },
+        },
+      }),
+    ]);
+
+    const peerList = accepted.map((c) =>
+      c.requesterId === userId ? c.addressee : c.requester
+    );
+
+    return {
+      peers: peerList,
+      pendingRequests: pendingReceived,
+      sentRequests: pendingSent,
+      totalCount: peerList.length,
+    };
+  }
+
+  // ─── Maritime 1-on-1 & Group Messaging (SOW Sec. 4 Pg. 11) ─────────────────
+
+  async sendChatMessage(senderId: string, data: { recipientId?: string; roomId?: string; content: string; attachmentUrl?: string }) {
+    return this.prisma.chatMessage.create({
+      data: {
+        senderId,
+        recipientId: data.recipientId,
+        roomId: data.roomId,
+        content: data.content,
+        attachmentUrl: data.attachmentUrl,
+      },
+      include: {
+        sender: { select: { id: true, fullName: true, rank: true, avatarUrl: true } },
+      },
+    });
+  }
+
+  async getConversation(userId: string, peerId: string) {
+    return this.prisma.chatMessage.findMany({
+      where: {
+        OR: [
+          { senderId: userId, recipientId: peerId },
+          { senderId: peerId, recipientId: userId },
+        ],
+      },
+      orderBy: { createdAt: 'asc' },
+      include: {
+        sender: { select: { id: true, fullName: true, rank: true, avatarUrl: true } },
+      },
+    });
+  }
+
+  async markConversationAsRead(userId: string, peerId: string) {
+    await this.prisma.chatMessage.updateMany({
+      where: {
+        senderId: peerId,
+        recipientId: userId,
+        isRead: false,
+      },
+      data: {
+        isRead: true,
+        readAt: new Date(),
+      },
+    });
+    return { success: true };
+  }
 }

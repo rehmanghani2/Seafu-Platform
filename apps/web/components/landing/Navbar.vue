@@ -40,6 +40,8 @@
           </NuxtLink>
           <span class="text-slate-700 hidden sm:inline" aria-hidden="true">|</span>
           <CommonCurrencySelector />
+          <span class="text-slate-700 hidden sm:inline" aria-hidden="true">|</span>
+          <CommonLanguageSelector />
         </div>
       </div>
     </div>

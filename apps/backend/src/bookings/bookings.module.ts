@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { BookingsService } from './bookings.service';
 import { BookingsController } from './bookings.controller';
+import { WebhooksController } from './webhooks.controller';
 
 @Module({
-  controllers: [BookingsController],
+  controllers: [BookingsController, WebhooksController],
   providers: [BookingsService],
   exports: [BookingsService],
 })

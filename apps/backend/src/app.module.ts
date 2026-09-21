@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
@@ -12,6 +13,7 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { JobsModule } from './jobs/jobs.module';
 import { CommunityModule } from './community/community.module';
 import { AdminModule } from './admin/admin.module';
+import { ScrapersModule } from './scrapers/scrapers.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -21,6 +23,7 @@ import { AppService } from './app.service';
       isGlobal: true,
       envFilePath: ['.env.local', '.env'],
     }),
+    ScheduleModule.forRoot(),
     PrismaModule,
     AuthModule,
     UsersModule,
@@ -33,6 +36,7 @@ import { AppService } from './app.service';
     JobsModule,
     CommunityModule,
     AdminModule,
+    ScrapersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
