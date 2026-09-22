@@ -1,0 +1,56 @@
+name: Seafu Platform CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  backend-tests-and-build:
+    name: Backend Tests & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Monorepo Dependencies
+        run: npm install
+
+      - name: Generate Prisma Client
+        run: npx prisma generate --schema=apps/backend/prisma/schema.prisma
+
+      - name: Run Backend Unit & Integration Tests
+        run: npm run test:backend
+
+      - name: Build Backend Service
+        run: npm run build:backend
+
+  web-build:
+    name: Web Frontend Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Monorepo Dependencies
+        run: npm install
+
+      - name: Build Web Application
+        run: npm run build:web
+        env:
+          NEXT_PUBLIC_API_URL: https://api.seafu.org

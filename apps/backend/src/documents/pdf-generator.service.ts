@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import PDFDocument from 'pdfkit';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const PDFDocument = require('pdfkit');
 
 @Injectable()
 export class PdfGeneratorService {
