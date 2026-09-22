@@ -80,29 +80,24 @@
         </NuxtLink>
 
         <!-- Desktop Nav -->
-        <nav class="hidden lg:flex items-center text-[13px] font-medium text-slate-300" aria-label="Primary Navigation">
+        <nav class="hidden lg:flex items-center text-[13px] font-medium text-slate-300 space-x-1" aria-label="Primary Navigation">
           <NuxtLink to="/"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
+            class="px-3 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
             :class="activeSection === 'home' ? 'text-white' : ''">
             Home
           </NuxtLink>
-          <a href="#about"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'about' ? 'text-white' : ''">
-            About Us
-          </a>
 
           <!-- Courses Mega Menu -->
           <div class="relative" @mouseenter="coursesOpen = true" @mouseleave="coursesOpen = false">
-            <a href="#courses"
-              class="px-3.5 py-2 rounded-lg flex items-center space-x-1 hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
+            <NuxtLink to="/courses"
+              class="px-3 py-2 rounded-lg flex items-center space-x-1 hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
               :class="(coursesOpen || activeSection === 'courses') ? 'text-white' : ''"
               aria-haspopup="true" :aria-expanded="coursesOpen">
               <span>Courses</span>
               <svg class="w-3 h-3 transition-transform duration-200" :class="coursesOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
               </svg>
-            </a>
+            </NuxtLink>
             <div v-show="coursesOpen" class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[660px] z-50">
               <div class="bg-[#071C42] border border-white/10 rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-5">
                 <div>
@@ -128,9 +123,17 @@
                   </ul>
                 </div>
                 <div class="col-span-2 pt-3 border-t border-white/10 flex items-center justify-between">
-                  <span class="text-[11px] text-slate-500">IMO Model Courses · DG Shipping · UK MCA Accredited</span>
+                  <div class="flex items-center space-x-3 text-xs">
+                    <NuxtLink to="/courses/bundles" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center space-x-1">
+                      <span>Career Bundles (Save 25%)</span>
+                    </NuxtLink>
+                    <span class="text-slate-600">|</span>
+                    <NuxtLink to="/institutes/compare" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center space-x-1">
+                      <span>Compare Academies</span>
+                    </NuxtLink>
+                  </div>
                   <NuxtLink to="/courses" class="text-amber-400 hover:text-amber-300 text-xs font-semibold flex items-center space-x-1">
-                    <span>Browse Full Catalogue</span>
+                    <span>Full Catalogue</span>
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                   </NuxtLink>
                 </div>
@@ -138,53 +141,82 @@
             </div>
           </div>
 
-          <NuxtLink to="/courses"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
-            Courses
-          </NuxtLink>
           <NuxtLink to="/webinars"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            class="px-3 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
             Webinars
           </NuxtLink>
           <NuxtLink to="/publications"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
-            Publications
+            class="px-3 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Library
           </NuxtLink>
           <NuxtLink to="/jobs"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            class="px-3 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
             Jobs
           </NuxtLink>
-          <a href="#about"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'about' ? 'text-white' : ''">
-            About Us
-          </a>
-          <a href="#testimonials"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'testimonials' ? 'text-white' : ''">Testimonials</a>
-          <a href="#faqs"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'faqs' ? 'text-white' : ''">FAQs</a>
-          <a href="#contact"
-            class="px-3.5 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
-            :class="activeSection === 'contact' ? 'text-white' : ''">Contact</a>
+          <NuxtLink to="/community"
+            class="px-3 py-2 rounded-lg hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400">
+            Community
+          </NuxtLink>
+
+          <!-- Portals Dropdown -->
+          <div class="relative" @mouseenter="portalsOpen = true" @mouseleave="portalsOpen = false">
+            <button
+              class="px-3 py-2 rounded-lg flex items-center space-x-1 text-cyan-300 hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-cyan-400"
+              aria-haspopup="true" :aria-expanded="portalsOpen">
+              <span>Portals</span>
+              <svg class="w-3 h-3 transition-transform duration-200" :class="portalsOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div v-show="portalsOpen" class="absolute right-0 top-full pt-2 w-56 z-50">
+              <div class="bg-[#071C42] border border-white/10 rounded-xl p-2 shadow-2xl space-y-1 text-xs">
+                <NuxtLink to="/seafarer/dashboard" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <div>
+                    <div class="font-semibold">Seafarer Portal</div>
+                    <div class="text-[10px] text-slate-400">Personal Vault &amp; Batches</div>
+                  </div>
+                </NuxtLink>
+                <NuxtLink to="/institute/dashboard" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <div>
+                    <div class="font-semibold">Academy Console</div>
+                    <div class="text-[10px] text-slate-400">Batch &amp; Bay Management</div>
+                  </div>
+                </NuxtLink>
+                <NuxtLink to="/admin/dashboard" class="flex items-center space-x-2.5 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition">
+                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                  <div>
+                    <div class="font-semibold">Fleet Operations Admin</div>
+                    <div class="text-[10px] text-slate-400">Statutory Oversight &amp; Audit</div>
+                  </div>
+                </NuxtLink>
+                <div class="border-t border-white/10 pt-1 mt-1">
+                  <NuxtLink to="/verify/IND-AFF-7714-ECDSA" class="flex items-center space-x-2 px-3 py-1.5 text-cyan-400 hover:text-cyan-300 transition">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <span>PSC Certificate Verify</span>
+                  </NuxtLink>
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
 
         <!-- CTAs -->
         <div class="flex items-center space-x-2 shrink-0">
           <button @click="$emit('open-admission')"
-            class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-amber-400">
+            class="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-amber-400">
             <span>Apply Now</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </button>
           <NuxtLink to="/auth/login"
-            class="inline-flex items-center px-4 py-2 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-white/8 hover:bg-white/12 border border-white/12 transition focus:outline-none focus:ring-2 focus:ring-slate-400">
+            class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-white/8 hover:bg-white/12 border border-white/12 transition focus:outline-none focus:ring-2 focus:ring-slate-400">
             Login
           </NuxtLink>
           <NuxtLink to="/auth/register"
-            class="inline-flex items-center px-4 py-2 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-blue-400">
+            class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-blue-400">
             Register
           </NuxtLink>
           <button @click="mobileOpen = !mobileOpen"
@@ -210,13 +242,21 @@
           <nav class="flex flex-col space-y-0.5 text-sm font-medium text-slate-300" aria-label="Mobile Navigation">
             <NuxtLink to="/" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Home</NuxtLink>
             <NuxtLink to="/courses" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Courses &amp; Programs</NuxtLink>
+            <NuxtLink to="/courses/bundles" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg text-emerald-400 hover:bg-white/5 hover:text-emerald-300 transition">Career Packages (Save 25%)</NuxtLink>
+            <NuxtLink to="/institutes/compare" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Compare Academies</NuxtLink>
             <NuxtLink to="/webinars" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Webinars &amp; Masterclasses</NuxtLink>
             <NuxtLink to="/publications" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Publications &amp; Library</NuxtLink>
             <NuxtLink to="/jobs" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Maritime Jobs</NuxtLink>
-            <a href="#about" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">About Us</a>
-            <a href="#testimonials" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Testimonials</a>
-            <a href="#faqs" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">FAQs</a>
-            <a href="#contact" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Contact</a>
+            <NuxtLink to="/community" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Community &amp; Peer Network</NuxtLink>
+            <NuxtLink to="/community/messages" @click="mobileOpen = false" class="py-2.5 px-3 rounded-lg text-cyan-400 hover:bg-white/5 hover:text-cyan-300 transition">Bridge Messages</NuxtLink>
+            
+            <div class="pt-2 border-t border-white/10 my-1">
+              <p class="px-3 text-[10px] uppercase font-bold text-slate-400 tracking-wider">Access Portals</p>
+              <NuxtLink to="/seafarer/dashboard" @click="mobileOpen = false" class="py-2 px-3 rounded-lg hover:bg-white/5 text-blue-300 block">Seafarer Portal</NuxtLink>
+              <NuxtLink to="/institute/dashboard" @click="mobileOpen = false" class="py-2 px-3 rounded-lg hover:bg-white/5 text-amber-300 block">Academy Console</NuxtLink>
+              <NuxtLink to="/admin/dashboard" @click="mobileOpen = false" class="py-2 px-3 rounded-lg hover:bg-white/5 text-rose-300 block">Fleet Operations Admin</NuxtLink>
+              <NuxtLink to="/verify/IND-AFF-7714-ECDSA" @click="mobileOpen = false" class="py-2 px-3 rounded-lg hover:bg-white/5 text-cyan-300 block">PSC Verification Terminal</NuxtLink>
+            </div>
           </nav>
           <div class="pt-4 mt-3 border-t border-white/10 grid grid-cols-2 gap-2">
             <NuxtLink to="/auth/login" @click="mobileOpen = false" class="py-2.5 text-center text-xs font-medium text-white bg-white/10 rounded-xl border border-white/15 hover:bg-white/15 transition">Login</NuxtLink>
@@ -235,21 +275,22 @@ import { ref, onMounted, onUnmounted } from 'vue';
 defineEmits(['open-admission', 'open-video']);
 
 const coursesOpen = ref(false);
+const portalsOpen = ref(false);
 const mobileOpen = ref(false);
 const scrolled = ref(false);
 const activeSection = ref('home');
 
 const courseOverview = [
-  { label: 'GP-III Pre-Sea Rating Course (6 Months)', href: '#courses' },
-  { label: 'Advance Diploma in Nautical Science (HND)', href: '#courses' },
-  { label: 'Advance Diploma in Marine Engineering (HND)', href: '#courses' },
-  { label: 'Basic Safety Training (BST STCW 2010)', href: '#courses' },
+  { label: 'GP-III Pre-Sea Rating Course (6 Months)', href: '/courses' },
+  { label: 'Advance Diploma in Nautical Science (HND)', href: '/courses' },
+  { label: 'Advance Diploma in Marine Engineering (HND)', href: '/courses' },
+  { label: 'Basic Safety Training (BST STCW 2010)', href: '/courses' },
 ];
 const courseHighlights = [
-  { label: 'GMDSS General Operator Certificate (GOC)', href: '#courses' },
-  { label: 'ECDIS Model Course 1.27 (Generic & Type)', href: '#courses' },
-  { label: 'Advanced Fire Fighting (AFF) Refresher', href: '#courses' },
-  { label: 'High Voltage Marine Systems', href: '#courses' },
+  { label: 'GMDSS General Operator Certificate (GOC)', href: '/courses' },
+  { label: 'ECDIS Model Course 1.27 (Generic & Type)', href: '/courses' },
+  { label: 'Advanced Fire Fighting (AFF) Refresher', href: '/courses' },
+  { label: 'High Voltage Marine Systems', href: '/courses' },
 ];
 
 function onScroll() {

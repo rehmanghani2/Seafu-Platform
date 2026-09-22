@@ -15,22 +15,19 @@
           <span class="text-slate-500 hidden sm:inline">Official Global Maritime Digital Certification Infrastructure</span>
         </div>
 
-        <div class="flex items-center space-x-4 text-slate-500 text-[11px]">
+        <div class="flex items-center space-x-3 text-slate-500 text-[11px]">
           <span class="hidden md:inline">MLC 2006 &bull; SOLAS &bull; DG Approved</span>
           <span class="text-slate-300 hidden md:inline">|</span>
-          <a href="tel:+442079460912" class="hover:text-blue-700 transition flex items-center space-x-1">
-            <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span>+44 20 7946 0912</span>
-          </a>
-          <span class="text-slate-300">|</span>
           <NuxtLink to="/verify/IND-AFF-7714-ECDSA" class="text-blue-700 hover:text-blue-800 font-bold flex items-center space-x-1">
             <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-            <span>Instant Verify</span>
+            <span>Verify Certificate</span>
           </NuxtLink>
+          <span class="text-slate-300">|</span>
+          <CommonCurrencySelector />
+          <span class="text-slate-300">|</span>
+          <CommonLanguageSelector />
         </div>
       </div>
     </div>
@@ -49,30 +46,39 @@
         </NuxtLink>
 
         <!-- Navigation Menu -->
-        <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-slate-600">
+        <nav class="hidden lg:flex items-center space-x-4 text-xs font-semibold text-slate-600">
           <NuxtLink to="/" class="hover:text-blue-700 transition" :class="route.path === '/' ? 'text-blue-700 font-bold' : ''">
             Home
           </NuxtLink>
-          <NuxtLink to="/courses" class="hover:text-blue-700 transition" :class="route.path.startsWith('/courses') ? 'text-blue-700 font-bold' : ''">
-            Courses &amp; Syllabus
+          <NuxtLink to="/courses" class="hover:text-blue-700 transition" :class="route.path === '/courses' ? 'text-blue-700 font-bold' : ''">
+            Courses
+          </NuxtLink>
+          <NuxtLink to="/courses/bundles" class="text-emerald-700 hover:text-emerald-800 transition font-bold" :class="route.path.startsWith('/courses/bundles') ? 'text-emerald-900 underline' : ''">
+            Bundles
           </NuxtLink>
           <NuxtLink to="/institutes/compare" class="hover:text-blue-700 transition" :class="route.path.startsWith('/institutes') ? 'text-blue-700 font-bold' : ''">
-            Compare Academies
+            Compare
           </NuxtLink>
-          <NuxtLink to="/seafarer/dashboard" class="hover:text-blue-700 transition" :class="route.path.startsWith('/seafarer') ? 'text-blue-700 font-bold' : ''">
-            Student Dashboard
+          <NuxtLink to="/webinars" class="hover:text-blue-700 transition" :class="route.path.startsWith('/webinars') ? 'text-blue-700 font-bold' : ''">
+            Webinars
           </NuxtLink>
-          <NuxtLink to="/institute/dashboard" class="hover:text-blue-700 transition" :class="route.path.startsWith('/institute') ? 'text-blue-700 font-bold' : ''">
-            Academy Console
+          <NuxtLink to="/publications" class="hover:text-blue-700 transition" :class="route.path.startsWith('/publications') ? 'text-blue-700 font-bold' : ''">
+            Library
           </NuxtLink>
           <NuxtLink to="/jobs" class="hover:text-blue-700 transition" :class="route.path.startsWith('/jobs') ? 'text-blue-700 font-bold' : ''">
-            Sea Service Jobs
+            Jobs
           </NuxtLink>
-          <NuxtLink to="/verify/IND-AFF-7714-ECDSA" class="hover:text-blue-700 transition flex items-center space-x-1" :class="route.path.startsWith('/verify') ? 'text-blue-700 font-bold' : ''">
-            <svg class="w-3.5 h-3.5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            <span>Verification</span>
+          <NuxtLink to="/community" class="hover:text-blue-700 transition" :class="route.path.startsWith('/community') ? 'text-blue-700 font-bold' : ''">
+            Community
+          </NuxtLink>
+          <NuxtLink to="/seafarer/dashboard" class="text-blue-700 hover:text-blue-800 transition" :class="route.path.startsWith('/seafarer') ? 'font-bold' : ''">
+            Seafarer Portal
+          </NuxtLink>
+          <NuxtLink to="/institute/dashboard" class="text-amber-700 hover:text-amber-800 transition" :class="route.path.startsWith('/institute') ? 'font-bold' : ''">
+            Academy
+          </NuxtLink>
+          <NuxtLink to="/admin/dashboard" class="text-rose-700 hover:text-rose-800 transition" :class="route.path.startsWith('/admin') ? 'font-bold' : ''">
+            Admin
           </NuxtLink>
         </nav>
 
